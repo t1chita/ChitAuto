@@ -9,26 +9,32 @@
 /* Begin PBXBuildFile section */
 		2682B2272C3310E2004D02E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682B2262C3310E2004D02E4 /* AppDelegate.swift */; };
 		2682B2292C3310E2004D02E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682B2282C3310E2004D02E4 /* SceneDelegate.swift */; };
-		2682B22B2C3310E2004D02E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682B22A2C3310E2004D02E4 /* ViewController.swift */; };
 		2682B2302C3310E4004D02E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2682B22F2C3310E4004D02E4 /* Assets.xcassets */; };
 		2682B2332C3310E4004D02E4 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 2682B2322C3310E4004D02E4 /* Base */; };
-		26CA73EC2C34847600715AC3 /* GoogleService-Info-2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 26CA73EB2C34847600715AC3 /* GoogleService-Info-2.plist */; };
+		26CA73EC2C34847600715AC3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 26CA73EB2C34847600715AC3 /* GoogleService-Info.plist */; };
 		26CA73EF2C34851600715AC3 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 26CA73EE2C34851600715AC3 /* FirebaseAuth */; };
 		26CA73F12C34851600715AC3 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 26CA73F02C34851600715AC3 /* FirebaseFirestore */; };
 		26CA73F32C34851600715AC3 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 26CA73F22C34851600715AC3 /* FirebaseFirestoreSwift */; };
 		26CA73F52C34851600715AC3 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 26CA73F42C34851600715AC3 /* FirebaseStorage */; };
 		26CA73F82C34853E00715AC3 /* Network in Frameworks */ = {isa = PBXBuildFile; productRef = 26CA73F72C34853E00715AC3 /* Network */; };
+		26CA73FB2C3485A300715AC3 /* OnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CA73FA2C3485A300715AC3 /* OnBoardingViewModel.swift */; };
+		26CA73FD2C3485AE00715AC3 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CA73FC2C3485AE00715AC3 /* OnBoardingView.swift */; };
+		26CA73FF2C3485BE00715AC3 /* OnBoardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CA73FE2C3485BE00715AC3 /* OnBoardingVC.swift */; };
+		26CA74052C348A4200715AC3 /* CustomGeneralButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CA74042C348A4200715AC3 /* CustomGeneralButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2682B2232C3310E2004D02E4 /* ChitAuto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChitAuto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2682B2262C3310E2004D02E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2682B2282C3310E2004D02E4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2682B22A2C3310E2004D02E4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2682B22F2C3310E4004D02E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2682B2322C3310E4004D02E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2682B2342C3310E4004D02E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		26CA73EB2C34847600715AC3 /* GoogleService-Info-2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-2.plist"; sourceTree = "<group>"; };
+		26CA73EB2C34847600715AC3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		26CA73FA2C3485A300715AC3 /* OnBoardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewModel.swift; sourceTree = "<group>"; };
+		26CA73FC2C3485AE00715AC3 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
+		26CA73FE2C3485BE00715AC3 /* OnBoardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingVC.swift; sourceTree = "<group>"; };
+		26CA74042C348A4200715AC3 /* CustomGeneralButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGeneralButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +73,8 @@
 			isa = PBXGroup;
 			children = (
 				2682B23A2C331782004D02E4 /* App */,
-				2682B22A2C3310E2004D02E4 /* ViewController.swift */,
+				26CA74012C348A1700715AC3 /*  CustomViews */,
+				26CA73F92C34857F00715AC3 /* Scenes */,
 				2682B23B2C33178B004D02E4 /* Resources */,
 				2682B23C2C3317CE004D02E4 /* Supporting Files */,
 			);
@@ -94,11 +101,53 @@
 		2682B23C2C3317CE004D02E4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				26CA73EB2C34847600715AC3 /* GoogleService-Info-2.plist */,
+				26CA73EB2C34847600715AC3 /* GoogleService-Info.plist */,
 				2682B2312C3310E4004D02E4 /* LaunchScreen.storyboard */,
 				2682B2342C3310E4004D02E4 /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		26CA73F92C34857F00715AC3 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				26CA74002C34863900715AC3 /* OnBoarding */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		26CA74002C34863900715AC3 /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				26CA73FE2C3485BE00715AC3 /* OnBoardingVC.swift */,
+				26CA73FC2C3485AE00715AC3 /* OnBoardingView.swift */,
+				26CA73FA2C3485A300715AC3 /* OnBoardingViewModel.swift */,
+			);
+			path = OnBoarding;
+			sourceTree = "<group>";
+		};
+		26CA74012C348A1700715AC3 /*  CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				26CA74022C348A2200715AC3 /* UIKit */,
+			);
+			path = " CustomViews";
+			sourceTree = "<group>";
+		};
+		26CA74022C348A2200715AC3 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				26CA74032C348A2900715AC3 /* Buttons */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		26CA74032C348A2900715AC3 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				26CA74042C348A4200715AC3 /* CustomGeneralButton.swift */,
+			);
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,7 +221,7 @@
 			files = (
 				2682B2302C3310E4004D02E4 /* Assets.xcassets in Resources */,
 				2682B2332C3310E4004D02E4 /* Base in Resources */,
-				26CA73EC2C34847600715AC3 /* GoogleService-Info-2.plist in Resources */,
+				26CA73EC2C34847600715AC3 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,9 +232,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2682B22B2C3310E2004D02E4 /* ViewController.swift in Sources */,
 				2682B2272C3310E2004D02E4 /* AppDelegate.swift in Sources */,
 				2682B2292C3310E2004D02E4 /* SceneDelegate.swift in Sources */,
+				26CA73FD2C3485AE00715AC3 /* OnBoardingView.swift in Sources */,
+				26CA74052C348A4200715AC3 /* CustomGeneralButton.swift in Sources */,
+				26CA73FB2C3485A300715AC3 /* OnBoardingViewModel.swift in Sources */,
+				26CA73FF2C3485BE00715AC3 /* OnBoardingVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,7 +386,6 @@
 				INFOPLIST_FILE = "ChitAuto/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -362,7 +413,6 @@
 				INFOPLIST_FILE = "ChitAuto/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
