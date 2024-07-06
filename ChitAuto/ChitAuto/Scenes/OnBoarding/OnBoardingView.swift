@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol NavigateToSignInSignUpPageDelegate: AnyObject {
+    func navigateToSignIn()
+    func navigateToSignUp()
+}
+
 final class OnBoardingView: UIView {
     //MARK: - UIComponents
     private let appLogo: UIImageView = {
@@ -50,6 +55,9 @@ final class OnBoardingView: UIView {
         return button
     }()
     
+    //MARK: - Delegates
+    weak var navigationDelegate: NavigateToSignInSignUpPageDelegate?
+    
     //MARK: - Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -84,6 +92,11 @@ final class OnBoardingView: UIView {
     private func setRegistrationButton() {
         addSubview(registrationButton)
         
+        //Add Action To Registration Button
+        registrationButton.addAction(UIAction(title: "Go To Sign In Page", handler: { [weak self] _ in
+            self?.navigationDelegate?.navigateToSignUp()
+        }), for: .touchUpInside)
+        
         //Set Constraints
         NSLayoutConstraint.activate([
             registrationButton.topAnchor.constraint(equalTo: appLogo.bottomAnchor, constant: 50),
@@ -99,6 +112,11 @@ final class OnBoardingView: UIView {
         //Add Arranged Subviews
         signInStackView.addArrangedSubview(signInLabel)
         signInStackView.addArrangedSubview(signInButton)
+        
+        //Add Action To Sign In Button
+        signInButton.addAction(UIAction(title: "Go To Sign In Page", handler: { [weak self] _ in
+            self?.navigationDelegate?.navigateToSignIn()
+        }), for: .touchUpInside)
         
         //Set Constraints
         NSLayoutConstraint.activate([

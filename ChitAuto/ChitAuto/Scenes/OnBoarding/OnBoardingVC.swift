@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 final class OnBoardingVC: UIViewController {
     //MARK: - Properties
@@ -30,6 +31,12 @@ final class OnBoardingVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        handleViewDelegates()
+    }
+    
+    //MARK: - Handle View Delegates
+    private func handleViewDelegates() {
+        onBoardingView.navigationDelegate = self
     }
     
     //MARK: - Setup UI
@@ -46,5 +53,18 @@ final class OnBoardingVC: UIViewController {
     private func setSignInLabelWithData() {
         onBoardingView.signInLabel.text = onBoardingViewModel.signInTitle
         onBoardingView.signInButton.setTitle(onBoardingViewModel.signInButtonTitle, for: .normal)
+    }
+}
+
+
+extension OnBoardingVC: NavigateToSignInSignUpPageDelegate {
+    func navigateToSignIn() {
+        
+    }
+    
+    func navigateToSignUp() {
+        let view = SignUpView()
+        let hostingController = UIHostingController(rootView: view)
+        navigationController?.pushViewController(hostingController, animated: true)
     }
 }
