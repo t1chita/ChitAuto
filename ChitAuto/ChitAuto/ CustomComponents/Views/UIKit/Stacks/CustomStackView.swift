@@ -36,7 +36,7 @@ final class CustomStackView: UIStackView {
     private var title: UILabel = {
         let lbl = UILabel()
         lbl.font = .systemFont(ofSize: 18, weight: .bold)
-        lbl.textColor = .black
+        lbl.textColor = .label
         return lbl
     }()
     
@@ -44,7 +44,7 @@ final class CustomStackView: UIStackView {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.font = .systemFont(ofSize: 16, weight: .regular)
-        lbl.textColor = .black.withAlphaComponent(0.7)
+        lbl.textColor = .customLabel
         lbl.numberOfLines = 0
         return lbl
     }()

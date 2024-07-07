@@ -19,6 +19,7 @@ final class WelcomeViewModel {
     let insuranceTitle: String = "დაზღვევა"
     let insuranceDesc: String = "შენი ავტომობილი დაზღვეული იქნება, სანამ ის ავტო ასისტენტის ხელშია"
     let howDoesItWorks: String = "როგორ მუშაობს?"
+    let whyCaru: String = "რატომ ქარუ?"
     let assistantImage: String = "https://caru.ge/assets/images/why/poster.png"
     
     var carRepairPhases: [RepairPhase] = []

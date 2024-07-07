@@ -26,12 +26,16 @@ final class WelcomeView: UIView {
         return vw
     }()
     
+    let whyCaruTitle: TitlesCustomLabel = {
+        let lbl = TitlesCustomLabel()
+        return lbl
+    }()
+    
     let carusDescription: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.font = .systemFont(ofSize: 16, weight: .regular)
-        lbl.textColor = .black.withAlphaComponent(0.7)
-        lbl.textAlignment = .left
+        lbl.textColor = .label
         lbl.numberOfLines = 0
         return lbl
     }()
@@ -39,7 +43,7 @@ final class WelcomeView: UIView {
     let backgroundView: UIView = {
         let vw = UIView()
         vw.translatesAutoresizingMaskIntoConstraints = false
-        vw.backgroundColor = .lightGray.withAlphaComponent(0.8)
+        vw.backgroundColor = .customCard
         vw.layer.cornerRadius = 30
         vw.clipsToBounds = true
         return vw
@@ -53,7 +57,7 @@ final class WelcomeView: UIView {
     let contentViewForReasonsWhyCaru: UIView = {
         let vw = UIView()
         vw.translatesAutoresizingMaskIntoConstraints = false
-        vw.backgroundColor = .lightGray
+        vw.backgroundColor = .customCard
         vw.layer.cornerRadius = 30
         vw.clipsToBounds = true
         return vw
@@ -111,7 +115,8 @@ final class WelcomeView: UIView {
     //MARK: - Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupUI() 
+        backgroundColor = .customBackground
+        setupUI()
     }
     
     required init?(coder: NSCoder) {
@@ -123,6 +128,7 @@ final class WelcomeView: UIView {
         setScrollView()
         setContentView()
         
+        setWhyCaruTitle()
         setCarusDescription()
         
         setBackgroundView()
@@ -165,12 +171,23 @@ final class WelcomeView: UIView {
         ])
     }
     
+    private func setWhyCaruTitle() {
+        contentView.addSubview(whyCaruTitle)
+        
+        //Set Constraints
+        NSLayoutConstraint.activate([
+            whyCaruTitle.topAnchor.constraint(equalTo: contentView.topAnchor),
+            whyCaruTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
+            whyCaruTitle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
+            whyCaruTitle.heightAnchor.constraint(equalToConstant: 40),
+        ])
+    }  
     private func setCarusDescription() {
         contentView.addSubview(carusDescription)
         
         //Set Constraints
         NSLayoutConstraint.activate([
-            carusDescription.topAnchor.constraint(equalTo: contentView.topAnchor),
+            carusDescription.topAnchor.constraint(equalTo: whyCaruTitle.topAnchor, constant: 36),
             carusDescription.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
             carusDescription.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
             carusDescription.heightAnchor.constraint(equalToConstant: 240),
@@ -275,4 +292,8 @@ extension WelcomeView: ReloadCollectionViewDelegate {
             self?.howDoesItWorksCollectionView.reloadData()
         }
     }
+}
+
+#Preview {
+    WelcomeVC(welcomeView: WelcomeView(), welcomeViewModel: WelcomeViewModel())
 }

@@ -13,7 +13,7 @@ final class PhasesCell: UICollectionViewCell {
     let mainBackgroundView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .lightGray.withAlphaComponent(0.8)
+        view.backgroundColor = .customCard
         view.clipsToBounds = true
         view.layer.cornerRadius = 10
         return view
@@ -36,7 +36,7 @@ final class PhasesCell: UICollectionViewCell {
     let phaseTitle: UILabel = {
         let lbl = UILabel()
         lbl.font = .systemFont(ofSize: 24, weight: .bold)
-        lbl.textColor = .black
+        lbl.textColor = .label
         lbl.textAlignment = .left
         return lbl
     }()

@@ -22,7 +22,7 @@ final class TitlesCustomLabel: UILabel {
         translatesAutoresizingMaskIntoConstraints = false
         font = .systemFont(ofSize: 22, weight: .bold)
         numberOfLines = 0
-        textColor = .customLabel
+        textColor = .label
         textAlignment = .left
     }
 }

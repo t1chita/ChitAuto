@@ -48,6 +48,7 @@ final class WelcomeVC: UIViewController {
         setCarusDescriptionWithData()
         setCaruBenefitsWithData()
         seHowDoesItWorkTitleWithData()
+        setWhyCaruTitleWithData()
     }
     
     //MARK: - Delegates
@@ -66,6 +67,10 @@ final class WelcomeVC: UIViewController {
     }
     
     //MARK: - Set UI Components
+    private func setWhyCaruTitleWithData() {
+        welcomeView.whyCaruTitle.text = welcomeViewModel.whyCaru
+    }
+    
     private func setCarusDescriptionWithData() {
         welcomeView.carusDescription.text = welcomeViewModel.whyCaruDesc
     }
@@ -100,8 +105,4 @@ final class WelcomeVC: UIViewController {
         welcomeView.insuranceStackView.iconString = "checkmark.shield.fill"
     }
     
-}
-
-#Preview {
-    WelcomeVC(welcomeView: WelcomeView(), welcomeViewModel: WelcomeViewModel())
 }
