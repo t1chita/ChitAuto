@@ -38,7 +38,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let welcomeViewModel = WelcomeViewModel()
         let welcomeVC = WelcomeVC(welcomeView: welcomeView, welcomeViewModel: welcomeViewModel)
         let navigatorController = UINavigationController(rootViewController: welcomeVC)
-        window?.rootViewController = UINavigationController(rootViewController: navigatorController)
+        window?.rootViewController = navigatorController
     }
     
     private func showOnBoardingVC() {

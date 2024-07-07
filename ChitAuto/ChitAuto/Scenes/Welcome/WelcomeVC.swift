@@ -33,6 +33,14 @@ final class WelcomeVC: UIViewController {
         super.viewDidLoad()
         setupUI()
         handleDelegates()
+#warning("DELETE")
+        welcomeView.button.addAction(UIAction(handler: { [weak self] _ in
+            do {
+                try Auth.auth().signOut()
+            } catch {
+                
+            }
+        }), for: .touchUpInside)
     }
     
     //MARK: - Setup UI
@@ -92,7 +100,6 @@ final class WelcomeVC: UIViewController {
         welcomeView.insuranceStackView.iconString = "checkmark.shield.fill"
     }
     
-    //MARK: - Navigation
 }
 
 #Preview {

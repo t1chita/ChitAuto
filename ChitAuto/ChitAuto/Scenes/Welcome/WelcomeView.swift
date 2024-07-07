@@ -98,6 +98,14 @@ final class WelcomeView: UIView {
         return collectionView
     }()
     
+    //TODO: Delete
+    #warning("DELETE")
+    let button: CustomGeneralButton = {
+        let button = CustomGeneralButton()
+        button.setTitle("Delete", for: .normal)
+        return button
+    }()
+    
     //MARK: - Properties
     
     //MARK: - Initialization
@@ -124,6 +132,8 @@ final class WelcomeView: UIView {
         
         setHowDoesItWorksTitle()
         setHowDoesItWorksCollectionView()
+#warning("DELETE")
+        asasasasa()
     }
   
     //MARK: - Set UI Components
@@ -240,7 +250,20 @@ final class WelcomeView: UIView {
             howDoesItWorksCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 9),
             howDoesItWorksCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             howDoesItWorksCollectionView.heightAnchor.constraint(equalToConstant: 570),
-            howDoesItWorksCollectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
+//            howDoesItWorksCollectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
+        ])
+    }  
+#warning("DELETE")
+    private func asasasasa() {
+        contentView.addSubview(button)
+        
+        //Set Constraints
+        NSLayoutConstraint.activate([
+            button.topAnchor.constraint(equalTo: howDoesItWorksCollectionView.bottomAnchor, constant: 16),
+            button.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 9),
+            button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            button.heightAnchor.constraint(equalToConstant: 570),
+            button.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
         ])
     }
 }

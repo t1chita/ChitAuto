@@ -7,6 +7,7 @@
 
 import Foundation
 import Network
+import Firebase
 
 final class WelcomeViewModel {
     //    MARK: - Properties
@@ -26,12 +27,15 @@ final class WelcomeViewModel {
         carRepairPhases.count
     }
     
+    var currentUser: User? = nil
+    
     //    MARK: - Api Urls
     private let phasesUrl: String = "https://chitauto-default-rtdb.europe-west1.firebasedatabase.app/phases.json"
     
     //    MARK: - Initialization
     init() {
         fetchData()
+        fetchUser()
     }
     
     //    MARK: - Delegates
@@ -53,5 +57,26 @@ final class WelcomeViewModel {
             }
         }
     }
-    //    MARK: - Navigation
+    
+    private func fetchUser() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        Firestore.firestore().collection("users").document(uid).getDocument { [weak self] (documentSnapshot, error) in
+            guard let self = self else { return }
+            guard let document = documentSnapshot else {
+                print("DEBUG: Error fetching user data: \(error?.localizedDescription ?? "")")
+                return
+            }
+            
+            do {
+                let user = try document.data(as: User.self)
+                self.currentUser = user
+                print(currentUser)
+            } catch {
+                print("DEBUG: Error decoding user data: \(error.localizedDescription)")
+            }
+        }
+    }
+    //    MARK: - Firebase Functions
+    
 }
