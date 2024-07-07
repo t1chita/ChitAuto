@@ -6,7 +6,10 @@
 //
 
 import Foundation
+import Firebase
+import FirebaseFirestoreSwift
 
+@MainActor
 final class SignUpViewModel: ObservableObject {
     //    MARK: - Static Properties
     let firstNameLabel: String = "სახელი"
@@ -21,12 +24,22 @@ final class SignUpViewModel: ObservableObject {
     @Published var lastName: String = ""
     @Published var phoneNumber: String = ""
     @Published var personalNo: String = ""
-    @Published var mail: String = ""
+    @Published var email: String = ""
     @Published var password: String = ""
-    
-    //    MARK: - LifeCycles
-    
-    //    MARK: - Child Method
+    @Published var userSession: FirebaseAuth.User?
+        
+    //    MARK: - Methods
+    func createUser() async throws {
+        do {
+            let result = try await Auth.auth().createUser(withEmail: email, password: password)
+            self.userSession = result.user
+            let user = User(id: result.user.uid, firstName: firstName, lastName: lastName, email: email, phoneNumber: phoneNumber, personalNo: personalNo)
+            let encodedUser = try Firestore.Encoder().encode(user)
+            try await Firestore.firestore().collection("users").document(user.id).setData(encodedUser)
+        } catch {
+            print("Debug: Failed to create user with error \(error.localizedDescription)")
+        }
+    }
     
     //    MARK: - Requests
     

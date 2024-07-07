@@ -59,7 +59,9 @@ final class OnBoardingVC: UIViewController {
 
 extension OnBoardingVC: NavigateToSignInSignUpPageDelegate {
     func navigateToSignIn() {
-        
+        let view = SignInView()
+        let hostingController = UIHostingController(rootView: view)
+        navigationController?.pushViewController(hostingController, animated: true)
     }
     
     func navigateToSignUp() {

@@ -11,8 +11,11 @@ struct SignUpView: View {
     @StateObject var signUpViewModel = SignUpViewModel()
     
     var body: some View {
-        content
-            .background(Color.customBackground)
+        ScrollView(.vertical) {
+            content
+        }
+        .background(Color.customBackground)
+        .scrollIndicators(.hidden)
     }
     
     private var content: some View {
@@ -62,7 +65,7 @@ struct SignUpView: View {
                             textFieldText: $signUpViewModel.personalNo)
             
             CustomTextField(textFieldTitle: signUpViewModel.mailLabel,
-                            textFieldText: $signUpViewModel.mail)
+                            textFieldText: $signUpViewModel.email)
             
             CustomTextField(textFieldTitle: signUpViewModel.passwordLabel,
                             textFieldText: $signUpViewModel.password)
@@ -71,7 +74,11 @@ struct SignUpView: View {
     }
     
     private var registrationButton: some View {
-        RegistrationButtonRepresentable()
+        RegistrationButtonRepresentable() {
+            Task {
+                try await signUpViewModel.createUser()
+            }
+        }
             .frame(height: 52)
             .padding(.top, 10)
             .padding(.horizontal, 50)
@@ -79,17 +86,39 @@ struct SignUpView: View {
 }
 
 struct RegistrationButtonRepresentable: UIViewRepresentable {
+    let createUser: () -> ()
+    
     func makeUIView(context: Context) -> CustomGeneralButton {
         let button = CustomGeneralButton()
         button.setTitle("რეგისტრაცია", for: .normal)
+        button.addAction(UIAction(title: "Registrate User", handler: { _ in
+            context.coordinator.handleRegistrationButtonTap()
+        }), for: .touchUpInside)
         return button
     }
     
-    func updateUIView(_ uiView: CustomGeneralButton, context: Context) {
-        
+    func updateUIView(_ uiView: CustomGeneralButton, context: Context) {}
+    
+    func makeCoordinator() -> Coordinator {
+        Coordinator(createUser: createUser, self)
     }
 }
 
-#Preview {
-    SignUpView()
+
+extension RegistrationButtonRepresentable {
+    
+    final class Coordinator: NSObject {
+        let createUser: () -> ()
+        
+        let parent: RegistrationButtonRepresentable
+        
+        init(createUser: @escaping () -> Void, _ parent: RegistrationButtonRepresentable) {
+            self.createUser = createUser
+            self.parent = parent
+        }
+        
+        func handleRegistrationButtonTap() {
+            createUser()
+        }
+    }
 }
