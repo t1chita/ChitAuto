@@ -26,14 +26,12 @@ final class SignUpViewModel: ObservableObject {
     @Published var personalNo: String = ""
     @Published var email: String = ""
     @Published var password: String = ""
-    @Published var userSession: FirebaseAuth.User?
     @Published var currentUser: User?
     
     //    MARK: - Methods
     func createUser() async throws {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
-            self.userSession = result.user
             let user = User(id: result.user.uid, firstName: firstName, lastName: lastName, email: email, phoneNumber: phoneNumber, personalNo: personalNo)
             let encodedUser = try Firestore.Encoder().encode(user)
             try await Firestore.firestore().collection("users").document(user.id).setData(encodedUser)

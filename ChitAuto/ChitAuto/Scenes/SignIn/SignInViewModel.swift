@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Firebase
 
 final class SignInViewModel: ObservableObject {
     //    MARK: - Static Properties
@@ -19,8 +20,12 @@ final class SignInViewModel: ObservableObject {
     //    MARK: - LifeCycles
     
     //    MARK: - Methods
-    func singIn(withEmail email: String, password: String) async throws {
-        
+    func singIn() async throws {
+        do {
+            try await Auth.auth().signIn(withEmail: mail, password: password)
+        } catch {
+            print("DEBUG: Failed To Log In With Error \(error.localizedDescription)")
+        }
     }
     //    MARK: - Requests
     

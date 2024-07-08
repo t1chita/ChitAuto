@@ -59,6 +59,7 @@ final class WelcomeViewModel {
         }
     }
     
+    //    MARK: - Firebase Functions
     private func fetchUser() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
@@ -78,6 +79,19 @@ final class WelcomeViewModel {
             }
         }
     }
-    //    MARK: - Firebase Functions
     
+    private func signOutUser() {
+        do {
+            try Auth.auth().signOut()
+            self.currentUser = nil
+        } catch {
+            print("DEBUG: Can't Sign Out \(error.localizedDescription)")
+        }
+    }
+}
+
+extension WelcomeViewModel: SignOutDelegate {
+    func signOut() {
+        self.signOutUser()
+    }
 }

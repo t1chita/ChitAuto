@@ -11,6 +11,15 @@ protocol ReloadCollectionViewDelegate: AnyObject {
     func reloadData()
 }
 
+protocol SignOutDelegate: AnyObject {
+    func signOut()
+}
+
+protocol NavigatorDelegate: AnyObject {
+    func navigateToProfile()
+    func navigateToGarage()
+}
+
 final class WelcomeView: UIView {
     //MARK: - UIComponents
     let scrollView: UIScrollView = {
@@ -102,16 +111,26 @@ final class WelcomeView: UIView {
         return collectionView
     }()
     
-    //TODO: Delete
-    #warning("DELETE")
-    let button: CustomGeneralButton = {
-        let button = CustomGeneralButton()
-        button.setTitle("Delete", for: .normal)
+    lazy var menuButton: UIBarButtonItem = {
+        let saveMenu = UIMenu(title: "", children: [
+            UIAction(title: "გარაჟი", image: UIImage(systemName: "car.2.fill")) { [weak self] _ in
+                self?.navigatorDelegate?.navigateToGarage()
+            },
+            UIAction(title: "პროფილი", image: UIImage(systemName: "person.fill")) { [weak self] _ in
+                self?.navigatorDelegate?.navigateToProfile()
+            },
+            UIAction(title: "გასვლა", image: UIImage(systemName: "rectangle.portrait.and.arrow.forward")) { [weak self] _ in
+                self?.signOutDelegate?.signOut()
+            },
+        ])
+        let button = UIBarButtonItem(image: UIImage(systemName: "list.dash"), menu: saveMenu)
         return button
     }()
     
-    //MARK: - Properties
-    
+    //MARK: - Delegates
+    weak var signOutDelegate: SignOutDelegate?
+    weak var navigatorDelegate: NavigatorDelegate?
+        
     //MARK: - Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -138,10 +157,8 @@ final class WelcomeView: UIView {
         
         setHowDoesItWorksTitle()
         setHowDoesItWorksCollectionView()
-#warning("DELETE")
-        asasasasa()
     }
-  
+    
     //MARK: - Set UI Components
     private func setScrollView() {
         addSubview(scrollView)
@@ -181,7 +198,7 @@ final class WelcomeView: UIView {
             whyCaruTitle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
             whyCaruTitle.heightAnchor.constraint(equalToConstant: 40),
         ])
-    }  
+    }
     private func setCarusDescription() {
         contentView.addSubview(carusDescription)
         
@@ -267,20 +284,7 @@ final class WelcomeView: UIView {
             howDoesItWorksCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 9),
             howDoesItWorksCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             howDoesItWorksCollectionView.heightAnchor.constraint(equalToConstant: 570),
-//            howDoesItWorksCollectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
-        ])
-    }  
-#warning("DELETE")
-    private func asasasasa() {
-        contentView.addSubview(button)
-        
-        //Set Constraints
-        NSLayoutConstraint.activate([
-            button.topAnchor.constraint(equalTo: howDoesItWorksCollectionView.bottomAnchor, constant: 16),
-            button.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 9),
-            button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            button.heightAnchor.constraint(equalToConstant: 570),
-            button.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
+            howDoesItWorksCollectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
         ])
     }
 }

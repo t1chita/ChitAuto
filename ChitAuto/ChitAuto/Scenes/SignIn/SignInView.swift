@@ -63,26 +63,54 @@ struct SignInView: View {
     }
     
     private var signInButton: some View {
-        SignInButtonRepresentable()
+        SignInButtonRepresentable() {
+            Task {
+                try await signInViewModel.singIn()
+            }
+        }
             .frame(height: 52)
             .padding(.top, 20)
             .padding(.horizontal, 50)
     }
 }
 
-
 struct SignInButtonRepresentable: UIViewRepresentable {
+    let signInUser: () -> ()
+    
     func makeUIView(context: Context) -> CustomGeneralButton {
         let button = CustomGeneralButton()
         button.setTitle("შესვლა", for: .normal)
+        button.addAction(UIAction(title: "Register User", handler: { _ in
+            context.coordinator.handleSignInButtonTap()
+        }), for: .touchUpInside)
         return button
     }
     
-    func updateUIView(_ uiView: CustomGeneralButton, context: Context) {
-        
+    func updateUIView(_ uiView: CustomGeneralButton, context: Context) {}
+    
+    func makeCoordinator() -> Coordinator {
+        Coordinator(signInUser: signInUser, self)
     }
 }
 
+
+extension SignInButtonRepresentable {
+    
+    final class Coordinator: NSObject {
+        let signInUser: () -> ()
+        
+        let parent: SignInButtonRepresentable
+        
+        init(signInUser: @escaping () -> Void, _ parent: SignInButtonRepresentable) {
+            self.signInUser = signInUser
+            self.parent = parent
+        }
+        
+        func handleSignInButtonTap() {
+            signInUser()
+        }
+    }
+}
 #Preview {
     SignInView()
 }

@@ -91,7 +91,7 @@ struct RegistrationButtonRepresentable: UIViewRepresentable {
     func makeUIView(context: Context) -> CustomGeneralButton {
         let button = CustomGeneralButton()
         button.setTitle("რეგისტრაცია", for: .normal)
-        button.addAction(UIAction(title: "Registrate User", handler: { _ in
+        button.addAction(UIAction(title: "Register User", handler: { _ in
             context.coordinator.handleRegistrationButtonTap()
         }), for: .touchUpInside)
         return button

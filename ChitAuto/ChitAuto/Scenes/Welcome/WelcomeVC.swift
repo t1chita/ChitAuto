@@ -33,14 +33,7 @@ final class WelcomeVC: UIViewController {
         super.viewDidLoad()
         setupUI()
         handleDelegates()
-#warning("DELETE")
-        welcomeView.button.addAction(UIAction(handler: { [weak self] _ in
-            do {
-                try Auth.auth().signOut()
-            } catch {
-                
-            }
-        }), for: .touchUpInside)
+        setProfileMenuButton()
     }
     
     //MARK: - Setup UI
@@ -55,10 +48,15 @@ final class WelcomeVC: UIViewController {
     private func handleDelegates() {
         transferDelegatesFromViewModelToView()
         getDelegatesFromView()
+        getDelegatesFromViewToViewModel()
     }
     
     private func transferDelegatesFromViewModelToView() {
         welcomeViewModel.reloadCollectionViewDelegate = welcomeView
+    }
+    
+    private func getDelegatesFromViewToViewModel() {
+        welcomeView.signOutDelegate = welcomeViewModel
     }
     
     private func getDelegatesFromView() {
@@ -86,6 +84,10 @@ final class WelcomeVC: UIViewController {
         welcomeView.howDoesItWorksTitle.text = welcomeViewModel.howDoesItWorks
     }
     
+    private func setProfileMenuButton() {
+        navigationItem.rightBarButtonItem = welcomeView.menuButton
+    }
+    
     //MARK: - Child Methods
     private func updateTimeSavingStackView() {
         welcomeView.timeSavingStackView.titleText = welcomeViewModel.economyTitle
@@ -104,5 +106,4 @@ final class WelcomeVC: UIViewController {
         welcomeView.insuranceStackView.descrText = welcomeViewModel.insuranceDesc
         welcomeView.insuranceStackView.iconString = "checkmark.shield.fill"
     }
-    
 }
