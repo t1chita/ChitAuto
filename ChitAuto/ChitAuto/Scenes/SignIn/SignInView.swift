@@ -58,7 +58,7 @@ struct SignInView: View {
             
             CustomTextField(textFieldTitle: signInViewModel.passwordLabel,
                             textFieldText: $signInViewModel.password)
-            }
+        }
         .padding(.horizontal)
     }
     
@@ -68,9 +68,11 @@ struct SignInView: View {
                 try await signInViewModel.singIn()
             }
         }
-            .frame(height: 52)
-            .padding(.top, 20)
-            .padding(.horizontal, 50)
+        .disabled(signInViewModel.formIsValid)
+        .opacity(signInViewModel.formIsValid ? 1.0 : 0.5)
+        .frame(height: 52)
+        .padding(.top, 20)
+        .padding(.horizontal, 50)
     }
 }
 
@@ -111,6 +113,5 @@ extension SignInButtonRepresentable {
         }
     }
 }
-#Preview {
-    SignInView()
-}
+
+

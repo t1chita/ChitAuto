@@ -79,9 +79,11 @@ struct SignUpView: View {
                 try await signUpViewModel.createUser()
             }
         }
-            .frame(height: 52)
-            .padding(.top, 10)
-            .padding(.horizontal, 50)
+        .disabled(signUpViewModel.formIsValid)
+        .opacity(signUpViewModel.formIsValid ? 1.0 : 0.5)
+        .frame(height: 52)
+        .padding(.top, 10)
+        .padding(.horizontal, 50)
     }
 }
 
@@ -122,3 +124,5 @@ extension RegistrationButtonRepresentable {
         }
     }
 }
+
+

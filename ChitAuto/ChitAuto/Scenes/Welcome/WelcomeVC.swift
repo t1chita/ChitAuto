@@ -8,6 +8,10 @@
 import UIKit
 import Firebase
 
+protocol AuthenticationFormProtocol {
+    var formIsValid: Bool { get }
+}
+
 final class WelcomeVC: UIViewController {
     //MARK: - Properties
     var welcomeView: WelcomeView

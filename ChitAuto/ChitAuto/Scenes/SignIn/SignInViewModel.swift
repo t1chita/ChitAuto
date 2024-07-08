@@ -31,3 +31,14 @@ final class SignInViewModel: ObservableObject {
     
     //    MARK: - Navigation
 }
+
+
+//MARK: - Validation
+extension SignInViewModel: AuthenticationFormProtocol {
+    var formIsValid: Bool {
+        return !mail.isEmpty
+        && mail.contains("@")
+        && !password.isEmpty
+        && password.count > 5
+    }
+}

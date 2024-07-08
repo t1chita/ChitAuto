@@ -14,14 +14,4 @@ struct User: Identifiable, Codable {
     let email: String
     let phoneNumber: String
     let personalNo: String
-    
-    var initials: String {
-        let formatter = PersonNameComponentsFormatter()
-        if let components = formatter.personNameComponents(from: firstName + lastName) {
-            formatter.style = .abbreviated
-            return formatter.string(from: components)
-        }
-            
-        return ""
-    }
 }
