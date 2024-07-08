@@ -9,6 +9,10 @@ import Foundation
 import Network
 import Firebase
 
+protocol SignOutDelegate: AnyObject {
+    func signOut()
+}
+
 final class WelcomeViewModel {
     //    MARK: - Properties
     let whyCaruDesc: String = "ChitAuto არის მანქანის შეკეთების სწორი გზა. 7 საათის ნაცვლად 5 წუთს ხარჯავ, უფრო იაფი გიჯდება და თან მანქანას მცოდნე ადამიანი აკეთებს. ამიტომ თუნდაც ChitAuto არ იყოს და სხვა ჩვენი მსგავსი კომპანია იყოს. გირჩევთ ის გამოიყენოთ და თქვენით არ წაიყვანოთ მანქანა შესაკეთებლად თუ ავტომობილებში ძალიან კარგად არ ერკვევით. და ამას გეუბნებით ხალხი ვისაც ავტოსერვისში 10+წლიანი გამოცდილება გვაქვს"

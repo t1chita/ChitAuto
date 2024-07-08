@@ -11,18 +11,10 @@ protocol ReloadCollectionViewDelegate: AnyObject {
     func reloadData()
 }
 
-protocol SignOutDelegate: AnyObject {
-    func signOut()
-}
-
-protocol NavigatorDelegate: AnyObject {
-    func navigateToProfile()
-    func navigateToGarage()
-}
 
 final class WelcomeView: UIView {
     //MARK: - UIComponents
-    let scrollView: UIScrollView = {
+    private let scrollView: UIScrollView = {
         let scrView = UIScrollView()
         scrView.translatesAutoresizingMaskIntoConstraints = false
         scrView.showsVerticalScrollIndicator = false
@@ -49,7 +41,7 @@ final class WelcomeView: UIView {
         return lbl
     }()
     
-    let backgroundView: UIView = {
+    private let backgroundView: UIView = {
         let vw = UIView()
         vw.translatesAutoresizingMaskIntoConstraints = false
         vw.backgroundColor = .customCard
@@ -63,7 +55,7 @@ final class WelcomeView: UIView {
         return imView
     }()
     
-    let contentViewForReasonsWhyCaru: UIView = {
+    private let contentViewForReasonsWhyCaru: UIView = {
         let vw = UIView()
         vw.translatesAutoresizingMaskIntoConstraints = false
         vw.backgroundColor = .customCard
@@ -72,7 +64,7 @@ final class WelcomeView: UIView {
         return vw
     }()
     
-    let fullStackViewOfThreeReason: UIStackView = {
+    private let fullStackViewOfThreeReason: UIStackView = {
         let stView = UIStackView()
         stView.translatesAutoresizingMaskIntoConstraints = false
         stView.axis = .vertical

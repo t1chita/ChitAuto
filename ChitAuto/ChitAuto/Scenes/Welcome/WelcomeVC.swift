@@ -8,8 +8,9 @@
 import UIKit
 import Firebase
 
-protocol AuthenticationFormProtocol {
-    var formIsValid: Bool { get }
+protocol NavigatorDelegate: AnyObject {
+    func navigateToProfile()
+    func navigateToGarage()
 }
 
 final class WelcomeVC: UIViewController {

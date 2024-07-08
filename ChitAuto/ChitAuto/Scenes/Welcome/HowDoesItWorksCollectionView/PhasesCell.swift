@@ -10,7 +10,7 @@ import UIKit
 final class PhasesCell: UICollectionViewCell {
     static let identifier = "PhasesCell"
     //MARK: - UIComponents
-    let mainBackgroundView: UIView = {
+    private let mainBackgroundView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .customCard
@@ -19,13 +19,13 @@ final class PhasesCell: UICollectionViewCell {
         return view
     }()
     
-    let assistantImageView: UIImageView = {
+    private let assistantImageView: UIImageView = {
         let imView = UIImageView()
         imView.translatesAutoresizingMaskIntoConstraints = false
         return imView
     }()
     
-    let phaseDescriptionStackView: UIStackView = {
+    private let phaseDescriptionStackView: UIStackView = {
         let stView = UIStackView()
         stView.translatesAutoresizingMaskIntoConstraints = false
         stView.axis = .horizontal
@@ -33,7 +33,7 @@ final class PhasesCell: UICollectionViewCell {
         return stView
     }()
     
-    let phaseTitle: UILabel = {
+    private let phaseTitle: UILabel = {
         let lbl = UILabel()
         lbl.font = .systemFont(ofSize: 24, weight: .bold)
         lbl.textColor = .label
@@ -41,7 +41,7 @@ final class PhasesCell: UICollectionViewCell {
         return lbl
     }()
     
-    let phaseOrdinalityText: UILabel = {
+    private let phaseOrdinalityText: UILabel = {
         let lbl = UILabel()
         lbl.font = .systemFont(ofSize: 14, weight: .semibold)
         lbl.textColor = .customLabel
@@ -49,7 +49,7 @@ final class PhasesCell: UICollectionViewCell {
         return lbl
     }()
     
-    let phaseStepsStackView: UIStackView = {
+    private let phaseStepsStackView: UIStackView = {
         let stView = UIStackView()
         stView.translatesAutoresizingMaskIntoConstraints = false
         stView.axis = .vertical
@@ -59,17 +59,17 @@ final class PhasesCell: UICollectionViewCell {
         return stView
     }()
     //TODO: Nice To Have Bullets In StackView
-    let firstStep: PhasesCustomLabel = {
+    private let firstStep: PhasesCustomLabel = {
         let lbl = PhasesCustomLabel()
         return lbl
     }()
     
-    let secondStep: PhasesCustomLabel = {
+    private let secondStep: PhasesCustomLabel = {
         let lbl = PhasesCustomLabel()
         return lbl
     }()
     
-    let thirdStep: PhasesCustomLabel = {
+    private let thirdStep: PhasesCustomLabel = {
         let lbl = PhasesCustomLabel()
         return lbl
     }()
