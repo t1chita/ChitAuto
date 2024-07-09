@@ -289,8 +289,3 @@ extension WelcomeView: ReloadCollectionViewDelegate {
         }
     }
 }
-
-#Preview {
-    WelcomeVC(welcomeView: WelcomeView(), welcomeViewModel: WelcomeViewModel())
-}
-

@@ -31,8 +31,11 @@ final class UserMainViewWithoutOrder: UIView {
         return imgView
     }()
     
-    let addCarInTheGarageButton: CustomGeneralButton = {
+    lazy var addCarInTheGarageButton: CustomGeneralButton = {
         let button = CustomGeneralButton()
+        button.addAction(UIAction(title: "Add Car In The Garage", handler: { [weak self] _ in
+            self?.addCarInTheGarageDelegate?.addCarInTheGarageDelegate()
+        }), for: .touchUpInside)
         return button
     }()
     
@@ -53,38 +56,42 @@ final class UserMainViewWithoutOrder: UIView {
         return stView
     }()
     
-    let garageButton: UIButton = {
+    lazy var garageButton: UIButton = {
         var configuration = UIButton.Configuration.borderless()
         configuration.title = "გარაჟი"
         configuration.image = UIImage(systemName: "car.2.fill")
         configuration.imagePlacement = .top
         configuration.baseForegroundColor = .customLabel
+        
         let button = UIButton(configuration: configuration)
         return button
     }()
     
-    let callAnAssistantButton: UIButton = {
+    lazy var callAnAssistantButton: UIButton = {
         var configuration = UIButton.Configuration.borderless()
         configuration.title = "გამოიძახე"
         configuration.image = UIImage(systemName: "figure.stand.line.dotted.figure.stand")
         configuration.imagePlacement = .top
         configuration.baseForegroundColor = .customLabel
+        
         let button = UIButton(configuration: configuration)
         return button
     }()
     
     lazy var mainButton: UIBarButtonItem = {
         let customButton = UIButton()
-        customButton.addAction(UIAction(title: "Go To Welcome Page", handler: { _ in
-            
+        customButton.addAction(UIAction(title: "Go To Welcome Page", handler: { [weak self] _ in
+            self?.navigateToRootViewControllerDelegate?.backToRootViewController()
         }), for: .touchUpInside)
         customButton.setImage(.mainButton, for: .normal)
+       
         let button = UIBarButtonItem(customView: customButton)
         return button
     }()
     
     //MARK: - Delegates
     weak var addCarInTheGarageDelegate: AddCarInTheGarageDelegate?
+    weak var navigateToRootViewControllerDelegate: NavigateToRootViewControllerDelegate?
     
     //MARK: - Initialization
     override init(frame: CGRect) {
@@ -147,10 +154,6 @@ final class UserMainViewWithoutOrder: UIView {
     
     private func setAddCarInTheGarageButton() {
         contentView.addSubview(addCarInTheGarageButton)
-        
-        addCarInTheGarageButton.addAction(UIAction(title: "Add Car In The Garage", handler: { [weak self] _ in
-            self?.addCarInTheGarageDelegate?.addCarInTheGarageDelegate()
-        }), for: .touchUpInside)
         
         //Set Constraints
         NSLayoutConstraint.activate([

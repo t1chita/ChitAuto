@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol NavigateToRootViewControllerDelegate: AnyObject {
+    func backToRootViewController()
+}
+
 final class UserMainVC: UIViewController {
     //MARK: - Properties
     var userMainViewWithoutOrder: UserMainViewWithoutOrder
@@ -32,7 +36,7 @@ final class UserMainVC: UIViewController {
         super.viewDidLoad()
         setupUI()
         handleDelegates()
-        setNavigateToWelcomePage()
+        setNavigationItemsOnWelcomePage()
         print(userMainViewModel.currentUser)
     }
     
@@ -57,7 +61,7 @@ final class UserMainVC: UIViewController {
     }
     
     private func getDelegatesFromView() {
-        
+        userMainViewWithoutOrder.navigateToRootViewControllerDelegate = self
     }
     
     //MARK: - Set UI Components
@@ -65,8 +69,15 @@ final class UserMainVC: UIViewController {
         userMainViewWithoutOrder.addCarInTheGarageButton.setTitle(userMainViewModel.addCarInTheGarage, for: .normal)
     }
     
-    private func setNavigateToWelcomePage() {
+    private func setNavigationItemsOnWelcomePage() {
         navigationItem.leftBarButtonItem = userMainViewWithoutOrder.mainButton
     }
     //MARK: - Child Methods
+}
+
+//MARK: - Navigate To RootViewController
+extension UserMainVC: NavigateToRootViewControllerDelegate {
+    func backToRootViewController() {
+        navigationController?.popToRootViewController(animated: true)
+    }
 }

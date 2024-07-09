@@ -124,6 +124,6 @@ extension WelcomeVC: NavigatorDelegate {
         guard let unwrappedUser = welcomeViewModel.currentUser else { return }
         
         let vc = UserMainVC(userMainViewWithoutOrder: UserMainViewWithoutOrder(), userMainViewModel: UserMainViewModel(currentUser: unwrappedUser))
-        navigationController?.setViewControllers([vc], animated: true)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
