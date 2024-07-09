@@ -79,7 +79,6 @@ struct SignUpView: View {
                 try await signUpViewModel.createUser()
             }
         }
-        .disabled(signUpViewModel.formIsValid)
         .opacity(signUpViewModel.formIsValid ? 1.0 : 0.5)
         .frame(height: 52)
         .padding(.top, 10)
@@ -98,7 +97,7 @@ struct RegistrationButtonRepresentable: UIViewRepresentable {
         }), for: .touchUpInside)
         return button
     }
-    
+
     func updateUIView(_ uiView: CustomGeneralButton, context: Context) {}
     
     func makeCoordinator() -> Coordinator {

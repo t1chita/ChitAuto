@@ -20,6 +20,9 @@
 		261C15D42C3ABF78004B5A1E /* CarRepairPhases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261C15D32C3ABF78004B5A1E /* CarRepairPhases.swift */; };
 		261C15D62C3AC0B6004B5A1E /* PhasesCustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261C15D52C3AC0B6004B5A1E /* PhasesCustomLabel.swift */; };
 		261C15D92C3AC196004B5A1E /* TitlesCustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261C15D82C3AC196004B5A1E /* TitlesCustomLabel.swift */; };
+		261C15DC2C3C35D0004B5A1E /* UserMainViewWithoutOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261C15DB2C3C35D0004B5A1E /* UserMainViewWithoutOrder.swift */; };
+		261C15DE2C3C35E9004B5A1E /* UserMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261C15DD2C3C35E9004B5A1E /* UserMainViewModel.swift */; };
+		261C15E02C3C35F3004B5A1E /* UserMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261C15DF2C3C35F3004B5A1E /* UserMainVC.swift */; };
 		2622943C2C349BBA0062EEC1 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2622943B2C349BBA0062EEC1 /* SignUpView.swift */; };
 		2622943E2C349BC30062EEC1 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2622943D2C349BC30062EEC1 /* SignUpViewModel.swift */; };
 		2682B2272C3310E2004D02E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682B2262C3310E2004D02E4 /* AppDelegate.swift */; };
@@ -56,6 +59,9 @@
 		261C15D32C3ABF78004B5A1E /* CarRepairPhases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarRepairPhases.swift; sourceTree = "<group>"; };
 		261C15D52C3AC0B6004B5A1E /* PhasesCustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhasesCustomLabel.swift; sourceTree = "<group>"; };
 		261C15D82C3AC196004B5A1E /* TitlesCustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlesCustomLabel.swift; sourceTree = "<group>"; };
+		261C15DB2C3C35D0004B5A1E /* UserMainViewWithoutOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMainViewWithoutOrder.swift; sourceTree = "<group>"; };
+		261C15DD2C3C35E9004B5A1E /* UserMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMainViewModel.swift; sourceTree = "<group>"; };
+		261C15DF2C3C35F3004B5A1E /* UserMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMainVC.swift; sourceTree = "<group>"; };
 		2622943B2C349BBA0062EEC1 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		2622943D2C349BC30062EEC1 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		2682B2232C3310E2004D02E4 /* ChitAuto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChitAuto.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -161,11 +167,22 @@
 			path = Labels;
 			sourceTree = "<group>";
 		};
+		261C15DA2C3C35B3004B5A1E /* UserMain */ = {
+			isa = PBXGroup;
+			children = (
+				261C15DF2C3C35F3004B5A1E /* UserMainVC.swift */,
+				261C15DB2C3C35D0004B5A1E /* UserMainViewWithoutOrder.swift */,
+				261C15DD2C3C35E9004B5A1E /* UserMainViewModel.swift */,
+			);
+			path = UserMain;
+			sourceTree = "<group>";
+		};
 		2622943A2C349BA10062EEC1 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
 				2622943B2C349BBA0062EEC1 /* SignUpView.swift */,
 				2622943D2C349BC30062EEC1 /* SignUpViewModel.swift */,
+				26ADA7372C38CD8F00D6E3EE /* SignInView.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -255,7 +272,6 @@
 		26ADA7362C38CD7F00D6E3EE /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
-				26ADA7372C38CD8F00D6E3EE /* SignInView.swift */,
 				26ADA7392C38CD9A00D6E3EE /* SignInViewModel.swift */,
 			);
 			path = SignIn;
@@ -268,6 +284,7 @@
 				2622943A2C349BA10062EEC1 /* SignUp */,
 				26ADA7362C38CD7F00D6E3EE /* SignIn */,
 				261C15BB2C3A136A004B5A1E /* Welcome */,
+				261C15DA2C3C35B3004B5A1E /* UserMain */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -403,6 +420,7 @@
 				2682B2292C3310E2004D02E4 /* SceneDelegate.swift in Sources */,
 				261C15CA2C3ABA61004B5A1E /* UIKitImageLoader.swift in Sources */,
 				2622943E2C349BC30062EEC1 /* SignUpViewModel.swift in Sources */,
+				261C15DC2C3C35D0004B5A1E /* UserMainViewWithoutOrder.swift in Sources */,
 				261C15C72C3AB768004B5A1E /* CustomStackView.swift in Sources */,
 				26CA73FD2C3485AE00715AC3 /* OnBoardingView.swift in Sources */,
 				2622943C2C349BBA0062EEC1 /* SignUpView.swift in Sources */,
@@ -411,6 +429,8 @@
 				26ADA73A2C38CD9A00D6E3EE /* SignInViewModel.swift in Sources */,
 				261C15D22C3ABE0E004B5A1E /* WelcomeVC + ExtCollectionView.swift in Sources */,
 				26CA73FF2C3485BE00715AC3 /* OnBoardingVC.swift in Sources */,
+				261C15DE2C3C35E9004B5A1E /* UserMainViewModel.swift in Sources */,
+				261C15E02C3C35F3004B5A1E /* UserMainVC.swift in Sources */,
 				26ADA7382C38CD8F00D6E3EE /* SignInView.swift in Sources */,
 				26ADA7322C38C2A400D6E3EE /* CustomTextField.swift in Sources */,
 				261C15BD2C3A1380004B5A1E /* WelcomeView.swift in Sources */,

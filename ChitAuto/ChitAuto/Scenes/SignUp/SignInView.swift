@@ -68,7 +68,6 @@ struct SignInView: View {
                 try await signInViewModel.singIn()
             }
         }
-        .disabled(signInViewModel.formIsValid)
         .opacity(signInViewModel.formIsValid ? 1.0 : 0.5)
         .frame(height: 52)
         .padding(.top, 20)
