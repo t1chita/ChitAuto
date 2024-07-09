@@ -20,7 +20,7 @@ final class CustomGeneralButton: UIButton {
     
     //MARK: - Setup
     private func setup() {
-        titleLabel?.font = .systemFont(ofSize: 22, weight: .bold)
+        titleLabel?.font = .systemFont(ofSize: 22, weight: .regular)
         translatesAutoresizingMaskIntoConstraints = false
         setTitleColor(.customLabel, for: .normal)
         titleLabel?.textAlignment = .center

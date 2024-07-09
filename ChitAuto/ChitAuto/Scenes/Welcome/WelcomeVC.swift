@@ -67,6 +67,7 @@ final class WelcomeVC: UIViewController {
     private func getDelegatesFromView() {
         welcomeView.howDoesItWorksCollectionView.dataSource = self
         welcomeView.howDoesItWorksCollectionView.delegate = self
+        welcomeView.navigatorDelegate = self
     }
     
     //MARK: - Set UI Components
@@ -110,5 +111,19 @@ final class WelcomeVC: UIViewController {
         welcomeView.insuranceStackView.titleText =  welcomeViewModel.insuranceTitle
         welcomeView.insuranceStackView.descrText = welcomeViewModel.insuranceDesc
         welcomeView.insuranceStackView.iconString = "checkmark.shield.fill"
+    }
+}
+
+
+extension WelcomeVC: NavigatorDelegate {
+    func navigateToProfile() {
+        //TODO: Add Navigation To Profile
+    }
+    
+    func navigateToGarage() {
+        guard let unwrappedUser = welcomeViewModel.currentUser else { return }
+        
+        let vc = UserMainVC(userMainViewWithoutOrder: UserMainViewWithoutOrder(), userMainViewModel: UserMainViewModel(currentUser: unwrappedUser))
+        navigationController?.setViewControllers([vc], animated: true)
     }
 }

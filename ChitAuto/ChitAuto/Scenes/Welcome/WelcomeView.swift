@@ -281,7 +281,7 @@ final class WelcomeView: UIView {
     }
 }
 
-//MARK: Reload Data For ViewModel
+//MARK: Reload Data For ViewModel
 extension WelcomeView: ReloadCollectionViewDelegate {
     func reloadData() {
         DispatchQueue.main.async { [weak self] in
@@ -293,3 +293,4 @@ extension WelcomeView: ReloadCollectionViewDelegate {
 #Preview {
     WelcomeVC(welcomeView: WelcomeView(), welcomeViewModel: WelcomeViewModel())
 }
+
