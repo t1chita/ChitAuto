@@ -33,9 +33,6 @@ final class UserMainViewWithoutOrder: UIView {
     
     lazy var addCarInTheGarageButton: CustomGeneralButton = {
         let button = CustomGeneralButton()
-        button.addAction(UIAction(title: "Add Car In The Garage", handler: { [weak self] _ in
-            self?.addCarInTheGarageDelegate?.addCarInTheGarageDelegate()
-        }), for: .touchUpInside)
         return button
     }()
     
@@ -129,6 +126,8 @@ final class UserMainViewWithoutOrder: UIView {
     
     private func setContentView() {
         scrollView.addSubview(contentView)
+        let heightAnchor = contentView.heightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.heightAnchor)
+        heightAnchor.priority = .defaultHigh
         
         //Set Constraints
         NSLayoutConstraint.activate([
@@ -137,6 +136,7 @@ final class UserMainViewWithoutOrder: UIView {
             contentView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor),
+            heightAnchor
         ])
     }
     
@@ -154,6 +154,10 @@ final class UserMainViewWithoutOrder: UIView {
     
     private func setAddCarInTheGarageButton() {
         contentView.addSubview(addCarInTheGarageButton)
+        
+        addCarInTheGarageButton.addAction(UIAction(title: "Add Car In The Garage", handler: { [weak self] _ in
+                self?.addCarInTheGarageDelegate?.addCarInTheGarageDelegate()
+            }), for: .touchUpInside)
         
         //Set Constraints
         NSLayoutConstraint.activate([

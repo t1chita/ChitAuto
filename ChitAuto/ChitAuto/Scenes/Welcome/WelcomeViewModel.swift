@@ -77,7 +77,6 @@ final class WelcomeViewModel {
             do {
                 let user = try document.data(as: User.self)
                 self.currentUser = user
-                print(currentUser)
             } catch {
                 print("DEBUG: Error decoding user data: \(error.localizedDescription)")
             }

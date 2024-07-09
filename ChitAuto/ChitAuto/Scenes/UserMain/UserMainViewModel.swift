@@ -7,10 +7,6 @@
 
 import Foundation
 
-protocol AddCarInTheGarageDelegate: AnyObject {
-    func addCarInTheGarageDelegate()
-}
-
 final class UserMainViewModel {
     //MARK: - Properties
     let addCarInTheGarage: String = "დაამატე მანქანა გარაჟში"
@@ -29,10 +25,4 @@ final class UserMainViewModel {
     
     //MARK: - Navigation
 
-}
-
-extension UserMainViewModel: AddCarInTheGarageDelegate {
-    func addCarInTheGarageDelegate() {
-        //TODO: Add Logic
-    }
 }

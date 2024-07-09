@@ -11,6 +11,10 @@ protocol NavigateToRootViewControllerDelegate: AnyObject {
     func backToRootViewController()
 }
 
+protocol AddCarInTheGarageDelegate: AnyObject {
+    func addCarInTheGarageDelegate()
+}
+
 final class UserMainVC: UIViewController {
     //MARK: - Properties
     var userMainViewWithoutOrder: UserMainViewWithoutOrder
@@ -29,6 +33,7 @@ final class UserMainVC: UIViewController {
     
     //MARK: - LifeCycles
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         view = userMainViewWithoutOrder
     }
     
@@ -57,7 +62,7 @@ final class UserMainVC: UIViewController {
     }
     
     private func getDelegatesFromViewToViewModel() {
-        userMainViewWithoutOrder.addCarInTheGarageDelegate = userMainViewModel
+        userMainViewWithoutOrder.addCarInTheGarageDelegate = self
     }
     
     private func getDelegatesFromView() {
@@ -75,9 +80,29 @@ final class UserMainVC: UIViewController {
     //MARK: - Child Methods
 }
 
-//MARK: - Navigate To RootViewController
+//MARK: - Extensions Of Delegates
 extension UserMainVC: NavigateToRootViewControllerDelegate {
     func backToRootViewController() {
         navigationController?.popToRootViewController(animated: true)
+    }
+}
+
+extension UserMainVC: AddCarInTheGarageDelegate {
+    func addCarInTheGarageDelegate() {
+        let garageSheetView = GarageSheetView()
+        let garageSheetViewModel = GarageSheetViewModel()
+        let vc = GarageSheetVC(garageSheetView: garageSheetView, garageSheetViewModel: garageSheetViewModel)
+        
+        vc.modalPresentationStyle = .pageSheet
+        
+        let sheet = vc.sheetPresentationController
+        let smallDetentId = UISheetPresentationController.Detent.Identifier("small")
+        let smallDetent = UISheetPresentationController.Detent.custom(identifier: smallDetentId) { context in
+            return 200
+        }
+        
+        sheet?.detents = [smallDetent]
+        
+        present(vc, animated: true, completion: nil)
     }
 }
