@@ -44,7 +44,7 @@ final class WelcomeViewModel {
     }
     
     //    MARK: - Delegates
-    weak var reloadCollectionViewDelegate: ReloadCollectionViewDelegate?
+    weak var reloadDelegate: ReloadDelegate?
     
     //    MARK: - Child Method
     
@@ -58,7 +58,7 @@ final class WelcomeViewModel {
                 case .failure(let error):
                     print("DEBUG: Can't Fetch Data From CarRepairPhases" + error.localizedDescription)
                 }
-                self?.reloadCollectionViewDelegate?.reloadData()
+                self?.reloadDelegate?.reloadData()
             }
         }
     }

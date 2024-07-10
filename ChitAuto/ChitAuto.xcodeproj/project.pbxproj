@@ -31,9 +31,15 @@
 		267530EE2C3D8B5100E8B42B /* AddCarDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267530ED2C3D8B5100E8B42B /* AddCarDetailsView.swift */; };
 		267530F02C3D8B6600E8B42B /* AddCarDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267530EF2C3D8B6600E8B42B /* AddCarDetailsViewModel.swift */; };
 		267530F22C3D8B7800E8B42B /* AddCarDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267530F12C3D8B7800E8B42B /* AddCarDetailsVC.swift */; };
-		267530F42C3D8D4B00E8B42B /* OrderInfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267530F32C3D8D4B00E8B42B /* OrderInfoButton.swift */; };
+		267530F42C3D8D4B00E8B42B /* CarInfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267530F32C3D8D4B00E8B42B /* CarInfoButton.swift */; };
 		267530F72C3DA98A00E8B42B /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267530F62C3DA98A00E8B42B /* UITextField.swift */; };
 		267530F92C3DC82400E8B42B /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267530F82C3DC82400E8B42B /* BackButton.swift */; };
+		267530FB2C3E0E2D00E8B42B /* CarBrandsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267530FA2C3E0E2D00E8B42B /* CarBrandsResponse.swift */; };
+		267530FD2C3EB43400E8B42B /* BrandsAndModelsSheetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267530FC2C3EB43400E8B42B /* BrandsAndModelsSheetsView.swift */; };
+		267531012C3EB4EE00E8B42B /* BrandsAndModelsSheetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267531002C3EB4EE00E8B42B /* BrandsAndModelsSheetsVC.swift */; };
+		267531042C3EB78B00E8B42B /* BrandsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267531032C3EB78B00E8B42B /* BrandsCell.swift */; };
+		267531062C3EB79E00E8B42B /* BrandsAndModelsSheetVC + ExtTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267531052C3EB79E00E8B42B /* BrandsAndModelsSheetVC + ExtTableView.swift */; };
+		267531082C3EB9F100E8B42B /* BrandsAndModelsSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267531072C3EB9F100E8B42B /* BrandsAndModelsSheetViewModel.swift */; };
 		2682B2272C3310E2004D02E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682B2262C3310E2004D02E4 /* AppDelegate.swift */; };
 		2682B2292C3310E2004D02E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682B2282C3310E2004D02E4 /* SceneDelegate.swift */; };
 		2682B2302C3310E4004D02E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2682B22F2C3310E4004D02E4 /* Assets.xcassets */; };
@@ -79,9 +85,15 @@
 		267530ED2C3D8B5100E8B42B /* AddCarDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCarDetailsView.swift; sourceTree = "<group>"; };
 		267530EF2C3D8B6600E8B42B /* AddCarDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCarDetailsViewModel.swift; sourceTree = "<group>"; };
 		267530F12C3D8B7800E8B42B /* AddCarDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCarDetailsVC.swift; sourceTree = "<group>"; };
-		267530F32C3D8D4B00E8B42B /* OrderInfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderInfoButton.swift; sourceTree = "<group>"; };
+		267530F32C3D8D4B00E8B42B /* CarInfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarInfoButton.swift; sourceTree = "<group>"; };
 		267530F62C3DA98A00E8B42B /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		267530F82C3DC82400E8B42B /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
+		267530FA2C3E0E2D00E8B42B /* CarBrandsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarBrandsResponse.swift; sourceTree = "<group>"; };
+		267530FC2C3EB43400E8B42B /* BrandsAndModelsSheetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsAndModelsSheetsView.swift; sourceTree = "<group>"; };
+		267531002C3EB4EE00E8B42B /* BrandsAndModelsSheetsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsAndModelsSheetsVC.swift; sourceTree = "<group>"; };
+		267531032C3EB78B00E8B42B /* BrandsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsCell.swift; sourceTree = "<group>"; };
+		267531052C3EB79E00E8B42B /* BrandsAndModelsSheetVC + ExtTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrandsAndModelsSheetVC + ExtTableView.swift"; sourceTree = "<group>"; };
+		267531072C3EB9F100E8B42B /* BrandsAndModelsSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsAndModelsSheetViewModel.swift; sourceTree = "<group>"; };
 		2682B2232C3310E2004D02E4 /* ChitAuto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChitAuto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2682B2262C3310E2004D02E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2682B2282C3310E2004D02E4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +132,7 @@
 			children = (
 				261C15B92C3A1106004B5A1E /* User.swift */,
 				261C15D32C3ABF78004B5A1E /* CarRepairPhases.swift */,
+				267530FA2C3E0E2D00E8B42B /* CarBrandsResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -218,6 +231,7 @@
 		267530EC2C3D8B3B00E8B42B /* AddCarDetails */ = {
 			isa = PBXGroup;
 			children = (
+				267530FE2C3EB43800E8B42B /* Sheets */,
 				267530F12C3D8B7800E8B42B /* AddCarDetailsVC.swift */,
 				267530ED2C3D8B5100E8B42B /* AddCarDetailsView.swift */,
 				267530EF2C3D8B6600E8B42B /* AddCarDetailsViewModel.swift */,
@@ -231,6 +245,34 @@
 				267530F62C3DA98A00E8B42B /* UITextField.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		267530FE2C3EB43800E8B42B /* Sheets */ = {
+			isa = PBXGroup;
+			children = (
+				267530FF2C3EB43E00E8B42B /* BrandsAndModelSheets */,
+			);
+			path = Sheets;
+			sourceTree = "<group>";
+		};
+		267530FF2C3EB43E00E8B42B /* BrandsAndModelSheets */ = {
+			isa = PBXGroup;
+			children = (
+				267531022C3EB76D00E8B42B /* BrandsTableView */,
+				267531002C3EB4EE00E8B42B /* BrandsAndModelsSheetsVC.swift */,
+				267530FC2C3EB43400E8B42B /* BrandsAndModelsSheetsView.swift */,
+				267531072C3EB9F100E8B42B /* BrandsAndModelsSheetViewModel.swift */,
+			);
+			path = BrandsAndModelSheets;
+			sourceTree = "<group>";
+		};
+		267531022C3EB76D00E8B42B /* BrandsTableView */ = {
+			isa = PBXGroup;
+			children = (
+				267531032C3EB78B00E8B42B /* BrandsCell.swift */,
+				267531052C3EB79E00E8B42B /* BrandsAndModelsSheetVC + ExtTableView.swift */,
+			);
+			path = BrandsTableView;
 			sourceTree = "<group>";
 		};
 		2682B21A2C3310E2004D02E4 = {
@@ -373,7 +415,7 @@
 			isa = PBXGroup;
 			children = (
 				26CA74042C348A4200715AC3 /* CustomGeneralButton.swift */,
-				267530F32C3D8D4B00E8B42B /* OrderInfoButton.swift */,
+				267530F32C3D8D4B00E8B42B /* CarInfoButton.swift */,
 				267530F82C3DC82400E8B42B /* BackButton.swift */,
 			);
 			path = Buttons;
@@ -469,7 +511,9 @@
 				26ADA7352C38C2D000D6E3EE /* CustomTextFieldModifier.swift in Sources */,
 				261C15D02C3ABDFB004B5A1E /* PhasesCell.swift in Sources */,
 				267530E92C3D534400E8B42B /* GarageSheetViewModel.swift in Sources */,
+				267531082C3EB9F100E8B42B /* BrandsAndModelsSheetViewModel.swift in Sources */,
 				261C15D42C3ABF78004B5A1E /* CarRepairPhases.swift in Sources */,
+				267530FD2C3EB43400E8B42B /* BrandsAndModelsSheetsView.swift in Sources */,
 				2682B2292C3310E2004D02E4 /* SceneDelegate.swift in Sources */,
 				261C15CA2C3ABA61004B5A1E /* UIKitImageLoader.swift in Sources */,
 				267530F72C3DA98A00E8B42B /* UITextField.swift in Sources */,
@@ -478,6 +522,7 @@
 				261C15DC2C3C35D0004B5A1E /* UserMainViewWithoutOrder.swift in Sources */,
 				261C15C72C3AB768004B5A1E /* CustomStackView.swift in Sources */,
 				26CA73FD2C3485AE00715AC3 /* OnBoardingView.swift in Sources */,
+				267531042C3EB78B00E8B42B /* BrandsCell.swift in Sources */,
 				2622943C2C349BBA0062EEC1 /* SignUpView.swift in Sources */,
 				26CA74052C348A4200715AC3 /* CustomGeneralButton.swift in Sources */,
 				267530EB2C3D535F00E8B42B /* GarageSheetVC.swift in Sources */,
@@ -489,13 +534,16 @@
 				26CA73FF2C3485BE00715AC3 /* OnBoardingVC.swift in Sources */,
 				261C15DE2C3C35E9004B5A1E /* UserMainViewModel.swift in Sources */,
 				261C15E02C3C35F3004B5A1E /* UserMainVC.swift in Sources */,
+				267531062C3EB79E00E8B42B /* BrandsAndModelsSheetVC + ExtTableView.swift in Sources */,
 				26ADA7382C38CD8F00D6E3EE /* SignInView.swift in Sources */,
+				267531012C3EB4EE00E8B42B /* BrandsAndModelsSheetsVC.swift in Sources */,
 				267530F92C3DC82400E8B42B /* BackButton.swift in Sources */,
 				26ADA7322C38C2A400D6E3EE /* CustomTextField.swift in Sources */,
 				261C15BD2C3A1380004B5A1E /* WelcomeView.swift in Sources */,
 				261C15C42C3AB6D4004B5A1E /* CustomImageView.swift in Sources */,
-				267530F42C3D8D4B00E8B42B /* OrderInfoButton.swift in Sources */,
+				267530F42C3D8D4B00E8B42B /* CarInfoButton.swift in Sources */,
 				261C15CD2C3ABDAF004B5A1E /* CustomFlowLayout.swift in Sources */,
+				267530FB2C3E0E2D00E8B42B /* CarBrandsResponse.swift in Sources */,
 				261C15C12C3A13A4004B5A1E /* WelcomeVC.swift in Sources */,
 				261C15D92C3AC196004B5A1E /* TitlesCustomLabel.swift in Sources */,
 			);

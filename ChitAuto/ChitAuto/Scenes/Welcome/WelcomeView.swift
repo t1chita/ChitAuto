@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ReloadCollectionViewDelegate: AnyObject {
+protocol ReloadDelegate: AnyObject {
     func reloadData()
 }
 
@@ -282,7 +282,7 @@ final class WelcomeView: UIView {
 }
 
 //MARK: Reload Data For ViewModel
-extension WelcomeView: ReloadCollectionViewDelegate {
+extension WelcomeView: ReloadDelegate {
     func reloadData() {
         DispatchQueue.main.async { [weak self] in
             self?.howDoesItWorksCollectionView.reloadData()
