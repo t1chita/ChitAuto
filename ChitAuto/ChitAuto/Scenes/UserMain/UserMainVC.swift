@@ -7,12 +7,16 @@
 
 import UIKit
 
-protocol NavigateToRootViewControllerDelegate: AnyObject {
-    func backToRootViewController()
+protocol PopViewControllerDelegate: AnyObject {
+    func popViewController()
 }
 
-protocol AddCarInTheGarageDelegate: AnyObject {
-    func addCarInTheGarageDelegate()
+protocol GarageSheetRepresentableDelegate: AnyObject {
+    func presentGarageSheet()
+}
+
+protocol AddCarDetailsPushableDelegate: AnyObject {
+    func pushToAddCarDetailsPage()
 }
 
 final class UserMainVC: UIViewController {
@@ -52,23 +56,23 @@ final class UserMainVC: UIViewController {
     
     //MARK: - Delegates
     private func handleDelegates() {
-        transferDelegatesFromViewModelToView()
+        getDelegatesFromViewModelToView()
         getDelegatesFromView()
         getDelegatesFromViewToViewModel()
     }
     
-    private func transferDelegatesFromViewModelToView() {
+    private func getDelegatesFromViewModelToView() {
 
     }
     
     private func getDelegatesFromViewToViewModel() {
-        userMainViewWithoutOrder.addCarInTheGarageDelegate = self
+
     }
     
     private func getDelegatesFromView() {
         userMainViewWithoutOrder.navigateToRootViewControllerDelegate = self
+        userMainViewWithoutOrder.garageSheetRepresentableDelegate = self
     }
-    
     //MARK: - Set UI Components
     private func setAddCarInTheGarageButtonWithData() {
         userMainViewWithoutOrder.addCarInTheGarageButton.setTitle(userMainViewModel.addCarInTheGarage, for: .normal)
@@ -81,15 +85,16 @@ final class UserMainVC: UIViewController {
 }
 
 //MARK: - Extensions Of Delegates
-extension UserMainVC: NavigateToRootViewControllerDelegate {
-    func backToRootViewController() {
-        navigationController?.popToRootViewController(animated: true)
+extension UserMainVC: PopViewControllerDelegate {
+    func popViewController() {
+        navigationController?.popViewController(animated: true)
     }
 }
 
-extension UserMainVC: AddCarInTheGarageDelegate {
-    func addCarInTheGarageDelegate() {
+extension UserMainVC: GarageSheetRepresentableDelegate {
+    func presentGarageSheet() {
         let garageSheetView = GarageSheetView()
+        garageSheetView.addCarDetailsPushableDelegate = self
         let garageSheetViewModel = GarageSheetViewModel()
         let vc = GarageSheetVC(garageSheetView: garageSheetView, garageSheetViewModel: garageSheetViewModel)
         
@@ -104,5 +109,15 @@ extension UserMainVC: AddCarInTheGarageDelegate {
         sheet?.detents = [smallDetent]
         
         present(vc, animated: true, completion: nil)
+    }
+}
+
+extension UserMainVC: AddCarDetailsPushableDelegate {
+    func pushToAddCarDetailsPage() {
+        let addCarDetailsView = AddCarDetailsView()
+        let addCarDetailsViewModel = AddCarDetailsViewModel()
+        let vc = AddCarDetailsVC(addCardDetailsView: addCarDetailsView, addCardDetailsViewModel: addCarDetailsViewModel)
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

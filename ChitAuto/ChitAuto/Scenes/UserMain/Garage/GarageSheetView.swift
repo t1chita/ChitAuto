@@ -31,6 +31,10 @@ final class GarageSheetView: UIView {
         return button
     }()
     
+    //MARK: - Delegates
+    weak var addCarDetailsPushableDelegate: AddCarDetailsPushableDelegate?
+    weak var garageSheetDismissible: GarageSheetDismissible?
+    
     //MARK: - Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,9 +45,7 @@ final class GarageSheetView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    //MARK: - LifeCycles
-    
+        
     //MARK: - Setup UI
     private func setupUI() {
         setAddCarButton()
@@ -63,11 +65,16 @@ final class GarageSheetView: UIView {
     private func setAddCarButton() {
         addSubview(addCarButton)
         
+        addCarButton.addAction(UIAction(title: "Go To Car Details Page", handler: {[weak self]  _ in
+            self?.addCarDetailsPushableDelegate?.pushToAddCarDetailsPage()
+            self?.garageSheetDismissible?.dismissGarageSheet()
+        }), for: .touchUpInside)
+        
         //Set Constraints
         NSLayoutConstraint.activate([
             addCarButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 48),
             addCarButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -48),
-            addCarButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
+            addCarButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
             addCarButton.heightAnchor.constraint(equalToConstant: 48)
         ])
     }

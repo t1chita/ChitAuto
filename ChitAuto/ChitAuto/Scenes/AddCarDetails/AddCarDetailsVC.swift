@@ -1,5 +1,5 @@
 //
-//  GarageSheetVC.swift
+//  AddCarDetailsVC.swift
 //  ChitAuto
 //
 //  Created by Temur Chitashvili on 09.07.24.
@@ -7,19 +7,17 @@
 
 import UIKit
 
-protocol GarageSheetDismissible: AnyObject {
-    func dismissGarageSheet()
-}
 
-final class GarageSheetVC: UIViewController {
+
+final class AddCarDetailsVC: UIViewController {
     //MARK: - Properties
-    var garageSheetView: GarageSheetView
-    var garageSheetViewModel: GarageSheetViewModel
+    var addCardDetailsView: AddCarDetailsView
+    var addCardDetailsViewModel: AddCarDetailsViewModel
     
     //MARK: - Initialization
-    init(garageSheetView: GarageSheetView, garageSheetViewModel: GarageSheetViewModel) {
-        self.garageSheetView = garageSheetView
-        self.garageSheetViewModel = garageSheetViewModel
+    init(addCardDetailsView: AddCarDetailsView, addCardDetailsViewModel: AddCarDetailsViewModel) {
+        self.addCardDetailsView = addCardDetailsView
+        self.addCardDetailsViewModel = addCardDetailsViewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -30,14 +28,21 @@ final class GarageSheetVC: UIViewController {
     //MARK: - LifeCycles
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        view = garageSheetView
+        view = addCardDetailsView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
         handleDelegates()
     }
+    
+    
+    
     //MARK: - Setup UI
+    private func setupUI() {
+        removeDefaultBackButton()
+    }
     
     //MARK: - Delegates
     private func handleDelegates() {
@@ -55,14 +60,19 @@ final class GarageSheetVC: UIViewController {
     }
     
     private func getDelegatesFromView() {
-        garageSheetView.garageSheetDismissible = self
+        addCardDetailsView.popViewControllerDelegate = self
     }
     
     //MARK: - Set UI Components
-}
-
-extension GarageSheetVC: GarageSheetDismissible {
-    func dismissGarageSheet() {
-        self.dismiss(animated: true, completion: nil)
+    private func removeDefaultBackButton() {
+        navigationItem.setHidesBackButton(true, animated: true)
     }
 }
+
+//MARK: - Extensions
+extension AddCarDetailsVC: PopViewControllerDelegate {
+    func popViewController() {
+        navigationController?.popViewController(animated: true)
+    }
+}
+

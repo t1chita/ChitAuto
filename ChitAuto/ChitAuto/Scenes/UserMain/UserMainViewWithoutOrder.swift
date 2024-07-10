@@ -78,7 +78,7 @@ final class UserMainViewWithoutOrder: UIView {
     lazy var mainButton: UIBarButtonItem = {
         let customButton = UIButton()
         customButton.addAction(UIAction(title: "Go To Welcome Page", handler: { [weak self] _ in
-            self?.navigateToRootViewControllerDelegate?.backToRootViewController()
+            self?.navigateToRootViewControllerDelegate?.popViewController()
         }), for: .touchUpInside)
         customButton.setImage(.mainButton, for: .normal)
        
@@ -87,8 +87,8 @@ final class UserMainViewWithoutOrder: UIView {
     }()
     
     //MARK: - Delegates
-    weak var addCarInTheGarageDelegate: AddCarInTheGarageDelegate?
-    weak var navigateToRootViewControllerDelegate: NavigateToRootViewControllerDelegate?
+    weak var garageSheetRepresentableDelegate: GarageSheetRepresentableDelegate?
+    weak var navigateToRootViewControllerDelegate: PopViewControllerDelegate?
     
     //MARK: - Initialization
     override init(frame: CGRect) {
@@ -118,7 +118,7 @@ final class UserMainViewWithoutOrder: UIView {
         //Set Constraints
         NSLayoutConstraint.activate([
             scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            scrollView.topAnchor.constraint(equalTo: topAnchor, constant: 100),
+            scrollView.topAnchor.constraint(equalTo: topAnchor),
             scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -120),
         ])
@@ -156,7 +156,7 @@ final class UserMainViewWithoutOrder: UIView {
         contentView.addSubview(addCarInTheGarageButton)
         
         addCarInTheGarageButton.addAction(UIAction(title: "Add Car In The Garage", handler: { [weak self] _ in
-                self?.addCarInTheGarageDelegate?.addCarInTheGarageDelegate()
+            self?.garageSheetRepresentableDelegate?.presentGarageSheet()
             }), for: .touchUpInside)
         
         //Set Constraints
@@ -188,7 +188,7 @@ final class UserMainViewWithoutOrder: UIView {
         garageAndServiceStackView.addArrangedSubview(callAnAssistantButton)
         
         garageButton.addAction(UIAction(title: "Add Car In The Garage", handler: { [weak self] _ in
-            self?.addCarInTheGarageDelegate?.addCarInTheGarageDelegate()
+            self?.garageSheetRepresentableDelegate?.presentGarageSheet()
         }), for: .touchUpInside)
         
         //Set Constraints
