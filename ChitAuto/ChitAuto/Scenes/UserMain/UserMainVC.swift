@@ -94,9 +94,10 @@ extension UserMainVC: PopViewControllerDelegate {
 extension UserMainVC: GarageSheetRepresentableDelegate {
     func presentGarageSheet() {
         let garageSheetView = GarageSheetView()
-        garageSheetView.addCarDetailsPushableDelegate = self
         let garageSheetViewModel = GarageSheetViewModel()
         let vc = GarageSheetVC(garageSheetView: garageSheetView, garageSheetViewModel: garageSheetViewModel)
+        
+        garageSheetView.addCarDetailsPushableDelegate = self
         
         vc.modalPresentationStyle = .pageSheet
         

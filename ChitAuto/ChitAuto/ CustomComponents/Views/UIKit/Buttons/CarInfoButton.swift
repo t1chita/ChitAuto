@@ -1,5 +1,5 @@
 //
-//  OrderInfoButton.swift
+//  CarInfoButton.swift
 //  ChitAuto
 //
 //  Created by Temur Chitashvili on 09.07.24.
@@ -7,15 +7,17 @@
 
 import UIKit
 
-final class OrderInfoButton: UIButton {
-    let title: String
+final class CarInfoButton: UIButton {
+    var title: String = "" {
+           didSet {
+               setupConfiguration()
+           }
+       }
+       
     
     //MARK: - Initialization
-    
-    init(title: String) {
-        self.title = title
-        super.init(frame: .zero)
-        
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setup()
     }
     
@@ -26,21 +28,19 @@ final class OrderInfoButton: UIButton {
     //MARK: - Setup
     private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
-        configuration = setupConfiguration()
         contentHorizontalAlignment = .fill
         heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
-    private func setupConfiguration() -> UIButton.Configuration {
+    private func setupConfiguration(){
         var configuration = UIButton.Configuration.filled()
         configuration.title = title
         configuration.image = UIImage(systemName: "chevron.down")
-        // Ensure the image is on the trailing side and the title is on the leading side
         configuration.imagePlacement = .trailing
         configuration.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16)
         configuration.titleAlignment = .leading
         configuration.baseForegroundColor = .customLabel
         configuration.background.backgroundColor = .customBackground
-        return configuration
+        self.configuration = configuration
     }
 }

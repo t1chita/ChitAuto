@@ -7,6 +7,14 @@
 
 import UIKit
 
+protocol SheetRepresentableDelegate: AnyObject {
+    func presentBrandsSheet()
+    func presentModelsSheet()
+    func presentReleaseDateSheet()
+    func presentFuelSheet()
+    func presentTransmissionSheet()
+}
+
 final class AddCarDetailsView: UIView {
     //MARK: - UIComponents
     private let scrollView: UIScrollView = {
@@ -31,20 +39,20 @@ final class AddCarDetailsView: UIView {
     }()
     
     private let carPlateTextField: UITextField = {
-         let txtField = UITextField()
-         txtField.translatesAutoresizingMaskIntoConstraints = false
-         txtField.clipsToBounds = true
-         txtField.layer.cornerRadius = 10
-         txtField.layer.borderWidth = 1
-         txtField.layer.borderColor = UIColor.black.cgColor
-         txtField.placeholder = "XX-000-XX"
-         txtField.textColor = .customLabel
-         txtField.textAlignment = .center
-         txtField.font = .systemFont(ofSize: 32, weight: .bold)
-         txtField.backgroundColor = .customBackground
-         txtField.setIcon(.carPlate)
-         return txtField
-     }()
+        let txtField = UITextField()
+        txtField.translatesAutoresizingMaskIntoConstraints = false
+        txtField.clipsToBounds = true
+        txtField.layer.cornerRadius = 10
+        txtField.layer.borderWidth = 1
+        txtField.layer.borderColor = UIColor.black.cgColor
+        txtField.placeholder = "XX-000-XX"
+        txtField.textColor = .customLabel
+        txtField.textAlignment = .center
+        txtField.font = .systemFont(ofSize: 32, weight: .bold)
+        txtField.backgroundColor = .customBackground
+        txtField.setIcon(.carPlate)
+        return txtField
+    }()
     
     private let carInfoStackView: UIStackView = {
         let stView = UIStackView()
@@ -56,28 +64,28 @@ final class AddCarDetailsView: UIView {
         return stView
     }()
     
-    private let carBrandButton: OrderInfoButton = {
-        let button = OrderInfoButton(title: "მწარმოებელი")
+    let carBrandButton: CarInfoButton = {
+        let button = CarInfoButton()
         return button
     }()
     
-    private let carModelButton: OrderInfoButton = {
-        let button = OrderInfoButton(title: "მოდელი")
+    let carModelButton: CarInfoButton = {
+        let button = CarInfoButton()
         return button
     }()
     
-    private let carReleaseDateButton: OrderInfoButton = {
-        let button = OrderInfoButton(title: "გამოშვების წელი")
+    let carReleaseDateButton: CarInfoButton = {
+        let button = CarInfoButton()
         return button
     }()
     
-    private let carFuelTypeButton: OrderInfoButton = {
-        let button = OrderInfoButton(title: "საწვავის ტიპი")
+    let carFuelTypeButton: CarInfoButton = {
+        let button = CarInfoButton()
         return button
     }()
     
-    private let carTransmissionTypeButton: OrderInfoButton = {
-        let button = OrderInfoButton(title: "გადაცემათა კოლოფი")
+    let carTransmissionTypeButton: CarInfoButton = {
+        let button = CarInfoButton()
         return button
     }()
     
@@ -104,6 +112,7 @@ final class AddCarDetailsView: UIView {
     
     //MARK: - Delegates
     weak var popViewControllerDelegate: PopViewControllerDelegate?
+    weak var sheetRepresentableDelegate: SheetRepresentableDelegate?
     
     //MARK: - Initialization
     override init(frame: CGRect) {
@@ -189,6 +198,26 @@ final class AddCarDetailsView: UIView {
         carInfoStackView.addArrangedSubview(carFuelTypeButton)
         carInfoStackView.addArrangedSubview(carTransmissionTypeButton)
         
+        carBrandButton.addAction(UIAction(title: "Fetch Brands And Show Sheet", handler: { [weak self] _ in
+            self?.sheetRepresentableDelegate?.presentBrandsSheet()
+        }), for: .touchUpInside)
+        
+        carModelButton.addAction(UIAction(title: "Fetch Models And Show Sheet", handler: { [weak self] _ in
+            self?.sheetRepresentableDelegate?.presentModelsSheet()
+        }), for: .touchUpInside)
+        
+        carReleaseDateButton.addAction(UIAction(title: "Fetch Release Dates And Show Sheet", handler: { [weak self] _ in
+            self?.sheetRepresentableDelegate?.presentReleaseDateSheet()
+        }), for: .touchUpInside)
+        
+        carFuelTypeButton.addAction(UIAction(title: "Fetch FuelTypes And Show Sheet", handler: { [weak self] _ in
+            self?.sheetRepresentableDelegate?.presentFuelSheet()
+        }), for: .touchUpInside)
+        
+        carTransmissionTypeButton.addAction(UIAction(title: "Fetch TransmissionTypes And Show Sheet", handler: { [weak self] _ in
+            self?.sheetRepresentableDelegate?.presentTransmissionSheet()
+        }), for: .touchUpInside)
+        
         //Set Constraints
         NSLayoutConstraint.activate([
             carInfoStackView.topAnchor.constraint(equalTo: carPlateTextField.bottomAnchor, constant: 20),
@@ -203,7 +232,7 @@ final class AddCarDetailsView: UIView {
         bottomButtonsStackView.addArrangedSubview(backButton)
         bottomButtonsStackView.addArrangedSubview(saveButton)
         
-        backButton.addAction(UIAction(title: "Go To User Main Page", handler: {[weak self] _ in
+        backButton.addAction(UIAction(title: "Go To User Main Page", handler: { [weak self] _ in
             self?.popViewControllerDelegate?.popViewController()
         }), for: .touchUpInside)
         

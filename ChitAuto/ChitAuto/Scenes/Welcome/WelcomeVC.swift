@@ -57,7 +57,7 @@ final class WelcomeVC: UIViewController {
     }
     
     private func transferDelegatesFromViewModelToView() {
-        welcomeViewModel.reloadCollectionViewDelegate = welcomeView
+        welcomeViewModel.reloadDelegate = welcomeView
     }
     
     private func getDelegatesFromViewToViewModel() {
