@@ -35,11 +35,11 @@
 		267530F72C3DA98A00E8B42B /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267530F62C3DA98A00E8B42B /* UITextField.swift */; };
 		267530F92C3DC82400E8B42B /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267530F82C3DC82400E8B42B /* BackButton.swift */; };
 		267530FB2C3E0E2D00E8B42B /* CarBrandsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267530FA2C3E0E2D00E8B42B /* CarBrandsResponse.swift */; };
-		267530FD2C3EB43400E8B42B /* BrandsAndModelsSheetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267530FC2C3EB43400E8B42B /* BrandsAndModelsSheetsView.swift */; };
-		267531012C3EB4EE00E8B42B /* BrandsAndModelsSheetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267531002C3EB4EE00E8B42B /* BrandsAndModelsSheetsVC.swift */; };
+		267530FD2C3EB43400E8B42B /* BrandsSheetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267530FC2C3EB43400E8B42B /* BrandsSheetsView.swift */; };
+		267531012C3EB4EE00E8B42B /* BrandsSheetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267531002C3EB4EE00E8B42B /* BrandsSheetsVC.swift */; };
 		267531042C3EB78B00E8B42B /* BrandsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267531032C3EB78B00E8B42B /* BrandsCell.swift */; };
-		267531062C3EB79E00E8B42B /* BrandsAndModelsSheetVC + ExtTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267531052C3EB79E00E8B42B /* BrandsAndModelsSheetVC + ExtTableView.swift */; };
-		267531082C3EB9F100E8B42B /* BrandsAndModelsSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267531072C3EB9F100E8B42B /* BrandsAndModelsSheetViewModel.swift */; };
+		267531062C3EB79E00E8B42B /* BrandsSheetVC + ExtTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267531052C3EB79E00E8B42B /* BrandsSheetVC + ExtTableView.swift */; };
+		267531082C3EB9F100E8B42B /* BrandsSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267531072C3EB9F100E8B42B /* BrandsSheetViewModel.swift */; };
 		2682B2272C3310E2004D02E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682B2262C3310E2004D02E4 /* AppDelegate.swift */; };
 		2682B2292C3310E2004D02E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682B2282C3310E2004D02E4 /* SceneDelegate.swift */; };
 		2682B2302C3310E4004D02E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2682B22F2C3310E4004D02E4 /* Assets.xcassets */; };
@@ -89,11 +89,11 @@
 		267530F62C3DA98A00E8B42B /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		267530F82C3DC82400E8B42B /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		267530FA2C3E0E2D00E8B42B /* CarBrandsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarBrandsResponse.swift; sourceTree = "<group>"; };
-		267530FC2C3EB43400E8B42B /* BrandsAndModelsSheetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsAndModelsSheetsView.swift; sourceTree = "<group>"; };
-		267531002C3EB4EE00E8B42B /* BrandsAndModelsSheetsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsAndModelsSheetsVC.swift; sourceTree = "<group>"; };
+		267530FC2C3EB43400E8B42B /* BrandsSheetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsSheetsView.swift; sourceTree = "<group>"; };
+		267531002C3EB4EE00E8B42B /* BrandsSheetsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsSheetsVC.swift; sourceTree = "<group>"; };
 		267531032C3EB78B00E8B42B /* BrandsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsCell.swift; sourceTree = "<group>"; };
-		267531052C3EB79E00E8B42B /* BrandsAndModelsSheetVC + ExtTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrandsAndModelsSheetVC + ExtTableView.swift"; sourceTree = "<group>"; };
-		267531072C3EB9F100E8B42B /* BrandsAndModelsSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsAndModelsSheetViewModel.swift; sourceTree = "<group>"; };
+		267531052C3EB79E00E8B42B /* BrandsSheetVC + ExtTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrandsSheetVC + ExtTableView.swift"; sourceTree = "<group>"; };
+		267531072C3EB9F100E8B42B /* BrandsSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsSheetViewModel.swift; sourceTree = "<group>"; };
 		2682B2232C3310E2004D02E4 /* ChitAuto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChitAuto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2682B2262C3310E2004D02E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2682B2282C3310E2004D02E4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -250,27 +250,27 @@
 		267530FE2C3EB43800E8B42B /* Sheets */ = {
 			isa = PBXGroup;
 			children = (
-				267530FF2C3EB43E00E8B42B /* BrandsAndModelSheets */,
+				267530FF2C3EB43E00E8B42B /* BrandsSheet */,
 			);
 			path = Sheets;
 			sourceTree = "<group>";
 		};
-		267530FF2C3EB43E00E8B42B /* BrandsAndModelSheets */ = {
+		267530FF2C3EB43E00E8B42B /* BrandsSheet */ = {
 			isa = PBXGroup;
 			children = (
 				267531022C3EB76D00E8B42B /* BrandsTableView */,
-				267531002C3EB4EE00E8B42B /* BrandsAndModelsSheetsVC.swift */,
-				267530FC2C3EB43400E8B42B /* BrandsAndModelsSheetsView.swift */,
-				267531072C3EB9F100E8B42B /* BrandsAndModelsSheetViewModel.swift */,
+				267531002C3EB4EE00E8B42B /* BrandsSheetsVC.swift */,
+				267530FC2C3EB43400E8B42B /* BrandsSheetsView.swift */,
+				267531072C3EB9F100E8B42B /* BrandsSheetViewModel.swift */,
 			);
-			path = BrandsAndModelSheets;
+			path = BrandsSheet;
 			sourceTree = "<group>";
 		};
 		267531022C3EB76D00E8B42B /* BrandsTableView */ = {
 			isa = PBXGroup;
 			children = (
 				267531032C3EB78B00E8B42B /* BrandsCell.swift */,
-				267531052C3EB79E00E8B42B /* BrandsAndModelsSheetVC + ExtTableView.swift */,
+				267531052C3EB79E00E8B42B /* BrandsSheetVC + ExtTableView.swift */,
 			);
 			path = BrandsTableView;
 			sourceTree = "<group>";
@@ -511,9 +511,9 @@
 				26ADA7352C38C2D000D6E3EE /* CustomTextFieldModifier.swift in Sources */,
 				261C15D02C3ABDFB004B5A1E /* PhasesCell.swift in Sources */,
 				267530E92C3D534400E8B42B /* GarageSheetViewModel.swift in Sources */,
-				267531082C3EB9F100E8B42B /* BrandsAndModelsSheetViewModel.swift in Sources */,
+				267531082C3EB9F100E8B42B /* BrandsSheetViewModel.swift in Sources */,
 				261C15D42C3ABF78004B5A1E /* CarRepairPhases.swift in Sources */,
-				267530FD2C3EB43400E8B42B /* BrandsAndModelsSheetsView.swift in Sources */,
+				267530FD2C3EB43400E8B42B /* BrandsSheetsView.swift in Sources */,
 				2682B2292C3310E2004D02E4 /* SceneDelegate.swift in Sources */,
 				261C15CA2C3ABA61004B5A1E /* UIKitImageLoader.swift in Sources */,
 				267530F72C3DA98A00E8B42B /* UITextField.swift in Sources */,
@@ -534,9 +534,9 @@
 				26CA73FF2C3485BE00715AC3 /* OnBoardingVC.swift in Sources */,
 				261C15DE2C3C35E9004B5A1E /* UserMainViewModel.swift in Sources */,
 				261C15E02C3C35F3004B5A1E /* UserMainVC.swift in Sources */,
-				267531062C3EB79E00E8B42B /* BrandsAndModelsSheetVC + ExtTableView.swift in Sources */,
+				267531062C3EB79E00E8B42B /* BrandsSheetVC + ExtTableView.swift in Sources */,
 				26ADA7382C38CD8F00D6E3EE /* SignInView.swift in Sources */,
-				267531012C3EB4EE00E8B42B /* BrandsAndModelsSheetsVC.swift in Sources */,
+				267531012C3EB4EE00E8B42B /* BrandsSheetsVC.swift in Sources */,
 				267530F92C3DC82400E8B42B /* BackButton.swift in Sources */,
 				26ADA7322C38C2A400D6E3EE /* CustomTextField.swift in Sources */,
 				261C15BD2C3A1380004B5A1E /* WelcomeView.swift in Sources */,

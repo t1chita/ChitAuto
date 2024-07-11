@@ -120,5 +120,5 @@ final class BrandsCell: UITableViewCell {
     }
 }
 #Preview {
-    BrandsAndModelsSheetsVC(brandsAndModelsSheetView: BrandsAndModelsSheetsView(), brandsAndModelsSheetViewModel: BrandsAndModelsSheetViewModel())
+    BrandsSheetsVC(brandsAndModelsSheetView: BrandsSheetsView(), brandsAndModelsSheetViewModel: BrandsSheetViewModel())
 }
