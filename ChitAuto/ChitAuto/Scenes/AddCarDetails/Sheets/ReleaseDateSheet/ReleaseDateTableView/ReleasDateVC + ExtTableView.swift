@@ -27,7 +27,11 @@ extension ReleaseDateVC: UITableViewDelegate {
         releaseDateViewModel.previouslySelectedIndexPath = indexPath
         tableView.deselectRow(at: indexPath, animated: true)
         
+<<<<<<< HEAD
         releaseDateSheetsDelegate?.didSelectCarModel(selectedYear)
+=======
+        releaseDateSheetsDelegate?.didSelectReleaseDate(selectedYear)
+>>>>>>> UIKIT-AddCarDetails
         self.dismiss(animated: true, completion: nil)
     }
 }
