@@ -51,6 +51,18 @@
 		2675311E2C40259800E8B42B /* ReleaseDateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2675311D2C40259800E8B42B /* ReleaseDateViewModel.swift */; };
 		267531212C40266E00E8B42B /* ReleasDateVC + ExtTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267531202C40266E00E8B42B /* ReleasDateVC + ExtTableView.swift */; };
 		267531232C40267D00E8B42B /* ReleaseDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267531222C40267D00E8B42B /* ReleaseDateCell.swift */; };
+		267531272C4079C900E8B42B /* FuelTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267531262C4079C900E8B42B /* FuelTypeVC.swift */; };
+		267531292C4079D500E8B42B /* FuelTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267531282C4079D500E8B42B /* FuelTypeView.swift */; };
+		2675312B2C4079DC00E8B42B /* FuelTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2675312A2C4079DC00E8B42B /* FuelTypeViewModel.swift */; };
+		2675312E2C407B2900E8B42B /* FuelTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2675312D2C407B2900E8B42B /* FuelTypeCell.swift */; };
+		267531302C407B8400E8B42B /* FuelTypeVC + ExtTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2675312F2C407B8400E8B42B /* FuelTypeVC + ExtTableView.swift */; };
+		267531322C407BEF00E8B42B /* FuelTypeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267531312C407BEF00E8B42B /* FuelTypeResponse.swift */; };
+		267531352C408ED200E8B42B /* TransmissionTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267531342C408ED200E8B42B /* TransmissionTypeVC.swift */; };
+		267531382C408F0B00E8B42B /* TransmissionTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267531372C408F0B00E8B42B /* TransmissionTypeView.swift */; };
+		2675313A2C408F1800E8B42B /* TransmissionTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267531392C408F1800E8B42B /* TransmissionTypeViewModel.swift */; };
+		2675313C2C408F9C00E8B42B /* TransmissionTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2675313B2C408F9C00E8B42B /* TransmissionTypeCell.swift */; };
+		2675313E2C4090E100E8B42B /* TransmissionTypesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2675313D2C4090E100E8B42B /* TransmissionTypesResponse.swift */; };
+		267531402C40925F00E8B42B /* TransmissionTypeVC + ExtTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2675313F2C40925F00E8B42B /* TransmissionTypeVC + ExtTableView.swift */; };
 		2682B2272C3310E2004D02E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682B2262C3310E2004D02E4 /* AppDelegate.swift */; };
 		2682B2292C3310E2004D02E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682B2282C3310E2004D02E4 /* SceneDelegate.swift */; };
 		2682B2302C3310E4004D02E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2682B22F2C3310E4004D02E4 /* Assets.xcassets */; };
@@ -116,6 +128,18 @@
 		2675311D2C40259800E8B42B /* ReleaseDateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseDateViewModel.swift; sourceTree = "<group>"; };
 		267531202C40266E00E8B42B /* ReleasDateVC + ExtTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReleasDateVC + ExtTableView.swift"; sourceTree = "<group>"; };
 		267531222C40267D00E8B42B /* ReleaseDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseDateCell.swift; sourceTree = "<group>"; };
+		267531262C4079C900E8B42B /* FuelTypeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelTypeVC.swift; sourceTree = "<group>"; };
+		267531282C4079D500E8B42B /* FuelTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelTypeView.swift; sourceTree = "<group>"; };
+		2675312A2C4079DC00E8B42B /* FuelTypeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelTypeViewModel.swift; sourceTree = "<group>"; };
+		2675312D2C407B2900E8B42B /* FuelTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelTypeCell.swift; sourceTree = "<group>"; };
+		2675312F2C407B8400E8B42B /* FuelTypeVC + ExtTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FuelTypeVC + ExtTableView.swift"; sourceTree = "<group>"; };
+		267531312C407BEF00E8B42B /* FuelTypeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelTypeResponse.swift; sourceTree = "<group>"; };
+		267531342C408ED200E8B42B /* TransmissionTypeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransmissionTypeVC.swift; sourceTree = "<group>"; };
+		267531372C408F0B00E8B42B /* TransmissionTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransmissionTypeView.swift; sourceTree = "<group>"; };
+		267531392C408F1800E8B42B /* TransmissionTypeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransmissionTypeViewModel.swift; sourceTree = "<group>"; };
+		2675313B2C408F9C00E8B42B /* TransmissionTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransmissionTypeCell.swift; sourceTree = "<group>"; };
+		2675313D2C4090E100E8B42B /* TransmissionTypesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransmissionTypesResponse.swift; sourceTree = "<group>"; };
+		2675313F2C40925F00E8B42B /* TransmissionTypeVC + ExtTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransmissionTypeVC + ExtTableView.swift"; sourceTree = "<group>"; };
 		2682B2232C3310E2004D02E4 /* ChitAuto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChitAuto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2682B2262C3310E2004D02E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2682B2282C3310E2004D02E4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -156,6 +180,8 @@
 				261C15D32C3ABF78004B5A1E /* CarRepairPhases.swift */,
 				267530FA2C3E0E2D00E8B42B /* CarBrandsResponse.swift */,
 				267531162C3FF4A000E8B42B /* CarModelResponse.swift */,
+				267531312C407BEF00E8B42B /* FuelTypeResponse.swift */,
+				2675313D2C4090E100E8B42B /* TransmissionTypesResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -273,6 +299,8 @@
 		267530FE2C3EB43800E8B42B /* Sheets */ = {
 			isa = PBXGroup;
 			children = (
+				267531332C408EB500E8B42B /* TransmissionTypeSheet */,
+				267531242C40795D00E8B42B /* FuelTypeSheet */,
 				267531182C40255500E8B42B /* ReleaseDateSheet */,
 				2675310A2C3FF27A00E8B42B /* ModelsSheet */,
 				267530FF2C3EB43E00E8B42B /* BrandsSheet */,
@@ -338,6 +366,46 @@
 				267531222C40267D00E8B42B /* ReleaseDateCell.swift */,
 			);
 			path = ReleaseDateTableView;
+			sourceTree = "<group>";
+		};
+		267531242C40795D00E8B42B /* FuelTypeSheet */ = {
+			isa = PBXGroup;
+			children = (
+				2675312C2C407B0E00E8B42B /* FuelTypeTableView */,
+				267531262C4079C900E8B42B /* FuelTypeVC.swift */,
+				267531282C4079D500E8B42B /* FuelTypeView.swift */,
+				2675312A2C4079DC00E8B42B /* FuelTypeViewModel.swift */,
+			);
+			path = FuelTypeSheet;
+			sourceTree = "<group>";
+		};
+		2675312C2C407B0E00E8B42B /* FuelTypeTableView */ = {
+			isa = PBXGroup;
+			children = (
+				2675312D2C407B2900E8B42B /* FuelTypeCell.swift */,
+				2675312F2C407B8400E8B42B /* FuelTypeVC + ExtTableView.swift */,
+			);
+			path = FuelTypeTableView;
+			sourceTree = "<group>";
+		};
+		267531332C408EB500E8B42B /* TransmissionTypeSheet */ = {
+			isa = PBXGroup;
+			children = (
+				267531362C408EE800E8B42B /* TransmissionTypeTableView */,
+				267531342C408ED200E8B42B /* TransmissionTypeVC.swift */,
+				267531372C408F0B00E8B42B /* TransmissionTypeView.swift */,
+				267531392C408F1800E8B42B /* TransmissionTypeViewModel.swift */,
+			);
+			path = TransmissionTypeSheet;
+			sourceTree = "<group>";
+		};
+		267531362C408EE800E8B42B /* TransmissionTypeTableView */ = {
+			isa = PBXGroup;
+			children = (
+				2675313B2C408F9C00E8B42B /* TransmissionTypeCell.swift */,
+				2675313F2C40925F00E8B42B /* TransmissionTypeVC + ExtTableView.swift */,
+			);
+			path = TransmissionTypeTableView;
 			sourceTree = "<group>";
 		};
 		2682B21A2C3310E2004D02E4 = {
@@ -581,6 +649,8 @@
 				261C15D42C3ABF78004B5A1E /* CarRepairPhases.swift in Sources */,
 				267530FD2C3EB43400E8B42B /* BrandsSheetsView.swift in Sources */,
 				2682B2292C3310E2004D02E4 /* SceneDelegate.swift in Sources */,
+				267531302C407B8400E8B42B /* FuelTypeVC + ExtTableView.swift in Sources */,
+				2675312E2C407B2900E8B42B /* FuelTypeCell.swift in Sources */,
 				261C15CA2C3ABA61004B5A1E /* UIKitImageLoader.swift in Sources */,
 				267530F72C3DA98A00E8B42B /* UITextField.swift in Sources */,
 				2622943E2C349BC30062EEC1 /* SignUpViewModel.swift in Sources */,
@@ -588,27 +658,35 @@
 				261C15DC2C3C35D0004B5A1E /* UserMainViewWithoutOrder.swift in Sources */,
 				261C15C72C3AB768004B5A1E /* CustomStackView.swift in Sources */,
 				26CA73FD2C3485AE00715AC3 /* OnBoardingView.swift in Sources */,
+				267531322C407BEF00E8B42B /* FuelTypeResponse.swift in Sources */,
 				267531152C3FF30900E8B42B /* ModelsVC + ExtTableView.swift in Sources */,
 				267531232C40267D00E8B42B /* ReleaseDateCell.swift in Sources */,
 				267531212C40266E00E8B42B /* ReleasDateVC + ExtTableView.swift in Sources */,
 				267531042C3EB78B00E8B42B /* BrandsCell.swift in Sources */,
 				2622943C2C349BBA0062EEC1 /* SignUpView.swift in Sources */,
+				267531352C408ED200E8B42B /* TransmissionTypeVC.swift in Sources */,
 				26CA74052C348A4200715AC3 /* CustomGeneralButton.swift in Sources */,
 				2675311E2C40259800E8B42B /* ReleaseDateViewModel.swift in Sources */,
 				267530EB2C3D535F00E8B42B /* GarageSheetVC.swift in Sources */,
 				267530EE2C3D8B5100E8B42B /* AddCarDetailsView.swift in Sources */,
+				2675313C2C408F9C00E8B42B /* TransmissionTypeCell.swift in Sources */,
 				26CA73FB2C3485A300715AC3 /* OnBoardingViewModel.swift in Sources */,
+				267531272C4079C900E8B42B /* FuelTypeVC.swift in Sources */,
 				26ADA73A2C38CD9A00D6E3EE /* SignInViewModel.swift in Sources */,
+				267531382C408F0B00E8B42B /* TransmissionTypeView.swift in Sources */,
 				267530F02C3D8B6600E8B42B /* AddCarDetailsViewModel.swift in Sources */,
 				261C15D22C3ABE0E004B5A1E /* WelcomeVC + ExtCollectionView.swift in Sources */,
 				26CA73FF2C3485BE00715AC3 /* OnBoardingVC.swift in Sources */,
 				267531102C3FF2D400E8B42B /* ModelsViewModel.swift in Sources */,
 				261C15DE2C3C35E9004B5A1E /* UserMainViewModel.swift in Sources */,
+				2675313A2C408F1800E8B42B /* TransmissionTypeViewModel.swift in Sources */,
 				267531132C3FF2F000E8B42B /* ModelsCell.swift in Sources */,
 				261C15E02C3C35F3004B5A1E /* UserMainVC.swift in Sources */,
 				267531172C3FF4A000E8B42B /* CarModelResponse.swift in Sources */,
 				2675311A2C40257F00E8B42B /* ReleaseDateVC.swift in Sources */,
 				267531062C3EB79E00E8B42B /* BrandsSheetVC + ExtTableView.swift in Sources */,
+				2675313E2C4090E100E8B42B /* TransmissionTypesResponse.swift in Sources */,
+				2675312B2C4079DC00E8B42B /* FuelTypeViewModel.swift in Sources */,
 				26ADA7382C38CD8F00D6E3EE /* SignInView.swift in Sources */,
 				2675311C2C40258C00E8B42B /* ReleaseDateView.swift in Sources */,
 				267531012C3EB4EE00E8B42B /* BrandsSheetsVC.swift in Sources */,
@@ -620,7 +698,9 @@
 				267530F42C3D8D4B00E8B42B /* CarInfoButton.swift in Sources */,
 				261C15CD2C3ABDAF004B5A1E /* CustomFlowLayout.swift in Sources */,
 				267530FB2C3E0E2D00E8B42B /* CarBrandsResponse.swift in Sources */,
+				267531402C40925F00E8B42B /* TransmissionTypeVC + ExtTableView.swift in Sources */,
 				261C15C12C3A13A4004B5A1E /* WelcomeVC.swift in Sources */,
+				267531292C4079D500E8B42B /* FuelTypeView.swift in Sources */,
 				261C15D92C3AC196004B5A1E /* TitlesCustomLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

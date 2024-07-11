@@ -16,7 +16,13 @@ protocol ModelsSheetsDelegate: AnyObject {
 }
 
 protocol ReleaseDateSheetsDelegate: AnyObject {
-    func didSelectCarModel(_ releaseDate: Int)
+    func didSelectReleaseDate(_ releaseDate: Int)
+}
+protocol FuelTypeSheetDelegate: AnyObject {
+    func didSelectFuelType(_ fuelType: FuelTypeResponse)
+}
+protocol TransmissionTypeSheetDelegate: AnyObject {
+    func didSelectTransmissionType(_ transmissionType: TransmissionTypesResponse)
 }
 
 final class AddCarDetailsVC: UIViewController {
@@ -152,11 +158,41 @@ extension AddCarDetailsVC: SheetRepresentableDelegate {
     }
     
     func presentFuelSheet() {
-        //TODO: Add Logic
+        let fuelTypeView = FuelTypeView()
+        let fuelTypeViewModel = FuelTypeViewModel()
+        
+        let vc = FuelTypeVC(fuelTypeView: fuelTypeView, fuelTypeViewModel: fuelTypeViewModel)
+        vc.fuelTypeSheetDelegate = self
+        vc.modalPresentationStyle = .pageSheet
+        
+        let sheet = vc.sheetPresentationController
+        let smallDetentId = UISheetPresentationController.Detent.Identifier("small")
+        let smallDetent = UISheetPresentationController.Detent.custom(identifier: smallDetentId) { context in
+            return 200
+        }
+        
+        sheet?.detents = [smallDetent]
+        
+        present(vc, animated: true, completion: nil)
     }
     
     func presentTransmissionSheet() {
-        //TODO: Add Logic
+        let transmissionTypeView = TransmissionTypeView()
+        let transmissionTypeViewModel = TransmissionTypeViewModel()
+        
+        let vc = TransmissionTypeVC(transmissionTypeView: transmissionTypeView, transmissionTypeViewModel: transmissionTypeViewModel)
+        vc.transmissionTypeSheetDelegate = self
+        vc.modalPresentationStyle = .pageSheet
+        
+        let sheet = vc.sheetPresentationController
+        let smallDetentId = UISheetPresentationController.Detent.Identifier("small")
+        let smallDetent = UISheetPresentationController.Detent.custom(identifier: smallDetentId) { context in
+            return 200
+        }
+        
+        sheet?.detents = [smallDetent]
+        
+        present(vc, animated: true, completion: nil)
     }
 }
 
@@ -174,7 +210,19 @@ extension AddCarDetailsVC: ModelsSheetsDelegate {
 }
 
 extension AddCarDetailsVC: ReleaseDateSheetsDelegate {
-    func didSelectCarModel(_ releaseDate: Int) {
+    func didSelectReleaseDate(_ releaseDate: Int) {
         addCarDetailsViewModel.carReleaseDate = String(releaseDate)
+    }
+}
+
+extension AddCarDetailsVC: FuelTypeSheetDelegate {
+    func didSelectFuelType(_ fuelType: FuelTypeResponse) {
+        addCarDetailsViewModel.carFuelType = fuelType.localizedValue
+    }
+}
+
+extension AddCarDetailsVC: TransmissionTypeSheetDelegate {
+    func didSelectTransmissionType(_ transmissionType: TransmissionTypesResponse) {
+        addCarDetailsViewModel.carTransmissionType = transmissionType.localizedValue
     }
 }
