@@ -198,23 +198,23 @@ final class AddCarDetailsView: UIView {
         carInfoStackView.addArrangedSubview(carFuelTypeButton)
         carInfoStackView.addArrangedSubview(carTransmissionTypeButton)
         
-        carBrandButton.addAction(UIAction(title: "Fetch Brands And Show Sheet", handler: { [weak self] _ in
+        carBrandButton.addAction(UIAction(title: "Present Brands Sheet", handler: { [weak self] _ in
             self?.sheetRepresentableDelegate?.presentBrandsSheet()
         }), for: .touchUpInside)
         
-        carModelButton.addAction(UIAction(title: "Fetch Models And Show Sheet", handler: { [weak self] _ in
+        carModelButton.addAction(UIAction(title: "Present Models Sheet", handler: { [weak self] _ in
             self?.sheetRepresentableDelegate?.presentModelsSheet()
         }), for: .touchUpInside)
         
-        carReleaseDateButton.addAction(UIAction(title: "Fetch Release Dates And Show Sheet", handler: { [weak self] _ in
+        carReleaseDateButton.addAction(UIAction(title: "Present ReleaseDate Sheet", handler: { [weak self] _ in
             self?.sheetRepresentableDelegate?.presentReleaseDateSheet()
         }), for: .touchUpInside)
         
-        carFuelTypeButton.addAction(UIAction(title: "Fetch FuelTypes And Show Sheet", handler: { [weak self] _ in
+        carFuelTypeButton.addAction(UIAction(title: "Present FuelType Sheet", handler: { [weak self] _ in
             self?.sheetRepresentableDelegate?.presentFuelSheet()
         }), for: .touchUpInside)
         
-        carTransmissionTypeButton.addAction(UIAction(title: "Fetch TransmissionTypes And Show Sheet", handler: { [weak self] _ in
+        carTransmissionTypeButton.addAction(UIAction(title: "Present TransmissionType Sheet", handler: { [weak self] _ in
             self?.sheetRepresentableDelegate?.presentTransmissionSheet()
         }), for: .touchUpInside)
         

@@ -8,15 +8,11 @@
 import Foundation
 import Network
 
-final class BrandsAndModelsSheetViewModel {
+final class BrandsSheetViewModel {
     private let carBrandsApi: String = "https://chitauto-default-rtdb.europe-west1.firebasedatabase.app/carBrands.json"
     
     var previouslySelectedIndexPath: IndexPath?
     var savedCarBrand: CarBrand?
-    
-    var savedCarBrandName: String {
-        savedCarBrand?.name ?? "Uknown"
-    }
     
     var carBrandsCount: Int {
         carBrands.count

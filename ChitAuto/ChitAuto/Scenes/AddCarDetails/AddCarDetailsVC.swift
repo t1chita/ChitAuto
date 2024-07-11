@@ -7,19 +7,19 @@
 
 import UIKit
 
-protocol BrandsAndModelsSheetsDelegate: AnyObject {
+protocol BrandsSheetsDelegate: AnyObject {
     func didSelectCarBrand(_ carBrand: CarBrand)
 }
 
 final class AddCarDetailsVC: UIViewController {
     //MARK: - Properties
     var addCardDetailsView: AddCarDetailsView
-    var addCardDetailsViewModel: AddCarDetailsViewModel
+    var addCarDetailsViewModel: AddCarDetailsViewModel
     
     //MARK: - Initialization
     init(addCardDetailsView: AddCarDetailsView, addCardDetailsViewModel: AddCarDetailsViewModel) {
         self.addCardDetailsView = addCardDetailsView
-        self.addCardDetailsViewModel = addCardDetailsViewModel
+        self.addCarDetailsViewModel = addCardDetailsViewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -47,17 +47,7 @@ final class AddCarDetailsVC: UIViewController {
     
     //MARK: - Delegates
     private func handleDelegates() {
-        getDelegatesFromViewModelToView()
         getDelegatesFromView()
-        getDelegatesFromViewToViewModel()
-    }
-    
-    private func getDelegatesFromViewModelToView() {
-
-    }
-    
-    private func getDelegatesFromViewToViewModel() {
-
     }
     
     private func getDelegatesFromView() {
@@ -66,37 +56,39 @@ final class AddCarDetailsVC: UIViewController {
     }
     
     //MARK: - Set UI Components
-    private func setCarDetailsButtons() {
-        addCardDetailsViewModel.carBrandNameChanged = { [weak self] newBrandName in
-               self?.addCardDetailsView.carBrandButton.title = newBrandName
-           }
-           addCardDetailsViewModel.carModelNameChanged = { [weak self] newModelName in
-               self?.addCardDetailsView.carModelButton.title = newModelName
-           }
-           addCardDetailsViewModel.carReleaseDateChanged = { [weak self] newReleaseDate in
-               self?.addCardDetailsView.carReleaseDateButton.title = newReleaseDate
-           }
-           addCardDetailsViewModel.carFuelTypeChanged = { [weak self] newFuelType in
-               self?.addCardDetailsView.carFuelTypeButton.title = newFuelType
-           }
-           addCardDetailsViewModel.carTransmissionTypeChanged = { [weak self] newTransmissionType in
-               self?.addCardDetailsView.carTransmissionTypeButton.title = newTransmissionType
-           }
-
-           // Set default titles
-           addCardDetailsView.carBrandButton.title = addCardDetailsViewModel.carBrandName
-           addCardDetailsView.carModelButton.title = addCardDetailsViewModel.carModelName
-           addCardDetailsView.carReleaseDateButton.title = addCardDetailsViewModel.carReleaseDate
-           addCardDetailsView.carFuelTypeButton.title = addCardDetailsViewModel.carFuelType
-           addCardDetailsView.carTransmissionTypeButton.title = addCardDetailsViewModel.carTransmissionType
-    }
-    
     private func removeDefaultBackButton() {
         navigationItem.setHidesBackButton(true, animated: true)
     }
 }
 
 //MARK: - Extensions
+extension AddCarDetailsVC {
+    private func setCarDetailsButtons() {
+        addCarDetailsViewModel.carBrandNameChanged = { [weak self] newBrandName in
+               self?.addCardDetailsView.carBrandButton.title = newBrandName
+           }
+           addCarDetailsViewModel.carModelNameChanged = { [weak self] newModelName in
+               self?.addCardDetailsView.carModelButton.title = newModelName
+           }
+           addCarDetailsViewModel.carReleaseDateChanged = { [weak self] newReleaseDate in
+               self?.addCardDetailsView.carReleaseDateButton.title = newReleaseDate
+           }
+           addCarDetailsViewModel.carFuelTypeChanged = { [weak self] newFuelType in
+               self?.addCardDetailsView.carFuelTypeButton.title = newFuelType
+           }
+           addCarDetailsViewModel.carTransmissionTypeChanged = { [weak self] newTransmissionType in
+               self?.addCardDetailsView.carTransmissionTypeButton.title = newTransmissionType
+           }
+
+           // Set default titles
+           addCardDetailsView.carBrandButton.title = addCarDetailsViewModel.carBrandName
+           addCardDetailsView.carModelButton.title = addCarDetailsViewModel.carModelName
+           addCardDetailsView.carReleaseDateButton.title = addCarDetailsViewModel.carReleaseDate
+           addCardDetailsView.carFuelTypeButton.title = addCarDetailsViewModel.carFuelType
+           addCardDetailsView.carTransmissionTypeButton.title = addCarDetailsViewModel.carTransmissionType
+    }
+}
+
 extension AddCarDetailsVC: PopViewControllerDelegate {
     func popViewController() {
         navigationController?.popViewController(animated: true)
@@ -105,12 +97,11 @@ extension AddCarDetailsVC: PopViewControllerDelegate {
 
 extension AddCarDetailsVC: SheetRepresentableDelegate {
     func presentBrandsSheet() {
-        let brandsAndModelsSheetsView = BrandsAndModelsSheetsView()
-        let brandsAndModelsSheetsViewModel = BrandsAndModelsSheetViewModel()
+        let brandsSheetsView = BrandsSheetsView()
+        let brandsSheetViewModel = BrandsSheetViewModel()
         
-        
-        let vc = BrandsAndModelsSheetsVC(brandsAndModelsSheetView: brandsAndModelsSheetsView, brandsAndModelsSheetViewModel: brandsAndModelsSheetsViewModel)
-        vc.brandsAndModelsSheetsDelegate = self
+        let vc = BrandsSheetsVC(brandsSheetView: brandsSheetsView, brandsSheetViewModel: brandsSheetViewModel)
+        vc.brandsSheetsDelegate = self
         vc.modalPresentationStyle = .pageSheet
         
         let sheet = vc.sheetPresentationController
@@ -137,8 +128,9 @@ extension AddCarDetailsVC: SheetRepresentableDelegate {
     }
 }
 
-extension AddCarDetailsVC: BrandsAndModelsSheetsDelegate {
+extension AddCarDetailsVC: BrandsSheetsDelegate {
     func didSelectCarBrand(_ carBrand: CarBrand) {
-        addCardDetailsViewModel.carBrandName = carBrand.name
+        addCarDetailsViewModel.carBrandName = carBrand.name
+        addCarDetailsViewModel.carBrandId = carBrand.id
     }
 }

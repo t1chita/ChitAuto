@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class BrandsAndModelsSheetsView: UIView {
+final class BrandsSheetsView: UIView {
     //MARK: - UIComponents
     private let titleLabel: UILabel = {
         let lbl = UILabel()
@@ -26,7 +26,6 @@ final class BrandsAndModelsSheetsView: UIView {
         tblView.separatorStyle = .none
         return tblView
     }()
-    //MARK: - Properties
     
     //MARK: - Initialization
     override init(frame: CGRect) {
@@ -68,7 +67,7 @@ final class BrandsAndModelsSheetsView: UIView {
     }
 }
 
-extension BrandsAndModelsSheetsView: ReloadDelegate {
+extension BrandsSheetsView: ReloadDelegate {
     func reloadData() {
         DispatchQueue.main.async { [weak self] in
             self?.brandsTableView.reloadData()
