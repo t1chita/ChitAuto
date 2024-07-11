@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct CarRepairPhases: Codable {
+struct CarRepairPhases: Decodable {
     let phases: [RepairPhase]
 }
 
-struct RepairPhase: Codable {
+struct RepairPhase: Decodable {
     let firstStep: String
     let imageURL: String
     let phaseOrdinality: String

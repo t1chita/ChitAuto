@@ -1,15 +1,15 @@
 //
-//  BrandsCell.swift
+//  ModelsCell.swift
 //  ChitAuto
 //
-//  Created by Temur Chitashvili on 10.07.24.
+//  Created by Temur Chitashvili on 11.07.24.
 //
 
 import UIKit
 
-final class BrandsCell: UITableViewCell {
+final class ModelsCell: UITableViewCell {
     //MARK: - Properties
-    static let identifier = "BrandsCell"
+    static let identifier = "ModelsCell"
     
     var isCellSelected: Bool = false
     
@@ -30,14 +30,7 @@ final class BrandsCell: UITableViewCell {
         return imView
     }()
     
-    private let carBrandImage: UIImageView = {
-        let imView = UIImageView()
-        imView.translatesAutoresizingMaskIntoConstraints = false
-        imView.contentMode = .scaleAspectFit
-        return imView
-    }()
-    
-    private let brandName: UILabel = {
+    private let carModelName: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.font = .systemFont(ofSize: 14, weight: .bold)
@@ -46,7 +39,7 @@ final class BrandsCell: UITableViewCell {
         lbl.numberOfLines = 0
         return lbl
     }()
-
+    
     //MARK: - Initialization
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -57,11 +50,9 @@ final class BrandsCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     //MARK: - Configure
-    func configure(withCarBrand carBrand: CarBrand) {
-        if let imageUrl = URL(string: carBrand.imageUrl ?? "") {
-            carBrandImage.loadImage(from: imageUrl)
-        }
-        self.brandName.text = carBrand.name
+    func configure(withCarBrand carModel: CarModel) {
+        self.carModelName.text = carModel.title
+        
         self.myIndicatorImage.image = isSelected ? UIImage(systemName: "checkmark.square.fill") : UIImage(systemName: "square")
         self.myIndicatorImage.tintColor = isSelected ? .checkmark : .systemGray
     }
@@ -70,8 +61,7 @@ final class BrandsCell: UITableViewCell {
     private func setupUI() {
         setRectangleView()
         setIndicatorImage()
-        setCarBrandImage()
-        setCarBrandName()
+        setCarModelName()
     }
     
     //MARK: - Set UI Components
@@ -98,24 +88,13 @@ final class BrandsCell: UITableViewCell {
         ])
     }
     
-    private func setCarBrandImage() {
-        rectangleView.addSubview(carBrandImage)
+    private func setCarModelName() {
+        rectangleView.addSubview(carModelName)
         
         NSLayoutConstraint.activate([
-            carBrandImage.centerYAnchor.constraint(equalTo: rectangleView.centerYAnchor),
-            carBrandImage.heightAnchor.constraint(equalToConstant: 30),
-            carBrandImage.leadingAnchor.constraint(equalTo: myIndicatorImage.trailingAnchor, constant: 10),
-            carBrandImage.widthAnchor.constraint(equalToConstant: 30),
+            carModelName.centerYAnchor.constraint(equalTo: rectangleView.centerYAnchor),
+            carModelName.heightAnchor.constraint(equalToConstant: 17),
+            carModelName.trailingAnchor.constraint(equalTo: rectangleView.trailingAnchor, constant: -34),
         ])
-    }
-    
-    private func setCarBrandName() {
-        rectangleView.addSubview(brandName)
-        
-        NSLayoutConstraint.activate([
-            brandName.centerYAnchor.constraint(equalTo: rectangleView.centerYAnchor),
-            brandName.heightAnchor.constraint(equalToConstant: 17),
-            brandName.trailingAnchor.constraint(equalTo: rectangleView.trailingAnchor, constant: -34),
-           ])
     }
 }

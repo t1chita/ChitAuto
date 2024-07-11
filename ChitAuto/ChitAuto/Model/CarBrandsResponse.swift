@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct CarBrand: Codable {
+struct CarBrand: Decodable {
     let id: Int
     let imageUrl: String?
     let name: String
     let order: Int
 }
 
-struct CarBrandsResponse: Codable {
+struct CarBrandsResponse: Decodable {
     let carBrands: [CarBrand]
 }
 
