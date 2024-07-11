@@ -245,7 +245,3 @@ final class AddCarDetailsView: UIView {
         ])
     }
 }
-
-#Preview {
-    AddCarDetailsVC(addCardDetailsView: AddCarDetailsView(), addCardDetailsViewModel: AddCarDetailsViewModel())
-}

@@ -15,6 +15,10 @@ protocol ModelsSheetsDelegate: AnyObject {
     func didSelectCarModel(_ carModel: CarModel)
 }
 
+protocol ReleaseDateSheetsDelegate: AnyObject {
+    func didSelectCarModel(_ releaseDate: Int)
+}
+
 final class AddCarDetailsVC: UIViewController {
     //MARK: - Properties
     var addCardDetailsView: AddCarDetailsView
@@ -133,7 +137,18 @@ extension AddCarDetailsVC: SheetRepresentableDelegate {
     }
     
     func presentReleaseDateSheet() {
-        //TODO: Add Logic
+        let releaseDateView = ReleaseDateView()
+        let releaseDateViewModel = ReleaseDateViewModel()
+        
+        let vc = ReleaseDateVC(releaseDateView: releaseDateView, releaseDateViewModel: releaseDateViewModel)
+        vc.releaseDateSheetsDelegate = self
+        vc.modalPresentationStyle = .pageSheet
+        
+        let sheet = vc.sheetPresentationController
+        
+        sheet?.detents = [.medium()]
+        
+        present(vc, animated: true, completion: nil)
     }
     
     func presentFuelSheet() {
@@ -155,5 +170,11 @@ extension AddCarDetailsVC: ModelsSheetsDelegate {
     func didSelectCarModel(_ carModel: CarModel) {
         addCarDetailsViewModel.carModelName = carModel.title
         addCarDetailsViewModel.carModelId = carModel.id
+    }
+}
+
+extension AddCarDetailsVC: ReleaseDateSheetsDelegate {
+    func didSelectCarModel(_ releaseDate: Int) {
+        addCarDetailsViewModel.carReleaseDate = String(releaseDate)
     }
 }
