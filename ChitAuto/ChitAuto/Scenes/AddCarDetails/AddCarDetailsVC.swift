@@ -11,6 +11,10 @@ protocol BrandsSheetsDelegate: AnyObject {
     func didSelectCarBrand(_ carBrand: CarBrand)
 }
 
+protocol ModelsSheetsDelegate: AnyObject {
+    func didSelectCarModel(_ carModel: CarModel)
+}
+
 final class AddCarDetailsVC: UIViewController {
     //MARK: - Properties
     var addCardDetailsView: AddCarDetailsView
@@ -112,7 +116,20 @@ extension AddCarDetailsVC: SheetRepresentableDelegate {
     }
     
     func presentModelsSheet() {
-        //TODO: Add Logic
+        guard let carBrandId = addCarDetailsViewModel.carBrandId else { return }
+        
+        let modelsView = ModelsView()
+        let modelsViewModel = ModelsViewModel(carBrandId: carBrandId)
+        
+        let vc = ModelsVC(modelsView: modelsView, modelsViewModel: modelsViewModel)
+        vc.modelsSheetsDelegate = self
+        vc.modalPresentationStyle = .pageSheet
+        
+        let sheet = vc.sheetPresentationController
+        
+        sheet?.detents = [.medium()]
+        
+        present(vc, animated: true, completion: nil)
     }
     
     func presentReleaseDateSheet() {
@@ -132,5 +149,11 @@ extension AddCarDetailsVC: BrandsSheetsDelegate {
     func didSelectCarBrand(_ carBrand: CarBrand) {
         addCarDetailsViewModel.carBrandName = carBrand.name
         addCarDetailsViewModel.carBrandId = carBrand.id
+    }
+}
+extension AddCarDetailsVC: ModelsSheetsDelegate {
+    func didSelectCarModel(_ carModel: CarModel) {
+        addCarDetailsViewModel.carModelName = carModel.title
+        addCarDetailsViewModel.carModelId = carModel.id
     }
 }

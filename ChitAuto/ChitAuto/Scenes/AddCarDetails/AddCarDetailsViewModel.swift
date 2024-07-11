@@ -11,6 +11,8 @@ import Network
 final class AddCarDetailsViewModel {
     var carBrandId: Int?
     
+    var carModelId: Int?
+    
     var carBrandName: String = "მწარმოებელი" {
         didSet { carBrandNameChanged?(carBrandName) }
     }
