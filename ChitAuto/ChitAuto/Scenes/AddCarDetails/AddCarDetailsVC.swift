@@ -16,21 +16,13 @@ protocol ModelsSheetsDelegate: AnyObject {
 }
 
 protocol ReleaseDateSheetsDelegate: AnyObject {
-<<<<<<< HEAD
-    func didSelectCarModel(_ releaseDate: Int)
-=======
     func didSelectReleaseDate(_ releaseDate: Int)
 }
 protocol FuelTypeSheetDelegate: AnyObject {
     func didSelectFuelType(_ fuelType: String)
 }
 protocol TransmissionTypeSheetDelegate: AnyObject {
-<<<<<<< HEAD
-    func didSelectTransmissionType(_ transmissionType: TransmissionTypesResponse)
->>>>>>> UIKIT-AddCarDetails
-=======
     func didSelectTransmissionType(_ transmissionType: String)
->>>>>>> UIKIT-AddCarDetails
 }
 
 final class AddCarDetailsVC: UIViewController {
@@ -208,7 +200,7 @@ extension AddCarDetailsVC: SheetRepresentableDelegate {
 extension AddCarDetailsVC: BrandsSheetsDelegate {
     func didSelectCarBrand(_ carBrand: CarBrand) {
         addCarDetailsViewModel.carBrandName = carBrand.name
-        addCarDetailsViewModel.carBrand = carBrand 
+        addCarDetailsViewModel.carBrand = carBrand
     }
 }
 extension AddCarDetailsVC: ModelsSheetsDelegate {
@@ -218,12 +210,6 @@ extension AddCarDetailsVC: ModelsSheetsDelegate {
 }
 
 extension AddCarDetailsVC: ReleaseDateSheetsDelegate {
-<<<<<<< HEAD
-    func didSelectCarModel(_ releaseDate: Int) {
-        addCarDetailsViewModel.carReleaseDate = String(releaseDate)
-    }
-}
-=======
     func didSelectReleaseDate(_ releaseDate: Int) {
         addCarDetailsViewModel.carReleaseDate = String(releaseDate)
     }
@@ -240,9 +226,6 @@ extension AddCarDetailsVC: TransmissionTypeSheetDelegate {
         addCarDetailsViewModel.carTransmissionType = transmissionType
     }
 }
-<<<<<<< HEAD
->>>>>>> UIKIT-AddCarDetails
-=======
 
 
 extension AddCarDetailsVC: SaveButtonDelegate {
@@ -255,4 +238,3 @@ extension AddCarDetailsVC: SaveButtonDelegate {
     }
 }
  
->>>>>>> UIKIT-AddCarDetails
