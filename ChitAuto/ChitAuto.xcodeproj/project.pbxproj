@@ -65,6 +65,10 @@
 		2675313C2C408F9C00E8B42B /* TransmissionTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2675313B2C408F9C00E8B42B /* TransmissionTypeCell.swift */; };
 		2675313E2C4090E100E8B42B /* TransmissionTypesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2675313D2C4090E100E8B42B /* TransmissionTypesResponse.swift */; };
 		267531402C40925F00E8B42B /* TransmissionTypeVC + ExtTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2675313F2C40925F00E8B42B /* TransmissionTypeVC + ExtTableView.swift */; };
+<<<<<<< HEAD
+>>>>>>> UIKIT-AddCarDetails
+=======
+		2675317C2C40BC2500E8B42B /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2675317B2C40BC2400E8B42B /* Car.swift */; };
 >>>>>>> UIKIT-AddCarDetails
 		2682B2272C3310E2004D02E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682B2262C3310E2004D02E4 /* AppDelegate.swift */; };
 		2682B2292C3310E2004D02E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682B2282C3310E2004D02E4 /* SceneDelegate.swift */; };
@@ -145,6 +149,10 @@
 		2675313B2C408F9C00E8B42B /* TransmissionTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransmissionTypeCell.swift; sourceTree = "<group>"; };
 		2675313D2C4090E100E8B42B /* TransmissionTypesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransmissionTypesResponse.swift; sourceTree = "<group>"; };
 		2675313F2C40925F00E8B42B /* TransmissionTypeVC + ExtTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransmissionTypeVC + ExtTableView.swift"; sourceTree = "<group>"; };
+<<<<<<< HEAD
+>>>>>>> UIKIT-AddCarDetails
+=======
+		2675317B2C40BC2400E8B42B /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 >>>>>>> UIKIT-AddCarDetails
 		2682B2232C3310E2004D02E4 /* ChitAuto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChitAuto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2682B2262C3310E2004D02E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -188,6 +196,7 @@
 				267531162C3FF4A000E8B42B /* CarModelResponse.swift */,
 				267531312C407BEF00E8B42B /* FuelTypeResponse.swift */,
 				2675313D2C4090E100E8B42B /* TransmissionTypesResponse.swift */,
+				2675317B2C40BC2400E8B42B /* Car.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -371,8 +380,8 @@
 		2675311F2C40265000E8B42B /* ReleaseDateTableView */ = {
 			isa = PBXGroup;
 			children = (
-				267531202C40266E00E8B42B /* ReleasDateVC + ExtTableView.swift */,
 				267531222C40267D00E8B42B /* ReleaseDateCell.swift */,
+				267531202C40266E00E8B42B /* ReleasDateVC + ExtTableView.swift */,
 			);
 			path = ReleaseDateTableView;
 			sourceTree = "<group>";
@@ -706,6 +715,7 @@
 				26ADA7322C38C2A400D6E3EE /* CustomTextField.swift in Sources */,
 				261C15BD2C3A1380004B5A1E /* WelcomeView.swift in Sources */,
 				261C15C42C3AB6D4004B5A1E /* CustomImageView.swift in Sources */,
+				2675317C2C40BC2500E8B42B /* Car.swift in Sources */,
 				2675310C2C3FF2A200E8B42B /* ModelsVC.swift in Sources */,
 				267530F42C3D8D4B00E8B42B /* CarInfoButton.swift in Sources */,
 				261C15CD2C3ABDAF004B5A1E /* CustomFlowLayout.swift in Sources */,

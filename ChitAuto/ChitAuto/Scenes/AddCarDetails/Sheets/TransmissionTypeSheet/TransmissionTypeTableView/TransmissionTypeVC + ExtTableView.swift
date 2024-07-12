@@ -10,25 +10,24 @@ import UIKit
 
 extension TransmissionTypeVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? FuelTypeCell else { return }
+        guard let cell = tableView.cellForRow(at: indexPath) as? TransmissionTypeCell else { return }
         let selectedTransmissionType = transmissionTypeViewModel.transmissionTypes[indexPath.row]
         
         cell.isCellSelected = true
-        cell.configure(withFuelType: selectedTransmissionType.localizedValue)
-        transmissionTypeViewModel.savedTransmissionType = selectedTransmissionType
+        cell.configure(withTransmissionType: selectedTransmissionType.localizedValue)
         
         if let previousIndexPath = transmissionTypeViewModel.previouslySelectedIndexPath, previousIndexPath != indexPath {
-            guard let previousCell = tableView.cellForRow(at: previousIndexPath) as? FuelTypeCell else { return }
+            guard let previousCell = tableView.cellForRow(at: previousIndexPath) as? TransmissionTypeCell else { return }
             let previouslySelectedTransmissionType = transmissionTypeViewModel.transmissionTypes[previousIndexPath.row]
             
             previousCell.isCellSelected = false
-            previousCell.configure(withFuelType: previouslySelectedTransmissionType.localizedValue)
+            previousCell.configure(withTransmissionType: previouslySelectedTransmissionType.localizedValue)
         }
         
         transmissionTypeViewModel.previouslySelectedIndexPath = indexPath
         tableView.deselectRow(at: indexPath, animated: true)
         
-        transmissionTypeSheetDelegate?.didSelectTransmissionType(selectedTransmissionType)
+        transmissionTypeSheetDelegate?.didSelectTransmissionType(selectedTransmissionType.localizedValue)
         self.dismiss(animated: true, completion: nil)
     }
 }

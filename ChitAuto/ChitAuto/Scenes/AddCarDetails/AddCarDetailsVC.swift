@@ -12,7 +12,7 @@ protocol BrandsSheetsDelegate: AnyObject {
 }
 
 protocol ModelsSheetsDelegate: AnyObject {
-    func didSelectCarModel(_ carModel: CarModel)
+    func didSelectCarModel(_ carModelName: String)
 }
 
 protocol ReleaseDateSheetsDelegate: AnyObject {
@@ -22,10 +22,14 @@ protocol ReleaseDateSheetsDelegate: AnyObject {
     func didSelectReleaseDate(_ releaseDate: Int)
 }
 protocol FuelTypeSheetDelegate: AnyObject {
-    func didSelectFuelType(_ fuelType: FuelTypeResponse)
+    func didSelectFuelType(_ fuelType: String)
 }
 protocol TransmissionTypeSheetDelegate: AnyObject {
+<<<<<<< HEAD
     func didSelectTransmissionType(_ transmissionType: TransmissionTypesResponse)
+>>>>>>> UIKIT-AddCarDetails
+=======
+    func didSelectTransmissionType(_ transmissionType: String)
 >>>>>>> UIKIT-AddCarDetails
 }
 
@@ -71,6 +75,7 @@ final class AddCarDetailsVC: UIViewController {
     private func getDelegatesFromView() {
         addCardDetailsView.popViewControllerDelegate = self
         addCardDetailsView.sheetRepresentableDelegate = self
+        addCardDetailsView.saveButtonDelegate = self
     }
     
     //MARK: - Set UI Components
@@ -130,7 +135,7 @@ extension AddCarDetailsVC: SheetRepresentableDelegate {
     }
     
     func presentModelsSheet() {
-        guard let carBrandId = addCarDetailsViewModel.carBrandId else { return }
+        guard let carBrandId = addCarDetailsViewModel.carBrand?.id else { return }
         
         let modelsView = ModelsView()
         let modelsViewModel = ModelsViewModel(carBrandId: carBrandId)
@@ -203,13 +208,12 @@ extension AddCarDetailsVC: SheetRepresentableDelegate {
 extension AddCarDetailsVC: BrandsSheetsDelegate {
     func didSelectCarBrand(_ carBrand: CarBrand) {
         addCarDetailsViewModel.carBrandName = carBrand.name
-        addCarDetailsViewModel.carBrandId = carBrand.id
+        addCarDetailsViewModel.carBrand = carBrand 
     }
 }
 extension AddCarDetailsVC: ModelsSheetsDelegate {
-    func didSelectCarModel(_ carModel: CarModel) {
-        addCarDetailsViewModel.carModelName = carModel.title
-        addCarDetailsViewModel.carModelId = carModel.id
+    func didSelectCarModel(_ carModelName: String) {
+        addCarDetailsViewModel.carModelName = carModelName
     }
 }
 
@@ -226,14 +230,29 @@ extension AddCarDetailsVC: ReleaseDateSheetsDelegate {
 }
 
 extension AddCarDetailsVC: FuelTypeSheetDelegate {
-    func didSelectFuelType(_ fuelType: FuelTypeResponse) {
-        addCarDetailsViewModel.carFuelType = fuelType.localizedValue
+    func didSelectFuelType(_ fuelType: String) {
+        addCarDetailsViewModel.carFuelType = fuelType
     }
 }
 
 extension AddCarDetailsVC: TransmissionTypeSheetDelegate {
-    func didSelectTransmissionType(_ transmissionType: TransmissionTypesResponse) {
-        addCarDetailsViewModel.carTransmissionType = transmissionType.localizedValue
+    func didSelectTransmissionType(_ transmissionType: String) {
+        addCarDetailsViewModel.carTransmissionType = transmissionType
     }
 }
+<<<<<<< HEAD
+>>>>>>> UIKIT-AddCarDetails
+=======
+
+
+extension AddCarDetailsVC: SaveButtonDelegate {
+    func saveCarDetails() {
+        addCarDetailsViewModel.saveCarDetails { error in
+            print("DEBUG: Cant Save User Car \(String(describing: error?.localizedDescription))")
+            //TODO: Present Alert Can't Save
+        }
+        navigationController?.popViewController(animated: true)
+    }
+}
+ 
 >>>>>>> UIKIT-AddCarDetails

@@ -15,6 +15,10 @@ protocol SheetRepresentableDelegate: AnyObject {
     func presentTransmissionSheet()
 }
 
+protocol SaveButtonDelegate: AnyObject {
+    func saveCarDetails()
+}
+
 final class AddCarDetailsView: UIView {
     //MARK: - UIComponents
     private let scrollView: UIScrollView = {
@@ -113,6 +117,7 @@ final class AddCarDetailsView: UIView {
     //MARK: - Delegates
     weak var popViewControllerDelegate: PopViewControllerDelegate?
     weak var sheetRepresentableDelegate: SheetRepresentableDelegate?
+    weak var saveButtonDelegate: SaveButtonDelegate?
     
     //MARK: - Initialization
     override init(frame: CGRect) {
@@ -234,6 +239,10 @@ final class AddCarDetailsView: UIView {
         
         backButton.addAction(UIAction(title: "Go To User Main Page", handler: { [weak self] _ in
             self?.popViewControllerDelegate?.popViewController()
+        }), for: .touchUpInside)
+        
+        saveButton.addAction(UIAction(title: "Save Car Details", handler: {[weak self] _ in
+            self?.saveButtonDelegate?.saveCarDetails()
         }), for: .touchUpInside)
         
         NSLayoutConstraint.activate([

@@ -14,9 +14,7 @@ final class ModelsViewModel {
     var previouslySelectedIndexPath: IndexPath?
     
     var carBrandId: Int
-    
-    var savedCarModel: CarModel?
-    
+        
     var carModelsCount: Int {
         carModels.count
     }

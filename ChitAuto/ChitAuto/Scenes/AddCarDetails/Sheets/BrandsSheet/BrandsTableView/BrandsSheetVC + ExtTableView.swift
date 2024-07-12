@@ -14,7 +14,6 @@ extension BrandsSheetsVC: UITableViewDelegate {
         
         cell.isCellSelected = true
         cell.configure(withCarBrand: selectedCar)
-        brandsSheetViewModel.savedCarBrand = selectedCar
         
         if let previousIndexPath = brandsSheetViewModel.previouslySelectedIndexPath, previousIndexPath != indexPath {
             guard let previousCell = tableView.cellForRow(at: previousIndexPath) as? BrandsCell else { return }

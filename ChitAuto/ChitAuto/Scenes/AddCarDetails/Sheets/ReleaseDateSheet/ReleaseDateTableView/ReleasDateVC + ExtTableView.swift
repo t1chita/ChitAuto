@@ -14,7 +14,6 @@ extension ReleaseDateVC: UITableViewDelegate {
         
         cell.isCellSelected = true
         cell.configure(withReleaseDate: String(selectedYear))
-        releaseDateViewModel.savedYear = selectedYear
         
         if let previousIndexPath = releaseDateViewModel.previouslySelectedIndexPath, previousIndexPath != indexPath {
             guard let previousCell = tableView.cellForRow(at: previousIndexPath) as? ReleaseDateCell else { return }

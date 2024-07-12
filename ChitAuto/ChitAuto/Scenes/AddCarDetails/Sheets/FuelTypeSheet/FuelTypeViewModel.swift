@@ -12,9 +12,7 @@ final class FuelTypeViewModel {
     private let fuelTypeApi: String = "https://chitauto-default-rtdb.europe-west1.firebasedatabase.app/fuelTypes.json"
     
     var previouslySelectedIndexPath: IndexPath?
-    
-    var savedFuelType: FuelTypeResponse?
-    
+        
     var fuelTypesCount: Int {
         fuelTypes.count
     }

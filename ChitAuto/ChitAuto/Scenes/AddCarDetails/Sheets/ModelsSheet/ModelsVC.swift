@@ -36,7 +36,6 @@ final class ModelsVC: UIViewController {
         super.viewDidLoad()
         handleDelegates()
     }
-    //MARK: - Setup UI
     
     //MARK: - Delegates
     private func handleDelegates() {
@@ -52,7 +51,4 @@ final class ModelsVC: UIViewController {
         modelsView.modelsTableView.dataSource = self
         modelsView.modelsTableView.delegate = self
     }
-    
-    //MARK: - Set UI Components
-
 }

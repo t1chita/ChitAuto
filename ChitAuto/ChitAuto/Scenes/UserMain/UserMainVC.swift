@@ -116,7 +116,7 @@ extension UserMainVC: GarageSheetRepresentableDelegate {
 extension UserMainVC: AddCarDetailsPushableDelegate {
     func pushToAddCarDetailsPage() {
         let addCarDetailsView = AddCarDetailsView()
-        let addCarDetailsViewModel = AddCarDetailsViewModel()
+        let addCarDetailsViewModel = AddCarDetailsViewModel(userId: userMainViewModel.currentUser.id)
         let vc = AddCarDetailsVC(addCardDetailsView: addCarDetailsView, addCardDetailsViewModel: addCarDetailsViewModel)
         
         navigationController?.pushViewController(vc, animated: true)
