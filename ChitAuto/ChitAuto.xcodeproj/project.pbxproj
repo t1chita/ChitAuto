@@ -51,8 +51,6 @@
 		2675311E2C40259800E8B42B /* ReleaseDateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2675311D2C40259800E8B42B /* ReleaseDateViewModel.swift */; };
 		267531212C40266E00E8B42B /* ReleasDateVC + ExtTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267531202C40266E00E8B42B /* ReleasDateVC + ExtTableView.swift */; };
 		267531232C40267D00E8B42B /* ReleaseDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267531222C40267D00E8B42B /* ReleaseDateCell.swift */; };
-<<<<<<< HEAD
-=======
 		267531272C4079C900E8B42B /* FuelTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267531262C4079C900E8B42B /* FuelTypeVC.swift */; };
 		267531292C4079D500E8B42B /* FuelTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267531282C4079D500E8B42B /* FuelTypeView.swift */; };
 		2675312B2C4079DC00E8B42B /* FuelTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2675312A2C4079DC00E8B42B /* FuelTypeViewModel.swift */; };
@@ -65,11 +63,7 @@
 		2675313C2C408F9C00E8B42B /* TransmissionTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2675313B2C408F9C00E8B42B /* TransmissionTypeCell.swift */; };
 		2675313E2C4090E100E8B42B /* TransmissionTypesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2675313D2C4090E100E8B42B /* TransmissionTypesResponse.swift */; };
 		267531402C40925F00E8B42B /* TransmissionTypeVC + ExtTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2675313F2C40925F00E8B42B /* TransmissionTypeVC + ExtTableView.swift */; };
-<<<<<<< HEAD
->>>>>>> UIKIT-AddCarDetails
-=======
 		2675317C2C40BC2500E8B42B /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2675317B2C40BC2400E8B42B /* Car.swift */; };
->>>>>>> UIKIT-AddCarDetails
 		2682B2272C3310E2004D02E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682B2262C3310E2004D02E4 /* AppDelegate.swift */; };
 		2682B2292C3310E2004D02E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682B2282C3310E2004D02E4 /* SceneDelegate.swift */; };
 		2682B2302C3310E4004D02E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2682B22F2C3310E4004D02E4 /* Assets.xcassets */; };
@@ -135,8 +129,6 @@
 		2675311D2C40259800E8B42B /* ReleaseDateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseDateViewModel.swift; sourceTree = "<group>"; };
 		267531202C40266E00E8B42B /* ReleasDateVC + ExtTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReleasDateVC + ExtTableView.swift"; sourceTree = "<group>"; };
 		267531222C40267D00E8B42B /* ReleaseDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseDateCell.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
-=======
 		267531262C4079C900E8B42B /* FuelTypeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelTypeVC.swift; sourceTree = "<group>"; };
 		267531282C4079D500E8B42B /* FuelTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelTypeView.swift; sourceTree = "<group>"; };
 		2675312A2C4079DC00E8B42B /* FuelTypeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelTypeViewModel.swift; sourceTree = "<group>"; };
@@ -149,11 +141,7 @@
 		2675313B2C408F9C00E8B42B /* TransmissionTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransmissionTypeCell.swift; sourceTree = "<group>"; };
 		2675313D2C4090E100E8B42B /* TransmissionTypesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransmissionTypesResponse.swift; sourceTree = "<group>"; };
 		2675313F2C40925F00E8B42B /* TransmissionTypeVC + ExtTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransmissionTypeVC + ExtTableView.swift"; sourceTree = "<group>"; };
-<<<<<<< HEAD
->>>>>>> UIKIT-AddCarDetails
-=======
 		2675317B2C40BC2400E8B42B /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
->>>>>>> UIKIT-AddCarDetails
 		2682B2232C3310E2004D02E4 /* ChitAuto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChitAuto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2682B2262C3310E2004D02E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2682B2282C3310E2004D02E4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -314,11 +302,8 @@
 		267530FE2C3EB43800E8B42B /* Sheets */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-=======
 				267531332C408EB500E8B42B /* TransmissionTypeSheet */,
 				267531242C40795D00E8B42B /* FuelTypeSheet */,
->>>>>>> UIKIT-AddCarDetails
 				267531182C40255500E8B42B /* ReleaseDateSheet */,
 				2675310A2C3FF27A00E8B42B /* ModelsSheet */,
 				267530FF2C3EB43E00E8B42B /* BrandsSheet */,
@@ -386,8 +371,6 @@
 			path = ReleaseDateTableView;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
-=======
 		267531242C40795D00E8B42B /* FuelTypeSheet */ = {
 			isa = PBXGroup;
 			children = (
@@ -428,7 +411,6 @@
 			path = TransmissionTypeTableView;
 			sourceTree = "<group>";
 		};
->>>>>>> UIKIT-AddCarDetails
 		2682B21A2C3310E2004D02E4 = {
 			isa = PBXGroup;
 			children = (
