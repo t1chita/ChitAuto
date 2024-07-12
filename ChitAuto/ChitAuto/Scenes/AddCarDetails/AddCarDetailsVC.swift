@@ -67,6 +67,7 @@ final class AddCarDetailsVC: UIViewController {
     private func getDelegatesFromView() {
         addCardDetailsView.popViewControllerDelegate = self
         addCardDetailsView.sheetRepresentableDelegate = self
+        addCardDetailsView.saveButtonDelegate = self
     }
     
     //MARK: - Set UI Components
@@ -126,7 +127,7 @@ extension AddCarDetailsVC: SheetRepresentableDelegate {
     }
     
     func presentModelsSheet() {
-        guard let carBrandId = addCarDetailsViewModel.carBrandId else { return }
+        guard let carBrandId = addCarDetailsViewModel.carBrand?.id else { return }
         
         let modelsView = ModelsView()
         let modelsViewModel = ModelsViewModel(carBrandId: carBrandId)
@@ -199,7 +200,7 @@ extension AddCarDetailsVC: SheetRepresentableDelegate {
 extension AddCarDetailsVC: BrandsSheetsDelegate {
     func didSelectCarBrand(_ carBrand: CarBrand) {
         addCarDetailsViewModel.carBrandName = carBrand.name
-        addCarDetailsViewModel.carBrandId = carBrand.id
+        addCarDetailsViewModel.carBrand = carBrand 
     }
 }
 extension AddCarDetailsVC: ModelsSheetsDelegate {
@@ -225,3 +226,15 @@ extension AddCarDetailsVC: TransmissionTypeSheetDelegate {
         addCarDetailsViewModel.carTransmissionType = transmissionType
     }
 }
+
+
+extension AddCarDetailsVC: SaveButtonDelegate {
+    func saveCarDetails() {
+        addCarDetailsViewModel.saveCarDetails { error in
+            print("DEBUG: Cant Save User Car \(String(describing: error?.localizedDescription))")
+            //TODO: Present Alert Can't Save
+        }
+        navigationController?.popViewController(animated: true)
+    }
+}
+ 

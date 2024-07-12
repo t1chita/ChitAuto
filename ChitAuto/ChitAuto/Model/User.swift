@@ -14,4 +14,5 @@ struct User: Identifiable, Codable {
     let email: String
     let phoneNumber: String
     let personalNo: String
+    let userCars: [Car]
 }
