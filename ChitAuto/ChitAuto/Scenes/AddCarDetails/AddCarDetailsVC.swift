@@ -12,17 +12,17 @@ protocol BrandsSheetsDelegate: AnyObject {
 }
 
 protocol ModelsSheetsDelegate: AnyObject {
-    func didSelectCarModel(_ carModel: CarModel)
+    func didSelectCarModel(_ carModelName: String)
 }
 
 protocol ReleaseDateSheetsDelegate: AnyObject {
     func didSelectReleaseDate(_ releaseDate: Int)
 }
 protocol FuelTypeSheetDelegate: AnyObject {
-    func didSelectFuelType(_ fuelType: FuelTypeResponse)
+    func didSelectFuelType(_ fuelType: String)
 }
 protocol TransmissionTypeSheetDelegate: AnyObject {
-    func didSelectTransmissionType(_ transmissionType: TransmissionTypesResponse)
+    func didSelectTransmissionType(_ transmissionType: String)
 }
 
 final class AddCarDetailsVC: UIViewController {
@@ -203,9 +203,8 @@ extension AddCarDetailsVC: BrandsSheetsDelegate {
     }
 }
 extension AddCarDetailsVC: ModelsSheetsDelegate {
-    func didSelectCarModel(_ carModel: CarModel) {
-        addCarDetailsViewModel.carModelName = carModel.title
-        addCarDetailsViewModel.carModelId = carModel.id
+    func didSelectCarModel(_ carModelName: String) {
+        addCarDetailsViewModel.carModelName = carModelName
     }
 }
 
@@ -216,13 +215,13 @@ extension AddCarDetailsVC: ReleaseDateSheetsDelegate {
 }
 
 extension AddCarDetailsVC: FuelTypeSheetDelegate {
-    func didSelectFuelType(_ fuelType: FuelTypeResponse) {
-        addCarDetailsViewModel.carFuelType = fuelType.localizedValue
+    func didSelectFuelType(_ fuelType: String) {
+        addCarDetailsViewModel.carFuelType = fuelType
     }
 }
 
 extension AddCarDetailsVC: TransmissionTypeSheetDelegate {
-    func didSelectTransmissionType(_ transmissionType: TransmissionTypesResponse) {
-        addCarDetailsViewModel.carTransmissionType = transmissionType.localizedValue
+    func didSelectTransmissionType(_ transmissionType: String) {
+        addCarDetailsViewModel.carTransmissionType = transmissionType
     }
 }

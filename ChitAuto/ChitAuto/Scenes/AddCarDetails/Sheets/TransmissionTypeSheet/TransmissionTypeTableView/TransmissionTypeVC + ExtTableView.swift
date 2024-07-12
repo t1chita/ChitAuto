@@ -15,7 +15,6 @@ extension TransmissionTypeVC: UITableViewDelegate {
         
         cell.isCellSelected = true
         cell.configure(withFuelType: selectedTransmissionType.localizedValue)
-        transmissionTypeViewModel.savedTransmissionType = selectedTransmissionType
         
         if let previousIndexPath = transmissionTypeViewModel.previouslySelectedIndexPath, previousIndexPath != indexPath {
             guard let previousCell = tableView.cellForRow(at: previousIndexPath) as? FuelTypeCell else { return }
@@ -28,7 +27,7 @@ extension TransmissionTypeVC: UITableViewDelegate {
         transmissionTypeViewModel.previouslySelectedIndexPath = indexPath
         tableView.deselectRow(at: indexPath, animated: true)
         
-        transmissionTypeSheetDelegate?.didSelectTransmissionType(selectedTransmissionType)
+        transmissionTypeSheetDelegate?.didSelectTransmissionType(selectedTransmissionType.localizedValue)
         self.dismiss(animated: true, completion: nil)
     }
 }

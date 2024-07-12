@@ -12,9 +12,7 @@ final class TransmissionTypeViewModel {
     private let transmissionTypeApi: String = "https://chitauto-default-rtdb.europe-west1.firebasedatabase.app/transmissionTypes.json"
     
     var previouslySelectedIndexPath: IndexPath?
-    
-    var savedTransmissionType: TransmissionTypesResponse?
-    
+        
     var transmissionTypesCount: Int {
         transmissionTypes.count
     }

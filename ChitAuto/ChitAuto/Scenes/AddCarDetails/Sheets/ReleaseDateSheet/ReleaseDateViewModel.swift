@@ -14,9 +14,7 @@ final class ReleaseDateViewModel {
     var yearsCount: Int {
         years.count
     }
-    
-    var savedYear: Int?
-    
+        
     var previouslySelectedIndexPath: IndexPath?
     //    MARK: - Child Method
     

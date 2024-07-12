@@ -362,8 +362,8 @@
 		2675311F2C40265000E8B42B /* ReleaseDateTableView */ = {
 			isa = PBXGroup;
 			children = (
-				267531202C40266E00E8B42B /* ReleasDateVC + ExtTableView.swift */,
 				267531222C40267D00E8B42B /* ReleaseDateCell.swift */,
+				267531202C40266E00E8B42B /* ReleasDateVC + ExtTableView.swift */,
 			);
 			path = ReleaseDateTableView;
 			sourceTree = "<group>";

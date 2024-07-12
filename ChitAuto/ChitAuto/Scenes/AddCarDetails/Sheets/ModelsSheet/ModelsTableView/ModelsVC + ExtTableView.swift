@@ -10,11 +10,10 @@ import UIKit
 extension ModelsVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? ModelsCell else { return }
-        let selectedCar = modelsViewModel.carModels[indexPath.row]
+        let selectedCarModel = modelsViewModel.carModels[indexPath.row]
         
         cell.isCellSelected = true
-        cell.configure(withCarBrand: selectedCar)
-        modelsViewModel.savedCarModel = selectedCar
+        cell.configure(withCarBrand: selectedCarModel)
         
         if let previousIndexPath = modelsViewModel.previouslySelectedIndexPath, previousIndexPath != indexPath {
             guard let previousCell = tableView.cellForRow(at: previousIndexPath) as? ModelsCell else { return }
@@ -27,7 +26,7 @@ extension ModelsVC: UITableViewDelegate {
         modelsViewModel.previouslySelectedIndexPath = indexPath
         tableView.deselectRow(at: indexPath, animated: true)
         
-        modelsSheetsDelegate?.didSelectCarModel(selectedCar)
+        modelsSheetsDelegate?.didSelectCarModel(selectedCarModel.title)
         self.dismiss(animated: true, completion: nil)
     }
 }

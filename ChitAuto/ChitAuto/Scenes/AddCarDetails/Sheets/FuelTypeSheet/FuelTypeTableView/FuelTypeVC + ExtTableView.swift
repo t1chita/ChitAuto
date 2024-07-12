@@ -14,7 +14,6 @@ extension FuelTypeVC: UITableViewDelegate {
         
         cell.isCellSelected = true
         cell.configure(withFuelType: selectedFuelType.localizedValue)
-        fuelTypeViewModel.savedFuelType = selectedFuelType
         
         if let previousIndexPath = fuelTypeViewModel.previouslySelectedIndexPath, previousIndexPath != indexPath {
             guard let previousCell = tableView.cellForRow(at: previousIndexPath) as? FuelTypeCell else { return }
@@ -27,7 +26,7 @@ extension FuelTypeVC: UITableViewDelegate {
         fuelTypeViewModel.previouslySelectedIndexPath = indexPath
         tableView.deselectRow(at: indexPath, animated: true)
         
-        fuelTypeSheetDelegate?.didSelectFuelType(selectedFuelType)
+        fuelTypeSheetDelegate?.didSelectFuelType(selectedFuelType.localizedValue)
         self.dismiss(animated: true, completion: nil)
     }
 }
