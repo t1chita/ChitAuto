@@ -19,7 +19,7 @@ final class CarCell: UITableViewCell {
         vw.translatesAutoresizingMaskIntoConstraints = false
         vw.clipsToBounds = true
         vw.backgroundColor = .customCard
-        vw.layer.cornerRadius = 30
+        vw.layer.cornerRadius = 20
         return vw
     }()
     
@@ -28,6 +28,31 @@ final class CarCell: UITableViewCell {
         imView.translatesAutoresizingMaskIntoConstraints = false
         imView.contentMode = .scaleAspectFit
         return imView
+    }()
+    
+    private let carBrandName: UILabel = {
+        let lbl = UILabel()
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.font = .systemFont(ofSize: 14, weight: .bold)
+        lbl.textColor = .customLabel
+        lbl.textAlignment = .left
+        lbl.numberOfLines = 0
+        return lbl
+    }()
+    
+    private let carModelName: UILabel = {
+        let lbl = UILabel()
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.font = .systemFont(ofSize: 14, weight: .bold)
+        lbl.textColor = .customLabel
+        lbl.textAlignment = .left
+        lbl.numberOfLines = 0
+        return lbl
+    }()
+    
+    private let carPlateTextField: NumberPlateTextField = {
+        let txtField = NumberPlateTextField()
+        return txtField
     }()
     
     //MARK: - Initialization
@@ -42,12 +67,17 @@ final class CarCell: UITableViewCell {
     //MARK: - Configure
     func configure(withUserCar car: Car) {
         self.carBrandImage.loadImage(from: URL(string: car.carBrandImageUrl)!)
+        self.carBrandName.text = car.carBrandName
+        self.carModelName.text = car.carModelName
     }
     
     //MARK: - Setup UI
     private func setupUI() {
         setRectangleView()
         setCarImageView()
+        setCarPlateTextField()
+        setCarBrandName()
+        setCarModelName()
     }
     
     //MARK: - Set UI Components
@@ -56,10 +86,10 @@ final class CarCell: UITableViewCell {
         
         NSLayoutConstraint.activate([
             rectangleView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-            rectangleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            rectangleView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            rectangleView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            rectangleView.trailingAnchor.constraint(equalTo: trailingAnchor),
             rectangleView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
-            rectangleView.heightAnchor.constraint(equalToConstant: 80),
+            rectangleView.heightAnchor.constraint(equalToConstant: 90),
         ])
     }
     
@@ -69,8 +99,36 @@ final class CarCell: UITableViewCell {
         NSLayoutConstraint.activate([
             carBrandImage.centerYAnchor.constraint(equalTo: rectangleView.centerYAnchor),
             carBrandImage.leadingAnchor.constraint(equalTo: rectangleView.leadingAnchor, constant: 6),
-            carBrandImage.heightAnchor.constraint(equalToConstant: 30),
-            carBrandImage.widthAnchor.constraint(equalToConstant: 30),
+            carBrandImage.heightAnchor.constraint(equalToConstant: 40),
+            carBrandImage.widthAnchor.constraint(equalToConstant: 40),
+        ])
+    }
+    
+    private func setCarBrandName() {
+        rectangleView.addSubview(carBrandName)
+        
+        NSLayoutConstraint.activate([
+            carBrandName.topAnchor.constraint(equalTo: rectangleView.topAnchor, constant: 4),
+            carBrandName.leadingAnchor.constraint(equalTo: rectangleView.leadingAnchor, constant: 6),
+        ])
+    }  
+    
+    private func setCarModelName() {
+        rectangleView.addSubview(carModelName)
+        
+        NSLayoutConstraint.activate([
+            carModelName.centerYAnchor.constraint(equalTo: rectangleView.centerYAnchor),
+            carModelName.leadingAnchor.constraint(equalTo: carBrandImage.trailingAnchor, constant: 6),
+        ])
+    }
+    
+    private func setCarPlateTextField() {
+        rectangleView.addSubview(carPlateTextField)
+        
+        NSLayoutConstraint.activate([
+            carPlateTextField.centerYAnchor.constraint(equalTo: rectangleView.centerYAnchor),
+            carPlateTextField.trailingAnchor.constraint(equalTo: rectangleView.trailingAnchor, constant: -6),
+            carPlateTextField.heightAnchor.constraint(equalToConstant: 50),
         ])
     }
 }

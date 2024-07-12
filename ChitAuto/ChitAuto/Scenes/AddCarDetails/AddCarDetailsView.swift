@@ -42,19 +42,8 @@ final class AddCarDetailsView: UIView {
         return vw
     }()
     
-    private let carPlateTextField: UITextField = {
-        let txtField = UITextField()
-        txtField.translatesAutoresizingMaskIntoConstraints = false
-        txtField.clipsToBounds = true
-        txtField.layer.cornerRadius = 10
-        txtField.layer.borderWidth = 1
-        txtField.layer.borderColor = UIColor.black.cgColor
-        txtField.placeholder = "XX-000-XX"
-        txtField.textColor = .customLabel
-        txtField.textAlignment = .center
-        txtField.font = .systemFont(ofSize: 32, weight: .bold)
-        txtField.backgroundColor = .customBackground
-        txtField.setIcon(.carPlate)
+    private let carPlateTextField: NumberPlateTextField = {
+        let txtField = NumberPlateTextField()
         return txtField
     }()
     

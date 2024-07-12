@@ -12,8 +12,14 @@ final class UserMainViewModel {
     let addCarInTheGarage: String = "დაამატე მანქანა გარაჟში"
     let garage: String = "გარაჟი"
     let callAnAssistant: String = "გამოძახება"
-    var currentUser: User
+    
+    var currentUser: User {
+        didSet { onSelectedUserChanged?(currentUser) }
+    }
  
+    
+    var onSelectedUserChanged: ((User) -> Void)?
+    
     //MARK: - Initialization
     init(currentUser: User) {
         self.currentUser = currentUser

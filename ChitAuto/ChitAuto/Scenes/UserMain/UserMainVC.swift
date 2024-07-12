@@ -38,7 +38,12 @@ final class UserMainVC: UIViewController {
     //MARK: - LifeCycles
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        view = userMainViewWithoutOrder
+        if userMainViewModel.currentUser.userCars.isEmpty {
+            view = userMainViewWithoutOrder
+        }
+        else {
+            view.backgroundColor = .cyan
+        }
     }
     
     override func viewDidLoad() {
@@ -56,17 +61,7 @@ final class UserMainVC: UIViewController {
     
     //MARK: - Delegates
     private func handleDelegates() {
-        getDelegatesFromViewModelToView()
         getDelegatesFromView()
-        getDelegatesFromViewToViewModel()
-    }
-    
-    private func getDelegatesFromViewModelToView() {
-
-    }
-    
-    private func getDelegatesFromViewToViewModel() {
-
     }
     
     private func getDelegatesFromView() {

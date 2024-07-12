@@ -83,6 +83,7 @@
 		26CA73FD2C3485AE00715AC3 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CA73FC2C3485AE00715AC3 /* OnBoardingView.swift */; };
 		26CA73FF2C3485BE00715AC3 /* OnBoardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CA73FE2C3485BE00715AC3 /* OnBoardingVC.swift */; };
 		26CA74052C348A4200715AC3 /* CustomGeneralButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CA74042C348A4200715AC3 /* CustomGeneralButton.swift */; };
+		26F4E10C2C41ABAF0031A6C5 /* NumberPlateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F4E10B2C41ABAF0031A6C5 /* NumberPlateTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -160,6 +161,7 @@
 		26CA73FC2C3485AE00715AC3 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 		26CA73FE2C3485BE00715AC3 /* OnBoardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingVC.swift; sourceTree = "<group>"; };
 		26CA74042C348A4200715AC3 /* CustomGeneralButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGeneralButton.swift; sourceTree = "<group>"; };
+		26F4E10B2C41ABAF0031A6C5 /* NumberPlateTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPlateTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -551,6 +553,7 @@
 		26CA74022C348A2200715AC3 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				26F4E10D2C41ABB70031A6C5 /* TextFields */,
 				261C15D72C3AC0BD004B5A1E /* Labels */,
 				261C15C52C3AB756004B5A1E /* Stacks */,
 				261C15C22C3AB6C4004B5A1E /* Images */,
@@ -567,6 +570,14 @@
 				267530F82C3DC82400E8B42B /* BackButton.swift */,
 			);
 			path = Buttons;
+			sourceTree = "<group>";
+		};
+		26F4E10D2C41ABB70031A6C5 /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				26F4E10B2C41ABAF0031A6C5 /* NumberPlateTextField.swift */,
+			);
+			path = TextFields;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -657,6 +668,7 @@
 				261C15BF2C3A1389004B5A1E /* WelcomeViewModel.swift in Sources */,
 				2682B2272C3310E2004D02E4 /* AppDelegate.swift in Sources */,
 				26ADA7352C38C2D000D6E3EE /* CustomTextFieldModifier.swift in Sources */,
+				26F4E10C2C41ABAF0031A6C5 /* NumberPlateTextField.swift in Sources */,
 				261C15D02C3ABDFB004B5A1E /* PhasesCell.swift in Sources */,
 				267530E92C3D534400E8B42B /* GarageSheetViewModel.swift in Sources */,
 				2675310E2C3FF2B000E8B42B /* ModelsView.swift in Sources */,

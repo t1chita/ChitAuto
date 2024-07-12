@@ -123,7 +123,15 @@ extension WelcomeVC: NavigatorDelegate {
     func navigateToGarage() {
         guard let unwrappedUser = welcomeViewModel.currentUser else { return }
         
-        let vc = UserMainVC(userMainViewWithoutOrder: UserMainViewWithoutOrder(), userMainViewModel: UserMainViewModel(currentUser: unwrappedUser))
+        let userMainView = UserMainViewWithoutOrder()
+        let userMainViewModel = UserMainViewModel(currentUser: unwrappedUser)
+        
+        userMainViewModel.onSelectedUserChanged = { [weak self] user in
+            self?.welcomeViewModel.currentUser = user
+        }
+        
+        let vc = UserMainVC(userMainViewWithoutOrder: userMainView, userMainViewModel: userMainViewModel)
+        
         navigationController?.pushViewController(vc, animated: true)
     }
 }
