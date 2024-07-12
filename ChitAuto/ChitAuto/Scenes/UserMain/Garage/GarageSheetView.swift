@@ -19,6 +19,14 @@ final class GarageSheetView: UIView {
         return lbl
     }()
     
+    let carsTableView: UITableView = {
+        let tblView = UITableView()
+        tblView.translatesAutoresizingMaskIntoConstraints = false
+        tblView.register(CarCell.self, forCellReuseIdentifier: CarCell.identifier)
+        tblView.separatorStyle = .none
+        return tblView
+    }()
+    
     private let addCarButton: UIButton = {
         var configuration = UIButton.Configuration.filled()
         configuration.title = "დაამატე მანქანა"
@@ -50,6 +58,7 @@ final class GarageSheetView: UIView {
     private func setupUI() {
         setAddCarButton()
         setupTitleLabel()
+        setCarsTableView()
     }
     
     //MARK: - Set UI Components
@@ -61,6 +70,18 @@ final class GarageSheetView: UIView {
              titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
          ])
      }
+    
+    private func setCarsTableView() {
+        addSubview(carsTableView)
+        
+        //Set Constraints
+        NSLayoutConstraint.activate([
+            carsTableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
+            carsTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
+            carsTableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -32),
+            carsTableView.bottomAnchor.constraint(equalTo: addCarButton.topAnchor, constant: -10),
+        ])
+    }
     
     private func setAddCarButton() {
         addSubview(addCarButton)
@@ -74,12 +95,8 @@ final class GarageSheetView: UIView {
         NSLayoutConstraint.activate([
             addCarButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 48),
             addCarButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -48),
-            addCarButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
+            addCarButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
             addCarButton.heightAnchor.constraint(equalToConstant: 48)
         ])
     }
-}
-
-#Preview {
-    GarageSheetVC(garageSheetView: GarageSheetView(), garageSheetViewModel: GarageSheetViewModel())
 }

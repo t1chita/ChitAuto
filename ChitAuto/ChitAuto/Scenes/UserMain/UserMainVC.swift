@@ -94,7 +94,7 @@ extension UserMainVC: PopViewControllerDelegate {
 extension UserMainVC: GarageSheetRepresentableDelegate {
     func presentGarageSheet() {
         let garageSheetView = GarageSheetView()
-        let garageSheetViewModel = GarageSheetViewModel()
+        let garageSheetViewModel = GarageSheetViewModel(userCars: userMainViewModel.currentUser.userCars)
         let vc = GarageSheetVC(garageSheetView: garageSheetView, garageSheetViewModel: garageSheetViewModel)
         
         garageSheetView.addCarDetailsPushableDelegate = self
@@ -103,8 +103,9 @@ extension UserMainVC: GarageSheetRepresentableDelegate {
         
         let sheet = vc.sheetPresentationController
         let smallDetentId = UISheetPresentationController.Detent.Identifier("small")
-        let smallDetent = UISheetPresentationController.Detent.custom(identifier: smallDetentId) { context in
-            return 200
+        let smallDetent = UISheetPresentationController.Detent.custom(identifier: smallDetentId) { _ in
+            if garageSheetViewModel.userCars.isEmpty { return 200 }
+            return 350
         }
         
         sheet?.detents = [smallDetent]
@@ -117,6 +118,9 @@ extension UserMainVC: AddCarDetailsPushableDelegate {
     func pushToAddCarDetailsPage() {
         let addCarDetailsView = AddCarDetailsView()
         let addCarDetailsViewModel = AddCarDetailsViewModel(userId: userMainViewModel.currentUser.id)
+        addCarDetailsViewModel.onSelectedCarChanged = { [weak self] car in
+            self?.userMainViewModel.currentUser.userCars.append(car)
+        }
         let vc = AddCarDetailsVC(addCardDetailsView: addCarDetailsView, addCardDetailsViewModel: addCarDetailsViewModel)
         
         navigationController?.pushViewController(vc, animated: true)

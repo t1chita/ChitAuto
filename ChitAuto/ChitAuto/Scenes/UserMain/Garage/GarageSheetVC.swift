@@ -56,6 +56,8 @@ final class GarageSheetVC: UIViewController {
     
     private func getDelegatesFromView() {
         garageSheetView.garageSheetDismissible = self
+        garageSheetView.carsTableView.dataSource = self
+        garageSheetView.carsTableView.delegate = self
     }
     
     //MARK: - Set UI Components

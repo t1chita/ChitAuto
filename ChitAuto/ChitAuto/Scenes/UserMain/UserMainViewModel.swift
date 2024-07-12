@@ -12,7 +12,7 @@ final class UserMainViewModel {
     let addCarInTheGarage: String = "დაამატე მანქანა გარაჟში"
     let garage: String = "გარაჟი"
     let callAnAssistant: String = "გამოძახება"
-    let currentUser: User
+    var currentUser: User
  
     //MARK: - Initialization
     init(currentUser: User) {

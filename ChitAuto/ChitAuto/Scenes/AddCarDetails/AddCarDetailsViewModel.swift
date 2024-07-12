@@ -14,6 +14,10 @@ final class AddCarDetailsViewModel {
     
     var userId: String
     
+    var userCar: Car? {
+        didSet { onSelectedCarChanged?(userCar!) }
+    }
+    
     init(userId: String) {
         self.userId = userId
     }
@@ -48,30 +52,34 @@ final class AddCarDetailsViewModel {
     
     var carTransmissionTypeChanged: ((String) -> Void)?
     
+    var onSelectedCarChanged: ((Car) -> Void)?
+    
     func saveCarDetails(completion: @escaping (Error?) -> Void) {
-           guard let carBrand = carBrand else {
-               completion(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Car brand is missing"]))
-               return
-           }
-          let car = Car(id: UUID().uuidString, carBrandName: carBrand.name, carBrandImageUrl: carBrand.imageUrl ?? "", carModelName: carModelName, fuelType: carFuelType, releaseDate: carReleaseDate, transmissionType: carTransmissionType, plateNumber: "")
-           
-           let carData: [String: Any] = [
-               "id": car.id,
-               "carBrandName": car.carBrandName,
-               "carBrandImageUrl": car.carBrandImageUrl,
-               "carModelName": car.carModelName,
-               "fuelType": car.fuelType,
-               "releaseDate": car.releaseDate,
-               "transmissionType": car.transmissionType,
-               "plateNumber": car.plateNumber
-           ]
-           
-           let db = Firestore.firestore()
-           db.collection("users").document(userId).updateData([
-               "userCars": FieldValue.arrayUnion([carData])
-           ]) { error in
-               completion(error)
-           }
-       }
+        guard let carBrand = carBrand else {
+            completion(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Car brand is missing"]))
+            return
+        }
+        let car = Car(id: UUID().uuidString, carBrandName: carBrand.name, carBrandImageUrl: carBrand.imageUrl ?? "", carModelName: carModelName, fuelType: carFuelType, releaseDate: carReleaseDate, transmissionType: carTransmissionType, plateNumber: "")
+        
+        userCar = car
+        
+        let carData: [String: Any] = [
+            "id": car.id,
+            "carBrandName": car.carBrandName,
+            "carBrandImageUrl": car.carBrandImageUrl,
+            "carModelName": car.carModelName,
+            "fuelType": car.fuelType,
+            "releaseDate": car.releaseDate,
+            "transmissionType": car.transmissionType,
+            "plateNumber": car.plateNumber
+        ]
+        
+        let db = Firestore.firestore()
+        db.collection("users").document(userId).updateData([
+            "userCars": FieldValue.arrayUnion([carData])
+        ]) { error in
+            completion(error)
+        }
+    }
 }
 

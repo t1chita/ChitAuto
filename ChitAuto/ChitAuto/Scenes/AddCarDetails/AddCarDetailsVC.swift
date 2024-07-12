@@ -18,9 +18,11 @@ protocol ModelsSheetsDelegate: AnyObject {
 protocol ReleaseDateSheetsDelegate: AnyObject {
     func didSelectReleaseDate(_ releaseDate: Int)
 }
+
 protocol FuelTypeSheetDelegate: AnyObject {
     func didSelectFuelType(_ fuelType: String)
 }
+
 protocol TransmissionTypeSheetDelegate: AnyObject {
     func didSelectTransmissionType(_ transmissionType: String)
 }
@@ -203,6 +205,7 @@ extension AddCarDetailsVC: BrandsSheetsDelegate {
         addCarDetailsViewModel.carBrand = carBrand
     }
 }
+
 extension AddCarDetailsVC: ModelsSheetsDelegate {
     func didSelectCarModel(_ carModelName: String) {
         addCarDetailsViewModel.carModelName = carModelName

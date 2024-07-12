@@ -10,9 +10,16 @@ import Foundation
 
 final class GarageSheetViewModel {
     //MARK: - Properties
+    let userCars: [Car]
+    
+    var userCarsCount: Int {
+        userCars.count
+    }
     
     //MARK: - LifeCycles
-    
+    init(userCars: [Car]) {
+        self.userCars = userCars
+    }
     //MARK: - Child Method
     
     //MARK: - Requests
