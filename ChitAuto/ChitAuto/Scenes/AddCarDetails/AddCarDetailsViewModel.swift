@@ -42,6 +42,10 @@ final class AddCarDetailsViewModel {
         didSet { carTransmissionTypeChanged?(carTransmissionType) }
     }
     
+    var carPlateNumber: String = "" {
+        didSet { carPlateNumberChanged?(carPlateNumber) }
+    }
+    
     var carBrandNameChanged: ((String) -> Void)?
     
     var carModelNameChanged: ((String) -> Void)?
@@ -52,6 +56,8 @@ final class AddCarDetailsViewModel {
     
     var carTransmissionTypeChanged: ((String) -> Void)?
     
+    var carPlateNumberChanged: ((String) -> Void)?
+    
     var onSelectedCarChanged: ((Car) -> Void)?
     
     func saveCarDetails(completion: @escaping (Error?) -> Void) {
@@ -59,7 +65,8 @@ final class AddCarDetailsViewModel {
             completion(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Car brand is missing"]))
             return
         }
-        let car = Car(id: UUID().uuidString, carBrandName: carBrand.name, carBrandImageUrl: carBrand.imageUrl ?? "", carModelName: carModelName, fuelType: carFuelType, releaseDate: carReleaseDate, transmissionType: carTransmissionType, plateNumber: "")
+        
+        let car = Car(id: UUID().uuidString, carBrandName: carBrand.name, carBrandImageUrl: carBrand.imageUrl ?? "", carModelName: carModelName, fuelType: carFuelType, releaseDate: carReleaseDate, transmissionType: carTransmissionType, plateNumber: carPlateNumber)
         
         userCar = car
         

@@ -8,7 +8,18 @@
 import UIKit
 
 extension GarageSheetVC: UITableViewDelegate {
-  //TODO: Add Selection
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let lastIndexPath = garageSheetViewModel.lastSelectedIndexPath, let lastCell = tableView.cellForRow(at: lastIndexPath) as? CarCell {
+            lastCell.setDeselectedAppearance()
+        }
+        
+        if let currentCell = tableView.cellForRow(at: indexPath) as? CarCell {
+            currentCell.setSelectedAppearance()
+        }
+        garageSheetViewModel.savedCar = garageSheetViewModel.userCars[indexPath.row]
+        garageSheetViewModel.lastSelectedIndexPath = indexPath
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
 
 extension GarageSheetVC: UITableViewDataSource {

@@ -16,6 +16,13 @@ final class GarageSheetViewModel {
         userCars.count
     }
     
+    var savedCar: Car? {
+        didSet { onSavedCarChanged?(savedCar!)}
+    }
+    
+    var lastSelectedIndexPath: IndexPath?
+    
+    var onSavedCarChanged: ((Car) -> Void)?
     //MARK: - LifeCycles
     init(userCars: [Car]) {
         self.userCars = userCars

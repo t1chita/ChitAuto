@@ -70,6 +70,7 @@ final class AddCarDetailsVC: UIViewController {
         addCardDetailsView.popViewControllerDelegate = self
         addCardDetailsView.sheetRepresentableDelegate = self
         addCardDetailsView.saveButtonDelegate = self
+        addCardDetailsView.carPlateTextField.numberPlateDelegate = self
     }
     
     //MARK: - Set UI Components
@@ -230,6 +231,11 @@ extension AddCarDetailsVC: TransmissionTypeSheetDelegate {
     }
 }
 
+extension AddCarDetailsVC: NumberPlateTextFieldDelegate {
+    func didChangeText(_ text: String) {
+        addCarDetailsViewModel.carPlateNumber = text
+    }
+}
 
 extension AddCarDetailsVC: SaveButtonDelegate {
     func saveCarDetails() {

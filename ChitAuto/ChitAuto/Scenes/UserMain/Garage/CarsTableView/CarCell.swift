@@ -52,6 +52,7 @@ final class CarCell: UITableViewCell {
     
     private let carPlateTextField: NumberPlateTextField = {
         let txtField = NumberPlateTextField()
+        txtField.isUserInteractionEnabled = false
         return txtField
     }()
     
@@ -69,6 +70,7 @@ final class CarCell: UITableViewCell {
         self.carBrandImage.loadImage(from: URL(string: car.carBrandImageUrl)!)
         self.carBrandName.text = car.carBrandName
         self.carModelName.text = car.carModelName
+        self.carPlateTextField.text = car.plateNumber
     }
     
     //MARK: - Setup UI
@@ -130,5 +132,17 @@ final class CarCell: UITableViewCell {
             carPlateTextField.trailingAnchor.constraint(equalTo: rectangleView.trailingAnchor, constant: -6),
             carPlateTextField.heightAnchor.constraint(equalToConstant: 50),
         ])
+    }
+    
+    func setSelectedAppearance() {
+        rectangleView.backgroundColor = UIColor.customCard.withAlphaComponent(0.7)
+        rectangleView.layer.borderColor = UIColor.black.cgColor
+        rectangleView.layer.borderWidth = 2
+    }
+    
+    func setDeselectedAppearance() {
+        rectangleView.backgroundColor = .customCard
+        rectangleView.layer.borderColor = UIColor.clear.cgColor
+        rectangleView.layer.borderWidth = 0
     }
 }

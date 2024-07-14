@@ -37,21 +37,10 @@ final class GarageSheetVC: UIViewController {
         super.viewDidLoad()
         handleDelegates()
     }
-    //MARK: - Setup UI
     
     //MARK: - Delegates
     private func handleDelegates() {
-        getDelegatesFromViewModelToView()
         getDelegatesFromView()
-        getDelegatesFromViewToViewModel()
-    }
-    
-    private func getDelegatesFromViewModelToView() {
-
-    }
-    
-    private func getDelegatesFromViewToViewModel() {
-
     }
     
     private func getDelegatesFromView() {

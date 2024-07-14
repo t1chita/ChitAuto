@@ -42,7 +42,7 @@ final class AddCarDetailsView: UIView {
         return vw
     }()
     
-    private let carPlateTextField: NumberPlateTextField = {
+    let carPlateTextField: NumberPlateTextField = {
         let txtField = NumberPlateTextField()
         return txtField
     }()

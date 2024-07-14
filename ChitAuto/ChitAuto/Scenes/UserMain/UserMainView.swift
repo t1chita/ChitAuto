@@ -1,5 +1,5 @@
 //
-//  UserMainViewWithoutOrder.swift
+//  UserMainViewWithoutOrderAndCars.swift
 //  ChitAuto
 //
 //  Created by Temur Chitashvili on 08.07.24.
@@ -8,7 +8,7 @@
 import UIKit
 
 
-final class UserMainViewWithoutOrder: UIView {
+final class UserMainView: UIView {
     //MARK: - UIComponents
     private let scrollView: UIScrollView = {
         let scrView = UIScrollView()
@@ -31,8 +31,47 @@ final class UserMainViewWithoutOrder: UIView {
         return imgView
     }()
     
-    lazy var addCarInTheGarageButton: CustomGeneralButton = {
+    private let carContentStackView: UIStackView = {
+        let stView = UIStackView()
+        stView.translatesAutoresizingMaskIntoConstraints = false
+        stView.axis = .horizontal
+        stView.distribution = .fillProportionally
+        return stView
+    }()
+    
+    let carBrandImage: UIImageView = {
+        let imView = UIImageView()
+        imView.translatesAutoresizingMaskIntoConstraints = false
+        imView.contentMode = .scaleAspectFit
+        return imView
+    }()
+    
+    let numberPlate: NumberPlateTextField = {
+        let txtField = NumberPlateTextField()
+        txtField.isUserInteractionEnabled = false
+        return txtField
+    }()
+    
+    private let youDontHaveAnOrderLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.font = .systemFont(ofSize: 24, weight: .bold)
+        lbl.text = "თქვენ არ გაქვთ შეკვეთა"
+        lbl.textColor = .customLabel
+        lbl.textAlignment = .center
+        lbl.numberOfLines = 0
+        return lbl
+    }()
+    
+    private let addCarInTheGarageButton: CustomGeneralButton = {
         let button = CustomGeneralButton()
+        button.setTitle("დაამატე მანქანა გარაჟში", for: .normal)
+        return button
+    }()
+    
+    private let makeAnOrder: CustomGeneralButton = {
+        let button = CustomGeneralButton()
+        button.setTitle("გამოიძახე ავტოასისტენტი", for: .normal)
         return button
     }()
     
@@ -53,24 +92,22 @@ final class UserMainViewWithoutOrder: UIView {
         return stView
     }()
     
-    lazy var garageButton: UIButton = {
+    private let garageButton: UIButton = {
         var configuration = UIButton.Configuration.borderless()
         configuration.title = "გარაჟი"
         configuration.image = UIImage(systemName: "car.2.fill")
         configuration.imagePlacement = .top
         configuration.baseForegroundColor = .customLabel
-        
         let button = UIButton(configuration: configuration)
         return button
     }()
     
-    lazy var callAnAssistantButton: UIButton = {
+    private let  callAnAssistantButton: UIButton = {
         var configuration = UIButton.Configuration.borderless()
         configuration.title = "გამოიძახე"
         configuration.image = UIImage(systemName: "figure.stand.line.dotted.figure.stand")
         configuration.imagePlacement = .top
         configuration.baseForegroundColor = .customLabel
-        
         let button = UIButton(configuration: configuration)
         return button
     }()
@@ -81,13 +118,12 @@ final class UserMainViewWithoutOrder: UIView {
             self?.navigateToRootViewControllerDelegate?.popViewController()
         }), for: .touchUpInside)
         customButton.setImage(.mainButton, for: .normal)
-       
         let button = UIBarButtonItem(customView: customButton)
         return button
     }()
     
     //MARK: - Delegates
-    weak var garageSheetRepresentableDelegate: GarageSheetRepresentableDelegate?
+    weak var garageAndOrderFlowRepresentableDelegate: GarageAndOrderFlowRepresentableDelegate?
     weak var navigateToRootViewControllerDelegate: PopViewControllerDelegate?
     
     //MARK: - Initialization
@@ -105,8 +141,14 @@ final class UserMainViewWithoutOrder: UIView {
     private func setupUI() {
         setScrollView()
         setContentView()
+        
         setAddCarImage()
         setAddCarInTheGarageButton()
+        
+        setCarContentStackView()
+        setYouDontHaveAnOrderLabel()
+        setMakeAnOrderButton()
+        
         setBottomContentView()
         setGarageAndServiceStackView()
     }
@@ -156,15 +198,56 @@ final class UserMainViewWithoutOrder: UIView {
         contentView.addSubview(addCarInTheGarageButton)
         
         addCarInTheGarageButton.addAction(UIAction(title: "Add Car In The Garage", handler: { [weak self] _ in
-            self?.garageSheetRepresentableDelegate?.presentGarageSheet()
+            self?.garageAndOrderFlowRepresentableDelegate?.presentGarageSheet()
             }), for: .touchUpInside)
         
         //Set Constraints
         NSLayoutConstraint.activate([
-            addCarInTheGarageButton.topAnchor.constraint(equalTo: addCarImage.bottomAnchor, constant: 40),
-            addCarInTheGarageButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 48),
-            addCarInTheGarageButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -48),
+            addCarInTheGarageButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
+            addCarInTheGarageButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
+            addCarInTheGarageButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             addCarInTheGarageButton.heightAnchor.constraint(equalToConstant: 52)
+        ])
+    }
+    
+    private func setCarContentStackView() {
+        contentView.addSubview(carContentStackView)
+        
+        carContentStackView.addArrangedSubview(numberPlate)
+        carContentStackView.addArrangedSubview(carBrandImage)
+        
+        //Set Constraints
+        NSLayoutConstraint.activate([
+            carContentStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 100),
+            carContentStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
+            carContentStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
+        ])
+    }
+    
+    private func setYouDontHaveAnOrderLabel() {
+        contentView.addSubview(youDontHaveAnOrderLabel)
+        
+        //Set Constraints
+        NSLayoutConstraint.activate([
+            youDontHaveAnOrderLabel.topAnchor.constraint(equalTo: carContentStackView.topAnchor, constant: 100),
+            youDontHaveAnOrderLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
+            youDontHaveAnOrderLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
+        ])
+    }
+    
+    private func setMakeAnOrderButton() {
+        contentView.addSubview(makeAnOrder)
+        
+        makeAnOrder.addAction(UIAction(title: "Make An Order", handler: { [weak self] _ in
+            self?.garageAndOrderFlowRepresentableDelegate?.makeAnOrder()
+            }), for: .touchUpInside)
+        
+        //Set Constraints
+        NSLayoutConstraint.activate([
+            makeAnOrder.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
+            makeAnOrder.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
+            makeAnOrder.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            makeAnOrder.heightAnchor.constraint(equalToConstant: 52)
         ])
     }
     
@@ -178,7 +261,6 @@ final class UserMainViewWithoutOrder: UIView {
             bottomContentView.trailingAnchor.constraint(equalTo: trailingAnchor),
             bottomContentView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 20),
         ])
-        
     }
     
     private func setGarageAndServiceStackView() {
@@ -188,7 +270,11 @@ final class UserMainViewWithoutOrder: UIView {
         garageAndServiceStackView.addArrangedSubview(callAnAssistantButton)
         
         garageButton.addAction(UIAction(title: "Add Car In The Garage", handler: { [weak self] _ in
-            self?.garageSheetRepresentableDelegate?.presentGarageSheet()
+            self?.garageAndOrderFlowRepresentableDelegate?.presentGarageSheet()
+        }), for: .touchUpInside)
+        
+        callAnAssistantButton.addAction(UIAction(title: "Call An Assistant", handler: { [weak self] _ in
+            self?.garageAndOrderFlowRepresentableDelegate?.makeAnOrder()
         }), for: .touchUpInside)
         
         //Set Constraints
@@ -199,4 +285,12 @@ final class UserMainViewWithoutOrder: UIView {
             garageAndServiceStackView.heightAnchor.constraint(equalToConstant: 90),
         ])
     }
+    
+    func updateView(_ isShown: Bool) {
+         addCarImage.isHidden = !isShown
+         addCarInTheGarageButton.isHidden = !isShown
+         makeAnOrder.isHidden = isShown
+         youDontHaveAnOrderLabel.isHidden = isShown
+         carContentStackView.isHidden = isShown
+     }
 }

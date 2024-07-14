@@ -9,7 +9,6 @@ import Foundation
 
 final class UserMainViewModel {
     //MARK: - Properties
-    let addCarInTheGarage: String = "დაამატე მანქანა გარაჟში"
     let garage: String = "გარაჟი"
     let callAnAssistant: String = "გამოძახება"
     
@@ -17,8 +16,13 @@ final class UserMainViewModel {
         didSet { onSelectedUserChanged?(currentUser) }
     }
  
+    var currentCar: Car?
     
     var onSelectedUserChanged: ((User) -> Void)?
+    
+    var userHasCars: Bool {
+        currentUser.userCars.isEmpty
+    }
     
     //MARK: - Initialization
     init(currentUser: User) {

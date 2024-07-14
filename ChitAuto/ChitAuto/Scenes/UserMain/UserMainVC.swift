@@ -11,8 +11,9 @@ protocol PopViewControllerDelegate: AnyObject {
     func popViewController()
 }
 
-protocol GarageSheetRepresentableDelegate: AnyObject {
+protocol GarageAndOrderFlowRepresentableDelegate: AnyObject {
     func presentGarageSheet()
+    func makeAnOrder()
 }
 
 protocol AddCarDetailsPushableDelegate: AnyObject {
@@ -21,12 +22,12 @@ protocol AddCarDetailsPushableDelegate: AnyObject {
 
 final class UserMainVC: UIViewController {
     //MARK: - Properties
-    var userMainViewWithoutOrder: UserMainViewWithoutOrder
+    var userMainView: UserMainView
     var userMainViewModel: UserMainViewModel
     
     //MARK: - Initialization
-    init(userMainViewWithoutOrder: UserMainViewWithoutOrder, userMainViewModel: UserMainViewModel) {
-        self.userMainViewWithoutOrder = userMainViewWithoutOrder
+    init(userMainView: UserMainView, userMainViewModel: UserMainViewModel) {
+        self.userMainView = userMainView
         self.userMainViewModel = userMainViewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -38,43 +39,56 @@ final class UserMainVC: UIViewController {
     //MARK: - LifeCycles
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        if userMainViewModel.currentUser.userCars.isEmpty {
-            view = userMainViewWithoutOrder
-        }
-        else {
-            view.backgroundColor = .cyan
-        }
+        view = userMainView
+        userMainView.updateView(userMainViewModel.userHasCars)
+        updateCarInfo()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         handleDelegates()
-        setNavigationItemsOnWelcomePage()
         print(userMainViewModel.currentUser)
     }
     
     //MARK: - Setup UI
     private func setupUI() {
-        setAddCarInTheGarageButtonWithData()
+        setNavigationItemsOnWelcomePage()
+        setDefaultSelectedCar()
     }
     
+    
+    private func updateCarInfo() {
+        setCarBrandImageWithData()
+        setCarPlateNumber()
+    }
+     
     //MARK: - Delegates
     private func handleDelegates() {
         getDelegatesFromView()
     }
     
     private func getDelegatesFromView() {
-        userMainViewWithoutOrder.navigateToRootViewControllerDelegate = self
-        userMainViewWithoutOrder.garageSheetRepresentableDelegate = self
+        userMainView.navigateToRootViewControllerDelegate = self
+        userMainView.garageAndOrderFlowRepresentableDelegate = self
     }
     //MARK: - Set UI Components
-    private func setAddCarInTheGarageButtonWithData() {
-        userMainViewWithoutOrder.addCarInTheGarageButton.setTitle(userMainViewModel.addCarInTheGarage, for: .normal)
-    }
     
     private func setNavigationItemsOnWelcomePage() {
-        navigationItem.leftBarButtonItem = userMainViewWithoutOrder.mainButton
+        navigationItem.leftBarButtonItem = userMainView.mainButton
+    }
+    
+    private func setCarBrandImageWithData() {
+        guard let unwrappedImageUrl = URL(string: userMainViewModel.currentCar?.carBrandImageUrl ?? "") else { return }
+        userMainView.carBrandImage.loadImage(from: unwrappedImageUrl)
+    }
+    
+    private func setCarPlateNumber() {
+        userMainView.numberPlate.text = userMainViewModel.currentCar?.plateNumber
+    }
+    
+    private func setDefaultSelectedCar() {
+        userMainViewModel.currentCar = userMainViewModel.currentUser.userCars.first
     }
     //MARK: - Child Methods
 }
@@ -86,13 +100,22 @@ extension UserMainVC: PopViewControllerDelegate {
     }
 }
 
-extension UserMainVC: GarageSheetRepresentableDelegate {
+extension UserMainVC: GarageAndOrderFlowRepresentableDelegate {
+    func makeAnOrder() {
+        
+    }
+    
     func presentGarageSheet() {
         let garageSheetView = GarageSheetView()
         let garageSheetViewModel = GarageSheetViewModel(userCars: userMainViewModel.currentUser.userCars)
-        let vc = GarageSheetVC(garageSheetView: garageSheetView, garageSheetViewModel: garageSheetViewModel)
         
         garageSheetView.addCarDetailsPushableDelegate = self
+        garageSheetViewModel.onSavedCarChanged = {[weak self] car in
+            self?.userMainViewModel.currentCar = car
+            self?.updateCarInfo()
+        }
+        let vc = GarageSheetVC(garageSheetView: garageSheetView, garageSheetViewModel: garageSheetViewModel)
+        
         
         vc.modalPresentationStyle = .pageSheet
         
@@ -114,7 +137,10 @@ extension UserMainVC: AddCarDetailsPushableDelegate {
         let addCarDetailsView = AddCarDetailsView()
         let addCarDetailsViewModel = AddCarDetailsViewModel(userId: userMainViewModel.currentUser.id)
         addCarDetailsViewModel.onSelectedCarChanged = { [weak self] car in
-            self?.userMainViewModel.currentUser.userCars.append(car)
+            self?.userMainViewModel.currentCar = car
+            self?.userMainViewModel.currentUser.userCars.append(car) 
+            self?.updateCarInfo()
+
         }
         let vc = AddCarDetailsVC(addCardDetailsView: addCarDetailsView, addCardDetailsViewModel: addCarDetailsViewModel)
         
