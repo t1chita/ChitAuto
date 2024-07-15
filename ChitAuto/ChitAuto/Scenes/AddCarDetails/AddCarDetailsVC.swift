@@ -67,9 +67,9 @@ final class AddCarDetailsVC: UIViewController {
     }
     
     private func getDelegatesFromView() {
-        addCardDetailsView.popViewControllerDelegate = self
+        addCardDetailsView.bottomButtonsStackView.saveButtonDelegate = self
+        addCardDetailsView.bottomButtonsStackView.popViewControllerDelegate = self
         addCardDetailsView.sheetRepresentableDelegate = self
-        addCardDetailsView.saveButtonDelegate = self
         addCardDetailsView.carPlateTextField.numberPlateDelegate = self
     }
     
