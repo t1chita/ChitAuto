@@ -88,6 +88,12 @@
 		26F4E1192C43D1D90031A6C5 /* CarInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F4E1182C43D1D90031A6C5 /* CarInfoVC.swift */; };
 		26F4E11B2C43D1EA0031A6C5 /* CarInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F4E11A2C43D1EA0031A6C5 /* CarInfoView.swift */; };
 		26F4E11D2C43D1FD0031A6C5 /* CarInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F4E11C2C43D1FD0031A6C5 /* CarInfoViewModel.swift */; };
+		26F4E11F2C44A8290031A6C5 /* LocationAndTimeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F4E11E2C44A8290031A6C5 /* LocationAndTimeVC.swift */; };
+		26F4E1212C44A8350031A6C5 /* LocationAndTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F4E1202C44A8350031A6C5 /* LocationAndTimeView.swift */; };
+		26F4E1232C44A8400031A6C5 /* LocationAndTimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F4E1222C44A8400031A6C5 /* LocationAndTimeViewModel.swift */; };
+		26F4E1252C44A84F0031A6C5 /* SearchAnAssistantVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F4E1242C44A84F0031A6C5 /* SearchAnAssistantVC.swift */; };
+		26F4E1272C44A8570031A6C5 /* SearchAnAssistantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F4E1262C44A8570031A6C5 /* SearchAnAssistantView.swift */; };
+		26F4E1292C44A8600031A6C5 /* SearchAnAssistantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F4E1282C44A8600031A6C5 /* SearchAnAssistantViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -170,6 +176,12 @@
 		26F4E1182C43D1D90031A6C5 /* CarInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarInfoVC.swift; sourceTree = "<group>"; };
 		26F4E11A2C43D1EA0031A6C5 /* CarInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarInfoView.swift; sourceTree = "<group>"; };
 		26F4E11C2C43D1FD0031A6C5 /* CarInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarInfoViewModel.swift; sourceTree = "<group>"; };
+		26F4E11E2C44A8290031A6C5 /* LocationAndTimeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAndTimeVC.swift; sourceTree = "<group>"; };
+		26F4E1202C44A8350031A6C5 /* LocationAndTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAndTimeView.swift; sourceTree = "<group>"; };
+		26F4E1222C44A8400031A6C5 /* LocationAndTimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAndTimeViewModel.swift; sourceTree = "<group>"; };
+		26F4E1242C44A84F0031A6C5 /* SearchAnAssistantVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAnAssistantVC.swift; sourceTree = "<group>"; };
+		26F4E1262C44A8570031A6C5 /* SearchAnAssistantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAnAssistantView.swift; sourceTree = "<group>"; };
+		26F4E1282C44A8600031A6C5 /* SearchAnAssistantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAnAssistantViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -613,6 +625,9 @@
 		26F4E1162C4359830031A6C5 /* LocationAndTime */ = {
 			isa = PBXGroup;
 			children = (
+				26F4E11E2C44A8290031A6C5 /* LocationAndTimeVC.swift */,
+				26F4E1202C44A8350031A6C5 /* LocationAndTimeView.swift */,
+				26F4E1222C44A8400031A6C5 /* LocationAndTimeViewModel.swift */,
 			);
 			path = LocationAndTime;
 			sourceTree = "<group>";
@@ -620,6 +635,9 @@
 		26F4E1172C4359900031A6C5 /* SearchAnAssistant */ = {
 			isa = PBXGroup;
 			children = (
+				26F4E1242C44A84F0031A6C5 /* SearchAnAssistantVC.swift */,
+				26F4E1262C44A8570031A6C5 /* SearchAnAssistantView.swift */,
+				26F4E1282C44A8600031A6C5 /* SearchAnAssistantViewModel.swift */,
 			);
 			path = SearchAnAssistant;
 			sourceTree = "<group>";
@@ -707,6 +725,7 @@
 			files = (
 				267530E72C3D52DA00E8B42B /* GarageSheetView.swift in Sources */,
 				2675318B2C417A2900E8B42B /* GarageSheetVC + ExtTableView.swift in Sources */,
+				26F4E1212C44A8350031A6C5 /* LocationAndTimeView.swift in Sources */,
 				261C15BA2C3A1106004B5A1E /* User.swift in Sources */,
 				261C15D62C3AC0B6004B5A1E /* PhasesCustomLabel.swift in Sources */,
 				261C15BF2C3A1389004B5A1E /* WelcomeViewModel.swift in Sources */,
@@ -715,6 +734,7 @@
 				26F4E11D2C43D1FD0031A6C5 /* CarInfoViewModel.swift in Sources */,
 				26F4E10C2C41ABAF0031A6C5 /* NumberPlateTextField.swift in Sources */,
 				261C15D02C3ABDFB004B5A1E /* PhasesCell.swift in Sources */,
+				26F4E1272C44A8570031A6C5 /* SearchAnAssistantView.swift in Sources */,
 				267530E92C3D534400E8B42B /* GarageSheetViewModel.swift in Sources */,
 				2675310E2C3FF2B000E8B42B /* ModelsView.swift in Sources */,
 				267531082C3EB9F100E8B42B /* BrandsSheetViewModel.swift in Sources */,
@@ -736,6 +756,7 @@
 				26F4E1112C4353E10031A6C5 /* BottomButtonsStackView.swift in Sources */,
 				267531212C40266E00E8B42B /* ReleasDateVC + ExtTableView.swift in Sources */,
 				267531042C3EB78B00E8B42B /* BrandsCell.swift in Sources */,
+				26F4E1252C44A84F0031A6C5 /* SearchAnAssistantVC.swift in Sources */,
 				2622943C2C349BBA0062EEC1 /* SignUpView.swift in Sources */,
 				267531352C408ED200E8B42B /* TransmissionTypeVC.swift in Sources */,
 				26CA74052C348A4200715AC3 /* CustomGeneralButton.swift in Sources */,
@@ -751,6 +772,7 @@
 				261C15D22C3ABE0E004B5A1E /* WelcomeVC + ExtCollectionView.swift in Sources */,
 				26CA73FF2C3485BE00715AC3 /* OnBoardingVC.swift in Sources */,
 				267531102C3FF2D400E8B42B /* ModelsViewModel.swift in Sources */,
+				26F4E11F2C44A8290031A6C5 /* LocationAndTimeVC.swift in Sources */,
 				261C15DE2C3C35E9004B5A1E /* UserMainViewModel.swift in Sources */,
 				2675313A2C408F1800E8B42B /* TransmissionTypeViewModel.swift in Sources */,
 				267531132C3FF2F000E8B42B /* ModelsCell.swift in Sources */,
@@ -777,7 +799,9 @@
 				267530FB2C3E0E2D00E8B42B /* CarBrandsResponse.swift in Sources */,
 				267531402C40925F00E8B42B /* TransmissionTypeVC + ExtTableView.swift in Sources */,
 				261C15C12C3A13A4004B5A1E /* WelcomeVC.swift in Sources */,
+				26F4E1292C44A8600031A6C5 /* SearchAnAssistantViewModel.swift in Sources */,
 				267531292C4079D500E8B42B /* FuelTypeView.swift in Sources */,
+				26F4E1232C44A8400031A6C5 /* LocationAndTimeViewModel.swift in Sources */,
 				261C15D92C3AC196004B5A1E /* TitlesCustomLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
