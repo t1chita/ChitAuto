@@ -62,7 +62,12 @@ final class CarInfoVC: UIViewController {
 
 extension CarInfoVC: SaveButtonDelegate {
     func saveCarDetails() {
+        let locationAndTimeView = LocationAndTimeView()
+        let locationAndTimeViewModel = LocationAndTimeViewModel()
         
+        let vc = LocationAndTimeVC(locationAndTimeView: locationAndTimeView, locationAndTimeViewModel: locationAndTimeViewModel)
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

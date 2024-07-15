@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+final class SearchAnAssistantViewModel {
+    //    MARK: - Properties
+    
+    //    MARK: - LifeCycles
+    
+    //    MARK: - Child Method
+    
+    //    MARK: - Requests
+    
+    //    MARK: - Navigation
+
+}

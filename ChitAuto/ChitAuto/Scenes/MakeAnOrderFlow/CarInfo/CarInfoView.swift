@@ -171,6 +171,7 @@ final class CarInfoView: UIView {
             problemDescriptionTitle.heightAnchor.constraint(equalToConstant: 30),
         ])
     }
+    
     private func setProblemDescriptionTextView() {
         carInfoBackground.addSubview(problemDescriptionTextView)
         
@@ -182,6 +183,7 @@ final class CarInfoView: UIView {
             problemDescriptionTextView.heightAnchor.constraint(equalToConstant: 230),
         ])
     } 
+    
     private func setBottomButtonsStackView() {
         carInfoBackground.addSubview(bottomButtonsStackView)
         
