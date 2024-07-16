@@ -15,7 +15,7 @@ extension SearchAnAssistantVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AssistantsCell.identifier, for: indexPath) as! AssistantsCell
-        cell.configure(withImageUrl: searchAnAssistantViewModel.filteredAssistants[indexPath.row].profilePicUrl, carBrands: searchAnAssistantViewModel.filteredAssistants[indexPath.row].carBrands, assistantName: searchAnAssistantViewModel.filteredAssistants[indexPath.row].fullName, servicePrice: String(searchAnAssistantViewModel.filteredAssistants[indexPath.row].assistantServiceFee), rating: String(searchAnAssistantViewModel.filteredAssistants[indexPath.row].rating))
+        cell.configure(withAssistantInfo: searchAnAssistantViewModel.filteredAssistants[indexPath.row])
         return cell
     }
 }

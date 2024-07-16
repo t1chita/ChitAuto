@@ -100,19 +100,15 @@ final class AssistantsCell: UICollectionViewCell {
     }
     
     //MARK: - Configure
-    func configure (withImageUrl imageUrl: String,
-                    carBrands: [AssistantsCarBrand],
-                    assistantName: String,
-                    servicePrice: String,
-                    rating: String
-    ) {
-        guard let unwrappedImageUrl = URL(string: imageUrl) else { return }
+    func configure (withAssistantInfo assistant: CarAssistant) {
+        guard let unwrappedImageUrl = URL(string: assistant.profilePicUrl) else { return }
+        
         assistantImage.loadImage(from: unwrappedImageUrl)
         carBrandsStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
-        setCarBrandsImages(carBrands: carBrands)
-        assistantNameLabel.text = assistantName
-        servicePriceLabel.text = servicePrice + "₾"
-        ratingLabel.text = rating
+        setCarBrandsImages(carBrands: assistant.carBrands)
+        assistantNameLabel.text = assistant.fullName
+        servicePriceLabel.text = String(assistant.assistantServiceFee) + "₾"
+        ratingLabel.text = String(assistant.rating)
     }
     
     //MARK: - Setup UI

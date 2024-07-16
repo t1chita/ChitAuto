@@ -613,8 +613,6 @@
 			isa = PBXGroup;
 			children = (
 				26F4E1172C4359900031A6C5 /* SearchAnAssistant */,
-				26F4E1162C4359830031A6C5 /* LocationAndTime */,
-				26F4E1152C43596D0031A6C5 /* CarInfo */,
 			);
 			path = MakeAnOrderFlow;
 			sourceTree = "<group>";
@@ -642,6 +640,8 @@
 		26F4E1172C4359900031A6C5 /* SearchAnAssistant */ = {
 			isa = PBXGroup;
 			children = (
+				26F4E1152C43596D0031A6C5 /* CarInfo */,
+				26F4E1162C4359830031A6C5 /* LocationAndTime */,
 				26F4E12A2C45B8600031A6C5 /* AssistantsCollectionView */,
 				26F4E1242C44A84F0031A6C5 /* SearchAnAssistantVC.swift */,
 				26F4E1262C44A8570031A6C5 /* SearchAnAssistantView.swift */,
