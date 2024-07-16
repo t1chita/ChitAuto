@@ -42,6 +42,7 @@ final class LocationAndTimeVC: UIViewController {
     //MARK: - Setup UI
     private func setupUI() {
         setCityButton()
+        removeDefaultBackButton()
     }
     
     //MARK: - Delegates
@@ -56,7 +57,9 @@ final class LocationAndTimeVC: UIViewController {
     }
     
     //MARK: - Set UI Components
-    
+    private func removeDefaultBackButton() {
+        navigationItem.setHidesBackButton(true, animated: true)
+    }
 }
 
 
@@ -79,7 +82,12 @@ extension LocationAndTimeVC {
 
 extension LocationAndTimeVC: SaveButtonDelegate {
     func saveCarDetails() {
+        let searchAnAssistantView = SearchAnAssistantView()
+        let searchAnAssistantViewModel = SearchAnAssistantViewModel()
         
+        let vc = SearchAnAssistantVC(searchAnAssistantView: searchAnAssistantView, searchAnAssistantViewModel: searchAnAssistantViewModel)
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

@@ -6,16 +6,54 @@
 //
 
 import Foundation
+import Network
+
+enum AssistantsLevel: String, CaseIterable {
+      case senior = "ექსპერტი"
+      case middle = "გამოცდილი"
+      case beginner = "დამწყები"
+}
 
 final class SearchAnAssistantViewModel {
     //    MARK: - Properties
+    private let assistantsApi = "https://chitauto-default-rtdb.europe-west1.firebasedatabase.app/assistants.json"
+    private(set) var assistantLevel: AssistantsLevel = .senior
+
+    var assistantsCount: Int {
+        filteredAssistants.count
+    }
     
-    //    MARK: - LifeCycles
+    var assistants: [CarAssistant] = []
     
-    //    MARK: - Child Method
+    var filteredAssistants: [CarAssistant] {
+        assistants.filter { $0.assistantLevel == assistantLevel.rawValue }
+    }
+    
+    init() {
+        fetchAssistants()
+    }
+    
+    weak var reloadDelegate: ReloadDelegate?
+    
+    func updateAssistantLevel(to level: AssistantsLevel) {
+        assistantLevel = level
+        reloadDelegate?.reloadData()
+    }
     
     //    MARK: - Requests
-    
+    private func fetchAssistants() {
+        NetworkService.networkService.getData(urlString: assistantsApi) { [weak self] (result: Result<[CarAssistant], Error >) in
+            DispatchQueue.main.async { [weak self] in
+                switch result {
+                case .success(let carAssistants):
+                    self?.assistants = carAssistants
+                case .failure(let error):
+                    print("DEBUG: Can't Fetch Assistants \(error.localizedDescription)")
+                }
+                self?.reloadDelegate?.reloadData()
+            }
+        }
+    }
     //    MARK: - Navigation
 
 }

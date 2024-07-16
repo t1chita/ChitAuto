@@ -94,6 +94,9 @@
 		26F4E1252C44A84F0031A6C5 /* SearchAnAssistantVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F4E1242C44A84F0031A6C5 /* SearchAnAssistantVC.swift */; };
 		26F4E1272C44A8570031A6C5 /* SearchAnAssistantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F4E1262C44A8570031A6C5 /* SearchAnAssistantView.swift */; };
 		26F4E1292C44A8600031A6C5 /* SearchAnAssistantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F4E1282C44A8600031A6C5 /* SearchAnAssistantViewModel.swift */; };
+		26F4E12C2C45B8730031A6C5 /* AssistantsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F4E12B2C45B8730031A6C5 /* AssistantsCell.swift */; };
+		26F4E12E2C45B8870031A6C5 /* SearchAnAssistantVC + ExtCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F4E12D2C45B8870031A6C5 /* SearchAnAssistantVC + ExtCollectionView.swift */; };
+		26F4E1302C45C01F0031A6C5 /* AssistantsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F4E12F2C45C01F0031A6C5 /* AssistantsResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -182,6 +185,9 @@
 		26F4E1242C44A84F0031A6C5 /* SearchAnAssistantVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAnAssistantVC.swift; sourceTree = "<group>"; };
 		26F4E1262C44A8570031A6C5 /* SearchAnAssistantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAnAssistantView.swift; sourceTree = "<group>"; };
 		26F4E1282C44A8600031A6C5 /* SearchAnAssistantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAnAssistantViewModel.swift; sourceTree = "<group>"; };
+		26F4E12B2C45B8730031A6C5 /* AssistantsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantsCell.swift; sourceTree = "<group>"; };
+		26F4E12D2C45B8870031A6C5 /* SearchAnAssistantVC + ExtCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchAnAssistantVC + ExtCollectionView.swift"; sourceTree = "<group>"; };
+		26F4E12F2C45C01F0031A6C5 /* AssistantsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantsResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +215,7 @@
 				267531162C3FF4A000E8B42B /* CarModelResponse.swift */,
 				267531312C407BEF00E8B42B /* FuelTypeResponse.swift */,
 				2675313D2C4090E100E8B42B /* TransmissionTypesResponse.swift */,
+				26F4E12F2C45C01F0031A6C5 /* AssistantsResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -635,11 +642,21 @@
 		26F4E1172C4359900031A6C5 /* SearchAnAssistant */ = {
 			isa = PBXGroup;
 			children = (
+				26F4E12A2C45B8600031A6C5 /* AssistantsCollectionView */,
 				26F4E1242C44A84F0031A6C5 /* SearchAnAssistantVC.swift */,
 				26F4E1262C44A8570031A6C5 /* SearchAnAssistantView.swift */,
 				26F4E1282C44A8600031A6C5 /* SearchAnAssistantViewModel.swift */,
 			);
 			path = SearchAnAssistant;
+			sourceTree = "<group>";
+		};
+		26F4E12A2C45B8600031A6C5 /* AssistantsCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				26F4E12B2C45B8730031A6C5 /* AssistantsCell.swift */,
+				26F4E12D2C45B8870031A6C5 /* SearchAnAssistantVC + ExtCollectionView.swift */,
+			);
+			path = AssistantsCollectionView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -744,9 +761,11 @@
 				267531302C407B8400E8B42B /* FuelTypeVC + ExtTableView.swift in Sources */,
 				2675312E2C407B2900E8B42B /* FuelTypeCell.swift in Sources */,
 				261C15CA2C3ABA61004B5A1E /* UIKitImageLoader.swift in Sources */,
+				26F4E12C2C45B8730031A6C5 /* AssistantsCell.swift in Sources */,
 				267530F72C3DA98A00E8B42B /* UITextField.swift in Sources */,
 				2622943E2C349BC30062EEC1 /* SignUpViewModel.swift in Sources */,
 				267530F22C3D8B7800E8B42B /* AddCarDetailsVC.swift in Sources */,
+				26F4E1302C45C01F0031A6C5 /* AssistantsResponse.swift in Sources */,
 				261C15DC2C3C35D0004B5A1E /* UserMainView.swift in Sources */,
 				261C15C72C3AB768004B5A1E /* CustomStackView.swift in Sources */,
 				26CA73FD2C3485AE00715AC3 /* OnBoardingView.swift in Sources */,
@@ -799,6 +818,7 @@
 				267530FB2C3E0E2D00E8B42B /* CarBrandsResponse.swift in Sources */,
 				267531402C40925F00E8B42B /* TransmissionTypeVC + ExtTableView.swift in Sources */,
 				261C15C12C3A13A4004B5A1E /* WelcomeVC.swift in Sources */,
+				26F4E12E2C45B8870031A6C5 /* SearchAnAssistantVC + ExtCollectionView.swift in Sources */,
 				26F4E1292C44A8600031A6C5 /* SearchAnAssistantViewModel.swift in Sources */,
 				267531292C4079D500E8B42B /* FuelTypeView.swift in Sources */,
 				26F4E1232C44A8400031A6C5 /* LocationAndTimeViewModel.swift in Sources */,
