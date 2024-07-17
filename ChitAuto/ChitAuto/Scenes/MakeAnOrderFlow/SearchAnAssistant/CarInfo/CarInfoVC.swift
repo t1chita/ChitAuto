@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol SaveCarInfoDelegate: AnyObject {
+    func handleSavingCarInfo()
+}
+
 final class CarInfoVC: UIViewController {
     //MARK: - Properties
     var carInfoView: CarInfoView
@@ -38,6 +42,7 @@ final class CarInfoVC: UIViewController {
     //MARK: - SetupUI
     private func setupUI() {
         removeDefaultBackButton()
+        setCarPlateTextField()
     }
     
     //MARK: - Delegates
@@ -48,10 +53,14 @@ final class CarInfoVC: UIViewController {
     private func getDelegatesFromView() {
         carInfoView.bottomButtonsStackView.saveButtonDelegate = self
         carInfoView.bottomButtonsStackView.popViewControllerDelegate = self
+        carInfoView.saveCarInfoDelegate = self
     }
     
     //MARK: - Set UI Components
-
+    private func setCarPlateTextField() {
+        carInfoView.carPlateTextField.text = carInfoViewModel.currentCar.plateNumber
+    }
+    
     private func removeDefaultBackButton() {
         navigationItem.setHidesBackButton(true, animated: true)
     }
@@ -62,17 +71,35 @@ final class CarInfoVC: UIViewController {
 
 extension CarInfoVC: SaveButtonDelegate {
     func saveCarDetails() {
-        let locationAndTimeView = LocationAndTimeView()
-        let locationAndTimeViewModel = LocationAndTimeViewModel()
-        
-        let vc = LocationAndTimeVC(locationAndTimeView: locationAndTimeView, locationAndTimeViewModel: locationAndTimeViewModel)
-        
-        navigationController?.pushViewController(vc, animated: true)
+        carInfoViewModel.currentOrder?.problemDescription = carInfoView.problemDescriptionTextView.text
+        if carInfoViewModel.validateCarInfoPage {
+            
+            guard let order = carInfoViewModel.currentOrder else {
+                print("DEBUG: Can't unwrap currentOrder")
+                return
+            }
+            
+            let locationAndTimeView = LocationAndTimeView()
+            let locationAndTimeViewModel = LocationAndTimeViewModel(order: order)
+            
+            let vc = LocationAndTimeVC(locationAndTimeView: locationAndTimeView, locationAndTimeViewModel: locationAndTimeViewModel)
+            
+            navigationController?.pushViewController(vc, animated: true)
+        } else {
+            //TODO: ALERT
+        }
     }
 }
 
 extension CarInfoVC: PopViewControllerDelegate {
     func popViewController() {
         navigationController?.popViewController(animated: true)
+    }
+}
+
+extension CarInfoVC: SaveCarInfoDelegate {
+    func handleSavingCarInfo() {
+        carInfoViewModel.currentOrder?.visualDamage.toggle()
+        carInfoView.updateVisualDamageButton(buttonTapped: carInfoViewModel.currentOrder?.visualDamage ?? false)
     }
 }

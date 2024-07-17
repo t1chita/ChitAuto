@@ -97,6 +97,7 @@
 		26F4E12C2C45B8730031A6C5 /* AssistantsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F4E12B2C45B8730031A6C5 /* AssistantsCell.swift */; };
 		26F4E12E2C45B8870031A6C5 /* SearchAnAssistantVC + ExtCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F4E12D2C45B8870031A6C5 /* SearchAnAssistantVC + ExtCollectionView.swift */; };
 		26F4E1302C45C01F0031A6C5 /* AssistantsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F4E12F2C45C01F0031A6C5 /* AssistantsResponse.swift */; };
+		26F4E1322C469AB80031A6C5 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F4E1312C469AB80031A6C5 /* Order.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -188,6 +189,7 @@
 		26F4E12B2C45B8730031A6C5 /* AssistantsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantsCell.swift; sourceTree = "<group>"; };
 		26F4E12D2C45B8870031A6C5 /* SearchAnAssistantVC + ExtCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchAnAssistantVC + ExtCollectionView.swift"; sourceTree = "<group>"; };
 		26F4E12F2C45C01F0031A6C5 /* AssistantsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantsResponse.swift; sourceTree = "<group>"; };
+		26F4E1312C469AB80031A6C5 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +212,7 @@
 			children = (
 				261C15B92C3A1106004B5A1E /* User.swift */,
 				2675317B2C40BC2400E8B42B /* Car.swift */,
+				26F4E1312C469AB80031A6C5 /* Order.swift */,
 				261C15D32C3ABF78004B5A1E /* CarRepairPhases.swift */,
 				267530FA2C3E0E2D00E8B42B /* CarBrandsResponse.swift */,
 				267531162C3FF4A000E8B42B /* CarModelResponse.swift */,
@@ -746,6 +749,7 @@
 				261C15BA2C3A1106004B5A1E /* User.swift in Sources */,
 				261C15D62C3AC0B6004B5A1E /* PhasesCustomLabel.swift in Sources */,
 				261C15BF2C3A1389004B5A1E /* WelcomeViewModel.swift in Sources */,
+				26F4E1322C469AB80031A6C5 /* Order.swift in Sources */,
 				2682B2272C3310E2004D02E4 /* AppDelegate.swift in Sources */,
 				26ADA7352C38C2D000D6E3EE /* CustomTextFieldModifier.swift in Sources */,
 				26F4E11D2C43D1FD0031A6C5 /* CarInfoViewModel.swift in Sources */,

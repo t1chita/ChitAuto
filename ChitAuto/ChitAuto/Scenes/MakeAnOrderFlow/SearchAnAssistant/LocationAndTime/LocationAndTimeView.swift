@@ -280,10 +280,6 @@ final class LocationAndTimeView: UIView {
     }
 }
 
-#Preview {
-    LocationAndTimeVC(locationAndTimeView: LocationAndTimeView(), locationAndTimeViewModel: LocationAndTimeViewModel())
-}
-
 class MyTextFieldWithPadding: UITextField {
 
     let padding = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 5)

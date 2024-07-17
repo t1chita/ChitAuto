@@ -44,6 +44,8 @@ final class CarInfoView: UIView {
         configuration.baseForegroundColor = .customLabel
         configuration.background.backgroundColor = .customBackground
         let button = UIButton(configuration: configuration)
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = 6
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -59,7 +61,7 @@ final class CarInfoView: UIView {
         return lbl
     }()
     
-    private let problemDescriptionTextView: UITextView = {
+    let problemDescriptionTextView: UITextView = {
         let txtView = UITextView()
         txtView.translatesAutoresizingMaskIntoConstraints = false
         txtView.backgroundColor = .customBackground
@@ -72,6 +74,9 @@ final class CarInfoView: UIView {
         stView.saveButton.setTitle("შემდეგი", for: .normal)
         return stView
     }()
+    
+    //MARK: - Delegates
+    weak var saveCarInfoDelegate: SaveCarInfoDelegate?
     
     //MARK: - Initialization
     override init(frame: CGRect) {
@@ -149,10 +154,14 @@ final class CarInfoView: UIView {
             carPlateTextField.trailingAnchor.constraint(equalTo: carInfoBackground.trailingAnchor, constant: -16),
             carPlateTextField.heightAnchor.constraint(equalToConstant: 50),
         ])
-    }   
+    }
     
     private func setVisualDamageButton() {
         carInfoBackground.addSubview(visualDamageButton)
+        
+        visualDamageButton.addAction(UIAction(title: "Handle Saving Car Info", handler: { [weak self] _ in
+            self?.saveCarInfoDelegate?.handleSavingCarInfo()
+        }), for: .touchUpInside)
         
         //Set Constraints
         NSLayoutConstraint.activate([
@@ -182,7 +191,7 @@ final class CarInfoView: UIView {
             problemDescriptionTextView.trailingAnchor.constraint(equalTo: carPlateTextField.trailingAnchor),
             problemDescriptionTextView.heightAnchor.constraint(equalToConstant: 230),
         ])
-    } 
+    }
     
     private func setBottomButtonsStackView() {
         carInfoBackground.addSubview(bottomButtonsStackView)
@@ -195,8 +204,15 @@ final class CarInfoView: UIView {
             bottomButtonsStackView.heightAnchor.constraint(equalToConstant: 40),
         ])
     }
+    
+    func updateVisualDamageButton(buttonTapped: Bool) {
+      if buttonTapped {
+        visualDamageButton.layer.borderWidth = 2
+        visualDamageButton.layer.borderColor = UIColor.checkmark.cgColor
+      } else {
+        visualDamageButton.layer.borderWidth = 0
+        visualDamageButton.layer.borderColor = UIColor.clear.cgColor
+      }
+    }
 }
 
-#Preview {
-    CarInfoVC(carInfoView: CarInfoView(), carInfoViewModel: CarInfoViewModel())
-}

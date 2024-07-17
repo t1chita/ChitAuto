@@ -38,6 +38,7 @@ final class LocationAndTimeVC: UIViewController {
         super.viewDidLoad()
         setupUI()
         handleDelegates()
+        print(locationAndTimeViewModel.order)
     }
     //MARK: - Setup UI
     private func setupUI() {

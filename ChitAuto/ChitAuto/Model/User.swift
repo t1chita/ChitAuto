@@ -15,4 +15,5 @@ struct User: Identifiable, Codable {
     let phoneNumber: String
     let personalNo: String
     var userCars: [Car]
+    var userOrders: [Order]
 }

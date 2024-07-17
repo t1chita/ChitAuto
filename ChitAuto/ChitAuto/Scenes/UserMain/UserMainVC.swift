@@ -103,8 +103,10 @@ extension UserMainVC: PopViewControllerDelegate {
 extension UserMainVC: GarageAndOrderFlowRepresentableDelegate {
     func makeAnOrder() {
         if !userMainViewModel.userHasCars {
+            guard let userCar = userMainViewModel.currentCar else { return }
+            
             let carInfoView = CarInfoView()
-            let carInfoViewModel = CarInfoViewModel()
+            let carInfoViewModel = CarInfoViewModel(currentCar: userCar)
             let vc = CarInfoVC(carInfoView: carInfoView, carInfoViewModel: carInfoViewModel)
             
             navigationController?.pushViewController(vc, animated: true)

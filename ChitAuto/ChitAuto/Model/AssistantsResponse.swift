@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CarAssistant: Decodable {
+struct CarAssistant: Codable {
     let assistantId: Int
     let assistantLevel: String
     let assistantServiceFee: Int
