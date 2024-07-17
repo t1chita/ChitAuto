@@ -80,7 +80,11 @@ extension CarInfoVC: SaveButtonDelegate {
             }
             
             let locationAndTimeView = LocationAndTimeView()
-            let locationAndTimeViewModel = LocationAndTimeViewModel(order: order)
+            let locationAndTimeViewModel = LocationAndTimeViewModel(order: order, userId: carInfoViewModel.userId)
+            
+            locationAndTimeViewModel.onCurrentOrderChanged = { [weak self] order in
+                self?.carInfoViewModel.currentOrder = order
+            }
             
             let vc = LocationAndTimeVC(locationAndTimeView: locationAndTimeView, locationAndTimeViewModel: locationAndTimeViewModel)
             

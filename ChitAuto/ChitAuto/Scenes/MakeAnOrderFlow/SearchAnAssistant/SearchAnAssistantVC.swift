@@ -66,7 +66,18 @@ final class SearchAnAssistantVC: UIViewController {
 
 extension SearchAnAssistantVC: SaveButtonDelegate {
     func saveCarDetails() {
-
+        guard let unwrappedAssistant = searchAnAssistantViewModel.selectedAssistant else {
+            //TODO: Alert
+            print("DEBUG: Assistant Is Nil")
+            return
+        }
+        
+        searchAnAssistantViewModel.currentOrder.assistant = unwrappedAssistant
+        searchAnAssistantViewModel.saveOrderDetails { error in
+            print("DEBUG: Can't upload order data on firestore \(error?.localizedDescription)")
+        }
+        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
+        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 4], animated: true)
     }
 }
 

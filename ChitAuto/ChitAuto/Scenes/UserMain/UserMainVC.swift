@@ -40,7 +40,7 @@ final class UserMainVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         view = userMainView
-        userMainView.updateView(userMainViewModel.userHasCars)
+        updateUI()
         updateCarInfo()
     }
     
@@ -48,20 +48,16 @@ final class UserMainVC: UIViewController {
         super.viewDidLoad()
         setupUI()
         handleDelegates()
-        print(userMainViewModel.currentUser)
     }
     
     //MARK: - Setup UI
     private func setupUI() {
         setNavigationItemsOnWelcomePage()
         setDefaultSelectedCar()
+        setAssistantImage()
+        setAssistantName()
     }
-    
-    
-    private func updateCarInfo() {
-        setCarBrandImageWithData()
-        setCarPlateNumber()
-    }
+
      
     //MARK: - Delegates
     private func handleDelegates() {
@@ -72,8 +68,8 @@ final class UserMainVC: UIViewController {
         userMainView.navigateToRootViewControllerDelegate = self
         userMainView.garageAndOrderFlowRepresentableDelegate = self
     }
+
     //MARK: - Set UI Components
-    
     private func setNavigationItemsOnWelcomePage() {
         navigationItem.leftBarButtonItem = userMainView.mainButton
     }
@@ -87,10 +83,35 @@ final class UserMainVC: UIViewController {
         userMainView.numberPlate.text = userMainViewModel.currentCar?.plateNumber
     }
     
+    private func setAssistantName() {
+        userMainView.assistantName.text = userMainViewModel.selectedOrder?.assistant.fullName
+    }
+    
     private func setDefaultSelectedCar() {
         userMainViewModel.currentCar = userMainViewModel.currentUser.userCars.first
     }
-    //MARK: - Child Methods
+    
+    private func setAssistantImage() {
+        guard let imageUrl = URL(string: userMainViewModel.selectedOrder?.assistant.profilePicUrl ?? "") else { return }
+        userMainView.assistantImage.loadImage(from: imageUrl)
+    }
+    
+    private func updateCarInfo() {
+        setCarBrandImageWithData()
+        setCarPlateNumber()
+    }
+    
+    private func updateUI() {
+        if userMainViewModel.userHasCars {
+            if userMainViewModel.currentCarHasOrder {
+                userMainView.updateViewWithOrder()
+            } else {
+                userMainView.updateViewWithoutOrder()
+            }
+        } else {
+            userMainView.updateViewWithoutCarAndOrder()
+        }
+    }
 }
 
 //MARK: - Extensions Of Delegates
@@ -102,11 +123,16 @@ extension UserMainVC: PopViewControllerDelegate {
 
 extension UserMainVC: GarageAndOrderFlowRepresentableDelegate {
     func makeAnOrder() {
-        if !userMainViewModel.userHasCars {
+        if userMainViewModel.userHasCars {
             guard let userCar = userMainViewModel.currentCar else { return }
             
             let carInfoView = CarInfoView()
-            let carInfoViewModel = CarInfoViewModel(currentCar: userCar)
+            let carInfoViewModel = CarInfoViewModel(currentCar: userCar, userId: userMainViewModel.currentUser.id)
+            
+            carInfoViewModel.onCurrentOrderChanged = { [weak self] order in
+                self?.userMainViewModel.currentUser.userOrders.append(order)
+            }
+            
             let vc = CarInfoVC(carInfoView: carInfoView, carInfoViewModel: carInfoViewModel)
             
             navigationController?.pushViewController(vc, animated: true)

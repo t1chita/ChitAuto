@@ -122,6 +122,83 @@ final class UserMainView: UIView {
         return button
     }()
     
+    private var orderCardBackground: UIView = {
+        let vw = UIView()
+        vw.translatesAutoresizingMaskIntoConstraints = false
+        vw.backgroundColor = .customCard
+        vw.clipsToBounds = true
+        vw.layer.cornerRadius = 22
+        return vw
+    }()
+    
+    private var assistantNumber: UILabel = {
+        let lbl = UILabel()
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.font = .systemFont(ofSize: 16, weight: .bold)
+        lbl.textColor = .customLabel
+        lbl.backgroundColor = .customBackground
+        lbl.layer.masksToBounds = true
+        lbl.text = "📲 +995597050897"
+        lbl.layer.cornerRadius = 4
+        lbl.textAlignment = .center
+        return lbl
+    }()
+    
+    private let assistantContentBackground: UIView = {
+        let vw = UIView()
+        vw.translatesAutoresizingMaskIntoConstraints = false
+        vw.backgroundColor = .customBackground
+        vw.clipsToBounds = true
+        vw.layer.cornerRadius = 22
+        return vw
+    }()
+    
+    let assistantImage: UIImageView = {
+        let imgView = UIImageView()
+        imgView.translatesAutoresizingMaskIntoConstraints = false
+        imgView.contentMode = .scaleAspectFill
+        imgView.layer.masksToBounds = true
+        imgView.layer.cornerRadius = 35
+        return imgView
+    }()
+    
+    var assistantName: UILabel = {
+        let lbl = UILabel()
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.font = .systemFont(ofSize: 16, weight: .bold)
+        lbl.textColor = .customLabel
+        lbl.backgroundColor = .customCard
+        lbl.layer.masksToBounds = true
+        lbl.layer.cornerRadius = 4
+        lbl.textAlignment = .center
+        return lbl
+    }()
+    
+    private let orderStatusButton: UIButton = {
+        var configuration = UIButton.Configuration.filled()
+        configuration.title = "მიმდინარე შეკვეთა"
+        configuration.image = UIImage(systemName: "chevron.right")
+        configuration.imagePlacement = .trailing
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16)
+        configuration.titleAlignment = .leading
+        configuration.baseForegroundColor = .customLabel
+        configuration.background.backgroundColor = .customCard
+        let button = UIButton(configuration: configuration)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.contentHorizontalAlignment = .fill
+        return button
+    }() 
+    
+    private let orderStatusTitle: UILabel = {
+        let lbl = UILabel()
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.font = .systemFont(ofSize: 16, weight: .bold)
+        lbl.textColor = .customLabel
+        lbl.textAlignment = .center
+        lbl.text = "თქვენი მანქანა კეთების პროცესშია 🛠️"
+        return lbl
+    }()
+    
     //MARK: - Delegates
     weak var garageAndOrderFlowRepresentableDelegate: GarageAndOrderFlowRepresentableDelegate?
     weak var navigateToRootViewControllerDelegate: PopViewControllerDelegate?
@@ -148,6 +225,14 @@ final class UserMainView: UIView {
         setCarContentStackView()
         setYouDontHaveAnOrderLabel()
         setMakeAnOrderButton()
+        
+        setOrderContentBackground()
+        setAssistantNumber()
+        setAssistantContentBackground()
+        setAssistantImage()
+        setAssistantName()
+        setOrderStatusButton()
+        setOrderStatusTitle()
         
         setBottomContentView()
         setGarageAndServiceStackView()
@@ -224,6 +309,88 @@ final class UserMainView: UIView {
         ])
     }
     
+    private func setOrderContentBackground() {
+        contentView.addSubview(orderCardBackground)
+        
+        //Set Constraints
+        NSLayoutConstraint.activate([
+            orderCardBackground.topAnchor.constraint(equalTo: carContentStackView.topAnchor, constant: 100),
+            orderCardBackground.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
+            orderCardBackground.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
+            orderCardBackground.heightAnchor.constraint(equalToConstant: 290),
+        ])
+    }   
+        
+    private func setAssistantContentBackground() {
+        orderCardBackground.addSubview(assistantContentBackground)
+        
+        //Set Constraints
+        NSLayoutConstraint.activate([
+            assistantContentBackground.topAnchor.constraint(equalTo: orderCardBackground.topAnchor, constant: 100),
+            assistantContentBackground.leadingAnchor.constraint(equalTo: orderCardBackground.leadingAnchor, constant: 12),
+            assistantContentBackground.trailingAnchor.constraint(equalTo: orderCardBackground.trailingAnchor, constant: -12),
+            assistantContentBackground.bottomAnchor.constraint(equalTo: orderCardBackground.bottomAnchor, constant: -12),
+        ])
+    }   
+    
+    private func setAssistantNumber() {
+        orderCardBackground.addSubview(assistantNumber)
+        
+        //Set Constraints
+        NSLayoutConstraint.activate([
+            assistantNumber.topAnchor.constraint(equalTo: orderCardBackground.topAnchor, constant: 34),
+            assistantNumber.trailingAnchor.constraint(equalTo: orderCardBackground.trailingAnchor, constant: -24),
+            assistantNumber.widthAnchor.constraint(equalToConstant: 180),
+            assistantNumber.heightAnchor.constraint(equalToConstant: 36),
+        ])
+    }
+    
+    private func setAssistantName() {
+        assistantContentBackground.addSubview(assistantName)
+        
+        //Set Constraints
+        NSLayoutConstraint.activate([
+            assistantName.topAnchor.constraint(equalTo: assistantContentBackground.topAnchor, constant: 16),
+            assistantName.trailingAnchor.constraint(equalTo: assistantContentBackground.trailingAnchor, constant: -30),
+            assistantName.leadingAnchor.constraint(equalTo: assistantContentBackground.leadingAnchor, constant: 30),
+            assistantName.heightAnchor.constraint(equalToConstant: 36),
+        ])
+    }
+       
+    private func setOrderStatusTitle() {
+        assistantContentBackground.addSubview(orderStatusTitle)
+        
+        //Set Constraints
+        NSLayoutConstraint.activate([
+            orderStatusTitle.topAnchor.constraint(equalTo: assistantName.bottomAnchor, constant: 10),
+            orderStatusTitle.centerXAnchor.constraint(equalTo: assistantContentBackground.centerXAnchor),
+            orderStatusTitle.heightAnchor.constraint(equalToConstant: 36),
+        ])
+    }
+    
+    private func setAssistantImage() {
+            orderCardBackground.addSubview(assistantImage)
+        
+        //Set Constraints
+        NSLayoutConstraint.activate([
+            assistantImage.centerYAnchor.constraint(equalTo: assistantNumber.centerYAnchor),
+            assistantImage.leadingAnchor.constraint(equalTo: orderCardBackground.leadingAnchor, constant: 24),
+            assistantImage.widthAnchor.constraint(equalToConstant: 70),
+            assistantImage.heightAnchor.constraint(equalToConstant: 70),
+        ])
+    }
+       
+    private func setOrderStatusButton() {
+        assistantContentBackground.addSubview(orderStatusButton)
+        
+        //Set Constraints
+        NSLayoutConstraint.activate([
+            orderStatusButton.bottomAnchor.constraint(equalTo: assistantContentBackground.bottomAnchor, constant: -16),
+            orderStatusButton.leadingAnchor.constraint(equalTo: assistantContentBackground.leadingAnchor, constant: 24),
+            orderStatusButton.trailingAnchor.constraint(equalTo: assistantContentBackground.trailingAnchor, constant: -24),
+        ])
+    }
+    
     private func setYouDontHaveAnOrderLabel() {
         contentView.addSubview(youDontHaveAnOrderLabel)
         
@@ -286,11 +453,27 @@ final class UserMainView: UIView {
         ])
     }
     
-    func updateView(_ isShown: Bool) {
-         addCarImage.isHidden = !isShown
-         addCarInTheGarageButton.isHidden = !isShown
-         makeAnOrder.isHidden = isShown
-         youDontHaveAnOrderLabel.isHidden = isShown
-         carContentStackView.isHidden = isShown
+    func updateViewWithoutCarAndOrder() {
+        addCarImage.isHidden = false
+        addCarInTheGarageButton.isHidden = false
+        makeAnOrder.isHidden = true
+        youDontHaveAnOrderLabel.isHidden = true
+        carContentStackView.isHidden = true
+    }
+    
+    func updateViewWithoutOrder() {
+         addCarImage.isHidden = true
+         addCarInTheGarageButton.isHidden = true
+         makeAnOrder.isHidden = false
+         youDontHaveAnOrderLabel.isHidden = false
+         carContentStackView.isHidden = false
      }
+    
+    func updateViewWithOrder() {
+        addCarImage.isHidden = true
+        addCarInTheGarageButton.isHidden = true
+        makeAnOrder.isHidden = true
+        youDontHaveAnOrderLabel.isHidden = true
+        carContentStackView.isHidden = false
+    }
 }

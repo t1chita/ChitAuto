@@ -10,14 +10,17 @@ import Foundation
 final class CarInfoViewModel {
     var currentCar: Car
     
+    let userId: String
+    
     var currentOrder: Order? {
         didSet { onCurrentOrderChanged?(currentOrder!)}
     }
     
     var onCurrentOrderChanged: ((Order) -> Void)?
     
-    init(currentCar: Car) {
+    init(currentCar: Car, userId: String) {
         self.currentCar = currentCar
+        self.userId = userId
         createOrder()
     }
     

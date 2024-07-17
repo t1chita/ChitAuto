@@ -9,8 +9,6 @@ import UIKit
 
 final class AssistantsCell: UICollectionViewCell {
     static let identifier = "AssistantsCell"
-        
-    var isCellSelected: Bool = false
     
     //MARK: - UIComponents
     private let assistantImage: UIImageView = {
@@ -112,12 +110,6 @@ final class AssistantsCell: UICollectionViewCell {
         assistantNameLabel.text = assistant.fullName
         servicePriceLabel.text = String(assistant.assistantServiceFee) + "₾"
         ratingLabel.text = String(assistant.rating)
-        
-        
-        layer.borderColor =  isCellSelected ? UIColor.checkmark.cgColor : UIColor.clear.cgColor
-        layer.masksToBounds =  isCellSelected ? true : false
-        layer.cornerRadius =  isCellSelected ? 10 : 0
-        layer.borderWidth =  isCellSelected ? 4 : 0
     }
     
     //MARK: - Setup UI

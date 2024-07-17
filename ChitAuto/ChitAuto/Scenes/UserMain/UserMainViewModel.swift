@@ -20,19 +20,20 @@ final class UserMainViewModel {
     
     var onSelectedUserChanged: ((User) -> Void)?
     
+    var selectedOrder: Order? {
+        currentUser.userOrders.first(where: { $0.car.id == currentCar?.id })
+    }
+    
     var userHasCars: Bool {
-        currentUser.userCars.isEmpty
+        !currentUser.userCars.isEmpty
+    }
+    
+    var currentCarHasOrder: Bool {
+        currentUser.userOrders.contains(where: { $0.car.id == currentCar?.id })
     }
     
     //MARK: - Initialization
     init(currentUser: User) {
         self.currentUser = currentUser
     }
-    
-    //MARK: - Child Method
-    
-    //MARK: - Requests
-    
-    //MARK: - Navigation
-
 }

@@ -12,6 +12,8 @@ final class LocationAndTimeViewModel {
         didSet { onCurrentOrderChanged?(order) }
     }
 
+    let userId: String
+    
     var cityLocation: String = "აირჩიე ქალაქი" {
         didSet {
             order.city = cityLocation
@@ -38,7 +40,8 @@ final class LocationAndTimeViewModel {
     var timeValueChanged: ((String) -> Void)?
     var onCurrentOrderChanged: ((Order) -> Void)?
     
-    init(order: Order) {
+    init(order: Order, userId: String) {
         self.order = order
+        self.userId = userId
     }
 }
