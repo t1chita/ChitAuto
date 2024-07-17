@@ -82,7 +82,7 @@ final class SearchAnAssistantView: UIView {
     
     let bottomButtonsStackView: BottomButtonsStackView = {
         let stView = BottomButtonsStackView()
-        stView.saveButton.setTitle("შემდეგი", for: .normal)
+        stView.saveButton.setTitle("დასრულება", for: .normal)
         return stView
     }()
     
@@ -204,12 +204,6 @@ final class SearchAnAssistantView: UIView {
         ])
     }
 }
-
-
-#Preview {
-    SearchAnAssistantVC(searchAnAssistantView: SearchAnAssistantView(), searchAnAssistantViewModel: SearchAnAssistantViewModel())
-}
-
 
 //MARK: Reload Data For ViewModel
 extension SearchAnAssistantView: ReloadDelegate {

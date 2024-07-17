@@ -16,6 +16,7 @@ extension GarageSheetVC: UITableViewDelegate {
         if let currentCell = tableView.cellForRow(at: indexPath) as? CarCell {
             currentCell.setSelectedAppearance()
         }
+        
         garageSheetViewModel.savedCar = garageSheetViewModel.userCars[indexPath.row]
         garageSheetViewModel.lastSelectedIndexPath = indexPath
         tableView.deselectRow(at: indexPath, animated: true)

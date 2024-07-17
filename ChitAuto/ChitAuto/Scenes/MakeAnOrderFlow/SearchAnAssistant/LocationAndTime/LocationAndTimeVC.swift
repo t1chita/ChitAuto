@@ -9,7 +9,19 @@ import UIKit
 
 protocol DateChoseDelegate: AnyObject {
     func dateValueChanged()
-    
+}
+
+protocol LocationSheetDelegate: AnyObject {
+    func didSelectLocation(_ location: String)
+}
+
+protocol TimeSheetDelegate: AnyObject {
+    func didSelectTime(_ time: String)
+}
+
+protocol LocationAndTimeVCNavigationDelegate: AnyObject {
+    func handleTimeSheetNavigation()
+    func handleLocationSheetNavigation()
 }
 
 final class LocationAndTimeVC: UIViewController {
@@ -50,11 +62,12 @@ final class LocationAndTimeVC: UIViewController {
     private func handleDelegates() {
         getDelegatesFromView()
     }
-    
+     
     private func getDelegatesFromView() {
         locationAndTimeView.dateChoseDelegate = self
         locationAndTimeView.bottomButtonsStackView.saveButtonDelegate = self
         locationAndTimeView.bottomButtonsStackView.popViewControllerDelegate = self
+        locationAndTimeView.locationAndTimeVCNavigationDelegate = self
     }
     
     //MARK: - Set UI Components
@@ -83,8 +96,10 @@ extension LocationAndTimeVC {
 
 extension LocationAndTimeVC: SaveButtonDelegate {
     func saveCarDetails() {
+        locationAndTimeViewModel.address = locationAndTimeView.addressTextField.text ?? ""
+        
         let searchAnAssistantView = SearchAnAssistantView()
-        let searchAnAssistantViewModel = SearchAnAssistantViewModel()
+        let searchAnAssistantViewModel = SearchAnAssistantViewModel(order: locationAndTimeViewModel.order)
         
         let vc = SearchAnAssistantVC(searchAnAssistantView: searchAnAssistantView, searchAnAssistantViewModel: searchAnAssistantViewModel)
         
@@ -100,8 +115,58 @@ extension LocationAndTimeVC: PopViewControllerDelegate {
 
 extension LocationAndTimeVC: DateChoseDelegate {
     func dateValueChanged() {
-        
+        let selectedDate = locationAndTimeView.datePicker.date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        let date = dateFormatter.string(from: selectedDate)
+        locationAndTimeViewModel.date = date
     }
 }
 
+extension LocationAndTimeVC: LocationSheetDelegate {
+    func didSelectLocation(_ location: String) {
+        locationAndTimeViewModel.cityLocation = location
+    }
+}
 
+extension LocationAndTimeVC: TimeSheetDelegate {
+    func didSelectTime(_ time: String) {
+        locationAndTimeViewModel.timeValue = time
+    }
+}
+
+extension LocationAndTimeVC: LocationAndTimeVCNavigationDelegate {
+    func handleTimeSheetNavigation() {
+        let timeSheetView = TimeSheetView()
+        let timeSheetViewModel = TimeSheetViewModel()
+        
+        let vc = TimeSheetVC(timeSheetView: timeSheetView, timeSheetViewModel: timeSheetViewModel)
+        vc.timeSheetDelegate = self
+        vc.modalPresentationStyle = .pageSheet
+        
+        let sheet = vc.sheetPresentationController
+        let smallDetentId = UISheetPresentationController.Detent.Identifier("small")
+        let smallDetent = UISheetPresentationController.Detent.custom(identifier: smallDetentId) { context in
+            return 200
+        }
+        
+        sheet?.detents = [smallDetent]
+        
+        present(vc, animated: true, completion: nil)
+    }
+    
+    func handleLocationSheetNavigation() {
+        let locationSheetView = LocationSheetView()
+        let locationSheetViewModel = LocationSheetViewModel()
+        
+        let vc = LocationSheetVC(locationSheetView: locationSheetView, locationSheetViewModel: locationSheetViewModel)
+        vc.locationSheetDelegate = self
+        vc.modalPresentationStyle = .pageSheet
+        
+        let sheet = vc.sheetPresentationController
+        
+        sheet?.detents = [.medium()]
+        
+        present(vc, animated: true, completion: nil)
+    }
+}

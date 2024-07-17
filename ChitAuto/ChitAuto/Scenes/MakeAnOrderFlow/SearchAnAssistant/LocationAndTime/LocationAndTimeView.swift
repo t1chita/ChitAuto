@@ -57,7 +57,7 @@ final class LocationAndTimeView: UIView {
         return lbl
     }()
     
-    private let addressTextField: MyTextFieldWithPadding = {
+    let addressTextField: MyTextFieldWithPadding = {
         let textField = MyTextFieldWithPadding()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "მაგ: ვარკეთილი,მე-3 მკრ..."
@@ -109,6 +109,7 @@ final class LocationAndTimeView: UIView {
     }()
     //MARK: - Delegates
     weak var dateChoseDelegate: DateChoseDelegate?
+    weak var locationAndTimeVCNavigationDelegate: LocationAndTimeVCNavigationDelegate?
     
     //MARK: - Initialization
     override init(frame: CGRect) {
@@ -192,6 +193,9 @@ final class LocationAndTimeView: UIView {
     private func setCitiesButton() {
         carInfoBackground.addSubview(citiesButton)
         
+        citiesButton.addAction(UIAction(title: "Present Cities Sheet", handler: {[weak self] _ in
+            self?.locationAndTimeVCNavigationDelegate?.handleLocationSheetNavigation()
+        }), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
             citiesButton.topAnchor.constraint(equalTo: locationTitle.bottomAnchor, constant: 16),
@@ -259,6 +263,11 @@ final class LocationAndTimeView: UIView {
     
     private func setTimeButton() {
         carInfoBackground.addSubview(timeButton)
+        
+        timeButton.addAction(UIAction(title: "Present Time Sheet", handler: {[weak self] _ in
+            self?.locationAndTimeVCNavigationDelegate?.handleTimeSheetNavigation()
+        }), for: .touchUpInside)
+        
         
         NSLayoutConstraint.activate([
             timeButton.topAnchor.constraint(equalTo: timeTitle.bottomAnchor, constant: 16),

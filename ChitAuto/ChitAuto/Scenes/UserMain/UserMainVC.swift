@@ -151,7 +151,6 @@ extension UserMainVC: AddCarDetailsPushableDelegate {
             self?.userMainViewModel.currentCar = car
             self?.userMainViewModel.currentUser.userCars.append(car) 
             self?.updateCarInfo()
-
         }
         let vc = AddCarDetailsVC(addCardDetailsView: addCarDetailsView, addCardDetailsViewModel: addCarDetailsViewModel)
         

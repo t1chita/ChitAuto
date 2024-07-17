@@ -12,14 +12,22 @@ final class LocationAndTimeViewModel {
         didSet { onCurrentOrderChanged?(order) }
     }
 
-    var cityLocation: String {
+    var cityLocation: String = "აირჩიე ქალაქი" {
         didSet {
             order.city = cityLocation
             cityLocationChanged?(cityLocation)
         }
     }
-
-    var timeValue: String {
+    
+    var address: String = "" {
+        didSet { order.address = address }
+    }
+    
+    var date: String = "" {
+        didSet { order.date = date }
+    }
+    
+    var timeValue: String = "აირჩიე დრო" {
         didSet {
             order.time = timeValue
             timeValueChanged?(timeValue)
@@ -32,7 +40,5 @@ final class LocationAndTimeViewModel {
     
     init(order: Order) {
         self.order = order
-        self.cityLocation = order.city
-        self.timeValue = order.time
     }
 }

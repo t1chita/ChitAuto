@@ -18,7 +18,11 @@ final class SearchAnAssistantViewModel {
     //    MARK: - Properties
     private let assistantsApi = "https://chitauto-default-rtdb.europe-west1.firebasedatabase.app/assistants.json"
     private(set) var assistantLevel: AssistantsLevel = .senior
-
+    
+    var currentOrder: Order {
+        didSet { onChangedCurrentOrder?(currentOrder)}
+    }
+    
     var assistantsCount: Int {
         filteredAssistants.count
     }
@@ -29,7 +33,14 @@ final class SearchAnAssistantViewModel {
         assistants.filter { $0.assistantLevel == assistantLevel.rawValue }
     }
     
-    init() {
+    var selectedAssistant: CarAssistant?
+    
+    var lastSelectedIndexPath: IndexPath?
+    
+    var onChangedCurrentOrder: ((Order) -> Void)?
+    
+    init(order: Order) {
+        self.currentOrder = order
         fetchAssistants()
     }
     
@@ -54,6 +65,4 @@ final class SearchAnAssistantViewModel {
             }
         }
     }
-    //    MARK: - Navigation
-
 }

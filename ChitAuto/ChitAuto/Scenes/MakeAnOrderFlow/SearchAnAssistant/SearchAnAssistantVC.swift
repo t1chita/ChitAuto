@@ -33,6 +33,7 @@ final class SearchAnAssistantVC: UIViewController {
         super.viewDidLoad()
         handleDelegates()
         removeDefaultBackButton()
+        print(searchAnAssistantViewModel.currentOrder)
     }
     
     //MARK: - Setup UI
@@ -65,7 +66,7 @@ final class SearchAnAssistantVC: UIViewController {
 
 extension SearchAnAssistantVC: SaveButtonDelegate {
     func saveCarDetails() {
-       
+
     }
 }
 
@@ -87,14 +88,4 @@ extension SearchAnAssistantVC: ChangeAssistantLevelsDelegate {
     func handleBeginnerButton() {
         searchAnAssistantViewModel.updateAssistantLevel(to: .beginner)
     }
-    
-  
-}
-
-
-
-
-
-#Preview {
-    SearchAnAssistantVC(searchAnAssistantView: SearchAnAssistantView(), searchAnAssistantViewModel: SearchAnAssistantViewModel())
 }

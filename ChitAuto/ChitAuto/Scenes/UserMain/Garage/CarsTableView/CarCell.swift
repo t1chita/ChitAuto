@@ -11,8 +11,6 @@ final class CarCell: UITableViewCell {
     //MARK: - Properties
     static let identifier = "CarCell"
     
-    var isCellSelected: Bool = false
-    
     //MARK: - UIComponents
     private let rectangleView: UIView = {
         let vw = UIView()

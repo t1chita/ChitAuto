@@ -9,6 +9,9 @@ import UIKit
 
 final class AssistantsCell: UICollectionViewCell {
     static let identifier = "AssistantsCell"
+        
+    var isCellSelected: Bool = false
+    
     //MARK: - UIComponents
     private let assistantImage: UIImageView = {
         let imgView = UIImageView()
@@ -109,6 +112,12 @@ final class AssistantsCell: UICollectionViewCell {
         assistantNameLabel.text = assistant.fullName
         servicePriceLabel.text = String(assistant.assistantServiceFee) + "₾"
         ratingLabel.text = String(assistant.rating)
+        
+        
+        layer.borderColor =  isCellSelected ? UIColor.checkmark.cgColor : UIColor.clear.cgColor
+        layer.masksToBounds =  isCellSelected ? true : false
+        layer.cornerRadius =  isCellSelected ? 10 : 0
+        layer.borderWidth =  isCellSelected ? 4 : 0
     }
     
     //MARK: - Setup UI
@@ -201,6 +210,17 @@ final class AssistantsCell: UICollectionViewCell {
         ])
     }
     
+    func setSelectedAppearance() {
+        layer.borderColor = UIColor.checkmark.cgColor
+        layer.masksToBounds = true
+        layer.cornerRadius = 10
+        layer.borderWidth = 4
+    }
+    
+    func setDeselectedAppearance() {
+        layer.borderColor = UIColor.clear.cgColor
+        layer.borderWidth = 0
+    }
     
     private func setCarBrandsImages(carBrands: [AssistantsCarBrand]) {
         for carBrand in carBrands {
