@@ -20,6 +20,7 @@ final class UserMainViewModel {
     
     var onSelectedUserChanged: ((User) -> Void)?
     
+    // Aq raGhac rigze ver aris
     var selectedOrder: Order? {
         currentUser.userOrders.first(where: { $0.car.id == currentCar?.id })
     }

@@ -53,6 +53,7 @@ final class AddCarDetailsVC: UIViewController {
         super.viewDidLoad()
         setupUI()
         handleDelegates()
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
 
     //MARK: - Setup UI
@@ -71,6 +72,7 @@ final class AddCarDetailsVC: UIViewController {
         addCardDetailsView.bottomButtonsStackView.popViewControllerDelegate = self
         addCardDetailsView.sheetRepresentableDelegate = self
         addCardDetailsView.carPlateTextField.numberPlateDelegate = self
+        addCardDetailsView.carPlateTextField.delegate = self
     }
     
     //MARK: - Set UI Components
@@ -247,3 +249,18 @@ extension AddCarDetailsVC: SaveButtonDelegate {
     }
 }
  
+extension AddCarDetailsVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+}
+
+extension AddCarDetailsVC: UIGestureRecognizerDelegate {
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if gestureRecognizer.isEqual(navigationController?.interactivePopGestureRecognizer) {
+            navigationController?.popViewController(animated: true)
+        }
+        return false
+    }
+}

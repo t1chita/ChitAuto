@@ -33,6 +33,7 @@ final class SearchAnAssistantVC: UIViewController {
         super.viewDidLoad()
         handleDelegates()
         removeDefaultBackButton()
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
         print(searchAnAssistantViewModel.currentOrder)
     }
     
@@ -98,5 +99,14 @@ extension SearchAnAssistantVC: ChangeAssistantLevelsDelegate {
     
     func handleBeginnerButton() {
         searchAnAssistantViewModel.updateAssistantLevel(to: .beginner)
+    }
+}
+
+extension SearchAnAssistantVC: UIGestureRecognizerDelegate {
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if gestureRecognizer.isEqual(navigationController?.interactivePopGestureRecognizer) {
+            navigationController?.popViewController(animated: true)
+        }
+        return false
     }
 }

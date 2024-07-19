@@ -20,10 +20,14 @@ protocol AddCarDetailsPushableDelegate: AnyObject {
     func pushToAddCarDetailsPage()
 }
 
+protocol OrderStatusButtonDelegate: AnyObject {
+    func handleOrderStatusButton()
+}
+
 final class UserMainVC: UIViewController {
     //MARK: - Properties
-    var userMainView: UserMainView
-    var userMainViewModel: UserMainViewModel
+    private var userMainView: UserMainView
+    private var userMainViewModel: UserMainViewModel
     
     //MARK: - Initialization
     init(userMainView: UserMainView, userMainViewModel: UserMainViewModel) {
@@ -40,22 +44,22 @@ final class UserMainVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         view = userMainView
-        updateUI()
+        print(userMainViewModel.currentUser)
         updateCarInfo()
+        updateUI()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
         handleDelegates()
+        setupUI()
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
     //MARK: - Setup UI
     private func setupUI() {
         setNavigationItemsOnWelcomePage()
         setDefaultSelectedCar()
-        setAssistantImage()
-        setAssistantName()
     }
 
      
@@ -67,6 +71,7 @@ final class UserMainVC: UIViewController {
     private func getDelegatesFromView() {
         userMainView.navigateToRootViewControllerDelegate = self
         userMainView.garageAndOrderFlowRepresentableDelegate = self
+        userMainView.orderStatusButtonDelegate = self
     }
 
     //MARK: - Set UI Components
@@ -99,6 +104,8 @@ final class UserMainVC: UIViewController {
     private func updateCarInfo() {
         setCarBrandImageWithData()
         setCarPlateNumber()
+        setAssistantName()
+        setAssistantImage()
     }
     
     private func updateUI() {
@@ -121,6 +128,17 @@ extension UserMainVC: PopViewControllerDelegate {
     }
 }
 
+extension UserMainVC: OrderStatusButtonDelegate {
+    func handleOrderStatusButton() {
+        let currentOrderView = CurrentOrderView()
+        let currentOrderViewModel = CurrentOrderViewModel()
+        
+        let vc = CurrentOrderVC(currentOrderView: currentOrderView, currentOrderViewModel: currentOrderViewModel)
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
 extension UserMainVC: GarageAndOrderFlowRepresentableDelegate {
     func makeAnOrder() {
         if userMainViewModel.userHasCars {
@@ -130,6 +148,7 @@ extension UserMainVC: GarageAndOrderFlowRepresentableDelegate {
             let carInfoViewModel = CarInfoViewModel(currentCar: userCar, userId: userMainViewModel.currentUser.id)
             
             carInfoViewModel.onCurrentOrderChanged = { [weak self] order in
+                self?.userMainViewModel.currentUser.userOrders.removeAll(where: {$0.id == order.id})
                 self?.userMainViewModel.currentUser.userOrders.append(order)
             }
             
@@ -150,6 +169,7 @@ extension UserMainVC: GarageAndOrderFlowRepresentableDelegate {
         garageSheetViewModel.onSavedCarChanged = {[weak self] car in
             self?.userMainViewModel.currentCar = car
             self?.updateCarInfo()
+            self?.updateUI()
         }
         let vc = GarageSheetVC(garageSheetView: garageSheetView, garageSheetViewModel: garageSheetViewModel)
         
@@ -175,11 +195,19 @@ extension UserMainVC: AddCarDetailsPushableDelegate {
         let addCarDetailsViewModel = AddCarDetailsViewModel(userId: userMainViewModel.currentUser.id)
         addCarDetailsViewModel.onSelectedCarChanged = { [weak self] car in
             self?.userMainViewModel.currentCar = car
-            self?.userMainViewModel.currentUser.userCars.append(car) 
-            self?.updateCarInfo()
+            self?.userMainViewModel.currentUser.userCars.append(car)
         }
         let vc = AddCarDetailsVC(addCardDetailsView: addCarDetailsView, addCardDetailsViewModel: addCarDetailsViewModel)
         
         navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension UserMainVC: UIGestureRecognizerDelegate {
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if gestureRecognizer.isEqual(navigationController?.interactivePopGestureRecognizer) {
+            navigationController?.popViewController(animated: true)
+        }
+        return false
     }
 }

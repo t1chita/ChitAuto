@@ -50,6 +50,7 @@ final class LocationAndTimeVC: UIViewController {
         super.viewDidLoad()
         setupUI()
         handleDelegates()
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
         print(locationAndTimeViewModel.order)
     }
     //MARK: - Setup UI
@@ -68,6 +69,7 @@ final class LocationAndTimeVC: UIViewController {
         locationAndTimeView.bottomButtonsStackView.saveButtonDelegate = self
         locationAndTimeView.bottomButtonsStackView.popViewControllerDelegate = self
         locationAndTimeView.locationAndTimeVCNavigationDelegate = self
+        locationAndTimeView.addressTextField.delegate = self
     }
     
     //MARK: - Set UI Components
@@ -172,5 +174,21 @@ extension LocationAndTimeVC: LocationAndTimeVCNavigationDelegate {
         sheet?.detents = [.medium()]
         
         present(vc, animated: true, completion: nil)
+    }
+}
+
+extension LocationAndTimeVC: UIGestureRecognizerDelegate {
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if gestureRecognizer.isEqual(navigationController?.interactivePopGestureRecognizer) {
+            navigationController?.popViewController(animated: true)
+        }
+        return false
+    }
+}
+
+extension LocationAndTimeVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 }

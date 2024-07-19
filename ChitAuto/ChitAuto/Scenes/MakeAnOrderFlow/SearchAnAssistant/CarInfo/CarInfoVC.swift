@@ -37,6 +37,7 @@ final class CarInfoVC: UIViewController {
         super.viewDidLoad()
         setupUI()
         handleDelegates()
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
     //MARK: - SetupUI
@@ -54,6 +55,7 @@ final class CarInfoVC: UIViewController {
         carInfoView.bottomButtonsStackView.saveButtonDelegate = self
         carInfoView.bottomButtonsStackView.popViewControllerDelegate = self
         carInfoView.saveCarInfoDelegate = self
+        carInfoView.problemDescriptionTextView.delegate = self
     }
     
     //MARK: - Set UI Components
@@ -106,4 +108,24 @@ extension CarInfoVC: SaveCarInfoDelegate {
         carInfoViewModel.currentOrder?.visualDamage.toggle()
         carInfoView.updateVisualDamageButton(buttonTapped: carInfoViewModel.currentOrder?.visualDamage ?? false)
     }
+}
+
+extension CarInfoVC: UIGestureRecognizerDelegate {
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if gestureRecognizer.isEqual(navigationController?.interactivePopGestureRecognizer) {
+            navigationController?.popViewController(animated: true)
+        }
+        return false
+    }
+}
+
+extension CarInfoVC: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+
 }

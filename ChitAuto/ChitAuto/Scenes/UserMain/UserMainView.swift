@@ -202,6 +202,7 @@ final class UserMainView: UIView {
     //MARK: - Delegates
     weak var garageAndOrderFlowRepresentableDelegate: GarageAndOrderFlowRepresentableDelegate?
     weak var navigateToRootViewControllerDelegate: PopViewControllerDelegate?
+    weak var orderStatusButtonDelegate: OrderStatusButtonDelegate?
     
     //MARK: - Initialization
     override init(frame: CGRect) {
@@ -383,6 +384,10 @@ final class UserMainView: UIView {
     private func setOrderStatusButton() {
         assistantContentBackground.addSubview(orderStatusButton)
         
+        orderStatusButton.addAction(UIAction(title: "Go To Current Order Page", handler: {[weak self] _ in
+            self?.orderStatusButtonDelegate?.handleOrderStatusButton()
+        }), for: .touchUpInside)
+        
         //Set Constraints
         NSLayoutConstraint.activate([
             orderStatusButton.bottomAnchor.constraint(equalTo: assistantContentBackground.bottomAnchor, constant: -16),
@@ -459,6 +464,7 @@ final class UserMainView: UIView {
         makeAnOrder.isHidden = true
         youDontHaveAnOrderLabel.isHidden = true
         carContentStackView.isHidden = true
+        orderCardBackground.isHidden = true
     }
     
     func updateViewWithoutOrder() {
@@ -467,6 +473,7 @@ final class UserMainView: UIView {
          makeAnOrder.isHidden = false
          youDontHaveAnOrderLabel.isHidden = false
          carContentStackView.isHidden = false
+        orderCardBackground.isHidden = true
      }
     
     func updateViewWithOrder() {
@@ -475,5 +482,6 @@ final class UserMainView: UIView {
         makeAnOrder.isHidden = true
         youDontHaveAnOrderLabel.isHidden = true
         carContentStackView.isHidden = false
+        orderCardBackground.isHidden = false
     }
 }
