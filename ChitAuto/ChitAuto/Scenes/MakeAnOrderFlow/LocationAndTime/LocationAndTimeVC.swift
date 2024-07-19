@@ -51,8 +51,9 @@ final class LocationAndTimeVC: UIViewController {
         setupUI()
         handleDelegates()
         navigationController?.interactivePopGestureRecognizer?.delegate = self
-        print(locationAndTimeViewModel.order)
+        updateDate()
     }
+    
     //MARK: - Setup UI
     private func setupUI() {
         setCityButton()
@@ -75,6 +76,14 @@ final class LocationAndTimeVC: UIViewController {
     //MARK: - Set UI Components
     private func removeDefaultBackButton() {
         navigationItem.setHidesBackButton(true, animated: true)
+    }
+    
+    private func updateDate() {
+        let selectedDate = locationAndTimeView.datePicker.date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        let date = dateFormatter.string(from: selectedDate)
+        locationAndTimeViewModel.date = date
     }
 }
 
@@ -126,11 +135,7 @@ extension LocationAndTimeVC: PopViewControllerDelegate {
 
 extension LocationAndTimeVC: DateChoseDelegate {
     func dateValueChanged() {
-        let selectedDate = locationAndTimeView.datePicker.date
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        let date = dateFormatter.string(from: selectedDate)
-        locationAndTimeViewModel.date = date
+        updateDate()
     }
 }
 

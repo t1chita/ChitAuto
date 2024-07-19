@@ -23,7 +23,7 @@ final class WelcomeViewModel {
     let insuranceTitle: String = "დაზღვევა"
     let insuranceDesc: String = "შენი ავტომობილი დაზღვეული იქნება, სანამ ის ავტო ასისტენტის ხელშია"
     let howDoesItWorks: String = "როგორ მუშაობს?"
-    let whyCaru: String = "რატომ ქარუ?"
+    let whyCaru: String = "რატომ ChitAuto?"
     let assistantImage: String = "https://caru.ge/assets/images/why/poster.png"
     
     var carRepairPhases: [RepairPhase] = []
@@ -34,21 +34,19 @@ final class WelcomeViewModel {
     
     var currentUser: User? = nil
     
-    //    MARK: - Api Urls
+    //MARK: - Api Urls
     private let phasesUrl: String = "https://chitauto-default-rtdb.europe-west1.firebasedatabase.app/phases.json"
     
-    //    MARK: - Initialization
+    //MARK: - Initialization
     init() {
         fetchData()
         fetchUser()
     }
     
-    //    MARK: - Delegates
+    //MARK: - Delegates
     weak var reloadDelegate: ReloadDelegate?
-    
-    //    MARK: - Child Method
-    
-    //    MARK: - Requests
+        
+    //MARK: - Requests
     private func fetchData() {
         NetworkService.networkService.getData(urlString: phasesUrl) { [weak self] (result: Result<CarRepairPhases, Error>) in
             DispatchQueue.main.async { [weak self] in

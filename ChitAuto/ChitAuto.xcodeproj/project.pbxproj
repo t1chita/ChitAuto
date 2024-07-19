@@ -84,6 +84,9 @@
 		26CA73FF2C3485BE00715AC3 /* OnBoardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CA73FE2C3485BE00715AC3 /* OnBoardingVC.swift */; };
 		26CA74052C348A4200715AC3 /* CustomGeneralButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CA74042C348A4200715AC3 /* CustomGeneralButton.swift */; };
 		26CF16E12C4B029D00A1CC15 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CF16E02C4B029D00A1CC15 /* AlertManager.swift */; };
+		26CF16E42C4B285A00A1CC15 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CF16E32C4B285A00A1CC15 /* ProfileVC.swift */; };
+		26CF16E62C4B286100A1CC15 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CF16E52C4B286100A1CC15 /* ProfileView.swift */; };
+		26CF16E82C4B286C00A1CC15 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CF16E72C4B286C00A1CC15 /* ProfileViewModel.swift */; };
 		26F4E10C2C41ABAF0031A6C5 /* NumberPlateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F4E10B2C41ABAF0031A6C5 /* NumberPlateTextField.swift */; };
 		26F4E1112C4353E10031A6C5 /* BottomButtonsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F4E1102C4353E10031A6C5 /* BottomButtonsStackView.swift */; };
 		26F4E1192C43D1D90031A6C5 /* CarInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F4E1182C43D1D90031A6C5 /* CarInfoVC.swift */; };
@@ -193,6 +196,9 @@
 		26CA73FE2C3485BE00715AC3 /* OnBoardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingVC.swift; sourceTree = "<group>"; };
 		26CA74042C348A4200715AC3 /* CustomGeneralButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGeneralButton.swift; sourceTree = "<group>"; };
 		26CF16E02C4B029D00A1CC15 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		26CF16E32C4B285A00A1CC15 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		26CF16E52C4B286100A1CC15 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		26CF16E72C4B286C00A1CC15 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		26F4E10B2C41ABAF0031A6C5 /* NumberPlateTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPlateTextField.swift; sourceTree = "<group>"; };
 		26F4E1102C4353E10031A6C5 /* BottomButtonsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomButtonsStackView.swift; sourceTree = "<group>"; };
 		26F4E1182C43D1D90031A6C5 /* CarInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarInfoVC.swift; sourceTree = "<group>"; };
@@ -587,6 +593,7 @@
 		26CA73F92C34857F00715AC3 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				26CF16E22C4B281900A1CC15 /* Profile */,
 				26CA74002C34863900715AC3 /* OnBoarding */,
 				2622943A2C349BA10062EEC1 /* SignUp */,
 				26ADA7362C38CD7F00D6E3EE /* SignIn */,
@@ -641,6 +648,16 @@
 				267530F82C3DC82400E8B42B /* BackButton.swift */,
 			);
 			path = Buttons;
+			sourceTree = "<group>";
+		};
+		26CF16E22C4B281900A1CC15 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				26CF16E32C4B285A00A1CC15 /* ProfileVC.swift */,
+				26CF16E52C4B286100A1CC15 /* ProfileView.swift */,
+				26CF16E72C4B286C00A1CC15 /* ProfileViewModel.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		26F4E10D2C41ABB70031A6C5 /* TextFields */ = {
@@ -846,6 +863,7 @@
 				26F4E1522C4931FD0031A6C5 /* CurrentOrderView.swift in Sources */,
 				267530E72C3D52DA00E8B42B /* GarageSheetView.swift in Sources */,
 				2675318B2C417A2900E8B42B /* GarageSheetVC + ExtTableView.swift in Sources */,
+				26CF16E82C4B286C00A1CC15 /* ProfileViewModel.swift in Sources */,
 				26F4E1212C44A8350031A6C5 /* LocationAndTimeView.swift in Sources */,
 				261C15BA2C3A1106004B5A1E /* User.swift in Sources */,
 				261C15D62C3AC0B6004B5A1E /* PhasesCustomLabel.swift in Sources */,
@@ -930,12 +948,14 @@
 				261C15C42C3AB6D4004B5A1E /* CustomImageView.swift in Sources */,
 				2675317C2C40BC2500E8B42B /* Car.swift in Sources */,
 				26F4E11B2C43D1EA0031A6C5 /* CarInfoView.swift in Sources */,
+				26CF16E42C4B285A00A1CC15 /* ProfileVC.swift in Sources */,
 				2675310C2C3FF2A200E8B42B /* ModelsVC.swift in Sources */,
 				267530F42C3D8D4B00E8B42B /* CarInfoButton.swift in Sources */,
 				26F4E1352C47456E0031A6C5 /* LocationSheetVC.swift in Sources */,
 				261C15CD2C3ABDAF004B5A1E /* CustomFlowLayout.swift in Sources */,
 				267530FB2C3E0E2D00E8B42B /* CarBrandsResponse.swift in Sources */,
 				26CF16E12C4B029D00A1CC15 /* AlertManager.swift in Sources */,
+				26CF16E62C4B286100A1CC15 /* ProfileView.swift in Sources */,
 				267531402C40925F00E8B42B /* TransmissionTypeVC + ExtTableView.swift in Sources */,
 				261C15C12C3A13A4004B5A1E /* WelcomeVC.swift in Sources */,
 				26F4E12E2C45B8870031A6C5 /* SearchAnAssistantVC + ExtCollectionView.swift in Sources */,
