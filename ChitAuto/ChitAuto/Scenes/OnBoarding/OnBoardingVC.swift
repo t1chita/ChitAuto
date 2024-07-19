@@ -61,12 +61,14 @@ extension OnBoardingVC: NavigateToSignInSignUpPageDelegate {
     func navigateToSignIn() {
         let view = SignInView()
         let hostingController = UIHostingController(rootView: view)
+        navigationItem.backButtonTitle = ""
         navigationController?.pushViewController(hostingController, animated: true)
     }
     
     func navigateToSignUp() {
         let view = SignUpView()
         let hostingController = UIHostingController(rootView: view)
+        navigationItem.backButtonTitle = ""
         navigationController?.pushViewController(hostingController, animated: true)
     }
 }
