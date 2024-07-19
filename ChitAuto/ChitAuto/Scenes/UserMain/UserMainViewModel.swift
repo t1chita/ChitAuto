@@ -8,33 +8,56 @@
 import Foundation
 
 final class UserMainViewModel {
-    //MARK: - Properties
+    // MARK: - Properties
     let garage: String = "გარაჟი"
     let callAnAssistant: String = "გამოძახება"
     
+    private var _currentUser: User
+    private var _currentCar: Car?
+    private let accessQueue = DispatchQueue(label: "com.chitauto.UserMainViewModel.accessQueue")
+
     var currentUser: User {
-        didSet { onSelectedUserChanged?(currentUser) }
+        get {
+            accessQueue.sync { _currentUser }
+        }
+        set {
+            accessQueue.sync { _currentUser = newValue }
+            onSelectedUserChanged?(newValue)
+        }
     }
- 
-    var currentCar: Car?
     
-    var onSelectedUserChanged: ((User) -> Void)?
+    var currentCar: Car? {
+        get {
+            accessQueue.sync { _currentCar }
+        }
+        set {
+            accessQueue.sync { _currentCar = newValue }
+        }
+    }
     
-    // Aq raGhac rigze ver aris
     var selectedOrder: Order? {
-        currentUser.userOrders.first(where: { $0.car.id == currentCar?.id })
+        accessQueue.sync {
+            _currentUser.userOrders.first(where: { $0.car.id == _currentCar?.id })
+        }
     }
     
     var userHasCars: Bool {
-        !currentUser.userCars.isEmpty
+        accessQueue.sync {
+            !_currentUser.userCars.isEmpty
+        }
     }
     
     var currentCarHasOrder: Bool {
-        currentUser.userOrders.contains(where: { $0.car.id == currentCar?.id })
+        accessQueue.sync {
+            _currentUser.userOrders.contains(where: { $0.car.id == _currentCar?.id })
+        }
     }
     
-    //MARK: - Initialization
+    var onSelectedUserChanged: ((User) -> Void)?
+    
+    
+    // MARK: - Initialization
     init(currentUser: User) {
-        self.currentUser = currentUser
+        self._currentUser = currentUser
     }
 }

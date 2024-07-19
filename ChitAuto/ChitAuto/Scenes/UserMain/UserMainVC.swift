@@ -44,7 +44,6 @@ final class UserMainVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         view = userMainView
-        print(userMainViewModel.currentUser)
         updateCarInfo()
         updateUI()
     }
@@ -131,12 +130,23 @@ extension UserMainVC: PopViewControllerDelegate {
 extension UserMainVC: OrderStatusButtonDelegate {
     func handleOrderStatusButton() {
         let currentOrderView = CurrentOrderView()
-        let currentOrderViewModel = CurrentOrderViewModel()
-        
-        let vc = CurrentOrderVC(currentOrderView: currentOrderView, currentOrderViewModel: currentOrderViewModel)
-        
-        navigationController?.pushViewController(vc, animated: true)
-    }
+           let currentOrderViewModel = CurrentOrderViewModel(userID: userMainViewModel.currentUser.id, orderToRemove: userMainViewModel.selectedOrder!.id)
+           
+           currentOrderViewModel.onOrderRemoved = { [weak self] in
+               guard let self = self else { return }
+               print("Order removed closure called")
+               self.userMainViewModel.currentUser = {
+                   var user = self.userMainViewModel.currentUser
+                   user.userOrders.removeAll(where: { $0.id == self.userMainViewModel.selectedOrder?.id })
+                   return user
+               }()
+               self.updateUI()
+           }
+           
+           let vc = CurrentOrderVC(currentOrderView: currentOrderView, currentOrderViewModel: currentOrderViewModel)
+           
+           navigationController?.pushViewController(vc, animated: true)
+       }
 }
 
 extension UserMainVC: GarageAndOrderFlowRepresentableDelegate {

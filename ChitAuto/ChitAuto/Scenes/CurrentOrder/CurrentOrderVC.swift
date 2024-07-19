@@ -6,17 +6,15 @@
 //
 
 import UIKit
-
 protocol CancelButtonDelegate: AnyObject {
     func handleCancelButton()
 }
-
 final class CurrentOrderVC: UIViewController {
-   //MARK: - Properties
+    // MARK: - Properties
     private var currentOrderView: CurrentOrderView
     private var currentOrderViewModel: CurrentOrderViewModel
     
-    //MARK: - Initialization
+    // MARK: - Initialization
     init(currentOrderView: CurrentOrderView, currentOrderViewModel: CurrentOrderViewModel) {
         self.currentOrderView = currentOrderView
         self.currentOrderViewModel = currentOrderViewModel
@@ -27,10 +25,10 @@ final class CurrentOrderVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - LifeCycles
+    // MARK: - LifeCycles
     override func viewWillAppear(_ animated: Bool) {
-        view = currentOrderView
         super.viewWillAppear(animated)
+        view = currentOrderView
     }
     
     override func viewDidLoad() {
@@ -39,7 +37,8 @@ final class CurrentOrderVC: UIViewController {
         setupUI()
         handleDelegates()
     }
-    //MARK: - Delegates
+    
+    // MARK: - Delegates
     private func handleDelegates() {
         getDelegatesFromView()
     }
@@ -48,16 +47,16 @@ final class CurrentOrderVC: UIViewController {
         currentOrderView.cancelButtonDelegate = self
     }
     
-    //MARK: - Setup UI
+    // MARK: - Setup UI
     private func setupUI() {
         removeDefaultBackButton()
     }
-    //MARK: - Set UI Components
+    
+    // MARK: - Set UI Components
     private func removeDefaultBackButton() {
         navigationItem.setHidesBackButton(true, animated: true)
     }
 }
-
 
 extension CurrentOrderVC: UIGestureRecognizerDelegate {
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -68,9 +67,10 @@ extension CurrentOrderVC: UIGestureRecognizerDelegate {
     }
 }
 
-
 extension CurrentOrderVC: CancelButtonDelegate {
     func handleCancelButton() {
+        print("Cancel button tapped, removing order from user")
+        currentOrderViewModel.removeOrderFromUser()
         navigationController?.popViewController(animated: true)
     }
 }
