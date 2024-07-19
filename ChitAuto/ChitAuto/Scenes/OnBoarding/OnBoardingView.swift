@@ -24,6 +24,7 @@ final class OnBoardingView: UIView {
     
     let registrationButton: CustomGeneralButton = {
         let button = CustomGeneralButton()
+        button.backgroundColor = .customCard
         return button
     }()
     

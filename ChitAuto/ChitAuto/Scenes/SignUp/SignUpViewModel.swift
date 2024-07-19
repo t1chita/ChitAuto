@@ -14,16 +14,12 @@ final class SignUpViewModel: ObservableObject {
     //MARK: - Static Properties
     let firstNameLabel: String = "სახელი"
     let lastNameLabel: String = "გვარი"
-    let phoneNumberLabel: String = "ნომერი"
-    let personalNoLabel: String = "პირადი ნომერი"
     let mailLabel: String = "მეილი"
     let passwordLabel: String = "პაროლი"
     
     //MARK: - Properties
     @Published var firstName: String = ""
     @Published var lastName: String = ""
-    @Published var phoneNumber: String = ""
-    @Published var personalNo: String = ""
     @Published var email: String = ""
     @Published var password: String = ""
     
@@ -31,31 +27,35 @@ final class SignUpViewModel: ObservableObject {
     func createUser() async throws {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
-            let user = User(id: result.user.uid, firstName: firstName, lastName: lastName, email: email, phoneNumber: phoneNumber, personalNo: personalNo, userCars: [], userOrders: [])
+            let user = User(id: result.user.uid, firstName: firstName, lastName: lastName, email: email, phoneNumber: "", personalNo: "", userCars: [], userOrders: [])
             let encodedUser = try Firestore.Encoder().encode(user)
             try await Firestore.firestore().collection("users").document(user.id).setData(encodedUser)
         } catch {
             print("Debug: Failed to create user with error \(error.localizedDescription)")
         }
     }
-    
-    //MARK: - Requests
-    
-    //MARK: - Navigation
 }
 
 
 //MARK: - Validation
-extension SignUpViewModel: AuthenticationFormProtocol {
+extension SignUpViewModel {
+    var emailIsValid: Bool {
+        return !email.isEmpty && email.contains("@")
+    }
+    
+    var nameIsValid: Bool {
+        return !firstName.isEmpty
+    }
+    
+    var lastNameIsValid: Bool {
+        return !lastName.isEmpty
+    }
+    
+    var passwordIsValid: Bool {
+        return !password.isEmpty && password.count >= 8
+    }
+    
     var formIsValid: Bool {
-        return !email.isEmpty
-        && email.contains("@")
-        && !firstName.isEmpty
-        && !lastName.isEmpty
-        && !phoneNumber.isEmpty
-        && !personalNo.isEmpty
-        && personalNo.count == 11
-        && !password.isEmpty
-        && password.count > 5
+        return emailIsValid && nameIsValid && passwordIsValid && lastNameIsValid
     }
 }

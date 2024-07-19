@@ -14,10 +14,8 @@ extension WelcomeVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        //TODO: Fix
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhasesCell.identifier, for: indexPath) as! PhasesCell
-        cell.configure(imageURL: URL(string: welcomeViewModel.carRepairPhases[indexPath.row].imageURL)!, phaseText: welcomeViewModel.carRepairPhases[indexPath.row].phaseText, phaseOrdinality: welcomeViewModel.carRepairPhases[indexPath.row].phaseOrdinality, firstStep: welcomeViewModel.carRepairPhases[indexPath.row].firstStep, secondStep: welcomeViewModel.carRepairPhases[indexPath.row].secondStep, thirdStep: welcomeViewModel.carRepairPhases[indexPath.row].thirdStep ?? "")
+        cell.configure(withRepairPhase: welcomeViewModel.carRepairPhases[indexPath.row])
         return cell
     }
 }

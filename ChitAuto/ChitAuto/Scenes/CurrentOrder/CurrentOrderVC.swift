@@ -9,12 +9,13 @@ import UIKit
 protocol CancelButtonDelegate: AnyObject {
     func handleCancelButton()
 }
+
 final class CurrentOrderVC: UIViewController {
-    // MARK: - Properties
+    //MARK: - Properties
     private var currentOrderView: CurrentOrderView
     private var currentOrderViewModel: CurrentOrderViewModel
     
-    // MARK: - Initialization
+    //MARK: - Initialization
     init(currentOrderView: CurrentOrderView, currentOrderViewModel: CurrentOrderViewModel) {
         self.currentOrderView = currentOrderView
         self.currentOrderViewModel = currentOrderViewModel
@@ -25,7 +26,7 @@ final class CurrentOrderVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - LifeCycles
+    //MARK: - LifeCycles
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         view = currentOrderView
@@ -38,7 +39,7 @@ final class CurrentOrderVC: UIViewController {
         handleDelegates()
     }
     
-    // MARK: - Delegates
+    //MARK: - Delegates
     private func handleDelegates() {
         getDelegatesFromView()
     }
@@ -47,12 +48,12 @@ final class CurrentOrderVC: UIViewController {
         currentOrderView.cancelButtonDelegate = self
     }
     
-    // MARK: - Setup UI
+    //MARK: - Setup UI
     private func setupUI() {
         removeDefaultBackButton()
     }
     
-    // MARK: - Set UI Components
+    //MARK: - Set UI Components
     private func removeDefaultBackButton() {
         navigationItem.setHidesBackButton(true, animated: true)
     }
@@ -69,8 +70,11 @@ extension CurrentOrderVC: UIGestureRecognizerDelegate {
 
 extension CurrentOrderVC: CancelButtonDelegate {
     func handleCancelButton() {
-        print("Cancel button tapped, removing order from user")
-        currentOrderViewModel.removeOrderFromUser()
-        navigationController?.popViewController(animated: true)
+        AlertManager.showDeleteConfirmation(on: self) { [weak self] didDelete in
+            if (didDelete == true) {
+                self?.currentOrderViewModel.removeOrderFromUser()
+                self?.navigationController?.popViewController(animated: true)
+            }
+        }
     }
 }

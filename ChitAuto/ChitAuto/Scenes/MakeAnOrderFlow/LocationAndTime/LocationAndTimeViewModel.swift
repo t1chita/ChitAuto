@@ -45,3 +45,28 @@ final class LocationAndTimeViewModel {
         self.userId = userId
     }
 }
+
+extension LocationAndTimeViewModel {
+    private var isCityValid: Bool {
+        cityLocation != "აირჩიე ქალაქი"
+    }
+    
+    private var isAddressValid: Bool {
+        address != ""
+    }
+    
+    private var isDateValid: Bool {
+        date != ""
+    }
+    
+    private var isTimeValid: Bool {
+        timeValue != "აირჩიე დრო"
+    }
+    
+    var isLocationAndTimeFormValid: Bool {
+        return isCityValid
+        && isAddressValid
+        && isDateValid
+        && isTimeValid
+    }
+}

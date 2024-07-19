@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CustomTextField: View {
     let textFieldTitle: String
+    let placeHolder: String
+    let isSecureField: Bool
     
     @Binding var textFieldText: String
     
@@ -17,10 +19,17 @@ struct CustomTextField: View {
             Text(textFieldTitle)
                 .padding(.leading, 10)
             
-            TextField(textFieldText,
-                      text: $textFieldText)
-            .textFieldStyle()
+            if isSecureField {
+                SecureField(placeHolder,
+                            text: $textFieldText)
+                    .textFieldStyle()
+            } else {
+                TextField(placeHolder,
+                          text: $textFieldText)
+                .textFieldStyle()
+            }
         }
         .padding(.horizontal, 16)
     }
 }
+

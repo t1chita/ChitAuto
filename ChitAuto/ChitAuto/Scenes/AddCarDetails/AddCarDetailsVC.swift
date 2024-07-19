@@ -241,11 +241,11 @@ extension AddCarDetailsVC: NumberPlateTextFieldDelegate {
 
 extension AddCarDetailsVC: SaveButtonDelegate {
     func saveCarDetails() {
-        addCarDetailsViewModel.saveCarDetails { error in
-            print("DEBUG: Cant Save User Car \(String(describing: error?.localizedDescription))")
-            //TODO: Present Alert Can't Save
+        if addCarDetailsViewModel.isAddCarDetailsValid {
+            addCarDetailsViewModel.saveCarDetails()
+        } else {
+            AlertManager.showAddCarDetailsIsNotValid(on: self)
         }
-        navigationController?.popViewController(animated: true)
     }
 }
  

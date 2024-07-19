@@ -66,12 +66,14 @@ final class UserMainView: UIView {
     private let addCarInTheGarageButton: CustomGeneralButton = {
         let button = CustomGeneralButton()
         button.setTitle("დაამატე მანქანა გარაჟში", for: .normal)
+        button.backgroundColor = .customCard
         return button
     }()
     
     private let makeAnOrder: CustomGeneralButton = {
         let button = CustomGeneralButton()
         button.setTitle("გამოიძახე ავტოასისტენტი", for: .normal)
+        button.backgroundColor = .customCard
         return button
     }()
     

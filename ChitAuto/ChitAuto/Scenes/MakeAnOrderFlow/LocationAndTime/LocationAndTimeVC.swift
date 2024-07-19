@@ -100,16 +100,21 @@ extension LocationAndTimeVC: SaveButtonDelegate {
     func saveCarDetails() {
         locationAndTimeViewModel.address = locationAndTimeView.addressTextField.text ?? ""
         
-        let searchAnAssistantView = SearchAnAssistantView()
-        let searchAnAssistantViewModel = SearchAnAssistantViewModel(order: locationAndTimeViewModel.order, userId: locationAndTimeViewModel.userId)
-        
-        searchAnAssistantViewModel.onChangedCurrentOrder = { [weak self] order in
-            self?.locationAndTimeViewModel.order = order
+        if locationAndTimeViewModel.isLocationAndTimeFormValid {
+            
+            let searchAnAssistantView = SearchAnAssistantView()
+            let searchAnAssistantViewModel = SearchAnAssistantViewModel(order: locationAndTimeViewModel.order, userId: locationAndTimeViewModel.userId)
+            
+            searchAnAssistantViewModel.onChangedCurrentOrder = { [weak self] order in
+                self?.locationAndTimeViewModel.order = order
+            }
+            
+            let vc = SearchAnAssistantVC(searchAnAssistantView: searchAnAssistantView, searchAnAssistantViewModel: searchAnAssistantViewModel)
+            
+            navigationController?.pushViewController(vc, animated: true)
+        } else {
+            AlertManager.showCanNotUpdateOrderCarInfo(on: self)
         }
-        
-        let vc = SearchAnAssistantVC(searchAnAssistantView: searchAnAssistantView, searchAnAssistantViewModel: searchAnAssistantViewModel)
-        
-        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

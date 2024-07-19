@@ -58,7 +58,7 @@ final class PhasesCell: UICollectionViewCell {
         stView.spacing = 5
         return stView
     }()
-    //TODO: Nice To Have Bullets In StackView
+    
     private let firstStep: PhasesCustomLabel = {
         let lbl = PhasesCustomLabel()
         return lbl
@@ -85,19 +85,14 @@ final class PhasesCell: UICollectionViewCell {
     }
     
     //MARK: - Configure
-    func configure (imageURL: URL,
-                    phaseText: String,
-                    phaseOrdinality: String,
-                    firstStep: String,
-                    secondStep: String,
-                    thirdStep: String
-    ) {
+    func configure (withRepairPhase repairPhase: RepairPhase) {
+        guard let imageURL = URL(string: repairPhase.imageURL) else { return }
         self.assistantImageView.loadImage(from: imageURL)
-        self.phaseTitle.text = phaseText
-        self.phaseOrdinalityText.text = phaseOrdinality
-        self.firstStep.text = firstStep
-        self.secondStep.text = secondStep
-        self.thirdStep.text = thirdStep
+        self.phaseTitle.text = repairPhase.phaseText
+        self.phaseOrdinalityText.text = repairPhase.phaseOrdinality
+        self.firstStep.text = repairPhase.firstStep
+        self.secondStep.text = repairPhase.secondStep
+        self.thirdStep.text = repairPhase.thirdStep
     }
     
     //MARK: - Setup UI

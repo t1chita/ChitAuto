@@ -34,7 +34,6 @@ final class SearchAnAssistantVC: UIViewController {
         handleDelegates()
         removeDefaultBackButton()
         navigationController?.interactivePopGestureRecognizer?.delegate = self
-        print(searchAnAssistantViewModel.currentOrder)
     }
     
     //MARK: - Setup UI
@@ -68,15 +67,11 @@ final class SearchAnAssistantVC: UIViewController {
 extension SearchAnAssistantVC: SaveButtonDelegate {
     func saveCarDetails() {
         guard let unwrappedAssistant = searchAnAssistantViewModel.selectedAssistant else {
-            //TODO: Alert
-            print("DEBUG: Assistant Is Nil")
+            AlertManager.showCanNotUpdateOrderAssistant(on: self)
             return
         }
-        
         searchAnAssistantViewModel.currentOrder.assistant = unwrappedAssistant
-        searchAnAssistantViewModel.saveOrderDetails { error in
-            print("DEBUG: Can't upload order data on firestore \(error?.localizedDescription)")
-        }
+        searchAnAssistantViewModel.saveOrderDetails()
         let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
         self.navigationController!.popToViewController(viewControllers[viewControllers.count - 4], animated: true)
     }

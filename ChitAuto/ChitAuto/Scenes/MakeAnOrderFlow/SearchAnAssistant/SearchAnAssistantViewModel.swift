@@ -106,7 +106,7 @@ final class SearchAnAssistantViewModel {
     }
 
     // MARK: - Save Order Details
-    func saveOrderDetails(completion: @escaping (Error?) -> Void) {
+    func saveOrderDetails() {
         let carData: [String: Any] = [
             "id": currentOrder.id,
             "car": convertCarToDictionary(car: currentOrder.car),
@@ -122,8 +122,6 @@ final class SearchAnAssistantViewModel {
         let db = Firestore.firestore()
         db.collection("users").document(userId).updateData([
             "userOrders": FieldValue.arrayUnion([carData])
-        ]) { error in
-            completion(error)
-        }
+        ])
     }
 }

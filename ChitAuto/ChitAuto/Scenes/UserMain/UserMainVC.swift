@@ -151,7 +151,7 @@ extension UserMainVC: OrderStatusButtonDelegate {
 
 extension UserMainVC: GarageAndOrderFlowRepresentableDelegate {
     func makeAnOrder() {
-        if userMainViewModel.userHasCars {
+        if userMainViewModel.userHasCars && !userMainViewModel.currentCarHasOrder {
             guard let userCar = userMainViewModel.currentCar else { return }
             
             let carInfoView = CarInfoView()
@@ -166,8 +166,8 @@ extension UserMainVC: GarageAndOrderFlowRepresentableDelegate {
             
             navigationController?.pushViewController(vc, animated: true)
             
-        } else {
-            print("DEBUG: User Don't Have Cars.")
+        } else if userMainViewModel.currentCarHasOrder {
+            AlertManager.showCurrentCarHasOrder(on: self)
         }
     }
     

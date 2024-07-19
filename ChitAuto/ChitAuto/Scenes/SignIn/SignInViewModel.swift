@@ -8,10 +8,6 @@
 import Foundation
 import Firebase
 
-protocol AuthenticationFormProtocol {
-    var formIsValid: Bool { get }
-}
-
 final class SignInViewModel: ObservableObject {
     //    MARK: - Static Properties
     let mailLabel: String = "მეილი"
@@ -21,8 +17,6 @@ final class SignInViewModel: ObservableObject {
     @Published var mail: String = ""
     @Published var password: String = ""
     
-    //    MARK: - LifeCycles
-    
     //    MARK: - Methods
     func singIn() async throws {
         do {
@@ -31,18 +25,23 @@ final class SignInViewModel: ObservableObject {
             print("DEBUG: Failed To Log In With Error \(error.localizedDescription)")
         }
     }
-    //    MARK: - Requests
-    
-    //    MARK: - Navigation
 }
 
 
 //MARK: - Validation
-extension SignInViewModel: AuthenticationFormProtocol {
-    var formIsValid: Bool {
+extension SignInViewModel {
+    var emailIsValid: Bool {
         return !mail.isEmpty
         && mail.contains("@")
-        && !password.isEmpty
-        && password.count > 5
+    }
+    
+    var passwordIsValid: Bool {
+        return !password.isEmpty
+        && password.count > 8
+    }
+    
+    var formIsValid: Bool {
+        return emailIsValid
+        && passwordIsValid
     }
 }

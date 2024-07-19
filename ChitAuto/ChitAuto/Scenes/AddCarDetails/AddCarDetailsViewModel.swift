@@ -7,7 +7,6 @@
 
 import FirebaseFirestore
 import Foundation
-import Network
 
 final class AddCarDetailsViewModel {
     var carBrand: CarBrand?
@@ -60,11 +59,8 @@ final class AddCarDetailsViewModel {
     
     var onSelectedCarChanged: ((Car) -> Void)?
     
-    func saveCarDetails(completion: @escaping (Error?) -> Void) {
-        guard let carBrand = carBrand else {
-            completion(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Car brand is missing"]))
-            return
-        }
+    func saveCarDetails() {
+        guard let carBrand = carBrand else { return }
         
         let car = Car(id: UUID().uuidString, carBrandName: carBrand.name, carBrandImageUrl: carBrand.imageUrl ?? "", carModelName: carModelName, fuelType: carFuelType, releaseDate: carReleaseDate, transmissionType: carTransmissionType, plateNumber: carPlateNumber)
         
@@ -84,9 +80,42 @@ final class AddCarDetailsViewModel {
         let db = Firestore.firestore()
         db.collection("users").document(userId).updateData([
             "userCars": FieldValue.arrayUnion([carData])
-        ]) { error in
-            completion(error)
-        }
+        ])
     }
 }
 
+
+extension AddCarDetailsViewModel {
+    private var isBrandValid: Bool {
+        carBrandName != "მწარმოებელი"
+    }
+    
+    private var isModelValid: Bool {
+        carModelName != "მოდელი"
+    }
+
+    private var isReleaseDateValid: Bool {
+        carReleaseDate != "გამოშვების წელი"
+    }
+    
+    private var isFuelTypeValid: Bool {
+        carFuelType != "საწვავის ტიპი"
+    }
+    
+    private var isTransmissionTypeValid: Bool {
+        carTransmissionType != "გადაცემათა კოლოფი"
+    }
+    
+    private var isNumberPlateValid: Bool {
+        carPlateNumber != "" && carPlateNumber.count == 9
+    }
+    
+    var isAddCarDetailsValid: Bool {
+        return isBrandValid
+        && isModelValid 
+        && isReleaseDateValid
+        && isFuelTypeValid
+        && isTransmissionTypeValid
+        && isNumberPlateValid
+    }
+}

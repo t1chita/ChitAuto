@@ -24,8 +24,6 @@ struct SignInView: View {
             appLogo
             
             usersInfoCard
-            
-            signInButton
         }
     }
     
@@ -53,11 +51,17 @@ struct SignInView: View {
     
     private var usersInfoCardContent: some View {
         VStack {
-            CustomTextField(textFieldTitle: signInViewModel.mailLabel,
+            CustomTextField(textFieldTitle: signInViewModel.mailLabel, 
+                            placeHolder: "მეილი",
+                            isSecureField: false,
                             textFieldText: $signInViewModel.mail)
             
             CustomTextField(textFieldTitle: signInViewModel.passwordLabel,
+                            placeHolder: "მაგ: rkvkai1.",
+                            isSecureField: true,
                             textFieldText: $signInViewModel.password)
+            
+            signInButton
         }
         .padding(.horizontal)
     }

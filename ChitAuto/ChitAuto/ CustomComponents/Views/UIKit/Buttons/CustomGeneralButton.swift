@@ -24,7 +24,7 @@ final class CustomGeneralButton: UIButton {
         translatesAutoresizingMaskIntoConstraints = false
         setTitleColor(.customLabel, for: .normal)
         titleLabel?.textAlignment = .center
-        backgroundColor = .customCard
+        backgroundColor = .customBackground
         layer.cornerRadius = 16
         clipsToBounds = true
     }

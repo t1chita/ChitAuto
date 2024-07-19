@@ -23,8 +23,6 @@ struct SignUpView: View {
             appLogo
             
             usersInfoCard
-            
-            registrationButton
         }
     }
     
@@ -52,23 +50,27 @@ struct SignUpView: View {
     
     private var usersInfoCardContent: some View {
         VStack {
-            CustomTextField(textFieldTitle: signUpViewModel.firstNameLabel,
+            CustomTextField(textFieldTitle: signUpViewModel.firstNameLabel, 
+                            placeHolder: "მაგ: თემურ",
+                            isSecureField: false,
                             textFieldText: $signUpViewModel.firstName)
             
             CustomTextField(textFieldTitle: signUpViewModel.lastNameLabel,
+                            placeHolder: "მაგ: ჩიტაშვილი",
+                            isSecureField: false,
                             textFieldText: $signUpViewModel.lastName)
             
-            CustomTextField(textFieldTitle: signUpViewModel.phoneNumberLabel,
-                            textFieldText: $signUpViewModel.phoneNumber)
-            
-            CustomTextField(textFieldTitle: signUpViewModel.personalNoLabel,
-                            textFieldText: $signUpViewModel.personalNo)
-            
             CustomTextField(textFieldTitle: signUpViewModel.mailLabel,
+                            placeHolder: "მაგ: example@gmail.com",
+                            isSecureField: false,
                             textFieldText: $signUpViewModel.email)
             
             CustomTextField(textFieldTitle: signUpViewModel.passwordLabel,
+                            placeHolder: "მაგ: rkvkai1.",
+                            isSecureField: true,
                             textFieldText: $signUpViewModel.password)
+            
+            registrationButton
         }
         .padding(.horizontal)
     }
@@ -80,6 +82,7 @@ struct SignUpView: View {
             }
         }
         .opacity(signUpViewModel.formIsValid ? 1.0 : 0.5)
+        .disabled(!signUpViewModel.formIsValid)
         .frame(height: 52)
         .padding(.top, 10)
         .padding(.horizontal, 50)
