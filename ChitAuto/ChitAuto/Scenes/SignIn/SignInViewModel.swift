@@ -37,7 +37,7 @@ extension SignInViewModel {
     
     var passwordIsValid: Bool {
         return !password.isEmpty
-        && password.count > 8
+        && password.count >= 8
     }
     
     var formIsValid: Bool {

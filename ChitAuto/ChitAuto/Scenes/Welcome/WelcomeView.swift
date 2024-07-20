@@ -104,25 +104,17 @@ final class WelcomeView: UIView {
     }()
     
     lazy var menuButton: UIBarButtonItem = {
-        let saveMenu = UIMenu(title: "", children: [
-            UIAction(title: "გარაჟი", image: UIImage(systemName: "car.2.fill")) { [weak self] _ in
-                self?.navigatorDelegate?.navigateToGarage()
-            },
-            UIAction(title: "პროფილი", image: UIImage(systemName: "person.fill")) { [weak self] _ in
-                self?.navigatorDelegate?.navigateToProfile()
-            },
-            UIAction(title: "გასვლა", image: UIImage(systemName: "rectangle.portrait.and.arrow.forward")) { [weak self] _ in
-                self?.signOutDelegate?.signOut()
-            },
-        ])
-        let button = UIBarButtonItem(image: UIImage(systemName: "list.dash"), menu: saveMenu)
+        let button = UIBarButtonItem(image: UIImage(systemName: "list.dash"),
+                                     style: .done,
+                                     target: self,
+                                     action: #selector(didTapMenuButton))
         return button
     }()
     
     //MARK: - Delegates
     weak var signOutDelegate: SignOutDelegate?
-    weak var navigatorDelegate: NavigatorDelegate?
-        
+    weak var delegate: HomeViewControllerDelegate?
+    
     //MARK: - Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -278,6 +270,10 @@ final class WelcomeView: UIView {
             howDoesItWorksCollectionView.heightAnchor.constraint(equalToConstant: 570),
             howDoesItWorksCollectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
         ])
+    }
+    
+    @objc func didTapMenuButton() {
+        delegate?.didTapMenuButton()
     }
 }
 

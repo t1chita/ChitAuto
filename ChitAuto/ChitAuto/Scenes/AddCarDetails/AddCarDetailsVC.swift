@@ -243,6 +243,7 @@ extension AddCarDetailsVC: SaveButtonDelegate {
     func saveCarDetails() {
         if addCarDetailsViewModel.isAddCarDetailsValid {
             addCarDetailsViewModel.saveCarDetails()
+            navigationController?.popViewController(animated: true)
         } else {
             AlertManager.showAddCarDetailsIsNotValid(on: self)
         }

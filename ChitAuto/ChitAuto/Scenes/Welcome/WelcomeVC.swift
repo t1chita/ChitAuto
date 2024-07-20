@@ -8,16 +8,15 @@
 import UIKit
 import Firebase
 
-protocol NavigatorDelegate: AnyObject {
-    func navigateToProfile()
-    func navigateToGarage()
+protocol HomeViewControllerDelegate: AnyObject {
+    func didTapMenuButton()
 }
 
 final class WelcomeVC: UIViewController {
     //MARK: - Properties
     var welcomeView: WelcomeView
     var welcomeViewModel: WelcomeViewModel
-    
+
     //MARK: - Initialization
     init(welcomeView: WelcomeView, welcomeViewModel: WelcomeViewModel) {
         self.welcomeView = welcomeView
@@ -28,7 +27,7 @@ final class WelcomeVC: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+        
     //MARK: - LifeCycles
     override func viewWillAppear(_ animated: Bool) {
         view = welcomeView
@@ -67,7 +66,6 @@ final class WelcomeVC: UIViewController {
     private func getDelegatesFromView() {
         welcomeView.howDoesItWorksCollectionView.dataSource = self
         welcomeView.howDoesItWorksCollectionView.delegate = self
-        welcomeView.navigatorDelegate = self
     }
     
     //MARK: - Set UI Components
@@ -91,7 +89,7 @@ final class WelcomeVC: UIViewController {
     }
     
     private func setProfileMenuButton() {
-        navigationItem.rightBarButtonItem = welcomeView.menuButton
+        navigationItem.leftBarButtonItem = welcomeView.menuButton
     }
     
     //MARK: - Child Methods
@@ -114,24 +112,3 @@ final class WelcomeVC: UIViewController {
     }
 }
 
-
-extension WelcomeVC: NavigatorDelegate {
-    func navigateToProfile() {
-        //TODO: Add Navigation To Profile
-    }
-    
-    func navigateToGarage() {
-        guard let unwrappedUser = welcomeViewModel.currentUser else { return }
-        
-        let userMainView = UserMainView()
-        let userMainViewModel = UserMainViewModel(currentUser: unwrappedUser)
-        
-        userMainViewModel.onSelectedUserChanged = { [weak self] user in
-            self?.welcomeViewModel.currentUser = user
-        }
-        
-        let vc = UserMainVC(userMainView: userMainView, userMainViewModel: userMainViewModel)
-        
-        navigationController?.pushViewController(vc, animated: true)
-    }
-}
