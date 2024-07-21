@@ -105,11 +105,6 @@ final class ProfileView: UIView {
         return txtField
     }()
     
-    let personalNo: PersonalInfoTextField = {
-        let txtField = PersonalInfoTextField(textFieldTitle: "პ/ნ", textFieldIcon: "person.fill")
-        return txtField
-    }()
-    
     weak var photoSelectionDelegate: PhotoSelectionDelegate?
     
     override init(frame: CGRect) {
@@ -150,7 +145,7 @@ final class ProfileView: UIView {
             userName.topAnchor.constraint(equalTo: profileImage.bottomAnchor, constant: 10),
             userName.leadingAnchor.constraint(equalTo: leadingAnchor),
             userName.trailingAnchor.constraint(equalTo: trailingAnchor),
-            userName.heightAnchor.constraint(equalToConstant: 20),
+            userName.heightAnchor.constraint(equalToConstant: 40),
         ])
     }
         
@@ -210,7 +205,7 @@ final class ProfileView: UIView {
             personalInfoCardBackground.topAnchor.constraint(equalTo: personalInformationStackView.bottomAnchor, constant: 20),
             personalInfoCardBackground.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 16),
             personalInfoCardBackground.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            personalInfoCardBackground.heightAnchor.constraint(equalToConstant: 270),
+            personalInfoCardBackground.heightAnchor.constraint(equalToConstant: 176),
         ])
     }
     
@@ -219,13 +214,12 @@ final class ProfileView: UIView {
         
         personalInfoStackView.addArrangedSubview(emailTextField)
         personalInfoStackView.addArrangedSubview(phoneNumber)
-        personalInfoStackView.addArrangedSubview(personalNo)
 
         NSLayoutConstraint.activate([
             personalInfoStackView.topAnchor.constraint(equalTo: personalInfoCardBackground.topAnchor),
             personalInfoStackView.leadingAnchor.constraint(equalTo: personalInfoCardBackground.leadingAnchor, constant: 16),
             personalInfoStackView.trailingAnchor.constraint(equalTo: personalInfoCardBackground.trailingAnchor, constant: -16),
-            personalInfoStackView.bottomAnchor.constraint(equalTo: personalInfoStackView.bottomAnchor, constant: -16),
+            personalInfoStackView.bottomAnchor.constraint(equalTo: personalInfoStackView.bottomAnchor),
         ])
     }
     

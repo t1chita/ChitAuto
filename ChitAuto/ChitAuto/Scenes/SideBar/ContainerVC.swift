@@ -127,7 +127,7 @@ extension ContainerViewController: MenuViewControllerDelegate {
                 }
                 
                 let vc = ProfileVC(profileView: profileView, profileViewModel: profileViewModel)
-
+            
                 self?.navVC?.pushViewController(vc, animated: true)
             case .signOut:
                 self?.welcomeViewModel.signOut()

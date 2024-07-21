@@ -13,7 +13,6 @@ struct User: Identifiable, Codable {
     let lastName: String
     let email: String
     let phoneNumber: String
-    let personalNo: String
     var imageUrl: String
     var userCars: [Car]
     var userOrders: [Order]

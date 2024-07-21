@@ -65,10 +65,15 @@ final class ProfileVC: UIViewController {
         setEmailTextFieldWithData()
         setUserFullName()
         setUsersProfilePic()
+        setNumberTextFieldWithData()
     }
     
     private func setEmailTextFieldWithData() {
         profileView.emailTextField.textFieldText = profileViewModel.currentUser.email
+    }
+    
+    private func setNumberTextFieldWithData() {
+        profileView.phoneNumber.textFieldText = profileViewModel.currentUser.phoneNumber
     }
     
     private func setUserFullName() {
