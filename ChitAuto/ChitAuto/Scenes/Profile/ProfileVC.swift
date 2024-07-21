@@ -9,6 +9,7 @@ import UIKit
 
 protocol PhotoSelectionDelegate: AnyObject {
     func selectPhoto()
+    func savePhoto()
 }
 
 final class ProfileVC: UIViewController {
@@ -28,6 +29,7 @@ final class ProfileVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         view = profileView
+        updateUI()
     }
     
     override func viewDidLoad() {
@@ -42,6 +44,14 @@ final class ProfileVC: UIViewController {
     private func getDelegatesFromView() {
         profileView.photoSelectionDelegate = self
     }
+    
+    private func updateUI() {
+        if profileViewModel.imageIsSaved {
+            profileView.imageShouldSave()
+        } else {
+            profileView.imageSaved()
+        }
+    }
 }
 
 extension ProfileVC: PhotoSelectionDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -51,16 +61,23 @@ extension ProfileVC: PhotoSelectionDelegate, UIImagePickerControllerDelegate, UI
         } else if let image = info[.originalImage] as? UIImage {
             profileView.profileImage.image = image
         }
-        
+        profileViewModel.imageIsSaved = true
+        updateUI()
         dismiss(animated: true)
     }
     
     func selectPhoto() {
-     let imagePickerController = UIImagePickerController()
+        let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         imagePickerController.allowsEditing = true
         imagePickerController.sourceType = .photoLibrary
         present(imagePickerController, animated: true)
-        
+    }
+    
+    func savePhoto() {
+        profileViewModel.imageIsSaved = false
+        profileViewModel.imageData = profileView.profileImage.image?.jpegData(compressionQuality: 0.8)
+        updateUI()
+        profileViewModel.uploadProfileImage()
     }
 }

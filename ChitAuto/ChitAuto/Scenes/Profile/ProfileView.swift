@@ -47,6 +47,17 @@ final class ProfileView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+       
+    let saveButton: UIButton = {
+        var configuration = UIButton.Configuration.borderless()
+        configuration.title = "შეინახე"
+        configuration.imagePlacement = .leading
+        configuration.imagePadding = 2
+        configuration.baseForegroundColor = .customLabel
+        let button = UIButton(configuration: configuration)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
     
     let personalInformationLabel: UILabel = {
         let lbl = UILabel()
@@ -123,6 +134,7 @@ final class ProfileView: UIView {
         setPersonalInformationStackView()
         setPersonalInfoCardBackground()
         setPersonalInfoStackView()
+        setSaveButton()
     }
     
     private func setProfileImage() {
@@ -162,6 +174,22 @@ final class ProfileView: UIView {
         ])
     }
     
+    private func setSaveButton() {
+        addSubview(saveButton)
+        
+        saveButton.addAction(UIAction(title: "Present Image Picker", handler: {[weak self] _ in
+            self?.photoSelectionDelegate?.savePhoto()
+            
+        }), for: .touchUpInside)
+        
+        NSLayoutConstraint.activate([
+            saveButton.topAnchor.constraint(equalTo: userName.bottomAnchor, constant: 10),
+            saveButton.leadingAnchor.constraint(equalTo: leadingAnchor),
+            saveButton.trailingAnchor.constraint(equalTo: trailingAnchor),
+            saveButton.heightAnchor.constraint(equalToConstant: 40),
+        ])
+    }
+    
     private func setPersonalInformationStackView() {
         addSubview(personalInformationStackView)
         
@@ -173,7 +201,7 @@ final class ProfileView: UIView {
         }), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
-            personalInformationStackView.topAnchor.constraint(equalTo: selectPhotoButton.bottomAnchor, constant: 14),
+            personalInformationStackView.topAnchor.constraint(equalTo: selectPhotoButton.isHidden ? saveButton.bottomAnchor : selectPhotoButton.bottomAnchor , constant: 14),
             personalInformationStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             personalInformationStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             personalInformationStackView.heightAnchor.constraint(equalToConstant: 50),
@@ -206,6 +234,15 @@ final class ProfileView: UIView {
         ])
     }
     
+    func imageShouldSave() {
+        saveButton.isHidden = false
+        selectPhotoButton.isHidden = true
+    }
+      
+    func imageSaved() {
+        saveButton.isHidden = true
+        selectPhotoButton.isHidden = false
+    }
 }
 #Preview {
     ProfileVC(profileView: ProfileView(), profileViewModel: ProfileViewModel())
