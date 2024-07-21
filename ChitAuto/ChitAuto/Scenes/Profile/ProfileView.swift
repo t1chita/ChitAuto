@@ -14,7 +14,6 @@ final class ProfileView: UIView {
         imgView.contentMode = .scaleAspectFill
         imgView.layer.masksToBounds = true
         imgView.layer.cornerRadius = 75
-        imgView.image = UIImage(resource: .mainButton)
         return imgView
     }()
     
@@ -24,7 +23,6 @@ final class ProfileView: UIView {
         lbl.font = .systemFont(ofSize: 26, weight: .bold)
         lbl.textColor = .customLabel
         lbl.textAlignment = .center
-        lbl.text = "Temur Chitashvili"
         return lbl
     }()
     
@@ -97,21 +95,18 @@ final class ProfileView: UIView {
         return stView
     }()
     
-    let nameTextField: PersonalInfoTextField = {
+    let emailTextField: PersonalInfoTextField = {
         let txtField = PersonalInfoTextField(textFieldTitle: "მეილი", textFieldIcon: "envelope.open.fill")
-        txtField.textFieldText = "@gmail.com"
         return txtField
     }()
      
     let phoneNumber: PersonalInfoTextField = {
         let txtField = PersonalInfoTextField(textFieldTitle: "ტელეფონის ნომერი", textFieldIcon: "iphone")
-        txtField.textFieldText = "+995597050897"
         return txtField
     }()
     
     let personalNo: PersonalInfoTextField = {
         let txtField = PersonalInfoTextField(textFieldTitle: "პ/ნ", textFieldIcon: "person.fill")
-        txtField.textFieldText = "01411109648"
         return txtField
     }()
     
@@ -222,7 +217,7 @@ final class ProfileView: UIView {
     private func setPersonalInfoStackView() {
         personalInfoCardBackground.addSubview(personalInfoStackView)
         
-        personalInfoStackView.addArrangedSubview(nameTextField)
+        personalInfoStackView.addArrangedSubview(emailTextField)
         personalInfoStackView.addArrangedSubview(phoneNumber)
         personalInfoStackView.addArrangedSubview(personalNo)
 
@@ -243,7 +238,4 @@ final class ProfileView: UIView {
         saveButton.isHidden = true
         selectPhotoButton.isHidden = false
     }
-}
-#Preview {
-    ProfileVC(profileView: ProfileView(), profileViewModel: ProfileViewModel())
 }

@@ -35,6 +35,10 @@ class AlertManager {
     public static func showCanNotUpdateOrderAssistant(on vc: UIViewController) {
         self.showTextAlert(on: vc, with: "ასისტენტი არ აგირჩევია", with: "გთხვოთ,აირჩიოთ ასისტენტი")
     }
+    
+    public static func showCanNotUpdateProfilePicture(on vc: UIViewController) {
+        self.showTextAlert(on: vc, with: "სურათი იტვრითება", with: "გთხვოთ,დაელოდოთ სურათის განახლებას")
+    }
 }
 
 

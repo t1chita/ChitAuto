@@ -103,7 +103,7 @@ extension ContainerViewController: MenuViewControllerDelegate {
             switch menuItem {
             case .garage:
                 guard let unwrappedUser = self?.welcomeViewModel.currentUser else { return }
-                
+
                 let userMainView = UserMainView()
                 let userMainViewModel = UserMainViewModel(currentUser: unwrappedUser)
                 
@@ -117,8 +117,14 @@ extension ContainerViewController: MenuViewControllerDelegate {
             case .carWash:
                 print("carWash")
             case .profile:
+                guard let unwrappedUser = self?.welcomeViewModel.currentUser else { return }
+
                 let profileView = ProfileView()
-                let profileViewModel = ProfileViewModel()
+                let profileViewModel = ProfileViewModel(currentUser: unwrappedUser)
+                
+                profileViewModel.onUserProfilePictureChanged = {[weak self] user in
+                    self?.welcomeViewModel.currentUser = user
+                }
                 
                 let vc = ProfileVC(profileView: profileView, profileViewModel: profileViewModel)
 

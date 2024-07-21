@@ -15,7 +15,7 @@ protocol PhotoSelectionDelegate: AnyObject {
 final class ProfileVC: UIViewController {
     private var profileView: ProfileView
     private var profileViewModel: ProfileViewModel
-    
+        
     init(profileView: ProfileView, profileViewModel: ProfileViewModel) {
         self.profileView = profileView
         self.profileViewModel = profileViewModel
@@ -35,6 +35,14 @@ final class ProfileVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         handleDelegates()
+        setupUI()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if profileViewModel.uploadInProgress {
+            AlertManager.showCanNotUpdateProfilePicture(on: self)
+        }
     }
     
     private func handleDelegates() {
@@ -50,6 +58,29 @@ final class ProfileVC: UIViewController {
             profileView.imageShouldSave()
         } else {
             profileView.imageSaved()
+        }
+    }
+    
+    private func setupUI() {
+        setEmailTextFieldWithData()
+        setUserFullName()
+        setUsersProfilePic()
+    }
+    
+    private func setEmailTextFieldWithData() {
+        profileView.emailTextField.textFieldText = profileViewModel.currentUser.email
+    }
+    
+    private func setUserFullName() {
+        profileView.userName.text = "\(profileViewModel.currentUser.firstName) \(profileViewModel.currentUser.lastName)"
+    }
+    
+    private func setUsersProfilePic() {
+        if profileViewModel.currentUser.imageUrl != "" {
+            guard let imageUrl = URL(string: profileViewModel.currentUser.imageUrl) else { return }
+            profileView.profileImage.loadImage(from: imageUrl)
+        } else {
+            profileView.profileImage.image = UIImage(systemName: "person.fill")
         }
     }
 }
@@ -77,7 +108,17 @@ extension ProfileVC: PhotoSelectionDelegate, UIImagePickerControllerDelegate, UI
     func savePhoto() {
         profileViewModel.imageIsSaved = false
         profileViewModel.imageData = profileView.profileImage.image?.jpegData(compressionQuality: 0.8)
-        updateUI()
-        profileViewModel.uploadProfileImage()
+                
+        profileViewModel.uploadProfileImage { [weak self] success in
+            guard let self = self else { return }
+            
+            DispatchQueue.main.async {
+                self.updateUI()
+                
+                if !success {
+                    print("Failed to upload and save profile image.")
+                }
+            }
+        }
     }
 }
