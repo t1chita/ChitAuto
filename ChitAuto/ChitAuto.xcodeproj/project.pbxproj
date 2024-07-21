@@ -27,6 +27,7 @@
 		2622943E2C349BC30062EEC1 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2622943D2C349BC30062EEC1 /* SignUpViewModel.swift */; };
 		262928F22C4C3A2100FB8FE9 /* ContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262928F12C4C3A2100FB8FE9 /* ContainerVC.swift */; };
 		262928F42C4C3A4500FB8FE9 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262928F32C4C3A4500FB8FE9 /* Menu.swift */; };
+		262928F62C4D291F00FB8FE9 /* PersonalInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262928F52C4D291F00FB8FE9 /* PersonalInfo.swift */; };
 		267530E72C3D52DA00E8B42B /* GarageSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267530E62C3D52DA00E8B42B /* GarageSheetView.swift */; };
 		267530E92C3D534400E8B42B /* GarageSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267530E82C3D534400E8B42B /* GarageSheetViewModel.swift */; };
 		267530EB2C3D535F00E8B42B /* GarageSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267530EA2C3D535F00E8B42B /* GarageSheetVC.swift */; };
@@ -143,6 +144,7 @@
 		2622943D2C349BC30062EEC1 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		262928F12C4C3A2100FB8FE9 /* ContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerVC.swift; sourceTree = "<group>"; };
 		262928F32C4C3A4500FB8FE9 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		262928F52C4D291F00FB8FE9 /* PersonalInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfo.swift; sourceTree = "<group>"; };
 		267530E62C3D52DA00E8B42B /* GarageSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageSheetView.swift; sourceTree = "<group>"; };
 		267530E82C3D534400E8B42B /* GarageSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageSheetViewModel.swift; sourceTree = "<group>"; };
 		267530EA2C3D535F00E8B42B /* GarageSheetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageSheetVC.swift; sourceTree = "<group>"; };
@@ -607,11 +609,11 @@
 			isa = PBXGroup;
 			children = (
 				262928F02C4C3A1000FB8FE9 /* SideBar */,
-				26CF16E22C4B281900A1CC15 /* Profile */,
 				26CA74002C34863900715AC3 /* OnBoarding */,
 				2622943A2C349BA10062EEC1 /* SignUp */,
 				26ADA7362C38CD7F00D6E3EE /* SignIn */,
 				261C15BB2C3A136A004B5A1E /* Welcome */,
+				26CF16E22C4B281900A1CC15 /* Profile */,
 				261C15DA2C3C35B3004B5A1E /* UserMain */,
 				267530EC2C3D8B3B00E8B42B /* AddCarDetails */,
 				26F4E1122C4358BE0031A6C5 /* MakeAnOrderFlow */,
@@ -678,6 +680,7 @@
 			isa = PBXGroup;
 			children = (
 				26F4E10B2C41ABAF0031A6C5 /* NumberPlateTextField.swift */,
+				262928F52C4D291F00FB8FE9 /* PersonalInfo.swift */,
 			);
 			path = TextFields;
 			sourceTree = "<group>";
@@ -977,6 +980,7 @@
 				26F4E12E2C45B8870031A6C5 /* SearchAnAssistantVC + ExtCollectionView.swift in Sources */,
 				26F4E1292C44A8600031A6C5 /* SearchAnAssistantViewModel.swift in Sources */,
 				267531292C4079D500E8B42B /* FuelTypeView.swift in Sources */,
+				262928F62C4D291F00FB8FE9 /* PersonalInfo.swift in Sources */,
 				26F4E1232C44A8400031A6C5 /* LocationAndTimeViewModel.swift in Sources */,
 				261C15D92C3AC196004B5A1E /* TitlesCustomLabel.swift in Sources */,
 			);

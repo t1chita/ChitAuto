@@ -117,7 +117,12 @@ extension ContainerViewController: MenuViewControllerDelegate {
             case .carWash:
                 print("carWash")
             case .profile:
-                print("profile")
+                let profileView = ProfileView()
+                let profileViewModel = ProfileViewModel()
+                
+                let vc = ProfileVC(profileView: profileView, profileViewModel: profileViewModel)
+
+                self?.navVC?.pushViewController(vc, animated: true)
             case .signOut:
                 self?.welcomeViewModel.signOut()
             }
