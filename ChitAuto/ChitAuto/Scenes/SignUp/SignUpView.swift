@@ -70,9 +70,67 @@ struct SignUpView: View {
                             isSecureField: true,
                             textFieldText: $signUpViewModel.password)
             
+            countryPicker
+            
             registrationButton
         }
         .padding(.horizontal)
+    }
+    
+    private var countryPicker: some View {
+        VStack(alignment: .leading) {
+            Text("მობილურის ნომერი")
+                .padding(.leading, 10)
+            HStack {
+                Button {
+                    signUpViewModel.countryPickerIsPresented.toggle()
+                } label: {
+                    Text("\(signUpViewModel.countryFlag)\(signUpViewModel.countryDialCode)")
+                        .padding(10)
+                        .frame(minWidth: 80, minHeight: 52)
+                        .background(.customBackground, in:
+                                        RoundedRectangle(cornerRadius: 10,
+                                                         style: .continuous))
+                        .foregroundStyle(.customLabel)
+                }
+                
+                TextField("",
+                          text: $signUpViewModel.phoneNumber)
+                .textFieldStyle()
+            }
+        }
+        .padding(.horizontal, 16)
+        .sheet(isPresented: $signUpViewModel.countryPickerIsPresented) {
+            countriesSheet
+        }
+    }
+    
+    private var countriesSheet: some View {
+        NavigationStack {
+            List(signUpViewModel.filteredCountries) { country in
+                countriesCell(for: country)
+            }
+        }
+        .searchable(text: $signUpViewModel.searchForCountry, prompt: "მოძებნე ქვეყანა")
+        .presentationDetents([.medium, .large])
+    }
+    
+    private func countriesCell(for country: CountryResponse) -> some View {
+        HStack {
+            Text(country.flag)
+            
+            Text(country.name)
+                .font(.body)
+            
+            Spacer()
+            Text(country.dialCode)
+                .foregroundStyle(Color(UIColor.systemGray2))
+        }
+        .onTapGesture {
+            signUpViewModel.countryFlag = country.flag
+            signUpViewModel.countryDialCode = country.dialCode
+            signUpViewModel.countryPickerIsPresented = false
+        }
     }
     
     private var registrationButton: some View {
