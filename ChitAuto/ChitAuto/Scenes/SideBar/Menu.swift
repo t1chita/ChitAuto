@@ -13,7 +13,7 @@ protocol MenuViewControllerDelegate: AnyObject {
 
 enum MenuOptions: String, CaseIterable {
     case garage = "მანქანის შეკეთება"
-    case carWash = "მანქანის წმენდა"
+    case techInspect = "ტექ ინსპექტირება"
     case profile = "პროფილი"
     case signOut = "გასვლა"
     
@@ -21,8 +21,8 @@ enum MenuOptions: String, CaseIterable {
         switch self {
         case .garage:
             "car.fill"
-        case .carWash:
-            "water.waves"
+        case .techInspect:
+            "gauge.open.with.lines.needle.67percent.and.arrowtriangle.and.car"
         case .profile:
             "person.fill"
         case .signOut:

@@ -114,8 +114,14 @@ extension ContainerViewController: MenuViewControllerDelegate {
                 let vc = UserMainVC(userMainView: userMainView, userMainViewModel: userMainViewModel)
 
                 self?.navVC?.pushViewController(vc, animated: true)
-            case .carWash:
-                print("carWash")
+            case .techInspect:
+                
+                let techInspectView = TechInspectView()
+                let techInspectViewModel = TechInspectViewModel()
+                
+                let vc = TechInspectVC(techInspectView: techInspectView, techInspectViewModel: techInspectViewModel)
+                
+                self?.navVC?.pushViewController(vc, animated: true)
             case .profile:
                 guard let unwrappedUser = self?.welcomeViewModel.currentUser else { return }
 

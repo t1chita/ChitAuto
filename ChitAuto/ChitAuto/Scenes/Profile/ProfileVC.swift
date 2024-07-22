@@ -85,7 +85,7 @@ final class ProfileVC: UIViewController {
             guard let imageUrl = URL(string: profileViewModel.currentUser.imageUrl) else { return }
             profileView.profileImage.loadImage(from: imageUrl)
         } else {
-            profileView.profileImage.image = UIImage(systemName: "person.fill")
+            profileView.profileImage.image = UIImage(systemName: "person.circle.fill")
         }
     }
 }

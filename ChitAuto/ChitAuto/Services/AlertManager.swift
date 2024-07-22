@@ -39,6 +39,10 @@ class AlertManager {
     public static func showCanNotUpdateProfilePicture(on vc: UIViewController) {
         self.showTextAlert(on: vc, with: "სურათი იტვრითება", with: "გთხვოთ,დაელოდოთ სურათის განახლებას")
     }
+    
+    public static func showCanNotShowTechInspectInfo(on vc: UIViewController) {
+        self.showTextAlert(on: vc, with: "ფორმატი არასწორია", with: "გთხოვთ,მანქანის ნომერი შეიყვანოთ სწორი ფორმატით")
+    }
 }
 
 

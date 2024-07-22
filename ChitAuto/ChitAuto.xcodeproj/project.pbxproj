@@ -32,6 +32,13 @@
 		262928FB2C4D437C00FB8FE9 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 262928FA2C4D437C00FB8FE9 /* FirebaseFirestore */; };
 		262928FD2C4D437C00FB8FE9 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 262928FC2C4D437C00FB8FE9 /* FirebaseStorage */; };
 		262928FF2C4D916C00FB8FE9 /* CountryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262928FE2C4D916C00FB8FE9 /* CountryResponse.swift */; };
+		2629290B2C4E814D00FB8FE9 /* TechInspectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2629290A2C4E814D00FB8FE9 /* TechInspectVC.swift */; };
+		2629290D2C4E815B00FB8FE9 /* TechInspectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2629290C2C4E815B00FB8FE9 /* TechInspectView.swift */; };
+		2629290F2C4E818400FB8FE9 /* TechInspectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2629290E2C4E818400FB8FE9 /* TechInspectViewModel.swift */; };
+		262929122C4E96F100FB8FE9 /* TechInspectSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262929112C4E96F100FB8FE9 /* TechInspectSheetVC.swift */; };
+		262929142C4E96FC00FB8FE9 /* TechInspectSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262929132C4E96FB00FB8FE9 /* TechInspectSheetView.swift */; };
+		262929162C4E970900FB8FE9 /* TechInspectSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262929152C4E970900FB8FE9 /* TechInspectSheetViewModel.swift */; };
+		262929192C4E9E6200FB8FE9 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 262929182C4E9E6200FB8FE9 /* SwiftSoup */; };
 		267530E72C3D52DA00E8B42B /* GarageSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267530E62C3D52DA00E8B42B /* GarageSheetView.swift */; };
 		267530E92C3D534400E8B42B /* GarageSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267530E82C3D534400E8B42B /* GarageSheetViewModel.swift */; };
 		267530EB2C3D535F00E8B42B /* GarageSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267530EA2C3D535F00E8B42B /* GarageSheetVC.swift */; };
@@ -147,6 +154,12 @@
 		262928F32C4C3A4500FB8FE9 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		262928F52C4D291F00FB8FE9 /* PersonalInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfo.swift; sourceTree = "<group>"; };
 		262928FE2C4D916C00FB8FE9 /* CountryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryResponse.swift; sourceTree = "<group>"; };
+		2629290A2C4E814D00FB8FE9 /* TechInspectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechInspectVC.swift; sourceTree = "<group>"; };
+		2629290C2C4E815B00FB8FE9 /* TechInspectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechInspectView.swift; sourceTree = "<group>"; };
+		2629290E2C4E818400FB8FE9 /* TechInspectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechInspectViewModel.swift; sourceTree = "<group>"; };
+		262929112C4E96F100FB8FE9 /* TechInspectSheetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechInspectSheetVC.swift; sourceTree = "<group>"; };
+		262929132C4E96FB00FB8FE9 /* TechInspectSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechInspectSheetView.swift; sourceTree = "<group>"; };
+		262929152C4E970900FB8FE9 /* TechInspectSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechInspectSheetViewModel.swift; sourceTree = "<group>"; };
 		267530E62C3D52DA00E8B42B /* GarageSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageSheetView.swift; sourceTree = "<group>"; };
 		267530E82C3D534400E8B42B /* GarageSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageSheetViewModel.swift; sourceTree = "<group>"; };
 		267530EA2C3D535F00E8B42B /* GarageSheetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageSheetVC.swift; sourceTree = "<group>"; };
@@ -249,6 +262,7 @@
 				262928FD2C4D437C00FB8FE9 /* FirebaseStorage in Frameworks */,
 				262928F92C4D437C00FB8FE9 /* FirebaseAuth in Frameworks */,
 				262928FB2C4D437C00FB8FE9 /* FirebaseFirestore in Frameworks */,
+				262929192C4E9E6200FB8FE9 /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +377,38 @@
 				262928F32C4C3A4500FB8FE9 /* Menu.swift */,
 			);
 			path = SideBar;
+			sourceTree = "<group>";
+		};
+		262929012C4DBB9900FB8FE9 /* CarRepiar */ = {
+			isa = PBXGroup;
+			children = (
+				261C15DA2C3C35B3004B5A1E /* UserMain */,
+				267530EC2C3D8B3B00E8B42B /* AddCarDetails */,
+				26F4E1122C4358BE0031A6C5 /* MakeAnOrderFlow */,
+				26F4E14E2C49319E0031A6C5 /* CurrentOrder */,
+			);
+			path = CarRepiar;
+			sourceTree = "<group>";
+		};
+		262929092C4E813300FB8FE9 /* TechInspect */ = {
+			isa = PBXGroup;
+			children = (
+				262929102C4E96DF00FB8FE9 /* TechInspectSheet */,
+				2629290A2C4E814D00FB8FE9 /* TechInspectVC.swift */,
+				2629290C2C4E815B00FB8FE9 /* TechInspectView.swift */,
+				2629290E2C4E818400FB8FE9 /* TechInspectViewModel.swift */,
+			);
+			path = TechInspect;
+			sourceTree = "<group>";
+		};
+		262929102C4E96DF00FB8FE9 /* TechInspectSheet */ = {
+			isa = PBXGroup;
+			children = (
+				262929112C4E96F100FB8FE9 /* TechInspectSheetVC.swift */,
+				262929132C4E96FB00FB8FE9 /* TechInspectSheetView.swift */,
+				262929152C4E970900FB8FE9 /* TechInspectSheetViewModel.swift */,
+			);
+			path = TechInspectSheet;
 			sourceTree = "<group>";
 		};
 		267530E52C3D52BA00E8B42B /* Garage */ = {
@@ -611,16 +657,14 @@
 		26CA73F92C34857F00715AC3 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				262928F02C4C3A1000FB8FE9 /* SideBar */,
 				26CA74002C34863900715AC3 /* OnBoarding */,
 				2622943A2C349BA10062EEC1 /* SignUp */,
 				26ADA7362C38CD7F00D6E3EE /* SignIn */,
+				262928F02C4C3A1000FB8FE9 /* SideBar */,
 				261C15BB2C3A136A004B5A1E /* Welcome */,
+				262929012C4DBB9900FB8FE9 /* CarRepiar */,
+				262929092C4E813300FB8FE9 /* TechInspect */,
 				26CF16E22C4B281900A1CC15 /* Profile */,
-				261C15DA2C3C35B3004B5A1E /* UserMain */,
-				267530EC2C3D8B3B00E8B42B /* AddCarDetails */,
-				26F4E1122C4358BE0031A6C5 /* MakeAnOrderFlow */,
-				26F4E14E2C49319E0031A6C5 /* CurrentOrder */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -819,6 +863,7 @@
 				262928F82C4D437C00FB8FE9 /* FirebaseAuth */,
 				262928FA2C4D437C00FB8FE9 /* FirebaseFirestore */,
 				262928FC2C4D437C00FB8FE9 /* FirebaseStorage */,
+				262929182C4E9E6200FB8FE9 /* SwiftSoup */,
 			);
 			productName = ChitAuto;
 			productReference = 2682B2232C3310E2004D02E4 /* ChitAuto.app */;
@@ -851,6 +896,7 @@
 			packageReferences = (
 				267531872C41777300E8B42B /* XCRemoteSwiftPackageReference "NetworkServicePackage" */,
 				262928F72C4D437B00FB8FE9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				262929172C4E9E6200FB8FE9 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 			);
 			productRefGroup = 2682B2242C3310E2004D02E4 /* Products */;
 			projectDirPath = "";
@@ -883,6 +929,7 @@
 				26F4E1522C4931FD0031A6C5 /* CurrentOrderView.swift in Sources */,
 				267530E72C3D52DA00E8B42B /* GarageSheetView.swift in Sources */,
 				2675318B2C417A2900E8B42B /* GarageSheetVC + ExtTableView.swift in Sources */,
+				262929122C4E96F100FB8FE9 /* TechInspectSheetVC.swift in Sources */,
 				26CF16E82C4B286C00A1CC15 /* ProfileViewModel.swift in Sources */,
 				26F4E1212C44A8350031A6C5 /* LocationAndTimeView.swift in Sources */,
 				261C15BA2C3A1106004B5A1E /* User.swift in Sources */,
@@ -905,6 +952,7 @@
 				267530FD2C3EB43400E8B42B /* BrandsSheetsView.swift in Sources */,
 				26F4E1422C47460E0031A6C5 /* TimeSheetVC.swift in Sources */,
 				2682B2292C3310E2004D02E4 /* SceneDelegate.swift in Sources */,
+				2629290B2C4E814D00FB8FE9 /* TechInspectVC.swift in Sources */,
 				267531302C407B8400E8B42B /* FuelTypeVC + ExtTableView.swift in Sources */,
 				2675312E2C407B2900E8B42B /* FuelTypeCell.swift in Sources */,
 				261C15CA2C3ABA61004B5A1E /* UIKitImageLoader.swift in Sources */,
@@ -925,6 +973,7 @@
 				267531212C40266E00E8B42B /* ReleasDateVC + ExtTableView.swift in Sources */,
 				267531042C3EB78B00E8B42B /* BrandsCell.swift in Sources */,
 				26F4E1252C44A84F0031A6C5 /* SearchAnAssistantVC.swift in Sources */,
+				2629290D2C4E815B00FB8FE9 /* TechInspectView.swift in Sources */,
 				2622943C2C349BBA0062EEC1 /* SignUpView.swift in Sources */,
 				267531352C408ED200E8B42B /* TransmissionTypeVC.swift in Sources */,
 				26CA74052C348A4200715AC3 /* CustomGeneralButton.swift in Sources */,
@@ -944,6 +993,7 @@
 				267531382C408F0B00E8B42B /* TransmissionTypeView.swift in Sources */,
 				267530F02C3D8B6600E8B42B /* AddCarDetailsViewModel.swift in Sources */,
 				261C15D22C3ABE0E004B5A1E /* WelcomeVC + ExtCollectionView.swift in Sources */,
+				262929142C4E96FC00FB8FE9 /* TechInspectSheetView.swift in Sources */,
 				26CA73FF2C3485BE00715AC3 /* OnBoardingVC.swift in Sources */,
 				267531102C3FF2D400E8B42B /* ModelsViewModel.swift in Sources */,
 				26F4E11F2C44A8290031A6C5 /* LocationAndTimeVC.swift in Sources */,
@@ -961,11 +1011,13 @@
 				26F4E1192C43D1D90031A6C5 /* CarInfoVC.swift in Sources */,
 				2675317F2C41764600E8B42B /* CarCell.swift in Sources */,
 				2675312B2C4079DC00E8B42B /* FuelTypeViewModel.swift in Sources */,
+				2629290F2C4E818400FB8FE9 /* TechInspectViewModel.swift in Sources */,
 				26ADA7382C38CD8F00D6E3EE /* SignInView.swift in Sources */,
 				2675311C2C40258C00E8B42B /* ReleaseDateView.swift in Sources */,
 				267531012C3EB4EE00E8B42B /* BrandsSheetsVC.swift in Sources */,
 				267530F92C3DC82400E8B42B /* BackButton.swift in Sources */,
 				26ADA7322C38C2A400D6E3EE /* CustomTextField.swift in Sources */,
+				262929162C4E970900FB8FE9 /* TechInspectSheetViewModel.swift in Sources */,
 				261C15BD2C3A1380004B5A1E /* WelcomeView.swift in Sources */,
 				261C15C42C3AB6D4004B5A1E /* CustomImageView.swift in Sources */,
 				2675317C2C40BC2500E8B42B /* Car.swift in Sources */,
@@ -1209,6 +1261,14 @@
 				minimumVersion = 10.29.0;
 			};
 		};
+		262929172C4E9E6200FB8FE9 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.2;
+			};
+		};
 		267531872C41777300E8B42B /* XCRemoteSwiftPackageReference "NetworkServicePackage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/t1chita/NetworkServicePackage";
@@ -1234,6 +1294,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 262928F72C4D437B00FB8FE9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		262929182C4E9E6200FB8FE9 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 262929172C4E9E6200FB8FE9 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
 		};
 		267531882C41777300E8B42B /* Network */ = {
 			isa = XCSwiftPackageProductDependency;
