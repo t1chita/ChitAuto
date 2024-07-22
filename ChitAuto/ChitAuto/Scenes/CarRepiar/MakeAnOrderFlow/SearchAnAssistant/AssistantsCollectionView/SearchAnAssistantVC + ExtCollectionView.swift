@@ -10,7 +10,6 @@ import UIKit
 
 extension SearchAnAssistantVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? AssistantsCell else { return }
         let selectedAssistant = searchAnAssistantViewModel.filteredAssistants[indexPath.row]
         searchAnAssistantViewModel.selectedAssistant = selectedAssistant
         collectionView.deselectItem(at: indexPath, animated: true)

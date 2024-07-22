@@ -105,6 +105,17 @@ final class ProfileView: UIView {
         return txtField
     }()
     
+    lazy var mainButton: UIBarButtonItem = {
+        let customButton = UIButton()
+        customButton.addAction(UIAction(title: "Go To Welcome Page", handler: { [weak self] _ in
+            self?.popViewControllerDelegate?.popViewController()
+        }), for: .touchUpInside)
+        customButton.setImage(.mainButton, for: .normal)
+        let button = UIBarButtonItem(customView: customButton)
+        return button
+    }()
+    
+    weak var popViewControllerDelegate: PopViewControllerDelegate?
     weak var photoSelectionDelegate: PhotoSelectionDelegate?
     
     override init(frame: CGRect) {

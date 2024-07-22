@@ -51,6 +51,7 @@ final class ProfileVC: UIViewController {
     
     private func getDelegatesFromView() {
         profileView.photoSelectionDelegate = self
+        profileView.popViewControllerDelegate = self
     }
     
     private func updateUI() {
@@ -66,6 +67,7 @@ final class ProfileVC: UIViewController {
         setUserFullName()
         setUsersProfilePic()
         setNumberTextFieldWithData()
+        setNavigationItemsOnWelcomePage()
     }
     
     private func setEmailTextFieldWithData() {
@@ -87,6 +89,16 @@ final class ProfileVC: UIViewController {
         } else {
             profileView.profileImage.image = UIImage(systemName: "person.circle.fill")
         }
+    }
+    
+    private func setNavigationItemsOnWelcomePage() {
+        navigationItem.leftBarButtonItem = profileView.mainButton
+    }
+}
+
+extension ProfileVC: PopViewControllerDelegate {
+    func popViewController() {
+        navigationController?.popViewController(animated: true)
     }
 }
 

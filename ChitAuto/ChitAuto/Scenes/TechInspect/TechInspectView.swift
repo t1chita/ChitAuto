@@ -33,7 +33,19 @@ final class TechInspectView: UIView {
         return button
     }()
     
+    
+    lazy var mainButton: UIBarButtonItem = {
+        let customButton = UIButton()
+        customButton.addAction(UIAction(title: "Go To Welcome Page", handler: { [weak self] _ in
+            self?.popViewControllerDelegate?.popViewController()
+        }), for: .touchUpInside)
+        customButton.setImage(.mainButton, for: .normal)
+        let button = UIBarButtonItem(customView: customButton)
+        return button
+    }()
+    
     weak var getTechInspectDelegate: GetTechInspectDelegate?
+    weak var popViewControllerDelegate: PopViewControllerDelegate?
     //MARK: - Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)

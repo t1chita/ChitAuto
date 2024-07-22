@@ -34,6 +34,12 @@ final class TechInspectVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         handleDelegates()
+        setupUI()
+    }
+    
+    //MARK: - SetupUI
+    private func setupUI() {
+        setNavigationItemsOnWelcomePage()
     }
     //MARK: - Delegates
     private func handleDelegates() {
@@ -43,6 +49,17 @@ final class TechInspectVC: UIViewController {
     private func getDelegatesFromView() {
         techInspectView.getTechInspectDelegate = self
         techInspectView.numberPlateTextField.delegate = self
+        techInspectView.popViewControllerDelegate = self
+    }
+    
+    private func setNavigationItemsOnWelcomePage() {
+        navigationItem.leftBarButtonItem = techInspectView.mainButton
+    }
+}
+
+extension TechInspectVC: PopViewControllerDelegate {
+    func popViewController() {
+        navigationController?.popViewController(animated: true)
     }
 }
 
