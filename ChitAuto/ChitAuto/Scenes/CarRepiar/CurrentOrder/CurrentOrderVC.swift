@@ -8,6 +8,7 @@
 import UIKit
 protocol CancelButtonDelegate: AnyObject {
     func handleCancelButton()
+    func handleOrderIsDoneButton()
 }
 
 final class CurrentOrderVC: UIViewController {
@@ -69,11 +70,31 @@ extension CurrentOrderVC: UIGestureRecognizerDelegate {
 }
 
 extension CurrentOrderVC: CancelButtonDelegate {
+    func handleOrderIsDoneButton() {
+        currentOrderViewModel.removeOrderWhenItsDone() { [weak self] success in
+            if success {
+                self?.navigationController?.popViewController(animated: true)
+                print("Order Is Completed")
+            } else {
+                print("DEBUG: Can't Complete Order")
+            }
+        }
+    }
+    
     func handleCancelButton() {
+        orderDeletion()
+    }
+    
+    private func orderDeletion() {
         AlertManager.showDeleteConfirmation(on: self) { [weak self] didDelete in
             if (didDelete == true) {
-                self?.currentOrderViewModel.removeOrderFromUser()
-                self?.navigationController?.popViewController(animated: true)
+                self?.currentOrderViewModel.removeOrderFromUser() { [weak self] success in
+                    if success {
+                        self?.navigationController?.popViewController(animated: true)
+                    } else {
+                        print("DEBUG: Can't Cancel Order")
+                    }
+                }
             }
         }
     }

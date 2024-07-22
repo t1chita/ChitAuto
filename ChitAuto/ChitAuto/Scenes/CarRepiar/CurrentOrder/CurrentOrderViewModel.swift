@@ -10,37 +10,71 @@ import FirebaseFirestore
 
 final class CurrentOrderViewModel {
     let userID: String
-    let orderToRemove: String
+    let orderToRemove: Order
     var onOrderRemoved: (() -> Void)?
     
-    init(userID: String, orderToRemove: String) {
+    init(userID: String, orderToRemove: Order) {
         self.userID = userID
         self.orderToRemove = orderToRemove
     }
     
-    func removeOrderFromUser() {
+    func removeOrderWhenItsDone(completion: @escaping (Bool) -> Void) {
+        removeOrderFromUser() { [weak self] success in
+            if success {
+                self?.saveOrderDetails()
+                completion(true)
+            } else {
+                print("DEBUG: Can't Save Order History")
+                completion(false)
+            }
+        }
+    }
+    
+    func removeOrderFromUser(completion: @escaping (Bool) -> Void) {
         let db = Firestore.firestore()
         let userRef = db.collection("users").document(userID)
         userRef.getDocument { [weak self] (document, error) in
             guard let self = self else { return }
             if let document = document, document.exists {
                 if var userOrders = document.data()?["userOrders"] as? [[String: Any]] {
-                    userOrders.removeAll { $0["id"] as? String == self.orderToRemove }
+                    userOrders.removeAll { $0["id"] as? String == self.orderToRemove.id }
                     
                     userRef.updateData([
                         "userOrders": userOrders
                     ]) { error in
                         if let error = error {
                             print("Error updating document: \(error)")
+                            completion(false)
                         } else {
                             print("Document successfully updated!")
                             self.onOrderRemoved?()
+                            completion(true)
                         }
                     }
                 }
             } else {
                 print("Document does not exist")
+                completion(false)
             }
         }
+    }
+    
+    private func saveOrderDetails() {
+        let carData: [String: Any] = [
+            "id": orderToRemove.id,
+            "car": orderToRemove.car.convertCarToDictionary(),
+            "assistant": orderToRemove.assistant.convertAssistantToDictionary(),
+            "visualDamage": orderToRemove.visualDamage,
+            "problemDescription": orderToRemove.problemDescription,
+            "city": orderToRemove.city,
+            "address": orderToRemove.address,
+            "date": orderToRemove.date,
+            "time": orderToRemove.time,
+        ]
+        
+        let db = Firestore.firestore()
+        db.collection("users").document(userID).updateData([
+            "userOrdersHistory": FieldValue.arrayUnion([carData])
+        ])
     }
 }

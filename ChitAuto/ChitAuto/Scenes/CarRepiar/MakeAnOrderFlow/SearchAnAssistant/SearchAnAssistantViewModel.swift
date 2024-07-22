@@ -69,48 +69,12 @@ final class SearchAnAssistantViewModel {
             }
         }
     }
-    
-    
-    // MARK: - Helper Functions
-    private func convertCarToDictionary(car: Car) -> [String: Any] {
-        return [
-            "id": car.id,
-            "carBrandName": car.carBrandName,
-            "carBrandImageUrl": car.carBrandImageUrl,
-            "carModelName": car.carModelName,
-            "fuelType": car.fuelType,
-            "releaseDate": car.releaseDate,
-            "transmissionType": car.transmissionType,
-            "plateNumber": car.plateNumber
-        ]
-    }
-
-    private func convertAssistantToDictionary(assistant: CarAssistant) -> [String: Any] {
-        return [
-            "assistantId": assistant.assistantId,
-            "assistantLevel": assistant.assistantLevel,
-            "assistantServiceFee": assistant.assistantServiceFee,
-            "carBrands": assistant.carBrands.map { convertCarBrandToDictionary(carBrand: $0) },
-            "fullName": assistant.fullName,
-            "numberOfRepairedVehicles": assistant.numberOfRepairedVehicles,
-            "profilePicUrl": assistant.profilePicUrl,
-            "rating": assistant.rating
-        ]
-    }
-
-    private func convertCarBrandToDictionary(carBrand: AssistantsCarBrand) -> [String: Any] {
-        return [
-            "id": carBrand.id,
-            "imageUrl": carBrand.imageUrl
-        ]
-    }
-
     // MARK: - Save Order Details
     func saveOrderDetails() {
         let carData: [String: Any] = [
             "id": currentOrder.id,
-            "car": convertCarToDictionary(car: currentOrder.car),
-            "assistant": convertAssistantToDictionary(assistant: currentOrder.assistant),
+            "car": currentOrder.car.convertCarToDictionary(),
+            "assistant": currentOrder.assistant.convertAssistantToDictionary(),
             "visualDamage": currentOrder.visualDamage,
             "problemDescription": currentOrder.problemDescription,
             "city": currentOrder.city,

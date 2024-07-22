@@ -16,4 +16,5 @@ struct User: Identifiable, Codable {
     var imageUrl: String
     var userCars: [Car]
     var userOrders: [Order]
+    var userOrdersHistory: [Order]
 }

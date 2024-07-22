@@ -130,7 +130,7 @@ extension UserMainVC: PopViewControllerDelegate {
 extension UserMainVC: OrderStatusButtonDelegate {
     func handleOrderStatusButton() {
         let currentOrderView = CurrentOrderView()
-           let currentOrderViewModel = CurrentOrderViewModel(userID: userMainViewModel.currentUser.id, orderToRemove: userMainViewModel.selectedOrder!.id)
+        let currentOrderViewModel = CurrentOrderViewModel(userID: userMainViewModel.currentUser.id, orderToRemove: userMainViewModel.selectedOrder!)
            
            currentOrderViewModel.onOrderRemoved = { [weak self] in
                guard let self = self else { return }
