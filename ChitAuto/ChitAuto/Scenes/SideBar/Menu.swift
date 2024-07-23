@@ -14,6 +14,7 @@ protocol MenuViewControllerDelegate: AnyObject {
 enum MenuOptions: String, CaseIterable {
     case garage = "მანქანის შეკეთება"
     case techInspect = "ტექ ინსპექტირება"
+    case orderHistory = "შეკვეთების ისტორია"
     case profile = "პროფილი"
     case signOut = "გასვლა"
     
@@ -27,6 +28,8 @@ enum MenuOptions: String, CaseIterable {
             "person.fill"
         case .signOut:
             "rectangle.portrait.and.arrow.forward"
+        case .orderHistory:
+            "book.pages.fill"
         }
     }
 }
@@ -64,7 +67,7 @@ final class MenuViewController: UIViewController {
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.heightAnchor.constraint(equalToConstant: 200),
+            tableView.heightAnchor.constraint(equalToConstant: 230),
         ])
     }
 }

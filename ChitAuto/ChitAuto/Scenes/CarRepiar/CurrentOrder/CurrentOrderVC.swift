@@ -36,6 +36,7 @@ final class CurrentOrderVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.interactivePopGestureRecognizer?.delegate = self
+        title = "მიმდინარე შეკვეთა"
         setupUI()
         handleDelegates()
     }

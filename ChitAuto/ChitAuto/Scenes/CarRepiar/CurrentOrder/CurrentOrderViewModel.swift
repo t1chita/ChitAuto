@@ -12,6 +12,7 @@ final class CurrentOrderViewModel {
     let userID: String
     let orderToRemove: Order
     var onOrderRemoved: (() -> Void)?
+    var onOrderCompleted: (() -> Void)?
     
     init(userID: String, orderToRemove: Order) {
         self.userID = userID
@@ -19,10 +20,11 @@ final class CurrentOrderViewModel {
     }
     
     func removeOrderWhenItsDone(completion: @escaping (Bool) -> Void) {
-        removeOrderFromUser() { [weak self] success in
+        saveOrderDetails { [weak self] success in
+            guard let self = self else { return }
             if success {
-                self?.saveOrderDetails()
-                completion(true)
+                self.onOrderCompleted?()
+                self.removeOrderFromUser(completion: completion)
             } else {
                 print("DEBUG: Can't Save Order History")
                 completion(false)
@@ -59,7 +61,7 @@ final class CurrentOrderViewModel {
         }
     }
     
-    private func saveOrderDetails() {
+    private func saveOrderDetails(completion: @escaping (Bool) -> Void) {
         let carData: [String: Any] = [
             "id": orderToRemove.id,
             "car": orderToRemove.car.convertCarToDictionary(),
@@ -75,6 +77,13 @@ final class CurrentOrderViewModel {
         let db = Firestore.firestore()
         db.collection("users").document(userID).updateData([
             "userOrdersHistory": FieldValue.arrayUnion([carData])
-        ])
+        ]) { error in
+            if let error = error {
+                print("Error saving order details: \(error)")
+                completion(false)
+            } else {
+                completion(true)
+            }
+        }
     }
 }

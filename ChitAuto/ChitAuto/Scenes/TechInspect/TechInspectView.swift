@@ -104,7 +104,3 @@ final class TechInspectView: UIView {
     }
     
 }
-
-#Preview {
-    TechInspectVC(techInspectView: TechInspectView(), techInspectViewModel: TechInspectViewModel())
-}

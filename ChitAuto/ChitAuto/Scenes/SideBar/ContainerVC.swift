@@ -137,6 +137,16 @@ extension ContainerViewController: MenuViewControllerDelegate {
                 self?.navVC?.pushViewController(vc, animated: true)
             case .signOut:
                 self?.welcomeViewModel.signOut()
+            case .orderHistory:
+                guard let unwrappedUser = self?.welcomeViewModel.currentUser else { return }
+                
+                let orderHistoryView = OrderHistoryView()
+                let orderHistoryViewModel = OrderHistoryViewModel(usersOrderHistory: unwrappedUser.userOrdersHistory)
+                
+                let vc = OrderHistoryVC(orderHistoryView: orderHistoryView, orderHistoryViewModel: orderHistoryViewModel)
+            
+                self?.navVC?.pushViewController(vc, animated: true)
+                print("Order History Page")
             }
         }
     }

@@ -53,6 +53,7 @@ final class AddCarDetailsVC: UIViewController {
         super.viewDidLoad()
         setupUI()
         handleDelegates()
+        title = "მანაქანის დეტალები"
         navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
 

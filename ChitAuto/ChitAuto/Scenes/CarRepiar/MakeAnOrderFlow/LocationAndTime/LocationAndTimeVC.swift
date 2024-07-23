@@ -50,6 +50,7 @@ final class LocationAndTimeVC: UIViewController {
         super.viewDidLoad()
         setupUI()
         handleDelegates()
+        title = "დრო და ადგილი"
         navigationController?.interactivePopGestureRecognizer?.delegate = self
         updateDate()
     }

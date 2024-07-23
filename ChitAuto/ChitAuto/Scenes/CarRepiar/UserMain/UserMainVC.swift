@@ -52,6 +52,7 @@ final class UserMainVC: UIViewController {
         super.viewDidLoad()
         handleDelegates()
         setupUI()
+        title = "მანაქანის შეკეთება"
         navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
@@ -141,6 +142,18 @@ extension UserMainVC: OrderStatusButtonDelegate {
                    return user
                }()
                self.updateUI()
+           } 
+        
+        currentOrderViewModel.onOrderCompleted = { [weak self] in
+               guard let self = self else { return }
+               print("Order Completed closure called")
+               self.userMainViewModel.currentUser = {
+                   var user = self.userMainViewModel.currentUser
+                   user.userOrders.removeAll(where: { $0.id == self.userMainViewModel.selectedOrder?.id })
+                   user.userOrdersHistory.append(self.userMainViewModel.selectedOrder!)
+                   return user
+               }()
+               self.updateUI()
            }
            
            let vc = CurrentOrderVC(currentOrderView: currentOrderView, currentOrderViewModel: currentOrderViewModel)
@@ -158,8 +171,9 @@ extension UserMainVC: GarageAndOrderFlowRepresentableDelegate {
             let carInfoViewModel = CarInfoViewModel(currentCar: userCar, userId: userMainViewModel.currentUser.id)
             
             carInfoViewModel.onCurrentOrderChanged = { [weak self] order in
-                self?.userMainViewModel.currentUser.userOrders.removeAll(where: {$0.id == order.id})
-                self?.userMainViewModel.currentUser.userOrders.append(order)
+                if order.assistant.fullName != "" {
+                    self?.userMainViewModel.currentUser.userOrders.append(order)
+                }
             }
             
             let vc = CarInfoVC(carInfoView: carInfoView, carInfoViewModel: carInfoViewModel)
