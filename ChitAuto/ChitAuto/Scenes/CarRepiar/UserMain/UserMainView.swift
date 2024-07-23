@@ -10,19 +10,6 @@ import UIKit
 
 final class UserMainView: UIView {
     //MARK: - UIComponents
-//    private let scrollView: UIScrollView = {
-//        let scrView = UIScrollView()
-//        scrView.translatesAutoresizingMaskIntoConstraints = false
-//        scrView.showsVerticalScrollIndicator = false
-//        return scrView
-//    }()
-//    
-//    private let contentView: UIView = {
-//        let vw = UIView()
-//        vw.translatesAutoresizingMaskIntoConstraints = false
-//        return vw
-//    }()
-    
     private let addCarImage: UIImageView = {
         let imgView = UIImageView()
         imgView.translatesAutoresizingMaskIntoConstraints = false
@@ -197,6 +184,7 @@ final class UserMainView: UIView {
         lbl.font = .systemFont(ofSize: 16, weight: .bold)
         lbl.textColor = .customLabel
         lbl.textAlignment = .center
+        lbl.numberOfLines = 0
         lbl.text = "თქვენი მანქანა კეთების პროცესშია 🛠️"
         return lbl
     }()
@@ -219,9 +207,6 @@ final class UserMainView: UIView {
     
     //MARK: - Setup UI
     private func setupUI() {
-//        setScrollView()
-//        setContentView()
-//        
         setAddCarImage()
         setAddCarInTheGarageButton()
         
@@ -242,34 +227,6 @@ final class UserMainView: UIView {
     }
     
     //MARK: - Set UI Components
-//    private func setScrollView() {
-//        addSubview(scrollView)
-//        
-//        //Set Constraints
-//        NSLayoutConstraint.activate([
-//            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
-//            scrollView.topAnchor.constraint(equalTo: topAnchor),
-//            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
-//            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -120),
-//        ])
-//    }
-    
-//    private func setContentView() {
-//        scrollView.addSubview(contentView)
-//        let heightAnchor = contentView.heightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.heightAnchor)
-//        heightAnchor.priority = .defaultHigh
-//        
-//        //Set Constraints
-//        NSLayoutConstraint.activate([
-//            contentView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
-//            contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
-//            contentView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
-//            contentView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
-//            contentView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor),
-//            heightAnchor
-//        ])
-//    }
-    
     private func setAddCarImage() {
         addSubview(addCarImage)
         
@@ -320,7 +277,7 @@ final class UserMainView: UIView {
             orderCardBackground.topAnchor.constraint(equalTo: carContentStackView.topAnchor, constant: 100),
             orderCardBackground.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             orderCardBackground.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
-            orderCardBackground.heightAnchor.constraint(equalToConstant: 290),
+            orderCardBackground.heightAnchor.constraint(equalToConstant: 300),
         ])
     }   
         
@@ -366,8 +323,9 @@ final class UserMainView: UIView {
         //Set Constraints
         NSLayoutConstraint.activate([
             orderStatusTitle.topAnchor.constraint(equalTo: assistantName.bottomAnchor, constant: 10),
-            orderStatusTitle.centerXAnchor.constraint(equalTo: assistantContentBackground.centerXAnchor),
-            orderStatusTitle.heightAnchor.constraint(equalToConstant: 36),
+            orderStatusTitle.leadingAnchor.constraint(equalTo: assistantContentBackground.leadingAnchor),
+            orderStatusTitle.trailingAnchor.constraint(equalTo: assistantContentBackground.trailingAnchor),
+            orderStatusTitle.heightAnchor.constraint(equalToConstant: 46),
         ])
     }
     
@@ -430,7 +388,6 @@ final class UserMainView: UIView {
         
         //Set Constraints
         NSLayoutConstraint.activate([
-//            bottomContentView.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 30),
             bottomContentView.heightAnchor.constraint(equalToConstant: 100),
             bottomContentView.leadingAnchor.constraint(equalTo: leadingAnchor),
             bottomContentView.trailingAnchor.constraint(equalTo: trailingAnchor),
