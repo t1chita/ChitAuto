@@ -38,6 +38,7 @@ final class WelcomeVC: UIViewController {
         setupUI()
         handleDelegates()
         setProfileMenuButton()
+        title = "მთავარი"
     }
     
     //MARK: - Setup UI

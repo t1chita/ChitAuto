@@ -40,10 +40,11 @@
 		262929162C4E970900FB8FE9 /* TechInspectSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262929152C4E970900FB8FE9 /* TechInspectSheetViewModel.swift */; };
 		262929192C4E9E6200FB8FE9 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 262929182C4E9E6200FB8FE9 /* SwiftSoup */; };
 		2629291B2C4ED5C300FB8FE9 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2629291A2C4ED5C300FB8FE9 /* Models.swift */; };
-		2629291D2C4ED8DE00FB8FE9 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2629291C2C4ED8DE00FB8FE9 /* OrderView.swift */; };
 		262929212C4EE82100FB8FE9 /* OrderHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262929202C4EE82100FB8FE9 /* OrderHistoryVC.swift */; };
 		262929232C4EE82A00FB8FE9 /* OrderHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262929222C4EE82A00FB8FE9 /* OrderHistoryView.swift */; };
 		262929252C4EE83800FB8FE9 /* OrderHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262929242C4EE83800FB8FE9 /* OrderHistoryViewModel.swift */; };
+		262929282C4EFE2B00FB8FE9 /* OrdersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262929272C4EFE2A00FB8FE9 /* OrdersCell.swift */; };
+		2629292A2C4F00DC00FB8FE9 /* OrderHistoryVC + ExtTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262929292C4F00DC00FB8FE9 /* OrderHistoryVC + ExtTableView.swift */; };
 		267530E72C3D52DA00E8B42B /* GarageSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267530E62C3D52DA00E8B42B /* GarageSheetView.swift */; };
 		267530E92C3D534400E8B42B /* GarageSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267530E82C3D534400E8B42B /* GarageSheetViewModel.swift */; };
 		267530EB2C3D535F00E8B42B /* GarageSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267530EA2C3D535F00E8B42B /* GarageSheetVC.swift */; };
@@ -166,10 +167,11 @@
 		262929132C4E96FB00FB8FE9 /* TechInspectSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechInspectSheetView.swift; sourceTree = "<group>"; };
 		262929152C4E970900FB8FE9 /* TechInspectSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechInspectSheetViewModel.swift; sourceTree = "<group>"; };
 		2629291A2C4ED5C300FB8FE9 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
-		2629291C2C4ED8DE00FB8FE9 /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
 		262929202C4EE82100FB8FE9 /* OrderHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryVC.swift; sourceTree = "<group>"; };
 		262929222C4EE82A00FB8FE9 /* OrderHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryView.swift; sourceTree = "<group>"; };
 		262929242C4EE83800FB8FE9 /* OrderHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryViewModel.swift; sourceTree = "<group>"; };
+		262929272C4EFE2A00FB8FE9 /* OrdersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersCell.swift; sourceTree = "<group>"; };
+		262929292C4F00DC00FB8FE9 /* OrderHistoryVC + ExtTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OrderHistoryVC + ExtTableView.swift"; sourceTree = "<group>"; };
 		267530E62C3D52DA00E8B42B /* GarageSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageSheetView.swift; sourceTree = "<group>"; };
 		267530E82C3D534400E8B42B /* GarageSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageSheetViewModel.swift; sourceTree = "<group>"; };
 		267530EA2C3D535F00E8B42B /* GarageSheetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageSheetVC.swift; sourceTree = "<group>"; };
@@ -421,22 +423,24 @@
 			path = TechInspectSheet;
 			sourceTree = "<group>";
 		};
-		2629291E2C4ED8E700FB8FE9 /* UIViews */ = {
-			isa = PBXGroup;
-			children = (
-				2629291C2C4ED8DE00FB8FE9 /* OrderView.swift */,
-			);
-			path = UIViews;
-			sourceTree = "<group>";
-		};
 		2629291F2C4EE80C00FB8FE9 /* OrderHistory */ = {
 			isa = PBXGroup;
 			children = (
+				262929262C4EFE1600FB8FE9 /* OrdersTableView */,
 				262929202C4EE82100FB8FE9 /* OrderHistoryVC.swift */,
 				262929222C4EE82A00FB8FE9 /* OrderHistoryView.swift */,
 				262929242C4EE83800FB8FE9 /* OrderHistoryViewModel.swift */,
 			);
 			path = OrderHistory;
+			sourceTree = "<group>";
+		};
+		262929262C4EFE1600FB8FE9 /* OrdersTableView */ = {
+			isa = PBXGroup;
+			children = (
+				262929272C4EFE2A00FB8FE9 /* OrdersCell.swift */,
+				262929292C4F00DC00FB8FE9 /* OrderHistoryVC + ExtTableView.swift */,
+			);
+			path = OrdersTableView;
 			sourceTree = "<group>";
 		};
 		267530E52C3D52BA00E8B42B /* Garage */ = {
@@ -724,7 +728,6 @@
 		26CA74022C348A2200715AC3 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				2629291E2C4ED8E700FB8FE9 /* UIViews */,
 				26F4E10D2C41ABB70031A6C5 /* TextFields */,
 				261C15D72C3AC0BD004B5A1E /* Labels */,
 				261C15C52C3AB756004B5A1E /* Stacks */,
@@ -985,6 +988,7 @@
 				26F4E1422C47460E0031A6C5 /* TimeSheetVC.swift in Sources */,
 				262929252C4EE83800FB8FE9 /* OrderHistoryViewModel.swift in Sources */,
 				2682B2292C3310E2004D02E4 /* SceneDelegate.swift in Sources */,
+				262929282C4EFE2B00FB8FE9 /* OrdersCell.swift in Sources */,
 				2629290B2C4E814D00FB8FE9 /* TechInspectVC.swift in Sources */,
 				267531302C407B8400E8B42B /* FuelTypeVC + ExtTableView.swift in Sources */,
 				2675312E2C407B2900E8B42B /* FuelTypeCell.swift in Sources */,
@@ -992,7 +996,6 @@
 				26F4E12C2C45B8730031A6C5 /* AssistantsCell.swift in Sources */,
 				267530F72C3DA98A00E8B42B /* UITextField.swift in Sources */,
 				26F4E1562C495D260031A6C5 /* UIImageView.swift in Sources */,
-				2629291D2C4ED8DE00FB8FE9 /* OrderView.swift in Sources */,
 				2622943E2C349BC30062EEC1 /* SignUpViewModel.swift in Sources */,
 				267530F22C3D8B7800E8B42B /* AddCarDetailsVC.swift in Sources */,
 				26F4E1302C45C01F0031A6C5 /* AssistantsResponse.swift in Sources */,
@@ -1064,6 +1067,7 @@
 				26F4E1352C47456E0031A6C5 /* LocationSheetVC.swift in Sources */,
 				261C15CD2C3ABDAF004B5A1E /* CustomFlowLayout.swift in Sources */,
 				267530FB2C3E0E2D00E8B42B /* CarBrandsResponse.swift in Sources */,
+				2629292A2C4F00DC00FB8FE9 /* OrderHistoryVC + ExtTableView.swift in Sources */,
 				26CF16E12C4B029D00A1CC15 /* AlertManager.swift in Sources */,
 				26CF16E62C4B286100A1CC15 /* ProfileView.swift in Sources */,
 				267531402C40925F00E8B42B /* TransmissionTypeVC + ExtTableView.swift in Sources */,

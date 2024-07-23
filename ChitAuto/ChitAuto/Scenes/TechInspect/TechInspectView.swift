@@ -73,7 +73,7 @@ final class TechInspectView: UIView {
             techInspectTitle.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 60),
             techInspectTitle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50),
             techInspectTitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),
-            techInspectTitle.heightAnchor.constraint(equalToConstant: 70),
+            techInspectTitle.heightAnchor.constraint(equalToConstant: 90),
         ])
     }  
     
@@ -103,8 +103,4 @@ final class TechInspectView: UIView {
         ])
     }
     
-}
-
-#Preview {
-    TechInspectVC(techInspectView: TechInspectView(), techInspectViewModel: TechInspectViewModel())
 }

@@ -36,6 +36,7 @@ final class ProfileVC: UIViewController {
         super.viewDidLoad()
         handleDelegates()
         setupUI()
+        title = "პროფილი"
     }
     
     override func viewWillDisappear(_ animated: Bool) {

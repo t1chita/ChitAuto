@@ -37,6 +37,7 @@ final class CarInfoVC: UIViewController {
         super.viewDidLoad()
         setupUI()
         handleDelegates()
+        title = "დაზიანება"
         navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     

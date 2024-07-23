@@ -117,8 +117,8 @@ final class CarCell: UITableViewCell {
         rectangleView.addSubview(carModelName)
         
         NSLayoutConstraint.activate([
-            carModelName.centerYAnchor.constraint(equalTo: rectangleView.centerYAnchor),
-            carModelName.leadingAnchor.constraint(equalTo: carBrandImage.trailingAnchor, constant: 6),
+            carModelName.topAnchor.constraint(equalTo: carBrandImage.bottomAnchor, constant: 4),
+            carModelName.leadingAnchor.constraint(equalTo: carBrandImage.leadingAnchor, constant: 6),
         ])
     }
     

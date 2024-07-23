@@ -35,12 +35,14 @@ final class TechInspectVC: UIViewController {
         super.viewDidLoad()
         handleDelegates()
         setupUI()
+        title = "ტექ ინსპექტირება"
     }
     
     //MARK: - SetupUI
     private func setupUI() {
         setNavigationItemsOnWelcomePage()
     }
+    
     //MARK: - Delegates
     private func handleDelegates() {
         getDelegatesFromView()

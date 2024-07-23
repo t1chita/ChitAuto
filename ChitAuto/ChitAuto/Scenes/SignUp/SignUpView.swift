@@ -44,8 +44,8 @@ struct SignUpView: View {
     private var usersInfoCardBackground: some View {
         RoundedRectangle(cornerRadius: 16)
             .foregroundStyle(Color.customCard)
-            .padding(.vertical, -10)
             .padding(.horizontal, 24)
+
     }
     
     private var usersInfoCardContent: some View {
@@ -74,6 +74,7 @@ struct SignUpView: View {
             
             registrationButton
         }
+        .padding(.vertical, 10)
         .padding(.horizontal)
     }
     

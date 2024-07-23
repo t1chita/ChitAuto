@@ -33,6 +33,7 @@ final class SearchAnAssistantVC: UIViewController {
         super.viewDidLoad()
         handleDelegates()
         removeDefaultBackButton()
+        title = "მოძებნე ასისტენტი"
         navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     

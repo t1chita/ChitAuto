@@ -10,19 +10,6 @@ import UIKit
 
 final class UserMainView: UIView {
     //MARK: - UIComponents
-    private let scrollView: UIScrollView = {
-        let scrView = UIScrollView()
-        scrView.translatesAutoresizingMaskIntoConstraints = false
-        scrView.showsVerticalScrollIndicator = false
-        return scrView
-    }()
-    
-    private let contentView: UIView = {
-        let vw = UIView()
-        vw.translatesAutoresizingMaskIntoConstraints = false
-        return vw
-    }()
-    
     private let addCarImage: UIImageView = {
         let imgView = UIImageView()
         imgView.translatesAutoresizingMaskIntoConstraints = false
@@ -197,6 +184,7 @@ final class UserMainView: UIView {
         lbl.font = .systemFont(ofSize: 16, weight: .bold)
         lbl.textColor = .customLabel
         lbl.textAlignment = .center
+        lbl.numberOfLines = 0
         lbl.text = "თქვენი მანქანა კეთების პროცესშია 🛠️"
         return lbl
     }()
@@ -219,9 +207,6 @@ final class UserMainView: UIView {
     
     //MARK: - Setup UI
     private func setupUI() {
-        setScrollView()
-        setContentView()
-        
         setAddCarImage()
         setAddCarInTheGarageButton()
         
@@ -242,48 +227,20 @@ final class UserMainView: UIView {
     }
     
     //MARK: - Set UI Components
-    private func setScrollView() {
-        addSubview(scrollView)
-        
-        //Set Constraints
-        NSLayoutConstraint.activate([
-            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            scrollView.topAnchor.constraint(equalTo: topAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -120),
-        ])
-    }
-    
-    private func setContentView() {
-        scrollView.addSubview(contentView)
-        let heightAnchor = contentView.heightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.heightAnchor)
-        heightAnchor.priority = .defaultHigh
-        
-        //Set Constraints
-        NSLayoutConstraint.activate([
-            contentView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
-            contentView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
-            contentView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor),
-            heightAnchor
-        ])
-    }
-    
     private func setAddCarImage() {
-        contentView.addSubview(addCarImage)
+        addSubview(addCarImage)
         
         //Set Constraints
         NSLayoutConstraint.activate([
-            addCarImage.topAnchor.constraint(equalTo: contentView.topAnchor),
-            addCarImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            addCarImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            addCarImage.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20),
+            addCarImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            addCarImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             addCarImage.heightAnchor.constraint(equalToConstant: 270),
         ])
     }
     
     private func setAddCarInTheGarageButton() {
-        contentView.addSubview(addCarInTheGarageButton)
+        addSubview(addCarInTheGarageButton)
         
         addCarInTheGarageButton.addAction(UIAction(title: "Add Car In The Garage", handler: { [weak self] _ in
             self?.garageAndOrderFlowRepresentableDelegate?.presentGarageSheet()
@@ -291,36 +248,36 @@ final class UserMainView: UIView {
         
         //Set Constraints
         NSLayoutConstraint.activate([
-            addCarInTheGarageButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
-            addCarInTheGarageButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
-            addCarInTheGarageButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            addCarInTheGarageButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            addCarInTheGarageButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            addCarInTheGarageButton.centerYAnchor.constraint(equalTo: centerYAnchor),
             addCarInTheGarageButton.heightAnchor.constraint(equalToConstant: 52)
         ])
     }
     
     private func setCarContentStackView() {
-        contentView.addSubview(carContentStackView)
+        addSubview(carContentStackView)
         
         carContentStackView.addArrangedSubview(numberPlate)
         carContentStackView.addArrangedSubview(carBrandImage)
         
         //Set Constraints
         NSLayoutConstraint.activate([
-            carContentStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 100),
-            carContentStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
-            carContentStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
+            carContentStackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20),
+            carContentStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            carContentStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
         ])
     }
     
     private func setOrderContentBackground() {
-        contentView.addSubview(orderCardBackground)
+        addSubview(orderCardBackground)
         
         //Set Constraints
         NSLayoutConstraint.activate([
             orderCardBackground.topAnchor.constraint(equalTo: carContentStackView.topAnchor, constant: 100),
-            orderCardBackground.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
-            orderCardBackground.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
-            orderCardBackground.heightAnchor.constraint(equalToConstant: 290),
+            orderCardBackground.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            orderCardBackground.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            orderCardBackground.heightAnchor.constraint(equalToConstant: 300),
         ])
     }   
         
@@ -366,8 +323,9 @@ final class UserMainView: UIView {
         //Set Constraints
         NSLayoutConstraint.activate([
             orderStatusTitle.topAnchor.constraint(equalTo: assistantName.bottomAnchor, constant: 10),
-            orderStatusTitle.centerXAnchor.constraint(equalTo: assistantContentBackground.centerXAnchor),
-            orderStatusTitle.heightAnchor.constraint(equalToConstant: 36),
+            orderStatusTitle.leadingAnchor.constraint(equalTo: assistantContentBackground.leadingAnchor),
+            orderStatusTitle.trailingAnchor.constraint(equalTo: assistantContentBackground.trailingAnchor),
+            orderStatusTitle.heightAnchor.constraint(equalToConstant: 46),
         ])
     }
     
@@ -399,18 +357,18 @@ final class UserMainView: UIView {
     }
     
     private func setYouDontHaveAnOrderLabel() {
-        contentView.addSubview(youDontHaveAnOrderLabel)
+        addSubview(youDontHaveAnOrderLabel)
         
         //Set Constraints
         NSLayoutConstraint.activate([
             youDontHaveAnOrderLabel.topAnchor.constraint(equalTo: carContentStackView.topAnchor, constant: 100),
-            youDontHaveAnOrderLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
-            youDontHaveAnOrderLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
+            youDontHaveAnOrderLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            youDontHaveAnOrderLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
         ])
     }
     
     private func setMakeAnOrderButton() {
-        contentView.addSubview(makeAnOrder)
+        addSubview(makeAnOrder)
         
         makeAnOrder.addAction(UIAction(title: "Make An Order", handler: { [weak self] _ in
             self?.garageAndOrderFlowRepresentableDelegate?.makeAnOrder()
@@ -418,9 +376,9 @@ final class UserMainView: UIView {
         
         //Set Constraints
         NSLayoutConstraint.activate([
-            makeAnOrder.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
-            makeAnOrder.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
-            makeAnOrder.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            makeAnOrder.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            makeAnOrder.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            makeAnOrder.topAnchor.constraint(equalTo: youDontHaveAnOrderLabel.topAnchor, constant: 100),
             makeAnOrder.heightAnchor.constraint(equalToConstant: 52)
         ])
     }
@@ -430,7 +388,7 @@ final class UserMainView: UIView {
         
         //Set Constraints
         NSLayoutConstraint.activate([
-            bottomContentView.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 30),
+            bottomContentView.heightAnchor.constraint(equalToConstant: 100),
             bottomContentView.leadingAnchor.constraint(equalTo: leadingAnchor),
             bottomContentView.trailingAnchor.constraint(equalTo: trailingAnchor),
             bottomContentView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 20),
