@@ -51,7 +51,7 @@ class ContainerViewController: UIViewController {
         view.addSubview(menuVC.view)
         menuVC.didMove(toParent: self)
         
-        menuVC.view.frame = CGRect(x: -view.frame.size.width * 0.6, y: 0, width: view.frame.size.width * 0.6, height: view.frame.size.height)
+        menuVC.view.frame = CGRect(x: -view.frame.size.width * 0.8, y: 0, width: view.frame.size.width * 0.8, height: view.frame.size.height)
         
         welcomeVC.welcomeView.delegate = self
         let navVC = UINavigationController(rootViewController: welcomeVC)
@@ -66,7 +66,7 @@ class ContainerViewController: UIViewController {
         case .closed:
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseIn) { [weak self] in
                 guard let self = self else { return }
-                self.navVC?.view.frame.origin.x = self.view.frame.size.width * 0.6
+                self.navVC?.view.frame.origin.x = self.view.frame.size.width * 0.8
                 self.menuVC.view.frame.origin.x = 0
             } completion: { [weak self] done in
                 guard let self = self else { return }
@@ -79,7 +79,7 @@ class ContainerViewController: UIViewController {
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseIn) { [weak self] in
                 guard let self = self else { return }
                 self.navVC?.view.frame.origin.x = 0
-                self.menuVC.view.frame.origin.x = -self.view.frame.size.width * 0.6
+                self.menuVC.view.frame.origin.x = -self.view.frame.size.width * 0.8
             } completion: { [weak self] done in
                 guard let self = self else { return }
                 if done {
