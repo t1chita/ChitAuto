@@ -14,6 +14,27 @@ final class CurrentOrderViewModel {
     var onOrderRemoved: (() -> Void)?
     var onOrderCompleted: (() -> Void)?
     
+    var visualDamage: String {
+        if orderToRemove.visualDamage {
+            return "აქვს"
+        } else {
+            return "არ აქვს"
+        }
+    } 
+    
+    var time: String {
+        switch orderToRemove.time {
+        case "დილით":
+            return "დილა"
+        case "საღამოს":
+            return "საღამო"
+        case "შუადღეს":
+            return "შუადღე"
+        default:
+            return ""
+        }
+    }
+    
     init(userID: String, orderToRemove: Order) {
         self.userID = userID
         self.orderToRemove = orderToRemove

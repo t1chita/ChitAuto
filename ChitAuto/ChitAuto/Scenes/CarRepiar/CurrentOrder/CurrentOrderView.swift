@@ -9,24 +9,10 @@ import UIKit
 
 final class CurrentOrderView: UIView {
     //MARK: - UIComponents
-    private let repairingGif: UIImageView = {
-       let imgView = UIImageView()
-        imgView.translatesAutoresizingMaskIntoConstraints = false
-        imgView.contentMode = .scaleAspectFit
-        let repairingGif = UIImage.gifImageWithName("repairingGif")
-        imgView.image = repairingGif
-        return imgView
-    }()
-    
-    private let orderDesc: UILabel = {
-       let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.numberOfLines = 0
-        lbl.font = .systemFont(ofSize: 18, weight: .regular)
-        lbl.textAlignment = .center
-        lbl.textColor = .customLabel
-        lbl.text = "თქვენი შეკვეთა მიღებულია,ასისტენტი მალე დაგიკავშირდებათ."
-        return lbl
+    let orderDetailsView: OrderDetailsView = {
+        let vw = OrderDetailsView()
+        vw.translatesAutoresizingMaskIntoConstraints = false
+        return vw
     }()
     
     private let orderStatusButtonsStackView: UIStackView = {
@@ -69,29 +55,19 @@ final class CurrentOrderView: UIView {
     
     //MARK: - Setup UI
     private func setupUI() {
-        setOrderDesc()
+        setOrderDetailsView()
         setCancelOrderButton()
-        setRepairingGif()
     }
     
     //MARK: - Set UI Components
-    private func setRepairingGif() {
-        addSubview(repairingGif)
+    private func setOrderDetailsView() {
+        addSubview(orderDetailsView)
         
         NSLayoutConstraint.activate([
-            repairingGif.topAnchor.constraint(equalTo: topAnchor, constant: 70),
-            repairingGif.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            repairingGif.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
-        ])
-    }
-    
-    private func setOrderDesc() {
-        addSubview(orderDesc)
-        
-        NSLayoutConstraint.activate([
-            orderDesc.centerYAnchor.constraint(equalTo: centerYAnchor),
-            orderDesc.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            orderDesc.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            orderDetailsView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20),
+            orderDetailsView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            orderDetailsView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            orderDetailsView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -80),
         ])
     }
     
@@ -110,7 +86,7 @@ final class CurrentOrderView: UIView {
         }), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
-            orderStatusButtonsStackView.topAnchor.constraint(equalTo: orderDesc.bottomAnchor, constant: 30),
+            orderStatusButtonsStackView.topAnchor.constraint(equalTo: orderDetailsView.bottomAnchor, constant: 10),
             orderStatusButtonsStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             orderStatusButtonsStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
             orderStatusButtonsStackView.heightAnchor.constraint(equalToConstant: 50),

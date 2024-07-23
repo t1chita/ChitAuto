@@ -53,11 +53,29 @@ final class CurrentOrderVC: UIViewController {
     //MARK: - Setup UI
     private func setupUI() {
         removeDefaultBackButton()
+        setAssistantImage()
+        setOrderDescription()
     }
     
     //MARK: - Set UI Components
     private func removeDefaultBackButton() {
         navigationItem.setHidesBackButton(true, animated: true)
+    }
+    
+    private func setAssistantImage() {
+        guard let assistantImage = URL(string: currentOrderViewModel.orderToRemove.assistant.profilePicUrl) else { return }
+        currentOrderView.orderDetailsView.assistantImageView.loadImage(from: assistantImage)
+    }
+    
+    private func setOrderDescription() {
+        guard let carBrandImage = URL(string: currentOrderViewModel.orderToRemove.car.carBrandImageUrl) else { return }
+        currentOrderView.orderDetailsView.cityLabel.text = "ქალაქი: " + currentOrderViewModel.orderToRemove.city
+        currentOrderView.orderDetailsView.dateLabel.text = "თარიღი: " + currentOrderViewModel.orderToRemove.date
+        currentOrderView.orderDetailsView.timeLabel.text = "ასისტენტის მოსვლის პერიოდი: " + currentOrderViewModel.time
+        currentOrderView.orderDetailsView.visualDamageLabel.text = "ვიზუალური დაზიანება: " + currentOrderViewModel.visualDamage
+        currentOrderView.orderDetailsView.problemDescriptionTextView.text = currentOrderViewModel.orderToRemove.problemDescription
+        currentOrderView.orderDetailsView.numberPlate.text = currentOrderViewModel.orderToRemove.car.plateNumber
+        currentOrderView.orderDetailsView.carBrandImage.loadImage(from: carBrandImage)
     }
 }
 

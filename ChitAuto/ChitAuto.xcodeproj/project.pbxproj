@@ -45,6 +45,9 @@
 		262929252C4EE83800FB8FE9 /* OrderHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262929242C4EE83800FB8FE9 /* OrderHistoryViewModel.swift */; };
 		262929282C4EFE2B00FB8FE9 /* OrdersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262929272C4EFE2A00FB8FE9 /* OrdersCell.swift */; };
 		2629292A2C4F00DC00FB8FE9 /* OrderHistoryVC + ExtTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262929292C4F00DC00FB8FE9 /* OrderHistoryVC + ExtTableView.swift */; };
+		2629292F2C4FE49E00FB8FE9 /* OrderDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2629292E2C4FE49E00FB8FE9 /* OrderDetailsView.swift */; };
+		262929332C4FFF3100FB8FE9 /* OrderDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262929322C4FFF3100FB8FE9 /* OrderDetailsViewModel.swift */; };
+		262929352C4FFF4600FB8FE9 /* OrderDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262929342C4FFF4600FB8FE9 /* OrderDetailsVC.swift */; };
 		267530E72C3D52DA00E8B42B /* GarageSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267530E62C3D52DA00E8B42B /* GarageSheetView.swift */; };
 		267530E92C3D534400E8B42B /* GarageSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267530E82C3D534400E8B42B /* GarageSheetViewModel.swift */; };
 		267530EB2C3D535F00E8B42B /* GarageSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267530EA2C3D535F00E8B42B /* GarageSheetVC.swift */; };
@@ -133,8 +136,6 @@
 		26F4E1502C4931C20031A6C5 /* CurrentOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F4E14F2C4931C20031A6C5 /* CurrentOrderVC.swift */; };
 		26F4E1522C4931FD0031A6C5 /* CurrentOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F4E1512C4931FD0031A6C5 /* CurrentOrderView.swift */; };
 		26F4E1542C4932100031A6C5 /* CurrentOrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F4E1532C49320F0031A6C5 /* CurrentOrderViewModel.swift */; };
-		26F4E1562C495D260031A6C5 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F4E1552C495D260031A6C5 /* UIImageView.swift */; };
-		26F4E15C2C4961CA0031A6C5 /* repairingGif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 26F4E15B2C4961CA0031A6C5 /* repairingGif.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -172,6 +173,9 @@
 		262929242C4EE83800FB8FE9 /* OrderHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryViewModel.swift; sourceTree = "<group>"; };
 		262929272C4EFE2A00FB8FE9 /* OrdersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersCell.swift; sourceTree = "<group>"; };
 		262929292C4F00DC00FB8FE9 /* OrderHistoryVC + ExtTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OrderHistoryVC + ExtTableView.swift"; sourceTree = "<group>"; };
+		2629292E2C4FE49E00FB8FE9 /* OrderDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsView.swift; sourceTree = "<group>"; };
+		262929322C4FFF3100FB8FE9 /* OrderDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsViewModel.swift; sourceTree = "<group>"; };
+		262929342C4FFF4600FB8FE9 /* OrderDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsVC.swift; sourceTree = "<group>"; };
 		267530E62C3D52DA00E8B42B /* GarageSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageSheetView.swift; sourceTree = "<group>"; };
 		267530E82C3D534400E8B42B /* GarageSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageSheetViewModel.swift; sourceTree = "<group>"; };
 		267530EA2C3D535F00E8B42B /* GarageSheetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageSheetVC.swift; sourceTree = "<group>"; };
@@ -261,8 +265,6 @@
 		26F4E14F2C4931C20031A6C5 /* CurrentOrderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentOrderVC.swift; sourceTree = "<group>"; };
 		26F4E1512C4931FD0031A6C5 /* CurrentOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentOrderView.swift; sourceTree = "<group>"; };
 		26F4E1532C49320F0031A6C5 /* CurrentOrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentOrderViewModel.swift; sourceTree = "<group>"; };
-		26F4E1552C495D260031A6C5 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
-		26F4E15B2C4961CA0031A6C5 /* repairingGif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = repairingGif.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -443,6 +445,16 @@
 			path = OrdersTableView;
 			sourceTree = "<group>";
 		};
+		2629292B2C4F31CE00FB8FE9 /* OrderDetails */ = {
+			isa = PBXGroup;
+			children = (
+				2629292E2C4FE49E00FB8FE9 /* OrderDetailsView.swift */,
+				262929322C4FFF3100FB8FE9 /* OrderDetailsViewModel.swift */,
+				262929342C4FFF4600FB8FE9 /* OrderDetailsVC.swift */,
+			);
+			path = OrderDetails;
+			sourceTree = "<group>";
+		};
 		267530E52C3D52BA00E8B42B /* Garage */ = {
 			isa = PBXGroup;
 			children = (
@@ -469,7 +481,6 @@
 			isa = PBXGroup;
 			children = (
 				267530F62C3DA98A00E8B42B /* UITextField.swift */,
-				26F4E1552C495D260031A6C5 /* UIImageView.swift */,
 				2629291A2C4ED5C300FB8FE9 /* Models.swift */,
 			);
 			path = Extensions;
@@ -696,6 +707,7 @@
 				262928F02C4C3A1000FB8FE9 /* SideBar */,
 				261C15BB2C3A136A004B5A1E /* Welcome */,
 				262929012C4DBB9900FB8FE9 /* CarRepiar */,
+				2629292B2C4F31CE00FB8FE9 /* OrderDetails */,
 				2629291F2C4EE80C00FB8FE9 /* OrderHistory */,
 				262929092C4E813300FB8FE9 /* TechInspect */,
 				26CF16E22C4B281900A1CC15 /* Profile */,
@@ -716,7 +728,6 @@
 		26CA74012C348A1700715AC3 /*  CustomComponents */ = {
 			isa = PBXGroup;
 			children = (
-				26F4E15B2C4961CA0031A6C5 /* repairingGif.gif */,
 				267530F52C3DA97300E8B42B /* Extensions */,
 				261C15CB2C3ABD9C004B5A1E /* FlowLayout */,
 				26ADA7332C38C2B300D6E3EE /* Modifiers */,
@@ -949,7 +960,6 @@
 				2682B2302C3310E4004D02E4 /* Assets.xcassets in Resources */,
 				2682B2332C3310E4004D02E4 /* Base in Resources */,
 				26CA73EC2C34847600715AC3 /* GoogleService-Info.plist in Resources */,
-				26F4E15C2C4961CA0031A6C5 /* repairingGif.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -984,6 +994,7 @@
 				2675310E2C3FF2B000E8B42B /* ModelsView.swift in Sources */,
 				267531082C3EB9F100E8B42B /* BrandsSheetViewModel.swift in Sources */,
 				261C15D42C3ABF78004B5A1E /* CarRepairPhases.swift in Sources */,
+				2629292F2C4FE49E00FB8FE9 /* OrderDetailsView.swift in Sources */,
 				267530FD2C3EB43400E8B42B /* BrandsSheetsView.swift in Sources */,
 				26F4E1422C47460E0031A6C5 /* TimeSheetVC.swift in Sources */,
 				262929252C4EE83800FB8FE9 /* OrderHistoryViewModel.swift in Sources */,
@@ -995,7 +1006,6 @@
 				261C15CA2C3ABA61004B5A1E /* UIKitImageLoader.swift in Sources */,
 				26F4E12C2C45B8730031A6C5 /* AssistantsCell.swift in Sources */,
 				267530F72C3DA98A00E8B42B /* UITextField.swift in Sources */,
-				26F4E1562C495D260031A6C5 /* UIImageView.swift in Sources */,
 				2622943E2C349BC30062EEC1 /* SignUpViewModel.swift in Sources */,
 				267530F22C3D8B7800E8B42B /* AddCarDetailsVC.swift in Sources */,
 				26F4E1302C45C01F0031A6C5 /* AssistantsResponse.swift in Sources */,
@@ -1004,6 +1014,7 @@
 				26CA73FD2C3485AE00715AC3 /* OnBoardingView.swift in Sources */,
 				267531322C407BEF00E8B42B /* FuelTypeResponse.swift in Sources */,
 				267531152C3FF30900E8B42B /* ModelsVC + ExtTableView.swift in Sources */,
+				262929332C4FFF3100FB8FE9 /* OrderDetailsViewModel.swift in Sources */,
 				267531232C40267D00E8B42B /* ReleaseDateCell.swift in Sources */,
 				26F4E1112C4353E10031A6C5 /* BottomButtonsStackView.swift in Sources */,
 				26F4E14B2C4746470031A6C5 /* TimeSheetVC + ExtTableView.swift in Sources */,
@@ -1074,6 +1085,7 @@
 				261C15C12C3A13A4004B5A1E /* WelcomeVC.swift in Sources */,
 				26F4E12E2C45B8870031A6C5 /* SearchAnAssistantVC + ExtCollectionView.swift in Sources */,
 				26F4E1292C44A8600031A6C5 /* SearchAnAssistantViewModel.swift in Sources */,
+				262929352C4FFF4600FB8FE9 /* OrderDetailsVC.swift in Sources */,
 				267531292C4079D500E8B42B /* FuelTypeView.swift in Sources */,
 				262928F62C4D291F00FB8FE9 /* PersonalInfo.swift in Sources */,
 				26F4E1232C44A8400031A6C5 /* LocationAndTimeViewModel.swift in Sources */,
