@@ -57,7 +57,6 @@ final class ModelsView: UIView {
     private func setModelsTableView() {
         addSubview(modelsTableView)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             modelsTableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
             modelsTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),

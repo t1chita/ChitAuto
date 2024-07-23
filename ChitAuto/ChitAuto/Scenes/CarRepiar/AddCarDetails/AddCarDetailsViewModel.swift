@@ -9,56 +9,56 @@ import FirebaseFirestore
 import Foundation
 
 final class AddCarDetailsViewModel {
+    //MARK: - Properties
     var carBrand: CarBrand?
+    
+    var carPlateNumber: String = ""
     
     var userId: String
     
+    //MARK: - Computed Properties
     var userCar: Car? {
         didSet { onSelectedCarChanged?(userCar!) }
+    }
+    
+    var carBrandName: String = "მწარმოებელი" {
+        didSet { onCarBrandChanged?(carBrandName) }
+    }
+    
+    var carModelName: String = "მოდელი" {
+        didSet { onCarModelChanged?(carModelName) }
+    }
+    
+    var carReleaseDate: String = "გამოშვების წელი" {
+        didSet { onCarReleaseDateChanged?(carReleaseDate) }
+    }
+    
+    var carFuelType: String = "საწვავის ტიპი" {
+        didSet { onCarFuelTypeChanged?(carFuelType) }
+    }
+    
+    var carTransmissionType: String = "გადაცემათა კოლოფი" {
+        didSet { onCarTransmissionTypeChanged?(carTransmissionType) }
     }
     
     init(userId: String) {
         self.userId = userId
     }
+
+    //MARK: - Closures
+    var onCarBrandChanged: ((String) -> Void)?
     
-    var carBrandName: String = "მწარმოებელი" {
-        didSet { carBrandNameChanged?(carBrandName) }
-    }
+    var onCarModelChanged: ((String) -> Void)?
     
-    var carModelName: String = "მოდელი" {
-        didSet { carModelNameChanged?(carModelName) }
-    }
+    var onCarReleaseDateChanged: ((String) -> Void)?
     
-    var carReleaseDate: String = "გამოშვების წელი" {
-        didSet { carReleaseDateChanged?(carReleaseDate) }
-    }
+    var onCarFuelTypeChanged: ((String) -> Void)?
     
-    var carFuelType: String = "საწვავის ტიპი" {
-        didSet { carFuelTypeChanged?(carFuelType) }
-    }
-    
-    var carTransmissionType: String = "გადაცემათა კოლოფი" {
-        didSet { carTransmissionTypeChanged?(carTransmissionType) }
-    }
-    
-    var carPlateNumber: String = "" {
-        didSet { carPlateNumberChanged?(carPlateNumber) }
-    }
-    
-    var carBrandNameChanged: ((String) -> Void)?
-    
-    var carModelNameChanged: ((String) -> Void)?
-    
-    var carReleaseDateChanged: ((String) -> Void)?
-    
-    var carFuelTypeChanged: ((String) -> Void)?
-    
-    var carTransmissionTypeChanged: ((String) -> Void)?
-    
-    var carPlateNumberChanged: ((String) -> Void)?
+    var onCarTransmissionTypeChanged: ((String) -> Void)?
     
     var onSelectedCarChanged: ((Car) -> Void)?
     
+    //MARK: - Firebase Methods
     func saveCarDetails() {
         guard let carBrand = carBrand else { return }
         
@@ -84,7 +84,7 @@ final class AddCarDetailsViewModel {
     }
 }
 
-
+//MARK: - Validation
 extension AddCarDetailsViewModel {
     private var isBrandValid: Bool {
         carBrandName != "მწარმოებელი"

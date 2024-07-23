@@ -9,16 +9,22 @@ import Foundation
 import Network
 
 final class BrandsSheetViewModel {
-    private let carBrandsApi: String = "https://chitauto-default-rtdb.europe-west1.firebasedatabase.app/carBrands.json"
-    
+    //MARK: - Properties
+    var carBrands: [CarBrand] = []
     var previouslySelectedIndexPath: IndexPath?
         
+    //MARK: - Computed Properties
     var carBrandsCount: Int {
         carBrands.count
     }
     
-    var carBrands: [CarBrand] = []
+    //MARK: - Closures
+    var onBrandsChanged: ((CarBrand) -> Void)?
     
+    //MARK: - Api Urls
+    private let carBrandsApi: String = "https://chitauto-default-rtdb.europe-west1.firebasedatabase.app/carBrands.json"
+    
+    //MARK: - Initialization
     init() {
         fetchCarBrands()
     }
@@ -26,6 +32,7 @@ final class BrandsSheetViewModel {
     //MARK: - Delegates
     weak var reloadDelegate: ReloadDelegate?
     
+    //MARK: - Fetching Methods
     private func fetchCarBrands() {
         NetworkService.networkService.getData(urlString: carBrandsApi) { [weak self] (result: Result<CarBrandsResponse, Error>) in
             DispatchQueue.main.async { [weak self] in

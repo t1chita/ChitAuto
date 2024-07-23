@@ -26,7 +26,7 @@ extension ReleaseDateVC: UITableViewDelegate {
         releaseDateViewModel.previouslySelectedIndexPath = indexPath
         tableView.deselectRow(at: indexPath, animated: true)
         
-        releaseDateSheetsDelegate?.didSelectReleaseDate(selectedYear)
+        releaseDateViewModel.onReleaseDateChanged?(selectedYear)
         self.dismiss(animated: true, completion: nil)
     }
 }

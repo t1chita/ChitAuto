@@ -33,7 +33,6 @@ final class TechInspectView: UIView {
         return button
     }()
     
-    
     lazy var mainButton: UIBarButtonItem = {
         let customButton = UIButton()
         customButton.addAction(UIAction(title: "Go To Welcome Page", handler: { [weak self] _ in
@@ -44,8 +43,10 @@ final class TechInspectView: UIView {
         return button
     }()
     
+    //MARK: - Delegates
     weak var getTechInspectDelegate: GetTechInspectDelegate?
     weak var popViewControllerDelegate: PopViewControllerDelegate?
+    
     //MARK: - Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -56,7 +57,6 @@ final class TechInspectView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    //MARK: - LifeCycles
     
     //MARK: - Setup UI
     private func setupUI() {

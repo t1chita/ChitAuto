@@ -9,12 +9,14 @@ import SwiftSoup
 import Foundation
 
 final class TechInspectViewModel {
+    //MARK: - Properties
     var numberPlate: String = ""
     
     var pastDate: String = ""
+    
     var futureDate: String = ""
     
-    //MARK: - Methods
+    //MARK: - Child Methods
     func getTechInspectInfo(completion: @escaping (Bool) -> Void) {
         sendPostRequest(registrationNumber: numberPlate) { [weak self] pastDate, futureDate, success in
             if success {
@@ -33,8 +35,8 @@ final class TechInspectViewModel {
             }
         }
     }
-    //MARK: - Child Method
-    // Function to extract information from HTML
+    
+    //Parse HTML string
    private func extractInfo(from htmlString: String) -> (String?, String?) {
         do {
             let document: Document = try SwiftSoup.parse(htmlString)
@@ -55,7 +57,8 @@ final class TechInspectViewModel {
             return (nil, nil)
         }
     }
-    //MARK: - Requests
+    
+    //MARK: - Fetching Methods
     // Define a function to send the POST request
     private func sendPostRequest(registrationNumber: String, completion: @escaping (String?, String?, Bool) -> Void) {
         var formatedRegistrationNumber = registrationNumber
@@ -118,7 +121,4 @@ final class TechInspectViewModel {
         // Start the task
         task.resume()
     }
-    
-    //MARK: - Navigation
-
 }

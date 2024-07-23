@@ -9,11 +9,12 @@ import Foundation
 import FirebaseFirestore
 
 final class CurrentOrderViewModel {
+    //MARK: - Properties
     let userID: String
-    let orderToRemove: Order
-    var onOrderRemoved: (() -> Void)?
-    var onOrderCompleted: (() -> Void)?
     
+    let orderToRemove: Order
+    
+    //MARK: - Computed Properties
     var visualDamage: String {
         if orderToRemove.visualDamage {
             return "აქვს"
@@ -35,11 +36,17 @@ final class CurrentOrderViewModel {
         }
     }
     
+    //MARK: - Closures
+    var onOrderRemoved: (() -> Void)?
+    var onOrderCompleted: (() -> Void)?
+    
+    //MARK: - Initialization
     init(userID: String, orderToRemove: Order) {
         self.userID = userID
         self.orderToRemove = orderToRemove
     }
     
+    //MARK: - Child MEthods
     func removeOrderWhenItsDone(completion: @escaping (Bool) -> Void) {
         saveOrderDetails { [weak self] success in
             guard let self = self else { return }
@@ -53,6 +60,7 @@ final class CurrentOrderViewModel {
         }
     }
     
+    //MARK: - Firebase Methods
     func removeOrderFromUser(completion: @escaping (Bool) -> Void) {
         let db = Firestore.firestore()
         let userRef = db.collection("users").document(userID)

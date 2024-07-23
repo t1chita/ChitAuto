@@ -8,6 +8,7 @@
 import UIKit
 
 final class ProfileView: UIView {
+    //MARK: - UI Components
     let profileImage: UIImageView = {
         let imgView = UIImageView()
         imgView.translatesAutoresizingMaskIntoConstraints = false
@@ -115,9 +116,11 @@ final class ProfileView: UIView {
         return button
     }()
     
+    //MARK: - Delegates
     weak var popViewControllerDelegate: PopViewControllerDelegate?
     weak var photoSelectionDelegate: PhotoSelectionDelegate?
     
+    //MARK: - Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -128,6 +131,7 @@ final class ProfileView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Setup UI
     private func setupUI() {
         setProfileImage()
         setUserName()
@@ -138,6 +142,7 @@ final class ProfileView: UIView {
         setSaveButton()
     }
     
+    //MARK: - Set UI Compontens
     private func setProfileImage() {
         addSubview(profileImage)
         

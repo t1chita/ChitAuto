@@ -12,9 +12,6 @@ final class BrandsSheetsVC: UIViewController {
     var brandsSheetView: BrandsSheetsView
     var brandsSheetViewModel: BrandsSheetViewModel
     
-    //MARK: - Delegates
-    weak var brandsSheetsDelegate: BrandsSheetsDelegate?
-    
     //MARK: - Initialization
     init(brandsSheetView: BrandsSheetsView, brandsSheetViewModel: BrandsSheetViewModel) {
         self.brandsSheetView = brandsSheetView

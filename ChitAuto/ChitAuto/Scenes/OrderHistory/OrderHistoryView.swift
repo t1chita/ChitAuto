@@ -30,6 +30,7 @@ final class OrderHistoryView: UIView {
     
     //MARK: - Delegates
     weak var popViewControllerDelegate: PopViewControllerDelegate?
+    
     //MARK: - Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -45,6 +46,7 @@ final class OrderHistoryView: UIView {
     private func setupUI() {
         setOrdersTableView()
     }
+    
     //MARK: - Set UI Components
     private func setOrdersTableView() {
         addSubview(ordersTableView)

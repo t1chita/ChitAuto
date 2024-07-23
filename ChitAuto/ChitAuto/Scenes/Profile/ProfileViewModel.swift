@@ -10,21 +10,26 @@ import FirebaseStorage
 import FirebaseFirestore
 
 final class ProfileViewModel {
+    //MARK: - Properties
     var imageIsSaved = false
     
     var imageData: Data?
     
+    var uploadInProgress: Bool = false
+    
+    //MARK: - Computed Properties
     var currentUser: User {
         didSet { onUserProfilePictureChanged?(currentUser) }
     }
     
+    //MARK: - Closures
     var onUserProfilePictureChanged: ((User) -> Void)?
-    var uploadInProgress: Bool = false
     
     init(currentUser: User) {
         self.currentUser = currentUser
     }
     
+    //MARK: - Firebase Methods
     func uploadProfileImage(completion: @escaping (Bool) -> Void) {
         uploadInProgress = true
         // Create storage reference

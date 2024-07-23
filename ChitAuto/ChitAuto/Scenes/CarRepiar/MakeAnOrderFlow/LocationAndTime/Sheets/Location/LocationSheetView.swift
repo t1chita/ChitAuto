@@ -57,7 +57,6 @@ final class LocationSheetView: UIView {
     private func setModelsTableView() {
         addSubview(locationTableView)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             locationTableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
             locationTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),

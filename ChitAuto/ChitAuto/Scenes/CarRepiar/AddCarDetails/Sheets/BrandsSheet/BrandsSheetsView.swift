@@ -57,7 +57,6 @@ final class BrandsSheetsView: UIView {
     private func setBrandsTableView() {
         addSubview(brandsTableView)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             brandsTableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
             brandsTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),

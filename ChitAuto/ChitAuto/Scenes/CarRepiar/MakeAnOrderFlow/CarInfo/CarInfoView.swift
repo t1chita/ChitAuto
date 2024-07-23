@@ -8,7 +8,7 @@
 import UIKit
 
 final class CarInfoView: UIView {
-    //MARK: - UIComponents
+    //MARK: - UI Components
     private let scrollView: UIScrollView = {
         let scrView = UIScrollView()
         scrView.translatesAutoresizingMaskIntoConstraints = false
@@ -107,7 +107,6 @@ final class CarInfoView: UIView {
     private func setScrollView() {
         addSubview(scrollView)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
@@ -121,7 +120,6 @@ final class CarInfoView: UIView {
         let heightAnchor = contentView.heightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.heightAnchor)
         heightAnchor.priority = .defaultHigh
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
@@ -135,7 +133,6 @@ final class CarInfoView: UIView {
     private func setCarInfoBackground() {
         contentView.addSubview(carInfoBackground)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             carInfoBackground.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -100),
             carInfoBackground.heightAnchor.constraint(equalToConstant: 450),
@@ -147,7 +144,6 @@ final class CarInfoView: UIView {
     private func setCarPlateTextField() {
         carInfoBackground.addSubview(carPlateTextField)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             carPlateTextField.topAnchor.constraint(equalTo: carInfoBackground.topAnchor, constant: 16),
             carPlateTextField.leadingAnchor.constraint(equalTo: carInfoBackground.leadingAnchor, constant: 16),
@@ -163,7 +159,6 @@ final class CarInfoView: UIView {
             self?.saveCarInfoDelegate?.handleSavingCarInfo()
         }), for: .touchUpInside)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             visualDamageButton.topAnchor.constraint(equalTo: carPlateTextField.bottomAnchor, constant: 10),
             visualDamageButton.leadingAnchor.constraint(equalTo: carPlateTextField.leadingAnchor),
@@ -184,7 +179,6 @@ final class CarInfoView: UIView {
     private func setProblemDescriptionTextView() {
         carInfoBackground.addSubview(problemDescriptionTextView)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             problemDescriptionTextView.topAnchor.constraint(equalTo: problemDescriptionTitle.bottomAnchor, constant: 10),
             problemDescriptionTextView.leadingAnchor.constraint(equalTo: carPlateTextField.leadingAnchor),
@@ -196,7 +190,6 @@ final class CarInfoView: UIView {
     private func setBottomButtonsStackView() {
         carInfoBackground.addSubview(bottomButtonsStackView)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             bottomButtonsStackView.topAnchor.constraint(equalTo: problemDescriptionTextView.bottomAnchor, constant: 10),
             bottomButtonsStackView.leadingAnchor.constraint(equalTo: carPlateTextField.leadingAnchor),

@@ -11,7 +11,7 @@ final class CarCell: UITableViewCell {
     //MARK: - Properties
     static let identifier = "CarCell"
     
-    //MARK: - UIComponents
+    //MARK: - UI Components
     private let rectangleView: UIView = {
         let vw = UIView()
         vw.translatesAutoresizingMaskIntoConstraints = false
@@ -63,6 +63,7 @@ final class CarCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     //MARK: - Configure
     func configure(withUserCar car: Car) {
         self.carBrandImage.loadImage(from: URL(string: car.carBrandImageUrl)!)
@@ -132,6 +133,7 @@ final class CarCell: UITableViewCell {
         ])
     }
     
+    //MARK: - Methods For Update UI
     func setSelectedAppearance() {
         rectangleView.backgroundColor = UIColor.customCard.withAlphaComponent(0.7)
         rectangleView.layer.borderColor = UIColor.black.cgColor

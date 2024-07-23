@@ -57,7 +57,6 @@ final class ReleaseDateView: UIView {
     private func setModelsTableView() {
         addSubview(releaseDateTableView)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             releaseDateTableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
             releaseDateTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),

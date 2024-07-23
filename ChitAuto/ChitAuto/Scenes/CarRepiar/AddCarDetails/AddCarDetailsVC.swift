@@ -7,24 +7,16 @@
 
 import UIKit
 
-protocol BrandsSheetsDelegate: AnyObject {
-    func didSelectCarBrand(_ carBrand: CarBrand)
+protocol SheetRepresentableDelegate: AnyObject {
+    func presentBrandsSheet()
+    func presentModelsSheet()
+    func presentReleaseDateSheet()
+    func presentFuelSheet()
+    func presentTransmissionSheet()
 }
 
-protocol ModelsSheetsDelegate: AnyObject {
-    func didSelectCarModel(_ carModelName: String)
-}
-
-protocol ReleaseDateSheetsDelegate: AnyObject {
-    func didSelectReleaseDate(_ releaseDate: Int)
-}
-
-protocol FuelTypeSheetDelegate: AnyObject {
-    func didSelectFuelType(_ fuelType: String)
-}
-
-protocol TransmissionTypeSheetDelegate: AnyObject {
-    func didSelectTransmissionType(_ transmissionType: String)
+protocol SaveButtonDelegate: AnyObject {
+    func saveCarDetails()
 }
 
 final class AddCarDetailsVC: UIViewController {
@@ -53,13 +45,11 @@ final class AddCarDetailsVC: UIViewController {
         super.viewDidLoad()
         setupUI()
         handleDelegates()
-        title = "მანაქანის დეტალები"
-        navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
 
     //MARK: - Setup UI
     private func setupUI() {
-        removeDefaultBackButton()
+        setNavigationItems()
         setCarDetailsButtons()
     }
     
@@ -77,27 +67,26 @@ final class AddCarDetailsVC: UIViewController {
     }
     
     //MARK: - Set UI Components
-    private func removeDefaultBackButton() {
+    private func setNavigationItems() {
+        title = "მანაქანის დეტალები"
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
         navigationItem.setHidesBackButton(true, animated: true)
     }
-}
-
-//MARK: - Extensions
-extension AddCarDetailsVC {
+    
     private func setCarDetailsButtons() {
-        addCarDetailsViewModel.carBrandNameChanged = { [weak self] newBrandName in
+        addCarDetailsViewModel.onCarBrandChanged = { [weak self] newBrandName in
                self?.addCardDetailsView.carBrandButton.title = newBrandName
            }
-           addCarDetailsViewModel.carModelNameChanged = { [weak self] newModelName in
+           addCarDetailsViewModel.onCarModelChanged = { [weak self] newModelName in
                self?.addCardDetailsView.carModelButton.title = newModelName
            }
-           addCarDetailsViewModel.carReleaseDateChanged = { [weak self] newReleaseDate in
+           addCarDetailsViewModel.onCarReleaseDateChanged = { [weak self] newReleaseDate in
                self?.addCardDetailsView.carReleaseDateButton.title = newReleaseDate
            }
-           addCarDetailsViewModel.carFuelTypeChanged = { [weak self] newFuelType in
+           addCarDetailsViewModel.onCarFuelTypeChanged = { [weak self] newFuelType in
                self?.addCardDetailsView.carFuelTypeButton.title = newFuelType
            }
-           addCarDetailsViewModel.carTransmissionTypeChanged = { [weak self] newTransmissionType in
+           addCarDetailsViewModel.onCarTransmissionTypeChanged = { [weak self] newTransmissionType in
                self?.addCardDetailsView.carTransmissionTypeButton.title = newTransmissionType
            }
 
@@ -110,19 +99,17 @@ extension AddCarDetailsVC {
     }
 }
 
-extension AddCarDetailsVC: PopViewControllerDelegate {
-    func popViewController() {
-        navigationController?.popViewController(animated: true)
-    }
-}
-
+//MARK: - Extensions
 extension AddCarDetailsVC: SheetRepresentableDelegate {
     func presentBrandsSheet() {
         let brandsSheetsView = BrandsSheetsView()
         let brandsSheetViewModel = BrandsSheetViewModel()
         
         let vc = BrandsSheetsVC(brandsSheetView: brandsSheetsView, brandsSheetViewModel: brandsSheetViewModel)
-        vc.brandsSheetsDelegate = self
+        brandsSheetViewModel.onBrandsChanged = {[weak self] carBrand in
+            self?.addCarDetailsViewModel.carBrandName = carBrand.name
+            self?.addCarDetailsViewModel.carBrand = carBrand
+        }
         vc.modalPresentationStyle = .pageSheet
         
         let sheet = vc.sheetPresentationController
@@ -139,7 +126,11 @@ extension AddCarDetailsVC: SheetRepresentableDelegate {
         let modelsViewModel = ModelsViewModel(carBrandId: carBrandId)
         
         let vc = ModelsVC(modelsView: modelsView, modelsViewModel: modelsViewModel)
-        vc.modelsSheetsDelegate = self
+        
+        modelsViewModel.onModelsChanged = {[weak self] carModelName in
+            self?.addCarDetailsViewModel.carModelName = carModelName
+        }
+        
         vc.modalPresentationStyle = .pageSheet
         
         let sheet = vc.sheetPresentationController
@@ -154,7 +145,11 @@ extension AddCarDetailsVC: SheetRepresentableDelegate {
         let releaseDateViewModel = ReleaseDateViewModel()
         
         let vc = ReleaseDateVC(releaseDateView: releaseDateView, releaseDateViewModel: releaseDateViewModel)
-        vc.releaseDateSheetsDelegate = self
+
+        releaseDateViewModel.onReleaseDateChanged = {[weak self] releaseDate in
+            self?.addCarDetailsViewModel.carReleaseDate = String(releaseDate)
+        }
+        
         vc.modalPresentationStyle = .pageSheet
         
         let sheet = vc.sheetPresentationController
@@ -169,7 +164,11 @@ extension AddCarDetailsVC: SheetRepresentableDelegate {
         let fuelTypeViewModel = FuelTypeViewModel()
         
         let vc = FuelTypeVC(fuelTypeView: fuelTypeView, fuelTypeViewModel: fuelTypeViewModel)
-        vc.fuelTypeSheetDelegate = self
+
+        fuelTypeViewModel.onFuelTypeChanged = {[weak self] fuelType in
+            self?.addCarDetailsViewModel.carFuelType = fuelType
+        }
+        
         vc.modalPresentationStyle = .pageSheet
         
         let sheet = vc.sheetPresentationController
@@ -188,7 +187,11 @@ extension AddCarDetailsVC: SheetRepresentableDelegate {
         let transmissionTypeViewModel = TransmissionTypeViewModel()
         
         let vc = TransmissionTypeVC(transmissionTypeView: transmissionTypeView, transmissionTypeViewModel: transmissionTypeViewModel)
-        vc.transmissionTypeSheetDelegate = self
+        
+        transmissionTypeViewModel.onTransmissionTypeChanged = { [weak self] transmissionType in
+            self?.addCarDetailsViewModel.carTransmissionType = transmissionType
+        }
+        
         vc.modalPresentationStyle = .pageSheet
         
         let sheet = vc.sheetPresentationController
@@ -200,37 +203,6 @@ extension AddCarDetailsVC: SheetRepresentableDelegate {
         sheet?.detents = [smallDetent]
         
         present(vc, animated: true, completion: nil)
-    }
-}
-
-extension AddCarDetailsVC: BrandsSheetsDelegate {
-    func didSelectCarBrand(_ carBrand: CarBrand) {
-        addCarDetailsViewModel.carBrandName = carBrand.name
-        addCarDetailsViewModel.carBrand = carBrand
-    }
-}
-
-extension AddCarDetailsVC: ModelsSheetsDelegate {
-    func didSelectCarModel(_ carModelName: String) {
-        addCarDetailsViewModel.carModelName = carModelName
-    }
-}
-
-extension AddCarDetailsVC: ReleaseDateSheetsDelegate {
-    func didSelectReleaseDate(_ releaseDate: Int) {
-        addCarDetailsViewModel.carReleaseDate = String(releaseDate)
-    }
-}
-
-extension AddCarDetailsVC: FuelTypeSheetDelegate {
-    func didSelectFuelType(_ fuelType: String) {
-        addCarDetailsViewModel.carFuelType = fuelType
-    }
-}
-
-extension AddCarDetailsVC: TransmissionTypeSheetDelegate {
-    func didSelectTransmissionType(_ transmissionType: String) {
-        addCarDetailsViewModel.carTransmissionType = transmissionType
     }
 }
 
@@ -258,11 +230,18 @@ extension AddCarDetailsVC: UITextFieldDelegate {
     }
 }
 
+//MARK: - Pop VC
 extension AddCarDetailsVC: UIGestureRecognizerDelegate {
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         if gestureRecognizer.isEqual(navigationController?.interactivePopGestureRecognizer) {
             navigationController?.popViewController(animated: true)
         }
         return false
+    }
+}
+
+extension AddCarDetailsVC: PopViewControllerDelegate {
+    func popViewController() {
+        navigationController?.popViewController(animated: true)
     }
 }

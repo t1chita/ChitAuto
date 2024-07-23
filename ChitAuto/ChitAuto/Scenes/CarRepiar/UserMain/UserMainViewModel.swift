@@ -8,14 +8,18 @@
 import Foundation
 
 final class UserMainViewModel {
-    // MARK: - Properties
+    //MARK: - Properties
     let garage: String = "გარაჟი"
+    
     let callAnAssistant: String = "გამოძახება"
     
     private var _currentUser: User
+    
     private var _currentCar: Car?
+    
     private let accessQueue = DispatchQueue(label: "com.chitauto.UserMainViewModel.accessQueue")
 
+    //MARK: - Computed Properties
     var currentUser: User {
         get {
             accessQueue.sync { _currentUser }
@@ -53,10 +57,11 @@ final class UserMainViewModel {
         }
     }
     
+    //MARK: - Closures
     var onSelectedUserChanged: ((User) -> Void)?
     
     
-    // MARK: - Initialization
+    //MARK: - Initialization
     init(currentUser: User) {
         self._currentUser = currentUser
     }

@@ -32,14 +32,12 @@ final class SearchAnAssistantVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         handleDelegates()
-        removeDefaultBackButton()
-        title = "მოძებნე ასისტენტი"
-        navigationController?.interactivePopGestureRecognizer?.delegate = self
+        setupUI()
     }
     
     //MARK: - Setup UI
     private func setupUI() {
-        removeDefaultBackButton()
+        setNavigationItems()
     }
     
     private func handleDelegates() {
@@ -60,8 +58,10 @@ final class SearchAnAssistantVC: UIViewController {
     }
     
     //MARK: - Set UI Components
-    private func removeDefaultBackButton() {
+    private func setNavigationItems() {
         navigationItem.setHidesBackButton(true, animated: true)
+        title = "მოძებნე ასისტენტი"
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
 }
 
@@ -78,12 +78,6 @@ extension SearchAnAssistantVC: SaveButtonDelegate {
     }
 }
 
-extension SearchAnAssistantVC: PopViewControllerDelegate {
-    func popViewController() {
-        navigationController?.popViewController(animated: true)
-    }
-}
-
 extension SearchAnAssistantVC: ChangeAssistantLevelsDelegate {
     func handleSeniorButton() {
         searchAnAssistantViewModel.updateAssistantLevel(to: .senior)
@@ -95,6 +89,13 @@ extension SearchAnAssistantVC: ChangeAssistantLevelsDelegate {
     
     func handleBeginnerButton() {
         searchAnAssistantViewModel.updateAssistantLevel(to: .beginner)
+    }
+}
+
+//MARK: - Pop Vc
+extension SearchAnAssistantVC: PopViewControllerDelegate {
+    func popViewController() {
+        navigationController?.popViewController(animated: true)
     }
 }
 

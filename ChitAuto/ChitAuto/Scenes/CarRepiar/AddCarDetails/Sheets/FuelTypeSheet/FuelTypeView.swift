@@ -8,6 +8,7 @@
 import UIKit
 
 final class FuelTypeView: UIView {
+    //MARK: - UI Components
     private let titleLabel: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
@@ -56,7 +57,6 @@ final class FuelTypeView: UIView {
     private func setFuelTypeTableView() {
         addSubview(fuelTypeTableView)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             fuelTypeTableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
             fuelTypeTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),

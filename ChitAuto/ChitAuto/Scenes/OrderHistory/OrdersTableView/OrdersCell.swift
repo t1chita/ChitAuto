@@ -39,15 +39,6 @@ final class OrdersCell: UITableViewCell {
         return lbl
     }()
     
-    private let assistantContentBackground: UIView = {
-        let vw = UIView()
-        vw.translatesAutoresizingMaskIntoConstraints = false
-        vw.backgroundColor = .customBackground
-        vw.clipsToBounds = true
-        vw.layer.cornerRadius = 22
-        return vw
-    }()
-    
     private let assistantImage: UIImageView = {
         let imgView = UIImageView()
         imgView.translatesAutoresizingMaskIntoConstraints = false
@@ -69,32 +60,7 @@ final class OrdersCell: UITableViewCell {
         return lbl
     }()
     
-    private lazy var orderStatusButton: UIButton = {
-        var configuration = UIButton.Configuration.filled()
-        configuration.title = "დეტალები"
-        configuration.image = UIImage(systemName: "chevron.right")
-        configuration.imagePlacement = .trailing
-        configuration.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16)
-        configuration.titleAlignment = .leading
-        configuration.baseForegroundColor = .customLabel
-        configuration.background.backgroundColor = .customCard
-        let button = UIButton(configuration: configuration)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.contentHorizontalAlignment = .fill
-        return button
-    }()
-    
-    private lazy var orderStatusLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.font = .systemFont(ofSize: 16, weight: .bold)
-        lbl.textColor = .customLabel
-        lbl.textAlignment = .center
-        lbl.text = "შეკვეთა ჩაბარებულია✅"
-        return lbl
-    }()
-    
-    weak var orderStatusButtonDelegate: OrderStatusButtonDelegate?
+    weak var orderStatusButtonDelegate: OrderStatusDelegate?
     
     //MARK: - Initialization
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -120,11 +86,8 @@ final class OrdersCell: UITableViewCell {
     private func setupUI() {
         setOrderContentBackground()
         setAssistantNumber()
-        setAssistantContentBackground()
         setAssistantImage()
         setAssistantNameLabel()
-        setOrderStatusButton()
-        setOrderStatusLabel()
         setCellContentView()
     }
     
@@ -132,21 +95,18 @@ final class OrdersCell: UITableViewCell {
     private func setCellContentView() {
         addSubview(cellContentView)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             cellContentView.topAnchor.constraint(equalTo: topAnchor),
             cellContentView.leadingAnchor.constraint(equalTo: leadingAnchor),
             cellContentView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            cellContentView.heightAnchor.constraint(equalToConstant: 310),
+            cellContentView.heightAnchor.constraint(equalToConstant: 140),
             cellContentView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
-     
     
     private func setOrderContentBackground() {
         cellContentView.addSubview(orderCardBackground)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             orderCardBackground.topAnchor.constraint(equalTo: cellContentView.topAnchor, constant: 10),
             orderCardBackground.leadingAnchor.constraint(equalTo: cellContentView.leadingAnchor),
@@ -155,22 +115,9 @@ final class OrdersCell: UITableViewCell {
         ])
     }
     
-    private func setAssistantContentBackground() {
-        orderCardBackground.addSubview(assistantContentBackground)
-        
-        //Set Constraints
-        NSLayoutConstraint.activate([
-            assistantContentBackground.topAnchor.constraint(equalTo: orderCardBackground.topAnchor, constant: 100),
-            assistantContentBackground.leadingAnchor.constraint(equalTo: orderCardBackground.leadingAnchor, constant: 12),
-            assistantContentBackground.trailingAnchor.constraint(equalTo: orderCardBackground.trailingAnchor, constant: -12),
-            assistantContentBackground.bottomAnchor.constraint(equalTo: orderCardBackground.bottomAnchor, constant: -12),
-        ])
-    }
-    
     private func setAssistantNumber() {
         orderCardBackground.addSubview(assistantNumber)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             assistantNumber.topAnchor.constraint(equalTo: orderCardBackground.topAnchor, constant: 34),
             assistantNumber.trailingAnchor.constraint(equalTo: orderCardBackground.trailingAnchor, constant: -24),
@@ -180,52 +127,23 @@ final class OrdersCell: UITableViewCell {
     }
     
     private func setAssistantNameLabel() {
-        assistantContentBackground.addSubview(assistantNameLabel)
+        orderCardBackground.addSubview(assistantNameLabel)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
-            assistantNameLabel.topAnchor.constraint(equalTo: assistantContentBackground.topAnchor, constant: 16),
-            assistantNameLabel.trailingAnchor.constraint(equalTo: assistantContentBackground.trailingAnchor, constant: -30),
-            assistantNameLabel.leadingAnchor.constraint(equalTo: assistantContentBackground.leadingAnchor, constant: 30),
+            assistantNameLabel.topAnchor.constraint(equalTo: assistantNumber.bottomAnchor),
+            assistantNameLabel.trailingAnchor.constraint(equalTo: assistantNumber.trailingAnchor),
             assistantNameLabel.heightAnchor.constraint(equalToConstant: 36),
-        ])
-    }
-    
-    private func setOrderStatusLabel() {
-        assistantContentBackground.addSubview(orderStatusLabel)
-        
-        //Set Constraints
-        NSLayoutConstraint.activate([
-            orderStatusLabel.topAnchor.constraint(equalTo: assistantNameLabel.bottomAnchor, constant: 10),
-            orderStatusLabel.centerXAnchor.constraint(equalTo: assistantContentBackground.centerXAnchor),
-            orderStatusLabel.heightAnchor.constraint(equalToConstant: 36),
         ])
     }
     
     private func setAssistantImage() {
         orderCardBackground.addSubview(assistantImage)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             assistantImage.centerYAnchor.constraint(equalTo: assistantNumber.centerYAnchor),
             assistantImage.leadingAnchor.constraint(equalTo: orderCardBackground.leadingAnchor, constant: 24),
             assistantImage.widthAnchor.constraint(equalToConstant: 70),
             assistantImage.heightAnchor.constraint(equalToConstant: 70),
-        ])
-    }
-    
-    private func setOrderStatusButton() {
-        assistantContentBackground.addSubview(orderStatusButton)
-        
-        orderStatusButton.addAction(UIAction(title: "Go To Current Order Page", handler: {[weak self] _ in
-            self?.orderStatusButtonDelegate?.handleOrderStatusButton()
-        }), for: .touchUpInside)
-        
-        //Set Constraints
-        NSLayoutConstraint.activate([
-            orderStatusButton.bottomAnchor.constraint(equalTo: assistantContentBackground.bottomAnchor, constant: -16),
-            orderStatusButton.leadingAnchor.constraint(equalTo: assistantContentBackground.leadingAnchor, constant: 24),
-            orderStatusButton.trailingAnchor.constraint(equalTo: assistantContentBackground.trailingAnchor, constant: -24),
         ])
     }
 }

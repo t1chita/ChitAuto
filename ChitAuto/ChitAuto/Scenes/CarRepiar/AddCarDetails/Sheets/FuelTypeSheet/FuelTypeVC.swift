@@ -11,9 +11,7 @@ final class FuelTypeVC: UIViewController {
     //MARK: - Properties
     var fuelTypeView: FuelTypeView
     var fuelTypeViewModel: FuelTypeViewModel
-    
-    weak var fuelTypeSheetDelegate: FuelTypeSheetDelegate?
-    
+        
     //MARK: - Initialization
     init(fuelTypeView: FuelTypeView, fuelTypeViewModel: FuelTypeViewModel) {
         self.fuelTypeView = fuelTypeView
@@ -24,6 +22,7 @@ final class FuelTypeVC: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     //MARK: - LifeCycles
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -34,7 +33,6 @@ final class FuelTypeVC: UIViewController {
         super.viewDidLoad()
         handleDelegates()
     }
-    //MARK: - Setup UI
     
     //MARK: - Delegates
     private func handleDelegates() {
@@ -50,5 +48,4 @@ final class FuelTypeVC: UIViewController {
         fuelTypeView.fuelTypeTableView.dataSource = self
         fuelTypeView.fuelTypeTableView.delegate = self
     }
-    //MARK: - Set UI Components
 }

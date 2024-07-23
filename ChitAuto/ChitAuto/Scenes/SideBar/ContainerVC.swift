@@ -12,15 +12,20 @@ enum MenuState {
     case closed
 }
 
+protocol HomeViewControllerDelegate: AnyObject {
+    func didTapMenuButton()
+}
+
 class ContainerViewController: UIViewController {
-    
+    //MARK: - Properties
     let menuVC: MenuViewController
-    
     let welcomeView: WelcomeView
     let welcomeViewModel: WelcomeViewModel
-    
     lazy var welcomeVC = WelcomeVC(welcomeView: welcomeView, welcomeViewModel: welcomeViewModel)
+    var navVC: UINavigationController?
+    private var menuState: MenuState = .closed
 
+    //MARK: - Initialization
     init(menuVC: MenuViewController, welcomeView: WelcomeView, welcomeViewModel: WelcomeViewModel) {
         self.menuVC = menuVC
         self.welcomeView = welcomeView
@@ -32,11 +37,7 @@ class ContainerViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    var navVC: UINavigationController?
-    
-    private var menuState: MenuState = .closed
-    
+    //MARK: - LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -61,6 +62,7 @@ class ContainerViewController: UIViewController {
         self.navVC = navVC
     }
     
+    //MARK: - Side Bart Animations
     func toggleMenu(completion: (() -> Void)?) {
         switch menuState {
         case .closed:
@@ -91,17 +93,20 @@ class ContainerViewController: UIViewController {
     }
 }
 
+//MARK: - Handle Side Bar Animation Action
 extension ContainerViewController: HomeViewControllerDelegate {
     func didTapMenuButton() {
         toggleMenu(completion: nil)
     }
 }
 
+//MARK: - Navigation
 extension ContainerViewController: MenuViewControllerDelegate {
     func didSelectMenuItem(menuItem: MenuOptions) {
         toggleMenu { [weak self] in
             switch menuItem {
             case .garage:
+                
                 guard let unwrappedUser = self?.welcomeViewModel.currentUser else { return }
 
                 let userMainView = UserMainView()
@@ -114,15 +119,18 @@ extension ContainerViewController: MenuViewControllerDelegate {
                 let vc = UserMainVC(userMainView: userMainView, userMainViewModel: userMainViewModel)
 
                 self?.navVC?.pushViewController(vc, animated: true)
-            case .techInspect:
                 
+            case .techInspect:
+
                 let techInspectView = TechInspectView()
                 let techInspectViewModel = TechInspectViewModel()
                 
                 let vc = TechInspectVC(techInspectView: techInspectView, techInspectViewModel: techInspectViewModel)
                 
                 self?.navVC?.pushViewController(vc, animated: true)
+                
             case .profile:
+                
                 guard let unwrappedUser = self?.welcomeViewModel.currentUser else { return }
 
                 let profileView = ProfileView()
@@ -135,9 +143,13 @@ extension ContainerViewController: MenuViewControllerDelegate {
                 let vc = ProfileVC(profileView: profileView, profileViewModel: profileViewModel)
             
                 self?.navVC?.pushViewController(vc, animated: true)
+            
             case .signOut:
+                
                 self?.welcomeViewModel.signOut()
+            
             case .orderHistory:
+            
                 guard let unwrappedUser = self?.welcomeViewModel.currentUser else { return }
                 
                 let orderHistoryView = OrderHistoryView()
@@ -146,7 +158,6 @@ extension ContainerViewController: MenuViewControllerDelegate {
                 let vc = OrderHistoryVC(orderHistoryView: orderHistoryView, orderHistoryViewModel: orderHistoryViewModel)
             
                 self?.navVC?.pushViewController(vc, animated: true)
-                print("Order History Page")
             }
         }
     }

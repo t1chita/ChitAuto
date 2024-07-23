@@ -37,7 +37,6 @@ final class TimeSheetVC: UIViewController {
         super.viewDidLoad()
         handleDelegates()
     }
-    //MARK: - Setup UI
     
     //MARK: - Delegates
     private func handleDelegates() {
@@ -48,7 +47,4 @@ final class TimeSheetVC: UIViewController {
         timeSheetView.timeTableView.dataSource = self
         timeSheetView.timeTableView.delegate = self
     }
-    
-    //MARK: - Set UI Components
-
 }

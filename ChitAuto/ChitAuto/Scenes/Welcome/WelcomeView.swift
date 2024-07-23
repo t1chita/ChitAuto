@@ -147,7 +147,6 @@ final class WelcomeView: UIView {
     private func setScrollView() {
         addSubview(scrollView)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
             scrollView.topAnchor.constraint(equalTo: topAnchor),
@@ -161,7 +160,6 @@ final class WelcomeView: UIView {
         let heightAnchor = contentView.heightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.heightAnchor)
         heightAnchor.priority = .defaultHigh
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
@@ -175,7 +173,6 @@ final class WelcomeView: UIView {
     private func setWhyCaruTitle() {
         contentView.addSubview(whyCaruTitle)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             whyCaruTitle.topAnchor.constraint(equalTo: contentView.topAnchor),
             whyCaruTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
@@ -186,7 +183,6 @@ final class WelcomeView: UIView {
     private func setCarusDescription() {
         contentView.addSubview(carusDescription)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             carusDescription.topAnchor.constraint(equalTo: whyCaruTitle.topAnchor, constant: 36),
             carusDescription.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
@@ -198,7 +194,6 @@ final class WelcomeView: UIView {
     private func setBackgroundView() {
         contentView.addSubview(backgroundView)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             backgroundView.topAnchor.constraint(equalTo: carusDescription.bottomAnchor, constant: 16),
             backgroundView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
@@ -210,7 +205,6 @@ final class WelcomeView: UIView {
     private func setAssistantImage() {
         backgroundView.addSubview(assistantImage)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             assistantImage.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: 24),
             assistantImage.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 24),
@@ -222,7 +216,6 @@ final class WelcomeView: UIView {
     private func setContentViewForReasonsWhyCaru() {
         contentView.addSubview(contentViewForReasonsWhyCaru)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             contentViewForReasonsWhyCaru.topAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -48),
             contentViewForReasonsWhyCaru.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 48),
@@ -238,7 +231,6 @@ final class WelcomeView: UIView {
         fullStackViewOfThreeReason.addArrangedSubview(guaranteeStackView)
         fullStackViewOfThreeReason.addArrangedSubview(insuranceStackView)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             fullStackViewOfThreeReason.topAnchor.constraint(equalTo: contentViewForReasonsWhyCaru.topAnchor, constant: 24),
             fullStackViewOfThreeReason.leadingAnchor.constraint(equalTo: contentViewForReasonsWhyCaru.leadingAnchor, constant: 24),
@@ -250,7 +242,6 @@ final class WelcomeView: UIView {
     private func setHowDoesItWorksTitle() {
         contentView.addSubview(howDoesItWorksTitle)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             howDoesItWorksTitle.topAnchor.constraint(equalTo: contentViewForReasonsWhyCaru.bottomAnchor, constant: 30),
             howDoesItWorksTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 26),
@@ -262,7 +253,6 @@ final class WelcomeView: UIView {
     private func setHowDoesItWorksCollectionView() {
         contentView.addSubview(howDoesItWorksCollectionView)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             howDoesItWorksCollectionView.topAnchor.constraint(equalTo: howDoesItWorksTitle.bottomAnchor, constant: 16),
             howDoesItWorksCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 9),

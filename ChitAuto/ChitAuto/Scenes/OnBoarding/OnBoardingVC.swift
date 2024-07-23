@@ -10,8 +10,8 @@ import SwiftUI
 
 final class OnBoardingVC: UIViewController {
     //MARK: - Properties
-    var onBoardingView: OnBoardingView
-    var onBoardingViewModel: OnBoardingViewModel
+    private var onBoardingView: OnBoardingView
+    private var onBoardingViewModel: OnBoardingViewModel
     
     //MARK: - Initialization
     init(onBoardingView: OnBoardingView, onBoardingViewModel: OnBoardingViewModel) {
@@ -28,6 +28,7 @@ final class OnBoardingVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         view = onBoardingView
     }
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -56,8 +57,8 @@ final class OnBoardingVC: UIViewController {
     }
 }
 
-
-extension OnBoardingVC: NavigateToSignInSignUpPageDelegate {
+//MARK: - Navigation Extensions
+extension OnBoardingVC: SignInSingUpDelegate {
     func navigateToSignIn() {
         let view = SignInView()
         let hostingController = UIHostingController(rootView: view)

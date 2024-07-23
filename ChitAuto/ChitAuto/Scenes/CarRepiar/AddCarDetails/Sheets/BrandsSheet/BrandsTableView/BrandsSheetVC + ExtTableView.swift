@@ -26,7 +26,8 @@ extension BrandsSheetsVC: UITableViewDelegate {
         brandsSheetViewModel.previouslySelectedIndexPath = indexPath
         tableView.deselectRow(at: indexPath, animated: true)
         
-        brandsSheetsDelegate?.didSelectCarBrand(selectedCar)
+        brandsSheetViewModel.onBrandsChanged?(selectedCar)
+        
         self.dismiss(animated: true, completion: nil)
     }
 }

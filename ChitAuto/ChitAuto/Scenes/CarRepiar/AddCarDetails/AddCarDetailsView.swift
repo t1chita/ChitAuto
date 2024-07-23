@@ -7,20 +7,8 @@
 
 import UIKit
 
-protocol SheetRepresentableDelegate: AnyObject {
-    func presentBrandsSheet()
-    func presentModelsSheet()
-    func presentReleaseDateSheet()
-    func presentFuelSheet()
-    func presentTransmissionSheet()
-}
-
-protocol SaveButtonDelegate: AnyObject {
-    func saveCarDetails()
-}
-
 final class AddCarDetailsView: UIView {
-    //MARK: - UIComponents
+    //MARK: - UI Components
     private let scrollView: UIScrollView = {
         let scrView = UIScrollView()
         scrView.translatesAutoresizingMaskIntoConstraints = false
@@ -117,7 +105,6 @@ final class AddCarDetailsView: UIView {
     private func setScrollView() {
         addSubview(scrollView)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
             scrollView.centerYAnchor.constraint(equalTo: centerYAnchor),
@@ -130,7 +117,6 @@ final class AddCarDetailsView: UIView {
         let heightAnchor = contentView.heightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.heightAnchor)
         heightAnchor.priority = .defaultHigh
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
@@ -144,7 +130,6 @@ final class AddCarDetailsView: UIView {
     private func setCarInfoBackground() {
         contentView.addSubview(carInfoBackground)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             carInfoBackground.topAnchor.constraint(equalTo: contentView.topAnchor),
             carInfoBackground.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
@@ -156,7 +141,6 @@ final class AddCarDetailsView: UIView {
     private func setCarPlateTextField() {
         carInfoBackground.addSubview(carPlateTextField)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             carPlateTextField.topAnchor.constraint(equalTo: carInfoBackground.topAnchor, constant: 16),
             carPlateTextField.leadingAnchor.constraint(equalTo: carInfoBackground.leadingAnchor, constant: 16),
@@ -194,7 +178,6 @@ final class AddCarDetailsView: UIView {
             self?.sheetRepresentableDelegate?.presentTransmissionSheet()
         }), for: .touchUpInside)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             carInfoStackView.topAnchor.constraint(equalTo: carPlateTextField.bottomAnchor, constant: 20),
             carInfoStackView.leadingAnchor.constraint(equalTo: carInfoBackground.leadingAnchor, constant: 24),

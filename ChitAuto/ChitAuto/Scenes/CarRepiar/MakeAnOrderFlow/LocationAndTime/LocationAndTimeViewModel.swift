@@ -8,12 +8,14 @@
 import Foundation
 
 final class LocationAndTimeViewModel {
+    //MARK: - Properties
+    let userId: String
+    
+    //MARK: - Computed Properties
     var order: Order  {
         didSet { onCurrentOrderChanged?(order) }
     }
 
-    let userId: String
-    
     var cityLocation: String = "აირჩიე ქალაქი" {
         didSet {
             order.city = cityLocation
@@ -36,16 +38,19 @@ final class LocationAndTimeViewModel {
         }
     }
 
+    //MARK: - Closures
     var cityLocationChanged: ((String) -> Void)?
     var timeValueChanged: ((String) -> Void)?
     var onCurrentOrderChanged: ((Order) -> Void)?
     
+    //MARK: - Initialization
     init(order: Order, userId: String) {
         self.order = order
         self.userId = userId
     }
 }
 
+//MARK: - Validation
 extension LocationAndTimeViewModel {
     private var isCityValid: Bool {
         cityLocation != "აირჩიე ქალაქი"

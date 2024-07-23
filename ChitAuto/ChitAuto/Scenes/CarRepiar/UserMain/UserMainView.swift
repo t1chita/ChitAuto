@@ -190,9 +190,9 @@ final class UserMainView: UIView {
     }()
     
     //MARK: - Delegates
-    weak var garageAndOrderFlowRepresentableDelegate: GarageAndOrderFlowRepresentableDelegate?
+    weak var garageAndOrderFlowRepresentableDelegate: GarageAndOrderFlowDelegate?
     weak var navigateToRootViewControllerDelegate: PopViewControllerDelegate?
-    weak var orderStatusButtonDelegate: OrderStatusButtonDelegate?
+    weak var orderStatusButtonDelegate: OrderStatusDelegate?
     
     //MARK: - Initialization
     override init(frame: CGRect) {
@@ -230,7 +230,6 @@ final class UserMainView: UIView {
     private func setAddCarImage() {
         addSubview(addCarImage)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             addCarImage.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20),
             addCarImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
@@ -246,7 +245,6 @@ final class UserMainView: UIView {
             self?.garageAndOrderFlowRepresentableDelegate?.presentGarageSheet()
             }), for: .touchUpInside)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             addCarInTheGarageButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             addCarInTheGarageButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
@@ -261,7 +259,6 @@ final class UserMainView: UIView {
         carContentStackView.addArrangedSubview(numberPlate)
         carContentStackView.addArrangedSubview(carBrandImage)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             carContentStackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20),
             carContentStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
@@ -272,7 +269,6 @@ final class UserMainView: UIView {
     private func setOrderContentBackground() {
         addSubview(orderCardBackground)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             orderCardBackground.topAnchor.constraint(equalTo: carContentStackView.topAnchor, constant: 100),
             orderCardBackground.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
@@ -284,7 +280,6 @@ final class UserMainView: UIView {
     private func setAssistantContentBackground() {
         orderCardBackground.addSubview(assistantContentBackground)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             assistantContentBackground.topAnchor.constraint(equalTo: orderCardBackground.topAnchor, constant: 100),
             assistantContentBackground.leadingAnchor.constraint(equalTo: orderCardBackground.leadingAnchor, constant: 12),
@@ -296,7 +291,6 @@ final class UserMainView: UIView {
     private func setAssistantNumber() {
         orderCardBackground.addSubview(assistantNumber)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             assistantNumber.topAnchor.constraint(equalTo: orderCardBackground.topAnchor, constant: 34),
             assistantNumber.trailingAnchor.constraint(equalTo: orderCardBackground.trailingAnchor, constant: -24),
@@ -308,7 +302,6 @@ final class UserMainView: UIView {
     private func setAssistantName() {
         assistantContentBackground.addSubview(assistantName)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             assistantName.topAnchor.constraint(equalTo: assistantContentBackground.topAnchor, constant: 16),
             assistantName.trailingAnchor.constraint(equalTo: assistantContentBackground.trailingAnchor, constant: -30),
@@ -320,7 +313,6 @@ final class UserMainView: UIView {
     private func setOrderStatusTitle() {
         assistantContentBackground.addSubview(orderStatusTitle)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             orderStatusTitle.topAnchor.constraint(equalTo: assistantName.bottomAnchor, constant: 10),
             orderStatusTitle.leadingAnchor.constraint(equalTo: assistantContentBackground.leadingAnchor),
@@ -332,7 +324,6 @@ final class UserMainView: UIView {
     private func setAssistantImage() {
             orderCardBackground.addSubview(assistantImage)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             assistantImage.centerYAnchor.constraint(equalTo: assistantNumber.centerYAnchor),
             assistantImage.leadingAnchor.constraint(equalTo: orderCardBackground.leadingAnchor, constant: 24),
@@ -348,7 +339,6 @@ final class UserMainView: UIView {
             self?.orderStatusButtonDelegate?.handleOrderStatusButton()
         }), for: .touchUpInside)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             orderStatusButton.bottomAnchor.constraint(equalTo: assistantContentBackground.bottomAnchor, constant: -16),
             orderStatusButton.leadingAnchor.constraint(equalTo: assistantContentBackground.leadingAnchor, constant: 24),
@@ -359,7 +349,6 @@ final class UserMainView: UIView {
     private func setYouDontHaveAnOrderLabel() {
         addSubview(youDontHaveAnOrderLabel)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             youDontHaveAnOrderLabel.topAnchor.constraint(equalTo: carContentStackView.topAnchor, constant: 100),
             youDontHaveAnOrderLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
@@ -374,7 +363,6 @@ final class UserMainView: UIView {
             self?.garageAndOrderFlowRepresentableDelegate?.makeAnOrder()
             }), for: .touchUpInside)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             makeAnOrder.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             makeAnOrder.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
@@ -386,7 +374,6 @@ final class UserMainView: UIView {
     private func setBottomContentView() {
         addSubview(bottomContentView)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             bottomContentView.heightAnchor.constraint(equalToConstant: 100),
             bottomContentView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -409,7 +396,6 @@ final class UserMainView: UIView {
             self?.garageAndOrderFlowRepresentableDelegate?.makeAnOrder()
         }), for: .touchUpInside)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             garageAndServiceStackView.topAnchor.constraint(equalTo: bottomContentView.topAnchor),
             garageAndServiceStackView.leadingAnchor.constraint(equalTo: bottomContentView.leadingAnchor, constant: 60),

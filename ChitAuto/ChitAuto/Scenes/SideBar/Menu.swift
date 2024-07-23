@@ -14,7 +14,7 @@ protocol MenuViewControllerDelegate: AnyObject {
 enum MenuOptions: String, CaseIterable {
     case garage = "მანქანის შეკეთება"
     case techInspect = "ტექ ინსპექტირება"
-    case orderHistory = "შეკვეთების ისტორია"
+    case orderHistory = "დასრულებული შეკვეთები"
     case profile = "პროფილი"
     case signOut = "გასვლა"
     
@@ -35,9 +35,7 @@ enum MenuOptions: String, CaseIterable {
 }
 
 final class MenuViewController: UIViewController {
-    
-    weak var menuViewControllerDelegate: MenuViewControllerDelegate?
-    
+    //MARK: - UI Components
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .clear
@@ -47,6 +45,10 @@ final class MenuViewController: UIViewController {
         return tableView
     }()
     
+    //MARK: - Delegates
+    weak var menuViewControllerDelegate: MenuViewControllerDelegate?
+    
+    //MARK: - Initialization
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .customBackground
@@ -54,10 +56,10 @@ final class MenuViewController: UIViewController {
         setTableView()
     }
     
-    
     private func tableViewDelegates() {
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorStyle = .none
     }
     
     private func setTableView() {
@@ -72,6 +74,7 @@ final class MenuViewController: UIViewController {
     }
 }
 
+//MARK: - TableView Extensions
 extension MenuViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

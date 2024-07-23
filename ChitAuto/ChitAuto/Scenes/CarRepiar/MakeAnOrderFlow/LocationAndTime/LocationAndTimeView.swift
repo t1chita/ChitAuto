@@ -107,9 +107,10 @@ final class LocationAndTimeView: UIView {
         stView.saveButton.setTitle("შემდეგი", for: .normal)
         return stView
     }()
+    
     //MARK: - Delegates
     weak var dateChoseDelegate: DateChoseDelegate?
-    weak var locationAndTimeVCNavigationDelegate: LocationAndTimeVCNavigationDelegate?
+    weak var locationAndTimeVCNavigationDelegate: LocationAndTimeDelegate?
     
     //MARK: - Initialization
     override init(frame: CGRect) {
@@ -143,7 +144,6 @@ final class LocationAndTimeView: UIView {
     private func setScrollView() {
         addSubview(scrollView)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
@@ -157,7 +157,6 @@ final class LocationAndTimeView: UIView {
         let heightAnchor = contentView.heightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.heightAnchor)
         heightAnchor.priority = .defaultHigh
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
@@ -171,7 +170,6 @@ final class LocationAndTimeView: UIView {
     private func setCarInfoBackground() {
         contentView.addSubview(carInfoBackground)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             carInfoBackground.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -100),
             carInfoBackground.heightAnchor.constraint(equalToConstant: 450),
@@ -187,7 +185,7 @@ final class LocationAndTimeView: UIView {
             locationTitle.topAnchor.constraint(equalTo: carInfoBackground.topAnchor, constant: 16),
             locationTitle.leadingAnchor.constraint(equalTo: carInfoBackground.leadingAnchor, constant: 16),
             locationTitle.heightAnchor.constraint(equalToConstant: 20),
-            ])
+        ])
     }
     
     private func setCitiesButton() {
@@ -201,7 +199,7 @@ final class LocationAndTimeView: UIView {
             citiesButton.topAnchor.constraint(equalTo: locationTitle.bottomAnchor, constant: 16),
             citiesButton.leadingAnchor.constraint(equalTo: carInfoBackground.leadingAnchor, constant: 16),
             citiesButton.trailingAnchor.constraint(equalTo: carInfoBackground.trailingAnchor, constant: -16),
-
+            
         ])
     }
     
@@ -279,7 +277,6 @@ final class LocationAndTimeView: UIView {
     private func setBottomButtonsStackView() {
         carInfoBackground.addSubview(bottomButtonsStackView)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             bottomButtonsStackView.topAnchor.constraint(equalTo: timeButton.bottomAnchor, constant: 12),
             bottomButtonsStackView.leadingAnchor.constraint(equalTo: citiesButton.leadingAnchor),
@@ -289,19 +286,3 @@ final class LocationAndTimeView: UIView {
     }
 }
 
-class MyTextFieldWithPadding: UITextField {
-
-    let padding = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 5)
-
-    override open func textRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.inset(by: padding)
-    }
-
-    override open func placeholderRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.inset(by: padding)
-    }
-
-    override open func editingRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.inset(by: padding)
-    }
-}

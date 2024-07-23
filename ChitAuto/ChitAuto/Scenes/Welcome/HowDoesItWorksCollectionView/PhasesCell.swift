@@ -9,7 +9,7 @@ import UIKit
 
 final class PhasesCell: UICollectionViewCell {
     static let identifier = "PhasesCell"
-    //MARK: - UIComponents
+    //MARK: - UI Components
     private let mainBackgroundView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -107,7 +107,6 @@ final class PhasesCell: UICollectionViewCell {
     private func setMainBackgroundView() {
         addSubview(mainBackgroundView)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             mainBackgroundView.topAnchor.constraint(equalTo: topAnchor),
             mainBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -119,7 +118,6 @@ final class PhasesCell: UICollectionViewCell {
     private func setAssistantImageView() {
         mainBackgroundView.addSubview(assistantImageView)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             assistantImageView.topAnchor.constraint(equalTo: mainBackgroundView.topAnchor),
             assistantImageView.leadingAnchor.constraint(equalTo: mainBackgroundView.leadingAnchor),
@@ -134,7 +132,6 @@ final class PhasesCell: UICollectionViewCell {
         phaseDescriptionStackView.addArrangedSubview(phaseTitle)
         phaseDescriptionStackView.addArrangedSubview(phaseOrdinalityText)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             phaseDescriptionStackView.topAnchor.constraint(equalTo: assistantImageView.bottomAnchor, constant: 30),
             phaseDescriptionStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
@@ -150,7 +147,6 @@ final class PhasesCell: UICollectionViewCell {
         phaseStepsStackView.addArrangedSubview(secondStep)
         phaseStepsStackView.addArrangedSubview(thirdStep)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             phaseStepsStackView.topAnchor.constraint(equalTo: phaseDescriptionStackView.bottomAnchor, constant: 10),
             phaseStepsStackView.leadingAnchor.constraint(equalTo: mainBackgroundView.leadingAnchor, constant: 24),

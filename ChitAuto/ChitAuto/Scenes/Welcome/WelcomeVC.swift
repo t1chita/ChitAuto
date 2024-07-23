@@ -8,10 +8,6 @@
 import UIKit
 import Firebase
 
-protocol HomeViewControllerDelegate: AnyObject {
-    func didTapMenuButton()
-}
-
 final class WelcomeVC: UIViewController {
     //MARK: - Properties
     var welcomeView: WelcomeView
@@ -37,8 +33,7 @@ final class WelcomeVC: UIViewController {
         super.viewDidLoad()
         setupUI()
         handleDelegates()
-        setProfileMenuButton()
-        title = "მთავარი"
+        setNavigationItems()
     }
     
     //MARK: - Setup UI
@@ -53,15 +48,10 @@ final class WelcomeVC: UIViewController {
     private func handleDelegates() {
         transferDelegatesFromViewModelToView()
         getDelegatesFromView()
-        getDelegatesFromViewToViewModel()
     }
     
     private func transferDelegatesFromViewModelToView() {
         welcomeViewModel.reloadDelegate = welcomeView
-    }
-    
-    private func getDelegatesFromViewToViewModel() {
-        welcomeView.signOutDelegate = welcomeViewModel
     }
     
     private func getDelegatesFromView() {
@@ -89,8 +79,9 @@ final class WelcomeVC: UIViewController {
         welcomeView.howDoesItWorksTitle.text = welcomeViewModel.howDoesItWorks
     }
     
-    private func setProfileMenuButton() {
+    private func setNavigationItems() {
         navigationItem.leftBarButtonItem = welcomeView.menuButton
+        title = "მთავარი"
     }
     
     //MARK: - Child Methods

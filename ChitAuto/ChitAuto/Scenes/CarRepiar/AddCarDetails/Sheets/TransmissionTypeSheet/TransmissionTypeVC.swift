@@ -12,8 +12,6 @@ final class TransmissionTypeVC: UIViewController {
     var transmissionTypeView: TransmissionTypeView
     var transmissionTypeViewModel: TransmissionTypeViewModel
     
-    weak var transmissionTypeSheetDelegate: TransmissionTypeSheetDelegate?
-    
     //MARK: - Initialization
     init(transmissionTypeView: TransmissionTypeView, transmissionTypeViewModel: TransmissionTypeViewModel) {
         self.transmissionTypeView = transmissionTypeView
@@ -34,7 +32,6 @@ final class TransmissionTypeVC: UIViewController {
         super.viewDidLoad()
         handleDelegates()
     }
-    //MARK: - Setup UI
     
     //MARK: - Delegates
     private func handleDelegates() {
@@ -50,5 +47,4 @@ final class TransmissionTypeVC: UIViewController {
         transmissionTypeView.transmissionTypeTableView.dataSource = self
         transmissionTypeView.transmissionTypeTableView.delegate = self
     }
-    //MARK: - Set UI Components
 }

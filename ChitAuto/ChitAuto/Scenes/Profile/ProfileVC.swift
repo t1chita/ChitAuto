@@ -13,9 +13,11 @@ protocol PhotoSelectionDelegate: AnyObject {
 }
 
 final class ProfileVC: UIViewController {
+    //MARK: - Properties
     private var profileView: ProfileView
     private var profileViewModel: ProfileViewModel
         
+    //MARK: - Initialization
     init(profileView: ProfileView, profileViewModel: ProfileViewModel) {
         self.profileView = profileView
         self.profileViewModel = profileViewModel
@@ -26,6 +28,7 @@ final class ProfileVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - LifeCycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         view = profileView
@@ -36,7 +39,6 @@ final class ProfileVC: UIViewController {
         super.viewDidLoad()
         handleDelegates()
         setupUI()
-        title = "პროფილი"
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -46,6 +48,16 @@ final class ProfileVC: UIViewController {
         }
     }
     
+    //MARK: - Setup UI
+    private func setupUI() {
+        setEmailTextFieldWithData()
+        setUserFullName()
+        setUsersProfilePic()
+        setNumberTextFieldWithData()
+        setNavigationItems()
+    }
+    
+    //MARK: - Delegates
     private func handleDelegates() {
         getDelegatesFromView()
     }
@@ -55,20 +67,13 @@ final class ProfileVC: UIViewController {
         profileView.popViewControllerDelegate = self
     }
     
+    //MARK: - Set UI Components
     private func updateUI() {
         if profileViewModel.imageIsSaved {
             profileView.imageShouldSave()
         } else {
             profileView.imageSaved()
         }
-    }
-    
-    private func setupUI() {
-        setEmailTextFieldWithData()
-        setUserFullName()
-        setUsersProfilePic()
-        setNumberTextFieldWithData()
-        setNavigationItemsOnWelcomePage()
     }
     
     private func setEmailTextFieldWithData() {
@@ -92,8 +97,9 @@ final class ProfileVC: UIViewController {
         }
     }
     
-    private func setNavigationItemsOnWelcomePage() {
+    private func setNavigationItems() {
         navigationItem.leftBarButtonItem = profileView.mainButton
+        title = "პროფილი"
     }
 }
 
@@ -103,6 +109,7 @@ extension ProfileVC: PopViewControllerDelegate {
     }
 }
 
+//MARK: - Image Selection
 extension ProfileVC: PhotoSelectionDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.editedImage] as? UIImage {

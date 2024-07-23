@@ -31,13 +31,13 @@ final class OrderHistoryVC: UIViewController {
         super.viewDidLoad()
         handleDelegates()
         setupUI()
-        title = "შეკვეთების ისტორია"
     }
     
     //MARK: - SetupUI
     private func setupUI() {
-        setNavigationItemsOnWelcomePage()
+        setNavigationItems()
     }
+    
     //MARK: - Delegates
     private func handleDelegates() {
         getDelegatesFromView()
@@ -49,13 +49,26 @@ final class OrderHistoryVC: UIViewController {
         orderHistoryView.ordersTableView.dataSource = self
     }
     
-    private func setNavigationItemsOnWelcomePage() {
+    //MARK: - Setup UI Components
+    private func setNavigationItems() {
+        title = "დასრულებული შეკვეთები"
         navigationItem.leftBarButtonItem = orderHistoryView.mainButton
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
+
     }
 }
 
 extension OrderHistoryVC: PopViewControllerDelegate {
     func popViewController() {
         navigationController?.popViewController(animated: true)
+    }
+}
+
+extension OrderHistoryVC: UIGestureRecognizerDelegate {
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if gestureRecognizer.isEqual(navigationController?.interactivePopGestureRecognizer) {
+            navigationController?.popViewController(animated: true)
+        }
+        return false
     }
 }

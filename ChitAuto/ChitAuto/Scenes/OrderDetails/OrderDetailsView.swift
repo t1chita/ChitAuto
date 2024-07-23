@@ -122,6 +122,7 @@ final class OrderDetailsView: UIView {
     //MARK: - Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = .customBackground
         setupUI()
     }
     
@@ -144,7 +145,6 @@ final class OrderDetailsView: UIView {
     private func setScrollView() {
         addSubview(scrollView)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
             scrollView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
@@ -158,7 +158,6 @@ final class OrderDetailsView: UIView {
         let heightAnchor = contentView.heightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.heightAnchor)
         heightAnchor.priority = .defaultHigh
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
@@ -174,8 +173,8 @@ final class OrderDetailsView: UIView {
         
         NSLayoutConstraint.activate([
             assistantImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            assistantImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            assistantImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            assistantImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
+            assistantImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
             assistantImageView.heightAnchor.constraint(equalToConstant: 200),
         ])
     }
@@ -186,7 +185,6 @@ final class OrderDetailsView: UIView {
         carContentStackView.addArrangedSubview(numberPlate)
         carContentStackView.addArrangedSubview(carBrandImage)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             carContentStackView.topAnchor.constraint(equalTo: assistantImageView.bottomAnchor, constant: 20),
             carContentStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
@@ -200,8 +198,8 @@ final class OrderDetailsView: UIView {
         
         NSLayoutConstraint.activate([
             orderContentBackground.topAnchor.constraint(equalTo: carContentStackView.bottomAnchor, constant: 20),
-            orderContentBackground.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            orderContentBackground.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            orderContentBackground.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
+            orderContentBackground.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
             orderContentBackground.heightAnchor.constraint(equalToConstant: 156),
         ])
     }  
@@ -229,8 +227,8 @@ final class OrderDetailsView: UIView {
         
         NSLayoutConstraint.activate([
             problemDescriptionTextView.topAnchor.constraint(equalTo: orderContentBackground.bottomAnchor, constant: 20),
-            problemDescriptionTextView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            problemDescriptionTextView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            problemDescriptionTextView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
+            problemDescriptionTextView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
             problemDescriptionTextView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
         ])
     }

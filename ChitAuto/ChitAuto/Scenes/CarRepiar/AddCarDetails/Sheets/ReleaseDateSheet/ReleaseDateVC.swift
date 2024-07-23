@@ -12,9 +12,6 @@ final class ReleaseDateVC: UIViewController {
     var releaseDateView: ReleaseDateView
     var releaseDateViewModel: ReleaseDateViewModel
     
-    //MARK: - Delegates
-    weak var releaseDateSheetsDelegate: ReleaseDateSheetsDelegate?
-    
     //MARK: - Initialization
     init(releaseDateView: ReleaseDateView, releaseDateViewModel: ReleaseDateViewModel) {
         self.releaseDateView = releaseDateView
@@ -36,7 +33,6 @@ final class ReleaseDateVC: UIViewController {
         super.viewDidLoad()
         handleDelegates()
     }
-    //MARK: - Setup UI
     
     //MARK: - Delegates
     private func handleDelegates() {
@@ -47,7 +43,4 @@ final class ReleaseDateVC: UIViewController {
         releaseDateView.releaseDateTableView.dataSource = self
         releaseDateView.releaseDateTableView.delegate = self
     }
-    
-    //MARK: - Set UI Components
-
 }

@@ -48,6 +48,7 @@
 		2629292F2C4FE49E00FB8FE9 /* OrderDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2629292E2C4FE49E00FB8FE9 /* OrderDetailsView.swift */; };
 		262929332C4FFF3100FB8FE9 /* OrderDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262929322C4FFF3100FB8FE9 /* OrderDetailsViewModel.swift */; };
 		262929352C4FFF4600FB8FE9 /* OrderDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262929342C4FFF4600FB8FE9 /* OrderDetailsVC.swift */; };
+		262929372C50789F00FB8FE9 /* TextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262929362C50789F00FB8FE9 /* TextFieldWithPadding.swift */; };
 		267530E72C3D52DA00E8B42B /* GarageSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267530E62C3D52DA00E8B42B /* GarageSheetView.swift */; };
 		267530E92C3D534400E8B42B /* GarageSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267530E82C3D534400E8B42B /* GarageSheetViewModel.swift */; };
 		267530EB2C3D535F00E8B42B /* GarageSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267530EA2C3D535F00E8B42B /* GarageSheetVC.swift */; };
@@ -176,6 +177,7 @@
 		2629292E2C4FE49E00FB8FE9 /* OrderDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsView.swift; sourceTree = "<group>"; };
 		262929322C4FFF3100FB8FE9 /* OrderDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsViewModel.swift; sourceTree = "<group>"; };
 		262929342C4FFF4600FB8FE9 /* OrderDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsVC.swift; sourceTree = "<group>"; };
+		262929362C50789F00FB8FE9 /* TextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPadding.swift; sourceTree = "<group>"; };
 		267530E62C3D52DA00E8B42B /* GarageSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageSheetView.swift; sourceTree = "<group>"; };
 		267530E82C3D534400E8B42B /* GarageSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageSheetViewModel.swift; sourceTree = "<group>"; };
 		267530EA2C3D535F00E8B42B /* GarageSheetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageSheetVC.swift; sourceTree = "<group>"; };
@@ -448,9 +450,9 @@
 		2629292B2C4F31CE00FB8FE9 /* OrderDetails */ = {
 			isa = PBXGroup;
 			children = (
+				262929342C4FFF4600FB8FE9 /* OrderDetailsVC.swift */,
 				2629292E2C4FE49E00FB8FE9 /* OrderDetailsView.swift */,
 				262929322C4FFF3100FB8FE9 /* OrderDetailsViewModel.swift */,
-				262929342C4FFF4600FB8FE9 /* OrderDetailsVC.swift */,
 			);
 			path = OrderDetails;
 			sourceTree = "<group>";
@@ -773,6 +775,7 @@
 			children = (
 				26F4E10B2C41ABAF0031A6C5 /* NumberPlateTextField.swift */,
 				262928F52C4D291F00FB8FE9 /* PersonalInfo.swift */,
+				262929362C50789F00FB8FE9 /* TextFieldWithPadding.swift */,
 			);
 			path = TextFields;
 			sourceTree = "<group>";
@@ -1053,6 +1056,7 @@
 				261C15E02C3C35F3004B5A1E /* UserMainVC.swift in Sources */,
 				26F4E1442C4746160031A6C5 /* TimeSheetView.swift in Sources */,
 				267531172C3FF4A000E8B42B /* CarModelResponse.swift in Sources */,
+				262929372C50789F00FB8FE9 /* TextFieldWithPadding.swift in Sources */,
 				2675311A2C40257F00E8B42B /* ReleaseDateVC.swift in Sources */,
 				26F4E13A2C4745B30031A6C5 /* LocationSheetViewModel.swift in Sources */,
 				267531062C3EB79E00E8B42B /* BrandsSheetVC + ExtTableView.swift in Sources */,

@@ -40,8 +40,8 @@ final class GarageSheetView: UIView {
     }()
     
     //MARK: - Delegates
-    weak var addCarDetailsPushableDelegate: AddCarDetailsPushableDelegate?
-    weak var garageSheetDismissible: GarageSheetDismissible?
+    weak var addCarDetailsPushableDelegate: AddCarDetailsDelegate?
+    weak var garageSheetDismissible: GarageSheetDelegate?
     
     //MARK: - Initialization
     override init(frame: CGRect) {
@@ -74,7 +74,6 @@ final class GarageSheetView: UIView {
     private func setCarsTableView() {
         addSubview(carsTableView)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             carsTableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
             carsTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
@@ -91,7 +90,6 @@ final class GarageSheetView: UIView {
             self?.garageSheetDismissible?.dismissGarageSheet()
         }), for: .touchUpInside)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             addCarButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 48),
             addCarButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -48),

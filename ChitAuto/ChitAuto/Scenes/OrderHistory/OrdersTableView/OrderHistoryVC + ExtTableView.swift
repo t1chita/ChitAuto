@@ -8,7 +8,16 @@
 import UIKit
 
 extension OrderHistoryVC: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedOrder = orderHistoryViewModel.usersOrderHistory[indexPath.row]
+        let orderDetailsView = OrderDetailsView()
+        let orderDetailsViewModel = OrderDetailsViewModel(order: selectedOrder)
+        
+        let vc  = OrderDetailsVC(orderDetailsView: orderDetailsView, orderDetailsViewModel: orderDetailsViewModel)
+        navigationController?.pushViewController(vc, animated: true)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
 
 extension OrderHistoryVC: UITableViewDataSource {

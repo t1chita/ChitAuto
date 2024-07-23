@@ -12,6 +12,9 @@ final class GarageSheetViewModel {
     //MARK: - Properties
     let userCars: [Car]
     
+    var lastSelectedIndexPath: IndexPath?
+    
+    //MARK: - Computed Properties
     var userCarsCount: Int {
         userCars.count
     }
@@ -20,16 +23,11 @@ final class GarageSheetViewModel {
         didSet { onSavedCarChanged?(savedCar!)}
     }
     
-    var lastSelectedIndexPath: IndexPath?
-    
+    //MARK: - Closures
     var onSavedCarChanged: ((Car) -> Void)?
+    
     //MARK: - LifeCycles
     init(userCars: [Car]) {
         self.userCars = userCars
     }
-    //MARK: - Child Method
-    
-    //MARK: - Requests
-    
-    //MARK: - Navigation
 }

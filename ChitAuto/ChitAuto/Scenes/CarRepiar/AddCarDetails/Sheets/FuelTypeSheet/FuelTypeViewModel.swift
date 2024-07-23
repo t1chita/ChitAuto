@@ -9,16 +9,23 @@ import Foundation
 import Network
 
 final class FuelTypeViewModel {
-    private let fuelTypeApi: String = "https://chitauto-default-rtdb.europe-west1.firebasedatabase.app/fuelTypes.json"
-    
+    //MARK: - Properties
     var previouslySelectedIndexPath: IndexPath?
+    
+    var fuelTypes: [FuelTypeResponse] = []
         
+    //MARK: - Computed Properties
     var fuelTypesCount: Int {
         fuelTypes.count
     }
     
-    var fuelTypes: [FuelTypeResponse] = []
+    //MARK: - Closures
+    var onFuelTypeChanged: ((String) -> Void)?
     
+    //MARK: - Api Urls
+    private let fuelTypeApi: String = "https://chitauto-default-rtdb.europe-west1.firebasedatabase.app/fuelTypes.json"
+    
+    //MARK: - Initialization
     init() {
         fetchFuelTypes()
     }
@@ -26,6 +33,7 @@ final class FuelTypeViewModel {
     //MARK: - Delegates
     weak var reloadDelegate: ReloadDelegate?
     
+    //MARK: - Fetching Methods
     private func fetchFuelTypes() {
         NetworkService.networkService.getData(urlString: fuelTypeApi) { [weak self] (result: Result<[FuelTypeResponse], Error>) in
             DispatchQueue.main.async { [weak self] in

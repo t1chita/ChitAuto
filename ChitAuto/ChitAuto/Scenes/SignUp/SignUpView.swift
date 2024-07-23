@@ -82,6 +82,7 @@ struct SignUpView: View {
         VStack(alignment: .leading) {
             Text("მობილურის ნომერი")
                 .padding(.leading, 10)
+            
             HStack {
                 Button {
                     signUpViewModel.countryPickerIsPresented.toggle()
@@ -124,6 +125,7 @@ struct SignUpView: View {
                 .font(.body)
             
             Spacer()
+            
             Text(country.dialCode)
                 .foregroundStyle(Color(UIColor.systemGray2))
         }

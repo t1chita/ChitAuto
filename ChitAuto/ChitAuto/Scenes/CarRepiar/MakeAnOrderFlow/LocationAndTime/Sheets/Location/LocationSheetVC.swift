@@ -25,6 +25,7 @@ final class LocationSheetVC: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     //MARK: - LifeCycles
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -35,7 +36,6 @@ final class LocationSheetVC: UIViewController {
         super.viewDidLoad()
         handleDelegates()
     }
-    //MARK: - Setup UI
     
     //MARK: - Delegates
     private func handleDelegates() {
@@ -51,5 +51,4 @@ final class LocationSheetVC: UIViewController {
         locationSheetView.locationTableView.dataSource = self
         locationSheetView.locationTableView.delegate = self
     }
-    //MARK: - Set UI Components
 }

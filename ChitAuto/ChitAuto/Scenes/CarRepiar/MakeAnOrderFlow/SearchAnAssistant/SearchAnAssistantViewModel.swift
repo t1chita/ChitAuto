@@ -16,46 +16,53 @@ enum AssistantsLevel: String, CaseIterable {
 }
 
 final class SearchAnAssistantViewModel {
-    //    MARK: - Properties
-    private let assistantsApi = "https://chitauto-default-rtdb.europe-west1.firebasedatabase.app/assistants.json"
+    //MARK: - Properties
     private(set) var assistantLevel: AssistantsLevel = .senior
-    
-    var currentOrder: Order {
-        didSet { onChangedCurrentOrder?(currentOrder)}
-    }
     
     let userId: String
     
-    var assistantsCount: Int {
-        filteredAssistants.count
-    }
-    
     var assistants: [CarAssistant] = []
-    
-    var filteredAssistants: [CarAssistant] {
-        assistants.filter { $0.assistantLevel == assistantLevel.rawValue }
-    }
     
     var selectedAssistant: CarAssistant?
     
     var lastSelectedIndexPath: IndexPath?
     
+    //MARK: - Computed Properties
+    var currentOrder: Order {
+        didSet { onChangedCurrentOrder?(currentOrder)}
+    }
+    
+    var assistantsCount: Int {
+        filteredAssistants.count
+    }
+    
+    var filteredAssistants: [CarAssistant] {
+        assistants.filter { $0.assistantLevel == assistantLevel.rawValue }
+    }
+    
+    //MARK: - Api Urls
+    private let assistantsApi = "https://chitauto-default-rtdb.europe-west1.firebasedatabase.app/assistants.json"
+
+    //MARK: - Closures
     var onChangedCurrentOrder: ((Order) -> Void)?
     
+    //MARK: - Initialization
     init(order: Order, userId: String) {
         self.currentOrder = order
         self.userId = userId
         fetchAssistants()
     }
     
+    //MARK: - Delegates
     weak var reloadDelegate: ReloadDelegate?
     
+    //MARK: - Child Methods
     func updateAssistantLevel(to level: AssistantsLevel) {
         assistantLevel = level
         reloadDelegate?.reloadData()
     }
     
-    //    MARK: - Requests
+    //MARK: - Fetching Methods
     private func fetchAssistants() {
         NetworkService.networkService.getData(urlString: assistantsApi) { [weak self] (result: Result<[CarAssistant], Error >) in
             DispatchQueue.main.async { [weak self] in
@@ -69,7 +76,8 @@ final class SearchAnAssistantViewModel {
             }
         }
     }
-    // MARK: - Save Order Details
+    
+    // MARK: - Firebase Methods
     func saveOrderDetails() {
         let carData: [String: Any] = [
             "id": currentOrder.id,

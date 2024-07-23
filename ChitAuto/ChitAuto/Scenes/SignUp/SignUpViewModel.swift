@@ -32,6 +32,7 @@ final class SignUpViewModel: ObservableObject {
     @Published var countryFlag = "🇬🇪"
     @Published var countryDialCode = "+995"
     
+    //MARK: - Computed Properties
     var filteredCountries: [CountryResponse] {
         if searchForCountry.isEmpty {
             return countries
@@ -40,11 +41,12 @@ final class SignUpViewModel: ObservableObject {
         }
     }
     
+    //MARK: - Initialization
     init() {
         fetchCountries()
     }
     
-    //MARK: - Methods
+    //MARK: - Firebase Methods
     func createUser() async throws {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
@@ -56,7 +58,8 @@ final class SignUpViewModel: ObservableObject {
         }
     }
     
-    func fetchCountries() {
+    //MARK: - Fetching Methods
+    private func fetchCountries() {
         NetworkService.networkService.getData(urlString: countriesApi) { [weak self] (result: Result<[CountryResponse],Error>) in
             DispatchQueue.main.async { [weak self] in
                 switch result {
@@ -73,23 +76,23 @@ final class SignUpViewModel: ObservableObject {
 
 //MARK: - Validation
 extension SignUpViewModel {
-    var emailIsValid: Bool {
+    private var emailIsValid: Bool {
         return !email.isEmpty && email.contains("@")
     }
     
-    var nameIsValid: Bool {
+    private var nameIsValid: Bool {
         return !firstName.isEmpty
     }
     
-    var lastNameIsValid: Bool {
+    private var lastNameIsValid: Bool {
         return !lastName.isEmpty
     }
     
-    var passwordIsValid: Bool {
+    private var passwordIsValid: Bool {
         return !password.isEmpty && password.count >= 8
     }
     
-     var phoneNumberIsValid: Bool {
+    private var phoneNumberIsValid: Bool {
         return !phoneNumber.isEmpty
     }
     

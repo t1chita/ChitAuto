@@ -90,6 +90,7 @@ final class AssistantsCell: UICollectionViewCell {
         lbl.textAlignment = .left
         return lbl
     }()
+    
     //MARK: - Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)

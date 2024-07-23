@@ -19,7 +19,7 @@ protocol TimeSheetDelegate: AnyObject {
     func didSelectTime(_ time: String)
 }
 
-protocol LocationAndTimeVCNavigationDelegate: AnyObject {
+protocol LocationAndTimeDelegate: AnyObject {
     func handleTimeSheetNavigation()
     func handleLocationSheetNavigation()
 }
@@ -50,15 +50,13 @@ final class LocationAndTimeVC: UIViewController {
         super.viewDidLoad()
         setupUI()
         handleDelegates()
-        title = "დრო და ადგილი"
-        navigationController?.interactivePopGestureRecognizer?.delegate = self
         updateDate()
     }
     
     //MARK: - Setup UI
     private func setupUI() {
         setCityButton()
-        removeDefaultBackButton()
+        setNavigationItems()
     }
     
     //MARK: - Delegates
@@ -75,8 +73,10 @@ final class LocationAndTimeVC: UIViewController {
     }
     
     //MARK: - Set UI Components
-    private func removeDefaultBackButton() {
+    private func setNavigationItems() {
         navigationItem.setHidesBackButton(true, animated: true)
+        title = "დრო და ადგილი"
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
     private func updateDate() {
@@ -152,7 +152,7 @@ extension LocationAndTimeVC: TimeSheetDelegate {
     }
 }
 
-extension LocationAndTimeVC: LocationAndTimeVCNavigationDelegate {
+extension LocationAndTimeVC: LocationAndTimeDelegate {
     func handleTimeSheetNavigation() {
         let timeSheetView = TimeSheetView()
         let timeSheetViewModel = TimeSheetViewModel()

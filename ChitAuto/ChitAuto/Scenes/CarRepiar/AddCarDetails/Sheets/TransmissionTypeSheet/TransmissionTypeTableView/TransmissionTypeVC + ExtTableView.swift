@@ -27,7 +27,7 @@ extension TransmissionTypeVC: UITableViewDelegate {
         transmissionTypeViewModel.previouslySelectedIndexPath = indexPath
         tableView.deselectRow(at: indexPath, animated: true)
         
-        transmissionTypeSheetDelegate?.didSelectTransmissionType(selectedTransmissionType.localizedValue)
+        transmissionTypeViewModel.onTransmissionTypeChanged?(selectedTransmissionType.localizedValue)
         self.dismiss(animated: true, completion: nil)
     }
 }

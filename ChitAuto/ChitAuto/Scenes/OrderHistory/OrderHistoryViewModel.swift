@@ -12,18 +12,13 @@ final class OrderHistoryViewModel {
     //MARK: - Properties
     let usersOrderHistory: [Order]
     
+    //MARK: - Computed Properties
     var usersOrderHistoryCount: Int {
         usersOrderHistory.count
     }
+    
     //MARK: - Initialization
     init(usersOrderHistory: [Order]) {
         self.usersOrderHistory = usersOrderHistory
     }
-    
-    //MARK: - Child Method
-    
-    //MARK: - Requests
-    
-    //MARK: - Navigation
-
 }

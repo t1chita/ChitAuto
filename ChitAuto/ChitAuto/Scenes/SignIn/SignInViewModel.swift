@@ -9,15 +9,15 @@ import Foundation
 import Firebase
 
 final class SignInViewModel: ObservableObject {
-    //    MARK: - Static Properties
+    //MARK: - Static Properties
     let mailLabel: String = "მეილი"
     let passwordLabel: String = "პაროლი"
     
-    //    MARK: - Properties
+    //MARK: - Properties
     @Published var mail: String = ""
     @Published var password: String = ""
     
-    //    MARK: - Methods
+    //MARK: - Firebase Methods
     func singIn() async throws {
         do {
             try await Auth.auth().signIn(withEmail: mail, password: password)
@@ -30,12 +30,12 @@ final class SignInViewModel: ObservableObject {
 
 //MARK: - Validation
 extension SignInViewModel {
-    var emailIsValid: Bool {
+    private var emailIsValid: Bool {
         return !mail.isEmpty
         && mail.contains("@")
     }
     
-    var passwordIsValid: Bool {
+    private var passwordIsValid: Bool {
         return !password.isEmpty
         && password.count >= 8
     }

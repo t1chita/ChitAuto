@@ -8,18 +8,16 @@
 import Foundation
 
 final class ReleaseDateViewModel {
-    //    MARK: - Properties
+    //MARK: - Properties
     let years: [Int] = Array(1990...2024)
     
+    var previouslySelectedIndexPath: IndexPath?
+    
+    //MARK: - Computed Properties
     var yearsCount: Int {
         years.count
     }
-        
-    var previouslySelectedIndexPath: IndexPath?
-    //    MARK: - Child Method
     
-    //    MARK: - Requests
-    
-    //    MARK: - Navigation
-
+    //MARK: - Closures
+    var onReleaseDateChanged: ((Int) -> Void)?
 }

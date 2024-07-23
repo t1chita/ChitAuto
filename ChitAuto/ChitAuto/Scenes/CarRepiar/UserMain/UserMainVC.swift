@@ -11,16 +11,16 @@ protocol PopViewControllerDelegate: AnyObject {
     func popViewController()
 }
 
-protocol GarageAndOrderFlowRepresentableDelegate: AnyObject {
+protocol GarageAndOrderFlowDelegate: AnyObject {
     func presentGarageSheet()
     func makeAnOrder()
 }
 
-protocol AddCarDetailsPushableDelegate: AnyObject {
+protocol AddCarDetailsDelegate: AnyObject {
     func pushToAddCarDetailsPage()
 }
 
-protocol OrderStatusButtonDelegate: AnyObject {
+protocol OrderStatusDelegate: AnyObject {
     func handleOrderStatusButton()
 }
 
@@ -52,16 +52,13 @@ final class UserMainVC: UIViewController {
         super.viewDidLoad()
         handleDelegates()
         setupUI()
-        title = "მანაქანის შეკეთება"
-        navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
     //MARK: - Setup UI
     private func setupUI() {
-        setNavigationItemsOnWelcomePage()
-        setDefaultSelectedCar()
+        setNavigationItems()
+        setDefaultSelectedCarWithData()
     }
-
      
     //MARK: - Delegates
     private func handleDelegates() {
@@ -75,8 +72,10 @@ final class UserMainVC: UIViewController {
     }
 
     //MARK: - Set UI Components
-    private func setNavigationItemsOnWelcomePage() {
+    private func setNavigationItems() {
         navigationItem.leftBarButtonItem = userMainView.mainButton
+        title = "მანაქანის შეკეთება"
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
     private func setCarBrandImageWithData() {
@@ -84,28 +83,28 @@ final class UserMainVC: UIViewController {
         userMainView.carBrandImage.loadImage(from: unwrappedImageUrl)
     }
     
-    private func setCarPlateNumber() {
+    private func setCarPlateNumberWithData() {
         userMainView.numberPlate.text = userMainViewModel.currentCar?.plateNumber
     }
     
-    private func setAssistantName() {
+    private func setAssistantNameWithData() {
         userMainView.assistantName.text = userMainViewModel.selectedOrder?.assistant.fullName
     }
     
-    private func setDefaultSelectedCar() {
+    private func setDefaultSelectedCarWithData() {
         userMainViewModel.currentCar = userMainViewModel.currentUser.userCars.first
     }
     
-    private func setAssistantImage() {
+    private func setAssistantImageWitData() {
         guard let imageUrl = URL(string: userMainViewModel.selectedOrder?.assistant.profilePicUrl ?? "") else { return }
         userMainView.assistantImage.loadImage(from: imageUrl)
     }
     
     private func updateCarInfo() {
         setCarBrandImageWithData()
-        setCarPlateNumber()
-        setAssistantName()
-        setAssistantImage()
+        setCarPlateNumberWithData()
+        setAssistantNameWithData()
+        setAssistantImageWitData()
     }
     
     private func updateUI() {
@@ -128,14 +127,14 @@ extension UserMainVC: PopViewControllerDelegate {
     }
 }
 
-extension UserMainVC: OrderStatusButtonDelegate {
+extension UserMainVC: OrderStatusDelegate {
     func handleOrderStatusButton() {
         let currentOrderView = CurrentOrderView()
         let currentOrderViewModel = CurrentOrderViewModel(userID: userMainViewModel.currentUser.id, orderToRemove: userMainViewModel.selectedOrder!)
            
            currentOrderViewModel.onOrderRemoved = { [weak self] in
                guard let self = self else { return }
-               print("Order removed closure called")
+
                self.userMainViewModel.currentUser = {
                    var user = self.userMainViewModel.currentUser
                    user.userOrders.removeAll(where: { $0.id == self.userMainViewModel.selectedOrder?.id })
@@ -146,8 +145,8 @@ extension UserMainVC: OrderStatusButtonDelegate {
         
         currentOrderViewModel.onOrderCompleted = { [weak self] in
                guard let self = self else { return }
-               print("Order Completed closure called")
-               self.userMainViewModel.currentUser = {
+
+              self.userMainViewModel.currentUser = {
                    var user = self.userMainViewModel.currentUser
                    user.userOrders.removeAll(where: { $0.id == self.userMainViewModel.selectedOrder?.id })
                    user.userOrdersHistory.append(self.userMainViewModel.selectedOrder!)
@@ -162,7 +161,7 @@ extension UserMainVC: OrderStatusButtonDelegate {
        }
 }
 
-extension UserMainVC: GarageAndOrderFlowRepresentableDelegate {
+extension UserMainVC: GarageAndOrderFlowDelegate {
     func makeAnOrder() {
         if userMainViewModel.userHasCars && !userMainViewModel.currentCarHasOrder {
             guard let userCar = userMainViewModel.currentCar else { return }
@@ -213,7 +212,7 @@ extension UserMainVC: GarageAndOrderFlowRepresentableDelegate {
     }
 }
 
-extension UserMainVC: AddCarDetailsPushableDelegate {
+extension UserMainVC: AddCarDetailsDelegate {
     func pushToAddCarDetailsPage() {
         let addCarDetailsView = AddCarDetailsView()
         let addCarDetailsViewModel = AddCarDetailsViewModel(userId: userMainViewModel.currentUser.id)

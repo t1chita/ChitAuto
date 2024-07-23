@@ -35,10 +35,15 @@ final class CurrentOrderVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.interactivePopGestureRecognizer?.delegate = self
-        title = "მიმდინარე შეკვეთა"
         setupUI()
         handleDelegates()
+    }
+    
+    //MARK: - Setup UI
+    private func setupUI() {
+        setNavigationItems()
+        setAssistantImage()
+        setOrderDescription()
     }
     
     //MARK: - Delegates
@@ -50,16 +55,11 @@ final class CurrentOrderVC: UIViewController {
         currentOrderView.cancelButtonDelegate = self
     }
     
-    //MARK: - Setup UI
-    private func setupUI() {
-        removeDefaultBackButton()
-        setAssistantImage()
-        setOrderDescription()
-    }
-    
     //MARK: - Set UI Components
-    private func removeDefaultBackButton() {
+    private func setNavigationItems() {
         navigationItem.setHidesBackButton(true, animated: true)
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
+        title = "მიმდინარე შეკვეთა"
     }
     
     private func setAssistantImage() {

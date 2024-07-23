@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol GarageSheetDismissible: AnyObject {
+protocol GarageSheetDelegate: AnyObject {
     func dismissGarageSheet()
 }
 
@@ -48,11 +48,9 @@ final class GarageSheetVC: UIViewController {
         garageSheetView.carsTableView.dataSource = self
         garageSheetView.carsTableView.delegate = self
     }
-    
-    //MARK: - Set UI Components
 }
 
-extension GarageSheetVC: GarageSheetDismissible {
+extension GarageSheetVC: GarageSheetDelegate {
     func dismissGarageSheet() {
         self.dismiss(animated: true, completion: nil)
     }

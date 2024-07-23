@@ -41,6 +41,7 @@ final class CurrentOrderView: UIView {
         return button
     }()
     
+    //MARK: - Delegates
     weak var cancelButtonDelegate: CancelButtonDelegate?
     
     //MARK: - Initialization
@@ -65,8 +66,8 @@ final class CurrentOrderView: UIView {
         
         NSLayoutConstraint.activate([
             orderDetailsView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20),
-            orderDetailsView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            orderDetailsView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            orderDetailsView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            orderDetailsView.trailingAnchor.constraint(equalTo: trailingAnchor),
             orderDetailsView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -80),
         ])
     }

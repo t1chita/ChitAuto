@@ -9,16 +9,20 @@ import Foundation
 import Network
 
 final class LocationSheetViewModel {
-    private let locationApi: String = "https://chitauto-default-rtdb.europe-west1.firebasedatabase.app/locations.json"
+    //MARK: - Properties
+    var locations: [LocationResponse] = []
     
     var previouslySelectedIndexPath: IndexPath?
-        
+    
+    //MARK: - Computed Properties
     var locationsCount: Int {
         locations.count
     }
     
-    var locations: [LocationResponse] = []
+    //MARK: - Api Urls
+    private let locationApi: String = "https://chitauto-default-rtdb.europe-west1.firebasedatabase.app/locations.json"
     
+    //MARK: - Initialization
     init() {
         fetchLocations()
     }
@@ -26,6 +30,7 @@ final class LocationSheetViewModel {
     //MARK: - Delegates
     weak var reloadDelegate: ReloadDelegate?
     
+    //MARK: - Fetching Methods
     private func fetchLocations() {
         NetworkService.networkService.getData(urlString: locationApi) { [weak self] (result: Result<[LocationResponse], Error>) in
             DispatchQueue.main.async { [weak self] in

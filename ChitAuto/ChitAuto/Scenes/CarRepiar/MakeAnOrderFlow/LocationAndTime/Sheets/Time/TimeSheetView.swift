@@ -57,7 +57,6 @@ final class TimeSheetView: UIView {
     private func setModelsTableView() {
         addSubview(timeTableView)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             timeTableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
             timeTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),

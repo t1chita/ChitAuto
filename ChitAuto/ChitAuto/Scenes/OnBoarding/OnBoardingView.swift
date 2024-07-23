@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol NavigateToSignInSignUpPageDelegate: AnyObject {
+protocol SignInSingUpDelegate: AnyObject {
     func navigateToSignIn()
     func navigateToSignUp()
 }
@@ -51,13 +51,13 @@ final class OnBoardingView: UIView {
         button.titleLabel?.attributedText = underlineAttributeString
         button.titleLabel?.font = .systemFont(ofSize: 16)
         button.contentHorizontalAlignment = .leading
-        button.setTitleColor(.blue, for: .normal)
+        button.setTitleColor(.label, for: .normal)
         button.backgroundColor = .clear
         return button
     }()
     
     //MARK: - Delegates
-    weak var navigationDelegate: NavigateToSignInSignUpPageDelegate?
+    weak var navigationDelegate: SignInSingUpDelegate?
     
     //MARK: - Initialization
     override init(frame: CGRect) {
@@ -81,7 +81,6 @@ final class OnBoardingView: UIView {
     private func setAppLogo() {
         addSubview(appLogo)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             appLogo.topAnchor.constraint(equalTo: topAnchor, constant: 100),
             appLogo.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
@@ -93,12 +92,10 @@ final class OnBoardingView: UIView {
     private func setRegistrationButton() {
         addSubview(registrationButton)
         
-        //Add Action To Registration Button
-        registrationButton.addAction(UIAction(title: "Go To Sign In Page", handler: { [weak self] _ in
+        registrationButton.addAction(UIAction(title: "Go To Registration Page", handler: { [weak self] _ in
             self?.navigationDelegate?.navigateToSignUp()
         }), for: .touchUpInside)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             registrationButton.topAnchor.constraint(equalTo: appLogo.bottomAnchor, constant: 50),
             registrationButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),
@@ -110,16 +107,13 @@ final class OnBoardingView: UIView {
     private func setSignInStackView() {
         addSubview(signInStackView)
         
-        //Add Arranged Subviews
         signInStackView.addArrangedSubview(signInLabel)
         signInStackView.addArrangedSubview(signInButton)
         
-        //Add Action To Sign In Button
         signInButton.addAction(UIAction(title: "Go To Sign In Page", handler: { [weak self] _ in
             self?.navigationDelegate?.navigateToSignIn()
         }), for: .touchUpInside)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             signInStackView.topAnchor.constraint(equalTo: registrationButton.bottomAnchor, constant: 16),
             signInStackView.centerXAnchor.constraint(equalTo: registrationButton.centerXAnchor),

@@ -26,7 +26,7 @@ extension FuelTypeVC: UITableViewDelegate {
         fuelTypeViewModel.previouslySelectedIndexPath = indexPath
         tableView.deselectRow(at: indexPath, animated: true)
         
-        fuelTypeSheetDelegate?.didSelectFuelType(selectedFuelType.localizedValue)
+        fuelTypeViewModel.onFuelTypeChanged?(selectedFuelType.localizedValue)
         self.dismiss(animated: true, completion: nil)
     }
 }

@@ -14,7 +14,7 @@ protocol SignOutDelegate: AnyObject {
 }
 
 final class WelcomeViewModel {
-    //    MARK: - Properties
+    //MARK: - Static Properties
     let whyCaruDesc: String = "ChitAuto არის მანქანის შეკეთების სწორი გზა. 7 საათის ნაცვლად 5 წუთს ხარჯავ, უფრო იაფი გიჯდება და თან მანქანას მცოდნე ადამიანი აკეთებს. ამიტომ თუნდაც ChitAuto არ იყოს და სხვა ჩვენი მსგავსი კომპანია იყოს. გირჩევთ ის გამოიყენოთ და თქვენით არ წაიყვანოთ მანქანა შესაკეთებლად თუ ავტომობილებში ძალიან კარგად არ ერკვევით. და ამას გეუბნებით ხალხი ვისაც ავტოსერვისში 10+წლიანი გამოცდილება გვაქვს"
     let economyTitle: String = "დროის ეკონომია"
     let economyDesc: String = "კვლევებმა აჩვენა რომ საშუალოდ მანქანის შესაკეთებლად მეპატრონეს ჭირდება 7.5 საათი. ChitAuto - ს გამოყენებისას ხარჯავ მხოლოდ 5 წუთს."
@@ -28,11 +28,12 @@ final class WelcomeViewModel {
     
     var carRepairPhases: [RepairPhase] = []
     
+    var currentUser: User? = nil
+    
+    //MARK: - Computed Properties
     var carRepairPhasesCount: Int {
         carRepairPhases.count
     }
-    
-    var currentUser: User? = nil
     
     //MARK: - Api Urls
     private let phasesUrl: String = "https://chitauto-default-rtdb.europe-west1.firebasedatabase.app/phases.json"
@@ -46,7 +47,7 @@ final class WelcomeViewModel {
     //MARK: - Delegates
     weak var reloadDelegate: ReloadDelegate?
         
-    //MARK: - Requests
+    //MARK: - Fetching Methods
     private func fetchData() {
         NetworkService.networkService.getData(urlString: phasesUrl) { [weak self] (result: Result<CarRepairPhases, Error>) in
             DispatchQueue.main.async { [weak self] in
@@ -61,7 +62,7 @@ final class WelcomeViewModel {
         }
     }
     
-    //    MARK: - Firebase Functions
+    //MARK: - Firebase Functions
     private func fetchUser() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         

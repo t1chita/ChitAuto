@@ -51,6 +51,7 @@ final class TechInspectSheetView: UIView {
         lbl.numberOfLines = 0
         return lbl
     }()
+    
     //MARK: - Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)

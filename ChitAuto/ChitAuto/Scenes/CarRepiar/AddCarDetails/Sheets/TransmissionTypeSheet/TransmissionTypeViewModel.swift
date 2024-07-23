@@ -9,16 +9,23 @@ import Foundation
 import Network
 
 final class TransmissionTypeViewModel {
-    private let transmissionTypeApi: String = "https://chitauto-default-rtdb.europe-west1.firebasedatabase.app/transmissionTypes.json"
-    
+    //MARK: Properties
     var previouslySelectedIndexPath: IndexPath?
+    
+    var transmissionTypes: [TransmissionTypesResponse] = []
         
+    //MARK: - Computed Properties
     var transmissionTypesCount: Int {
         transmissionTypes.count
     }
     
-    var transmissionTypes: [TransmissionTypesResponse] = []
+    //MARK: - Closures
+    var onTransmissionTypeChanged: ((String) -> Void)?
     
+    //MARK: - Api Urls
+    private let transmissionTypeApi: String = "https://chitauto-default-rtdb.europe-west1.firebasedatabase.app/transmissionTypes.json"
+    
+    //MARK: - Initialization
     init() {
         fetchTransmissionTypes()
     }
@@ -26,6 +33,7 @@ final class TransmissionTypeViewModel {
     //MARK: - Delegates
     weak var reloadDelegate: ReloadDelegate?
     
+    //MARK: - Fetching Methods
     private func fetchTransmissionTypes() {
         NetworkService.networkService.getData(urlString: transmissionTypeApi) { [weak self] (result: Result<[TransmissionTypesResponse], Error>) in
             DispatchQueue.main.async { [weak self] in

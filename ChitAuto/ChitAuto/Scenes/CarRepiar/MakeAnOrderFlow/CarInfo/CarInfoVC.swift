@@ -37,13 +37,11 @@ final class CarInfoVC: UIViewController {
         super.viewDidLoad()
         setupUI()
         handleDelegates()
-        title = "დაზიანება"
-        navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
     //MARK: - SetupUI
     private func setupUI() {
-        removeDefaultBackButton()
+        setNavigationItems()
         setCarPlateTextField()
     }
     
@@ -64,8 +62,10 @@ final class CarInfoVC: UIViewController {
         carInfoView.carPlateTextField.text = carInfoViewModel.currentCar.plateNumber
     }
     
-    private func removeDefaultBackButton() {
+    private func setNavigationItems() {
         navigationItem.setHidesBackButton(true, animated: true)
+        title = "დაზიანება"
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
 }
 
@@ -98,11 +98,6 @@ extension CarInfoVC: SaveButtonDelegate {
     }
 }
 
-extension CarInfoVC: PopViewControllerDelegate {
-    func popViewController() {
-        navigationController?.popViewController(animated: true)
-    }
-}
 
 extension CarInfoVC: SaveCarInfoDelegate {
     func handleSavingCarInfo() {
@@ -111,12 +106,19 @@ extension CarInfoVC: SaveCarInfoDelegate {
     }
 }
 
+//MARK: - Pop VC
 extension CarInfoVC: UIGestureRecognizerDelegate {
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         if gestureRecognizer.isEqual(navigationController?.interactivePopGestureRecognizer) {
             navigationController?.popViewController(animated: true)
         }
         return false
+    }
+}
+
+extension CarInfoVC: PopViewControllerDelegate {
+    func popViewController() {
+        navigationController?.popViewController(animated: true)
     }
 }
 

@@ -12,9 +12,6 @@ final class ModelsVC: UIViewController {
     var modelsView: ModelsView
     var modelsViewModel: ModelsViewModel
     
-    //MARK: - Delegates
-    weak var modelsSheetsDelegate: ModelsSheetsDelegate?
-    
     //MARK: - Initialization
     init(modelsView: ModelsView, modelsViewModel: ModelsViewModel) {
         self.modelsView = modelsView

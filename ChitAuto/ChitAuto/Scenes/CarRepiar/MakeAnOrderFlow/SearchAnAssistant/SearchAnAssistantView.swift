@@ -116,7 +116,6 @@ final class SearchAnAssistantView: UIView {
     private func setScrollView() {
         addSubview(scrollView)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
@@ -130,7 +129,6 @@ final class SearchAnAssistantView: UIView {
         let heightAnchor = contentView.heightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.heightAnchor)
         heightAnchor.priority = .defaultHigh
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
@@ -144,7 +142,6 @@ final class SearchAnAssistantView: UIView {
     private func setCarInfoBackground() {
         contentView.addSubview(carInfoBackground)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             carInfoBackground.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -100),
             carInfoBackground.heightAnchor.constraint(equalToConstant: 450),
@@ -195,7 +192,6 @@ final class SearchAnAssistantView: UIView {
     private func setBottomButtonsStackView() {
         carInfoBackground.addSubview(bottomButtonsStackView)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             bottomButtonsStackView.bottomAnchor.constraint(equalTo: carInfoBackground.bottomAnchor, constant: -6),
             bottomButtonsStackView.leadingAnchor.constraint(equalTo: carInfoBackground.leadingAnchor, constant: 20),

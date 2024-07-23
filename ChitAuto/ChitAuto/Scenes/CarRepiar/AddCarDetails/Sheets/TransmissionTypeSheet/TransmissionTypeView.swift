@@ -56,7 +56,6 @@ final class TransmissionTypeView: UIView {
     private func setFuelTypeTableView() {
         addSubview(transmissionTypeTableView)
         
-        //Set Constraints
         NSLayoutConstraint.activate([
             transmissionTypeTableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
             transmissionTypeTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),

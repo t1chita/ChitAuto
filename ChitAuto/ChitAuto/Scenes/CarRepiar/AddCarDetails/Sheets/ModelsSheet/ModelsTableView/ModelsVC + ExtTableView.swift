@@ -26,7 +26,7 @@ extension ModelsVC: UITableViewDelegate {
         modelsViewModel.previouslySelectedIndexPath = indexPath
         tableView.deselectRow(at: indexPath, animated: true)
         
-        modelsSheetsDelegate?.didSelectCarModel(selectedCarModel.title)
+        modelsViewModel.onModelsChanged?(selectedCarModel.title)
         self.dismiss(animated: true, completion: nil)
     }
 }
