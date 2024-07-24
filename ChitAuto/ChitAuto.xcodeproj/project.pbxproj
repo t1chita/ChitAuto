@@ -369,7 +369,7 @@
 			path = Labels;
 			sourceTree = "<group>";
 		};
-		261C15DA2C3C35B3004B5A1E /* UserMain */ = {
+		261C15DA2C3C35B3004B5A1E /* CarRepairing */ = {
 			isa = PBXGroup;
 			children = (
 				267530E52C3D52BA00E8B42B /* Garage */,
@@ -377,7 +377,7 @@
 				261C15DB2C3C35D0004B5A1E /* CarRepairingView.swift */,
 				261C15DD2C3C35E9004B5A1E /* CarRepairingViewModel.swift */,
 			);
-			path = UserMain;
+			path = CarRepairing;
 			sourceTree = "<group>";
 		};
 		2622943A2C349BA10062EEC1 /* SignUp */ = {
@@ -401,7 +401,7 @@
 		262929012C4DBB9900FB8FE9 /* CarRepiar */ = {
 			isa = PBXGroup;
 			children = (
-				261C15DA2C3C35B3004B5A1E /* UserMain */,
+				261C15DA2C3C35B3004B5A1E /* CarRepairing */,
 				267530EC2C3D8B3B00E8B42B /* AddCarDetails */,
 				26F4E1122C4358BE0031A6C5 /* MakeAnOrderFlow */,
 				26F4E14E2C49319E0031A6C5 /* CurrentOrder */,
