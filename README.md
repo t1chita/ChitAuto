@@ -25,7 +25,7 @@ ChitAuto is an iOS application that allows users to conveniently call an auto as
 ## Installation
 - clone the repository:
 
-   git clone https://github.com/yourusername/ChitAuto.git
+   git clone https://github.com/t1chita/ChitAuto
 - Open the project in Xcode:
 
     cd ChitAuto
@@ -41,7 +41,7 @@ ChitAuto is an iOS application that allows users to conveniently call an auto as
 
 ## Screenshots
 
-![OnBoarding](file:///var/folders/c0/m516br0d6dl1k9d4lz7f57k00000gn/T/TemporaryItems/NSIRD_screencaptureui_aNX0Dx/Screenshot%202024-07-24%20at%2020.19.31.png)
+![OnBoarding](https://github.com/user-attachments/assets/a700da10-0ea1-4570-9c61-53479715a6c4)
 
 ![Sign Up](file:///var/folders/c0/m516br0d6dl1k9d4lz7f57k00000gn/T/TemporaryItems/NSIRD_screencaptureui_aNX0Dx/Screenshot%202024-07-24%20at%2020.19.31.png)
 
