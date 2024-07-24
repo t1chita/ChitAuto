@@ -13,7 +13,7 @@ final class PersonalInfoTextField: UIView {
     private let textFieldIcon: String
     
     private let titleLabel = UILabel()
-    private let textField = UITextField()
+    let textField = UITextField()
     
     var textFieldText: String {
         get { return textField.text ?? "" }

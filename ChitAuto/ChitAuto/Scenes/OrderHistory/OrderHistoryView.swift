@@ -18,6 +18,7 @@ final class OrderHistoryView: UIView {
         let button = UIBarButtonItem(customView: customButton)
         return button
     }()
+    
     let ordersTableView: UITableView = {
         let tblView = UITableView()
         tblView.translatesAutoresizingMaskIntoConstraints = false

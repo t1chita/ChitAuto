@@ -45,6 +45,14 @@ final class MenuViewController: UIViewController {
         return tableView
     }()
     
+    lazy var mainButton: UIImageView = {
+        let imgView = UIImageView()
+        imgView.translatesAutoresizingMaskIntoConstraints = false
+        imgView.contentMode = .scaleAspectFit
+        imgView.image = UIImage(resource: .mainButton)
+        return imgView
+    }()
+    
     //MARK: - Delegates
     weak var menuViewControllerDelegate: MenuViewControllerDelegate?
     
@@ -53,6 +61,7 @@ final class MenuViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .customBackground
         tableViewDelegates()
+        setMainButton()
         setTableView()
     }
     
@@ -62,11 +71,22 @@ final class MenuViewController: UIViewController {
         tableView.separatorStyle = .none
     }
     
+    private func setMainButton() {
+        view.addSubview(mainButton)
+        
+        NSLayoutConstraint.activate([
+            mainButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            mainButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            mainButton.heightAnchor.constraint(equalToConstant: 40),
+            mainButton.widthAnchor.constraint(equalToConstant: 60),
+        ])
+    }  
+    
     private func setTableView() {
         view.addSubview(tableView)
         
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.topAnchor.constraint(equalTo: mainButton.bottomAnchor, constant: 6),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.heightAnchor.constraint(equalToConstant: 230),

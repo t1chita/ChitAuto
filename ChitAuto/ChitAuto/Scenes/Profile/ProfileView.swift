@@ -119,6 +119,7 @@ final class ProfileView: UIView {
     //MARK: - Delegates
     weak var popViewControllerDelegate: PopViewControllerDelegate?
     weak var photoSelectionDelegate: PhotoSelectionDelegate?
+    weak var editPersonalInfoDelegate: EditPersonalInfoDelegate?
     
     //MARK: - Initialization
     override init(frame: CGRect) {
@@ -203,7 +204,7 @@ final class ProfileView: UIView {
         personalInformationStackView.addArrangedSubview(editPersonalInformationButton)
         
         editPersonalInformationButton.addAction(UIAction(title: "Handle Edit User Info", handler: {[weak self] _ in
-            //TODO: Add Edit Logic
+            self?.editPersonalInfoDelegate?.editPersonalInfo()
         }), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
@@ -247,5 +248,15 @@ final class ProfileView: UIView {
     func imageSaved() {
         saveButton.isHidden = true
         selectPhotoButton.isHidden = false
+    }
+    
+    func infoIsEditable() {
+        phoneNumber.textField.isUserInteractionEnabled = true
+        emailTextField.textField.isUserInteractionEnabled = true
+    }
+
+    func infoIsNotEditable() {
+        phoneNumber.textField.isUserInteractionEnabled = false
+        emailTextField.textField.isUserInteractionEnabled = false
     }
 }

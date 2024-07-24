@@ -13,10 +13,16 @@ final class ProfileViewModel {
     //MARK: - Properties
     var imageIsSaved = false
     
+    var email: String = ""
+    
+    var phoneNumber: String = ""
+    
     var imageData: Data?
     
     var uploadInProgress: Bool = false
     
+    var enableToEditInfo: Bool = false
+
     //MARK: - Computed Properties
     var currentUser: User {
         didSet { onUserProfilePictureChanged?(currentUser) }
@@ -87,6 +93,23 @@ final class ProfileViewModel {
                     completion(true)
                 }
             }
+        }
+    }
+    
+    func updateEmailAndPhoneNumber() {
+        let db = Firestore.firestore()
+        let updateData: [String: Any] = [
+               "phoneNumber": phoneNumber,
+               "email": email
+           ]
+           
+        db.collection("users").document(currentUser.id).updateData(updateData) { [weak self] error in
+            if let error = error {
+                print("Failed to save data: \(error.localizedDescription)")
+                return
+            }
+            self?.currentUser.phoneNumber = self?.phoneNumber ?? ""
+            self?.currentUser.email = self?.email ?? ""
         }
     }
 }

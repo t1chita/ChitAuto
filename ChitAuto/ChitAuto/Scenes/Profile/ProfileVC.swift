@@ -12,6 +12,10 @@ protocol PhotoSelectionDelegate: AnyObject {
     func savePhoto()
 }
 
+protocol EditPersonalInfoDelegate: AnyObject {
+    func editPersonalInfo()
+}
+
 final class ProfileVC: UIViewController {
     //MARK: - Properties
     private var profileView: ProfileView
@@ -33,6 +37,7 @@ final class ProfileVC: UIViewController {
         super.viewWillAppear(animated)
         view = profileView
         updateUI()
+        profileView.infoIsNotEditable()
     }
     
     override func viewDidLoad() {
@@ -65,6 +70,9 @@ final class ProfileVC: UIViewController {
     private func getDelegatesFromView() {
         profileView.photoSelectionDelegate = self
         profileView.popViewControllerDelegate = self
+        profileView.editPersonalInfoDelegate = self
+        profileView.emailTextField.textField.delegate = self
+        profileView.phoneNumber.textField.delegate = self
     }
     
     //MARK: - Set UI Components
@@ -103,9 +111,19 @@ final class ProfileVC: UIViewController {
     }
 }
 
-extension ProfileVC: PopViewControllerDelegate {
-    func popViewController() {
-        navigationController?.popViewController(animated: true)
+//MARK: - Edit Personal Info
+extension ProfileVC: EditPersonalInfoDelegate {
+    func editPersonalInfo() {
+        profileViewModel.enableToEditInfo.toggle()
+        
+        if profileViewModel.enableToEditInfo {
+            profileView.infoIsEditable()
+        } else {
+            profileViewModel.email = profileView.emailTextField.textFieldText
+            profileViewModel.phoneNumber = profileView.phoneNumber.textFieldText
+            profileViewModel.updateEmailAndPhoneNumber()
+            profileView.infoIsNotEditable()
+        }
     }
 }
 
@@ -147,3 +165,17 @@ extension ProfileVC: PhotoSelectionDelegate, UIImagePickerControllerDelegate, UI
         }
     }
 }
+
+extension ProfileVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+}
+
+extension ProfileVC: PopViewControllerDelegate {
+    func popViewController() {
+        navigationController?.popViewController(animated: true)
+    }
+}
+

@@ -114,7 +114,7 @@ final class OrderDetailsView: UIView {
         txtView.translatesAutoresizingMaskIntoConstraints = false
         txtView.backgroundColor = .customCard
         txtView.layer.cornerRadius = 16
-        txtView.isUserInteractionEnabled = false
+        txtView.isEditable = false
         return txtView
     }()
     
@@ -175,7 +175,7 @@ final class OrderDetailsView: UIView {
             assistantImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             assistantImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
             assistantImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
-            assistantImageView.heightAnchor.constraint(equalToConstant: 200),
+            assistantImageView.heightAnchor.constraint(equalToConstant: 170),
         ])
     }
     
@@ -229,7 +229,7 @@ final class OrderDetailsView: UIView {
             problemDescriptionTextView.topAnchor.constraint(equalTo: orderContentBackground.bottomAnchor, constant: 20),
             problemDescriptionTextView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
             problemDescriptionTextView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
-            problemDescriptionTextView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            problemDescriptionTextView.heightAnchor.constraint(equalToConstant: 120),
         ])
     }
 }

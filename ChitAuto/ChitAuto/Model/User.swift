@@ -11,8 +11,8 @@ struct User: Identifiable, Codable {
     let id: String
     let firstName: String
     let lastName: String
-    let email: String
-    let phoneNumber: String
+    var email: String
+    var phoneNumber: String
     var imageUrl: String
     var userCars: [Car]
     var userOrders: [Order]
