@@ -32,12 +32,8 @@ final class WelcomeView: UIView {
         return lbl
     }()
     
-    let carusDescription: UILabel = {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.font = .systemFont(ofSize: 16, weight: .regular)
-        lbl.textColor = .label
-        lbl.numberOfLines = 0
+    let carusDescription: GeneralLabel = {
+        let lbl = GeneralLabel()
         return lbl
     }()
     

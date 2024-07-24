@@ -10,12 +10,9 @@ import UIKit
 
 final class TechInspectSheetView: UIView {
     //MARK: - UIComponents
-    private let titleLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
+    private let titleLabel: TitlesCustomLabel = {
+        let lbl = TitlesCustomLabel()
         lbl.text = "ტექ ინსპექტირება"
-        lbl.font = .boldSystemFont(ofSize: 20)
-        lbl.textAlignment = .center
         return lbl
     }()
     
@@ -36,19 +33,13 @@ final class TechInspectSheetView: UIView {
         return stView
     }()
        
-    let pastDate: UILabel = {
-        let lbl = UILabel()
-        lbl.font = .systemFont(ofSize: 18, weight: .semibold)
-        lbl.textAlignment = .left
-        lbl.numberOfLines = 0
+    let pastDate: GeneralLabel = {
+        let lbl = GeneralLabel()
         return lbl
     }()
     
-    let futureDate: UILabel = {
-        let lbl = UILabel()
-        lbl.font = .systemFont(ofSize: 18, weight: .semibold)
-        lbl.textAlignment = .left
-        lbl.numberOfLines = 0
+    let futureDate: GeneralLabel = {
+        let lbl = GeneralLabel()
         return lbl
     }()
     

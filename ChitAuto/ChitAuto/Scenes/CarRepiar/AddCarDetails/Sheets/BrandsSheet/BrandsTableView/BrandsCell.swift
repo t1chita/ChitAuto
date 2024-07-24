@@ -37,13 +37,8 @@ final class BrandsCell: UITableViewCell {
         return imView
     }()
     
-    private let brandName: UILabel = {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.font = .systemFont(ofSize: 14, weight: .bold)
-        lbl.textColor = .customLabel
-        lbl.textAlignment = .left
-        lbl.numberOfLines = 0
+    private let brandName: GeneralLabel = {
+        let lbl = GeneralLabel()
         return lbl
     }()
 

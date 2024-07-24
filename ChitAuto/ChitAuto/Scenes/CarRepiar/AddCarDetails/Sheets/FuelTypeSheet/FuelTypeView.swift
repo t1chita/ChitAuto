@@ -9,13 +9,9 @@ import UIKit
 
 final class FuelTypeView: UIView {
     //MARK: - UI Components
-    private let titleLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
+    private let titleLabel: TitlesCustomLabel = {
+        let lbl = TitlesCustomLabel()
         lbl.text = "საწვავის ტიპი"
-        lbl.textColor = .label
-        lbl.font = .boldSystemFont(ofSize: 20)
-        lbl.textAlignment = .center
         return lbl
     }()
     

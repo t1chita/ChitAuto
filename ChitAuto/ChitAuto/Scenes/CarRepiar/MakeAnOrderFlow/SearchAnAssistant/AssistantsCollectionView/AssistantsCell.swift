@@ -37,11 +37,8 @@ final class AssistantsCell: UICollectionViewCell {
         return stackView
     }()
     
-    private let assistantNameLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.font = .systemFont(ofSize: 14, weight: .bold)
-        lbl.textColor = .customLabel
+    private let assistantNameLabel: GeneralLabel = {
+        let lbl = GeneralLabel()
         lbl.backgroundColor = .customCard
         lbl.layer.masksToBounds = true
         lbl.layer.cornerRadius = 4
@@ -57,12 +54,8 @@ final class AssistantsCell: UICollectionViewCell {
         return vw
     }()
     
-    private let servicePriceLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.font = .systemFont(ofSize: 14, weight: .bold)
-        lbl.textColor = .customLabel
-        lbl.textAlignment = .left
+    private let servicePriceLabel: GeneralLabel = {
+        let lbl = GeneralLabel()
         return lbl
     }()
     
@@ -87,7 +80,6 @@ final class AssistantsCell: UICollectionViewCell {
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.font = .systemFont(ofSize: 14, weight: .bold)
         lbl.textColor = .yellow
-        lbl.textAlignment = .left
         return lbl
     }()
     

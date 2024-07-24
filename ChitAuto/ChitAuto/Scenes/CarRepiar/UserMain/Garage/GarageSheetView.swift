@@ -10,12 +10,9 @@ import UIKit
 
 final class GarageSheetView: UIView {
     //MARK: - UIComponents
-    private let titleLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
+    private let titleLabel: TitlesCustomLabel = {
+        let lbl = TitlesCustomLabel()
         lbl.text = "ჩემი გარაჟი"
-        lbl.font = .boldSystemFont(ofSize: 20)
-        lbl.textAlignment = .center
         return lbl
     }()
     

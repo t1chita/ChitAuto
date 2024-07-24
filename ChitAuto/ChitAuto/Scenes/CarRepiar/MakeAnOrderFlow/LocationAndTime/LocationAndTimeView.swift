@@ -30,13 +30,8 @@ final class LocationAndTimeView: UIView {
         return vw
     }()
     
-    private let locationTitle: UILabel = {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.font = .systemFont(ofSize: 16, weight: .regular)
-        lbl.numberOfLines = 0
-        lbl.textColor = .customLabel
-        lbl.textAlignment = .left
+    private let locationTitle: GeneralLabel = {
+        let lbl = GeneralLabel()
         lbl.text = "სად მოვიდეს ავტოასისტენტი?"
         return lbl
     }()
@@ -46,13 +41,8 @@ final class LocationAndTimeView: UIView {
         return button
     }()
     
-    private let addressTitle: UILabel = {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.font = .systemFont(ofSize: 16, weight: .regular)
-        lbl.numberOfLines = 0
-        lbl.textColor = .customLabel
-        lbl.textAlignment = .left
+    private let addressTitle: GeneralLabel = {
+        let lbl = GeneralLabel()
         lbl.text = "ჩაწერეთ ზუსტი მისამართი"
         return lbl
     }()
@@ -66,13 +56,8 @@ final class LocationAndTimeView: UIView {
         return textField
     }()
     
-    private let dayTitle: UILabel = {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.font = .systemFont(ofSize: 16, weight: .regular)
-        lbl.numberOfLines = 0
-        lbl.textColor = .customLabel
-        lbl.textAlignment = .left
+    private let dayTitle: GeneralLabel = {
+        let lbl = GeneralLabel()
         lbl.text = "როდის მოვიდეს?"
         return lbl
     }()
@@ -86,13 +71,8 @@ final class LocationAndTimeView: UIView {
         return picker
     }()
     
-    private let timeTitle: UILabel = {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.font = .systemFont(ofSize: 16, weight: .regular)
-        lbl.numberOfLines = 0
-        lbl.textColor = .customLabel
-        lbl.textAlignment = .left
+    private let timeTitle: GeneralLabel = {
+        let lbl = GeneralLabel()
         lbl.text = "დღის რომელ მონაკვეთში?"
         return lbl
     }()

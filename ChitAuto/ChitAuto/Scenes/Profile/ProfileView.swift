@@ -18,11 +18,9 @@ final class ProfileView: UIView {
         return imgView
     }()
     
-    let userName: UILabel = {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
+    let userName: GeneralLabel = {
+        let lbl = GeneralLabel()
         lbl.font = .systemFont(ofSize: 26, weight: .bold)
-        lbl.textColor = .customLabel
         lbl.textAlignment = .center
         return lbl
     }()
@@ -58,12 +56,9 @@ final class ProfileView: UIView {
         return button
     }()
     
-    let personalInformationLabel: UILabel = {
-        let lbl = UILabel()
+    let personalInformationLabel: GeneralLabel = {
+        let lbl = GeneralLabel()
         lbl.font = .systemFont(ofSize: 18, weight: .bold)
-        lbl.textColor = .customLabel
-        lbl.textAlignment = .left
-        lbl.numberOfLines = 0
         lbl.text = "პერსონალური\nინფორმაცია"
         return lbl
     }()

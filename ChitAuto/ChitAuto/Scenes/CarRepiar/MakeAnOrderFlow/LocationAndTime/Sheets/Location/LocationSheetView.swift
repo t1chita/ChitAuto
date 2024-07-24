@@ -9,13 +9,9 @@ import UIKit
 
 final class LocationSheetView: UIView {
     //MARK: - UIComponents
-    private let titleLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
+    private let titleLabel: TitlesCustomLabel = {
+        let lbl = TitlesCustomLabel()
         lbl.text = "ქალაქი"
-        lbl.textColor = .label
-        lbl.font = .boldSystemFont(ofSize: 20)
-        lbl.textAlignment = .center
         return lbl
     }()
     

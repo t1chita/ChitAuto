@@ -28,23 +28,13 @@ final class CarCell: UITableViewCell {
         return imView
     }()
     
-    private let carBrandName: UILabel = {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.font = .systemFont(ofSize: 14, weight: .bold)
-        lbl.textColor = .customLabel
-        lbl.textAlignment = .left
-        lbl.numberOfLines = 0
+    private let carBrandName: GeneralLabel = {
+        let lbl = GeneralLabel()
         return lbl
     }()
     
-    private let carModelName: UILabel = {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.font = .systemFont(ofSize: 14, weight: .bold)
-        lbl.textColor = .customLabel
-        lbl.textAlignment = .left
-        lbl.numberOfLines = 0
+    private let carModelName: GeneralLabel = {
+        let lbl = GeneralLabel()
         return lbl
     }()
     

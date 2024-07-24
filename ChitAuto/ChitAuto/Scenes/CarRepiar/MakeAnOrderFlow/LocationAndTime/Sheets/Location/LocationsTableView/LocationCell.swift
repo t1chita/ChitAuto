@@ -30,13 +30,8 @@ final class LocationCell: UITableViewCell {
         return imView
     }()
     
-    private let locationName: UILabel = {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.font = .systemFont(ofSize: 14, weight: .bold)
-        lbl.textColor = .customLabel
-        lbl.textAlignment = .left
-        lbl.numberOfLines = 0
+    private let locationName: GeneralLabel = {
+        let lbl = GeneralLabel()
         return lbl
     }()
     

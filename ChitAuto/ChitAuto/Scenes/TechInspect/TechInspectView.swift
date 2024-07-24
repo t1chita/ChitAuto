@@ -9,13 +9,8 @@ import UIKit
 
 final class TechInspectView: UIView {
     //MARK: - UIComponents
-    private let techInspectTitle: UILabel = {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.font = .systemFont(ofSize: 24, weight: .bold)
-        lbl.textColor = .customLabel
-        lbl.textAlignment = .center
-        lbl.numberOfLines = 0
+    private let techInspectTitle: TitlesCustomLabel = {
+        let lbl = TitlesCustomLabel()
         lbl.text = "გაიგე ტექ ინსპექტირების თარიღი"
         return lbl
     }()

@@ -33,18 +33,14 @@ final class PhasesCell: UICollectionViewCell {
         return stView
     }()
     
-    private let phaseTitle: UILabel = {
-        let lbl = UILabel()
-        lbl.font = .systemFont(ofSize: 24, weight: .bold)
-        lbl.textColor = .label
+    private let phaseTitle: TitlesCustomLabel = {
+        let lbl = TitlesCustomLabel()
         lbl.textAlignment = .left
         return lbl
     }()
     
-    private let phaseOrdinalityText: UILabel = {
-        let lbl = UILabel()
-        lbl.font = .systemFont(ofSize: 14, weight: .semibold)
-        lbl.textColor = .customLabel
+    private let phaseOrdinalityText: GeneralLabel = {
+        let lbl = GeneralLabel()
         lbl.textAlignment = .right
         return lbl
     }()

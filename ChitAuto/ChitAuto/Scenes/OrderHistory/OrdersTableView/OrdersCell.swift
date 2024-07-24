@@ -26,11 +26,8 @@ final class OrdersCell: UITableViewCell {
         return vw
     }()
     
-    private var assistantNumber: UILabel = {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.font = .systemFont(ofSize: 16, weight: .bold)
-        lbl.textColor = .customLabel
+    private var assistantNumber: GeneralLabel = {
+        let lbl = GeneralLabel()
         lbl.backgroundColor = .customBackground
         lbl.layer.masksToBounds = true
         lbl.text = "📲 +995597050897"
@@ -48,11 +45,8 @@ final class OrdersCell: UITableViewCell {
         return imgView
     }()
     
-    private lazy var assistantNameLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.font = .systemFont(ofSize: 16, weight: .bold)
-        lbl.textColor = .customLabel
+    private lazy var assistantNameLabel: GeneralLabel = {
+        let lbl = GeneralLabel()
         lbl.backgroundColor = .customCard
         lbl.layer.masksToBounds = true
         lbl.layer.cornerRadius = 4

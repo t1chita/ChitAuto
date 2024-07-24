@@ -73,39 +73,24 @@ final class OrderDetailsView: UIView {
     }()
     
     
-    let cityLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.font = .systemFont(ofSize: 16, weight: .regular)
-        lbl.textColor = .label
+    let cityLabel: GeneralLabel = {
+        let lbl = GeneralLabel()
+        return lbl
+    }()
+    
+    let dateLabel: GeneralLabel = {
+        let lbl = GeneralLabel()
+        return lbl
+    }()
+    
+    let timeLabel: GeneralLabel = {
+        let lbl = GeneralLabel()
         lbl.numberOfLines = 0
         return lbl
     }()
     
-    let dateLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.font = .systemFont(ofSize: 16, weight: .regular)
-        lbl.textColor = .label
-        lbl.numberOfLines = 0
-        return lbl
-    }()
-    
-    let timeLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.font = .systemFont(ofSize: 16, weight: .regular)
-        lbl.textColor = .label
-        lbl.numberOfLines = 0
-        return lbl
-    }()
-    
-    let visualDamageLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.font = .systemFont(ofSize: 16, weight: .regular)
-        lbl.textColor = .label
-        lbl.numberOfLines = 0
+    let visualDamageLabel: GeneralLabel = {
+        let lbl = GeneralLabel()
         return lbl
     }()
     

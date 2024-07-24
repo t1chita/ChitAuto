@@ -1,5 +1,5 @@
 //
-//  UserMainViewWithoutOrderAndCars.swift
+//  CarRepairingView.swift
 //  ChitAuto
 //
 //  Created by Temur Chitashvili on 08.07.24.
@@ -8,7 +8,7 @@
 import UIKit
 
 
-final class UserMainView: UIView {
+final class CarRepairingView: UIView {
     //MARK: - UIComponents
     private let addCarImage: UIImageView = {
         let imgView = UIImageView()
@@ -39,14 +39,11 @@ final class UserMainView: UIView {
         return txtField
     }()
     
-    private let youDontHaveAnOrderLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
+    private let youDontHaveAnOrderLabel: GeneralLabel = {
+        let lbl = GeneralLabel()
         lbl.font = .systemFont(ofSize: 24, weight: .bold)
         lbl.text = "თქვენ არ გაქვთ შეკვეთა"
-        lbl.textColor = .customLabel
         lbl.textAlignment = .center
-        lbl.numberOfLines = 0
         return lbl
     }()
     
@@ -120,11 +117,8 @@ final class UserMainView: UIView {
         return vw
     }()
     
-    private var assistantNumber: UILabel = {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.font = .systemFont(ofSize: 16, weight: .bold)
-        lbl.textColor = .customLabel
+    private var assistantNumber: GeneralLabel = {
+        let lbl = GeneralLabel()
         lbl.backgroundColor = .customBackground
         lbl.layer.masksToBounds = true
         lbl.text = "📲 +995597050897"
@@ -151,11 +145,8 @@ final class UserMainView: UIView {
         return imgView
     }()
     
-    var assistantName: UILabel = {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.font = .systemFont(ofSize: 16, weight: .bold)
-        lbl.textColor = .customLabel
+    var assistantName: GeneralLabel = {
+        let lbl = GeneralLabel()
         lbl.backgroundColor = .customCard
         lbl.layer.masksToBounds = true
         lbl.layer.cornerRadius = 4
@@ -178,13 +169,10 @@ final class UserMainView: UIView {
         return button
     }() 
     
-    private let orderStatusTitle: UILabel = {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.font = .systemFont(ofSize: 16, weight: .bold)
+    private let orderStatusTitle: GeneralLabel = {
+        let lbl = GeneralLabel()
         lbl.textColor = .customLabel
         lbl.textAlignment = .center
-        lbl.numberOfLines = 0
         lbl.text = "თქვენი მანქანა კეთების პროცესშია 🛠️"
         return lbl
     }()

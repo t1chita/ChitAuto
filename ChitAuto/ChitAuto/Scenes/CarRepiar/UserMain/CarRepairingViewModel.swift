@@ -1,5 +1,5 @@
 //
-//  UserMainViewModel.swift
+//  CarRepairingViewModel.swift
 //  ChitAuto
 //
 //  Created by Temur Chitashvili on 08.07.24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class UserMainViewModel {
+final class CarRepairingViewModel {
     //MARK: - Properties
     let garage: String = "გარაჟი"
     
@@ -17,7 +17,7 @@ final class UserMainViewModel {
     
     private var _currentCar: Car?
     
-    private let accessQueue = DispatchQueue(label: "com.chitauto.UserMainViewModel.accessQueue")
+    private let accessQueue = DispatchQueue(label: "com.chitauto.CarRepairingViewModel.accessQueue")
 
     //MARK: - Computed Properties
     var currentUser: User {

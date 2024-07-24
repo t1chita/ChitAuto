@@ -109,14 +109,14 @@ extension ContainerViewController: MenuViewControllerDelegate {
                 
                 guard let unwrappedUser = self?.welcomeViewModel.currentUser else { return }
 
-                let userMainView = UserMainView()
-                let userMainViewModel = UserMainViewModel(currentUser: unwrappedUser)
+                let carRepairingView = CarRepairingView()
+                let carRepairingViewModel = CarRepairingViewModel(currentUser: unwrappedUser)
                 
-                userMainViewModel.onSelectedUserChanged = { [weak self] user in
+                carRepairingViewModel.onSelectedUserChanged = { [weak self] user in
                     self?.welcomeViewModel.currentUser = user
                 }
                 
-                let vc = UserMainVC(userMainView: userMainView, userMainViewModel: userMainViewModel)
+                let vc = CarRepairingVC(carRepairingView: carRepairingView, carRepairingViewModel: carRepairingViewModel)
 
                 self?.navVC?.pushViewController(vc, animated: true)
                 

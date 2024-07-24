@@ -50,13 +50,8 @@ final class CarInfoView: UIView {
         return button
     }()
     
-    private let problemDescriptionTitle: UILabel = {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.font = .systemFont(ofSize: 16, weight: .regular)
-        lbl.numberOfLines = 0
-        lbl.textColor = .customLabel
-        lbl.textAlignment = .left
+    private let problemDescriptionTitle: GeneralLabel = {
+        let lbl = GeneralLabel()
         lbl.text = "რა სჭირს მანქანას?"
         return lbl
     }()
